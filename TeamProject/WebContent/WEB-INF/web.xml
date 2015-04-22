@@ -27,7 +27,7 @@
    <!-- BoardFrontController -->
    <servlet>
 		<servlet-name>BoardFrontController</servlet-name>
-		<servlet-class>net.board.action.BoardFrontController</servlet-class>
+		<servlet-class>Board.Controller.BoardFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
 		<servlet-name>BoardFrontController</servlet-name>

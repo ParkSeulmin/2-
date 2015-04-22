@@ -11,13 +11,13 @@ public class Board {
 	private int bo_count; 		// 조횟수
 	private String bo_file; 	// 첨부파일
 	private String bo_writer; 	// 작성자
-	private String bo_id; 		// 게시판 타입
+	private int bo_id; 		// 게시판 타입
 	
 	// 생성자
 	public Board(){}
 	
 	public Board(int bo_no, String bo_title, Date bo_date, String bo_content,
-			int bo_count, String bo_file, String bo_writer, String bo_id) {
+			int bo_count, String bo_file, String bo_writer, int bo_id) {
 		super();
 		this.bo_no = bo_no;
 		this.bo_title = bo_title;
@@ -86,11 +86,11 @@ public class Board {
 		this.bo_writer = bo_writer;
 	}
 
-	public String getBo_id() {
+	public int getBo_id() {
 		return bo_id;
 	}
 
-	public void setBo_id(String bo_id) {
+	public void setBo_id(int bo_id) {
 		this.bo_id = bo_id;
 	}
 	
