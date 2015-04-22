@@ -148,7 +148,7 @@ $(document).ready(function() {
     <script src="http://www.wedaehan.com/js/jquery.register_form.js"></script>
         <script src="http://www.wedaehan.com/js/certify.js"></script>
     
-    <form id="fregisterform" name="fregisterform" action="JoinController.do" method="post">
+    <form id="fregisterform" name="fregisterform" action="JoinController.do" method="get">
     <input type="hidden" name="w" value="">
 	<input type="hidden" name="cert_value" id="cert_value" value="">
     <input type="hidden" name="url" value="%2Fbbs%2Fregi0
@@ -275,47 +275,15 @@ $(document).ready(function() {
         <tr>
 			<th scope="row">성별</th>
 			<td>
-									<input type="radio" id = "mb_sex" name="mb_sex" value="2"> 여자
-					<input type="radio" id= "mb_sex" name="mb_sex" value="1"> 남자
-							</td>
+					<input type="radio" id ="mb_sex" name="gender" value="2"> 여자
+					<input type="radio" id ="mb_sex" name="gender" value="1"> 남자
+			</td>
 		</tr>
 
                 </tbody>
         </table>
     </div>
 
-    <div class="tbl_frm01 tbl_wrap">
-        <table>
-        <caption>기타 개인설정</caption>
-		<colgroup>
-			<col class="grid_4">
-			<col>
-		</colgroup>
-        <tbody>
-        
-        
-		<tr>
-            <th scope="row"><label for="reg_mb_mailling">메일링서비스</label></th>
-            <td>
-                <input type="checkbox" name="mb_mailling" value="1" id="reg_mb_mailling" checked="">
-                정보 메일을 받겠습니다.
-            </td>
-        </tr>
-
-                <tr>
-            <th scope="row"><label for="reg_mb_sms">SMS 수신여부</label></th>
-            <td>
-                <input type="checkbox" name="mb_sms" value="1" id="reg_mb_sms" checked="">
-                휴대폰 문자메세지를 받겠습니다.
-            </td>
-        </tr>
-
-        
-        
-     
-        </tbody>
-        </table>
-    </div>
 
     <div class="btn_confirm">
         <input type="submit" value="다음" id="btn_submit" class="btn_submit" accesskey="s">
