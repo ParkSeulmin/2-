@@ -148,7 +148,7 @@ $(document).ready(function() {
     <script src="http://www.wedaehan.com/js/jquery.register_form.js"></script>
         <script src="http://www.wedaehan.com/js/certify.js"></script>
     
-    <form id="fregisterform" name="fregisterform" action="Login/Join.jsp" onsubmit="return fregisterform_submit(this);" method="post" enctype="multipart/form-data" autocomplete="off">
+    <form id="fregisterform" name="fregisterform" action="Join.jsp" onsubmit="return fregisterform_submit(this);" method="post" enctype="multipart/form-data" autocomplete="off">
     <input type="hidden" name="w" value="">
 	<input type="hidden" name="cert_value" id="cert_value" value="">
     <input type="hidden" name="url" value="%2Fbbs%2Fregister_form.php">
@@ -222,11 +222,11 @@ $(document).ready(function() {
         </tr>
         
          <tr>
-            <th scope="row"><label for="reg_mb_nick">주소<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="address">주소<strong class="sound_only">필수</strong></label></th>
             <td>
-                <input type="hidden" name="mb_nick_default" value="">
-                <input type="text" name="mb_nick" value="" id="reg_mb_nick" required="" class="frm_input required nospace" size="20" maxlength="20">
-                <span id="msg_mb_nick"></span>
+                <input type="hidden" name="address_default" value="">
+                <input type="text" name="address" value="" id="address" required="" class="frm_input required nospace" size="20" maxlength="20">
+                <span id="msg_mb_address"></span>
             </td>
         </tr>
 
@@ -273,8 +273,8 @@ $(document).ready(function() {
         <tr>
 			<th scope="row">성별</th>
 			<td>
-									<input type="radio" name="mb_sex" value="2"> 여자
-					<input type="radio" name="mb_sex" value="1"> 남자
+									<input type="radio" id = "mb_sex" name="mb_sex" value="2"> 여자
+					<input type="radio" id= "mb_sex" name="mb_sex" value="1"> 남자
 							</td>
 		</tr>
 
