@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+	<script>
+	function checkn() {
+		var name = document.getElementById("checkname");
+		if(name.value == ""){
+			alert("이름을 다시 입력 하세요");
+			document.getElementById("checkname").focus();
+			document.getElementById("checkname").select();
+		}else if(!(name.value.length >=2)){
+			alert("이름은 두 글자 이상 쓰세요");
+			document.getElementById("checkname").focus();
+			document.getElementById("checkname").select();
+		}else{
+		var name1 = document.getElementById("checkname").value;
+		window.opener.document.checkform.name.value = name1;
+		window.close();
+		}
+	}
+	</script>
+<body>
+	<form action="">
+		<input type="text" id="checkname" name=""><br>
+		<input type="button" value="확인" onclick="checkn()">
+		<input type="reset" value="다시쓰기">
+		<button type="button" onclick="window.close();">취소</button>
+	</form> 
+</body>
+</html>
