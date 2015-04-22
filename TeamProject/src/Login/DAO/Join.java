@@ -1,4 +1,4 @@
-
+/*
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +19,12 @@ public class Join {
 	PreparedStatement pstmt;
 	ResultSet rs;
 
-	/*
+	
 	 * Statement stmt=null; ResultSet rs = null; Context context = new
 	 * InitialContext(); DataSource datasource=
 	 * (DataSource)context.lookup("java:comp/env/jdbc/oracle"); Connection conn
 	 * = datasource.getConnection();
-	 */
+	 
 	public Join() {
 		try {
 			Context context = new InitialContext();
@@ -318,3 +318,4 @@ public class Join {
 	}
 
 }
+*/
