@@ -13,15 +13,22 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  
-    <servlet>
-  	<servlet-name>JoinController</servlet-name>
-  	<servlet-class>Login.Controller.JoinController</servlet-class>
+  <servlet>
+    <servlet-name>JoinController</servlet-name>
+    <servlet-class>Login.Controller.JoinController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>JoinController</servlet-name>
-  	<url-pattern>*.do</url-pattern>
+    <servlet-name>JoinController</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PwdSearchController</servlet-name>
+    <servlet-class>Login.Controller.PwdSearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PwdSearchController</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
    <!-- BoardFrontController -->
