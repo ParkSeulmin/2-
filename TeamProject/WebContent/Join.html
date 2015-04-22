@@ -170,6 +170,14 @@ $(document).ready(function() {
                                 <input type="text" id="reg_mb_name" name="mb_name" value="" required="" class="frm_input nospace required " size="10">
 				                            </td>
         </tr>
+                		<tr>
+			<th scope="row">주민번호</th>
+			<td>
+									<input class="text" type="text" name="mb_birth" id="mb_birth" size="15" maxlength="6" minlength="6" required="" numeric="" title="주민번호" value="">
+									-
+									<input class="text" type="password" name="mb_birth2" id="mb_birth2" size="15" maxlength="7" minlength="7" required="" numeric="" title="주민번호" value="">
+							</td>
+        </tr>
         <tr>
             <th scope="row"><label for="reg_mb_id">아이디<strong class="sound_only">필수</strong></label></th>
             <td>
@@ -213,6 +221,16 @@ $(document).ready(function() {
             </td>
         </tr>
         
+         <tr>
+            <th scope="row"><label for="reg_mb_nick">주소<strong class="sound_only">필수</strong></label></th>
+            <td>
+                <input type="hidden" name="mb_nick_default" value="">
+                <input type="text" name="mb_nick" value="" id="reg_mb_nick" required="" class="frm_input required nospace" size="20" maxlength="20">
+                <span id="msg_mb_nick"></span>
+            </td>
+        </tr>
+
+        
         <tr>
             <th scope="row"><label for="reg_mb_email">E-mail<strong class="sound_only">필수</strong></label></th>
             <td>
@@ -251,12 +269,7 @@ $(document).ready(function() {
 
                 
 
-		<tr>
-			<th scope="row">생년월일</th>
-			<td>
-									<input class="txt hasDatepicker" type="text" name="mb_birth" id="mb_birth" size="15" maxlength="8" minlength="8" required="" numeric="" title="생년월일" value="">
-							</td>
-        </tr>
+
         <tr>
 			<th scope="row">성별</th>
 			<td>
