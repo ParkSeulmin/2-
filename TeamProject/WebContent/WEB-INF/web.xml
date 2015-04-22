@@ -22,14 +22,15 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
-  <servlet>
+  <!-- <servlet>
     <servlet-name>PwdSearchController</servlet-name>
     <servlet-class>Login.Controller.PwdSearchController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PwdSearchController</servlet-name>
     <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
+  서블릿 패턴 중복에러-->
   
    <!-- BoardFrontController -->
    <servlet>
