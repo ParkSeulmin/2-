@@ -10,12 +10,11 @@ import Login.DTO.Member;
 
 public class Mypage_Id_Check_Action implements Mypage_Action {
 
-	public Mypage_ActionForward execute(HttpServletRequest request,
-			HttpServletResponse response) throws Exception{
+	public Mypage_ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		boolean result = false;
 		boolean userCheck = false;
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		int num = Integer.parseInt(request.getParameter(""));
 		
 		Member member= new Member();
 		userCheck = boarddao.isBoardWriter(num, request.getParameter("BOARD_PASS"));
