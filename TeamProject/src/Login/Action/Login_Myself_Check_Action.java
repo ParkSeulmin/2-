@@ -7,19 +7,19 @@ import Login.DAO.Login_Id_Check_DAO;
 import Login.DTO.Member;
 
 
-public class Login_Id_Check_Action implements Action {
+public class Login_Myself_Check_Action implements Action {
 
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String name=request.getParameter("name");
-		String email=request.getParameter("email")+"@"+request.getParameter("email_domain");
+		String jumin=request.getParameter("jumin");
 		
 		Member member= new Member();
 
-		member.setEmail(email);
+		member.setJumin(jumin);
 		member.setName(name);
 		
 		Login_Id_Check_DAO dao=new Login_Id_Check_DAO();
-		Member ID_result = dao.Mypage_Id_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
+		Member ID_result = dao.Login_Myself_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
 		//
 		//정보가 여기까지 넘어왔다.
 		if(ID_result!=null){
