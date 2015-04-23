@@ -35,9 +35,8 @@ Login_DAO logindao = new Login_DAO();
 		
 	}
 	
-	
-	
-	public ActionForward execute(HttpServletRequest request,
+
+	/*public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
 		Login_DAO logindao = new Login_DAO();
@@ -60,8 +59,7 @@ Login_DAO logindao = new Login_DAO();
 		return forward;
 		
 		
-		
 	}
-	
+	*/
 
 }

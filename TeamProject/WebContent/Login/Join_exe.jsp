@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%	
-		request.setCharacterEncoding("utf-8");
-	
-		out.print(request.getParameter("result"));
-	%>
-	<h1>안녕하세요 checkd</h1>
+	회원가입완료
 </body>
 </html>
