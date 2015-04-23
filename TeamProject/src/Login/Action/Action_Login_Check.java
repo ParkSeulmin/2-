@@ -15,8 +15,6 @@ public class Action_Login_Check implements Action {
 			HttpServletResponse response) throws Exception {
 		
 		Login_DAO logindao = new Login_DAO();
-		ActionForward forward;
-		
 		
 		String idpwd = logindao.getLoginCheck(request.getParameter("mb_id"));
 		String pwd = request.getParameter("mb_password");
@@ -24,24 +22,20 @@ public class Action_Login_Check implements Action {
 		
 		if(idpwd.equals(pwd)){
 			result += "로그인 성공";
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/Login/Login_Check.jsp?result="+request.getParameter("mb_id"));
 		}else{
 			result += "로그인 실패";
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/Login/Login_Check.jsp?result="+request.getParameter("mb_id"));
 		}
 		
-		
-		
+		System.out.println(result);
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("/Login/Login_Check.jsp?result="+request.getParameter("mb_id"));
+		System.out.println(forward.getPath());
 		return forward;
 		
 	}
 	
-	
-	
+
 	/*public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
