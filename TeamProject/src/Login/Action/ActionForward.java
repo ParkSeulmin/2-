@@ -1,7 +1,9 @@
 package Login.Action;
 
 //처리를 담당하는 메서드를 가지는 클래스
-//forward , sendredirect ... 결정함수
+//forward , sendRedirect ..결정 함수
+
+
 public class ActionForward {
 	private boolean isRedirect = false;
 	private String path = null;
@@ -18,7 +20,4 @@ public class ActionForward {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
-	
-
 }

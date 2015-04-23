@@ -35,8 +35,7 @@ Login_DAO logindao = new Login_DAO();
 		
 	}
 	
-	
-	
+
 	/*public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		

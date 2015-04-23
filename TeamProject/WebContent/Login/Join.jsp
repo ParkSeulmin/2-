@@ -150,7 +150,7 @@ $(document).ready(function() {
     <script src="http://www.wedaehan.com/js/jquery.register_form.js"></script>
         <script src="http://www.wedaehan.com/js/certify.js"></script>
     
-    <form id="fregisterform" name="fregisterform" action="JoinController.do" method="post">
+    <form id="fregisterform" name="fregisterform" action="JoinController.do" method="get">
     <input type="hidden" name="w" value="">
 	<input type="hidden" name="cert_value" id="cert_value" value="">
     <input type="hidden" name="url" value="%2Fbbs%2Fregi0
@@ -277,50 +277,108 @@ $(document).ready(function() {
         <tr>
 			<th scope="row">성별</th>
 			<td>
-									<input type="radio" id = "mb_sex" name="mb_sex" value="2"> 여자
-					<input type="radio" id= "mb_sex" name="mb_sex" value="1"> 남자
-							</td>
+					<input type="radio" id ="mb_sex" name="gender" value="2"> 여자
+					<input type="radio" id ="mb_sex" name="gender" value="1"> 남자
+			</td>
 		</tr>
 
                 </tbody>
         </table>
     </div>
 
-    <div class="tbl_frm01 tbl_wrap">
-        <table>
-        <caption>기타 개인설정</caption>
+
+<div class="tbl_frm01 tbl_wrap">
+	<table>
+		<caption>추가정보 입력</caption>
 		<colgroup>
 			<col class="grid_4">
 			<col>
 		</colgroup>
-        <tbody>
-        
-        
+		<tbody>
+			<tr>
+				<th scope="row"><label for="sal">연봉</label></th>
+				<td>
+				<select name="sal" id="sal">
+						<option value="1000">2000이하</option>
+						<option value="3000">2000~4000이하</option>
+						<option value="5000">4000~6000이하</option>
+						<option value="7000">6000~8000이하</option>
+						<option value="8000">8000이상</option>
+						</select>
+						<br>
+			</td>
+			</tr>
+
 		<tr>
-            <th scope="row"><label for="reg_mb_mailling">메일링서비스</label></th>
+            <th scope="row"><label for="cm">키<strong class="sound_only"></strong></label></th>
             <td>
-                <input type="checkbox" name="mb_mailling" value="1" id="reg_mb_mailling" checked="">
-                정보 메일을 받겠습니다.
+                <input type="text" name="cm" id="cm"size="20" maxlength="20">
             </td>
         </tr>
 
-                <tr>
-            <th scope="row"><label for="reg_mb_sms">SMS 수신여부</label></th>
+			    <tr>
+            <th scope="row"><label for="weight">몸무게<strong class="sound_only"></strong></label></th>
             <td>
-                <input type="checkbox" name="mb_sms" value="1" id="reg_mb_sms" checked="">
-                휴대폰 문자메세지를 받겠습니다.
+                <input type="text" name="weight2" id="weight2"size="20" maxlength="20">
             </td>
         </tr>
+			<tr>
+				<th scope="row"><label for="job">직종</label></th>
+				<td><select name="job">
+					<option value="">직업선택</option>
+					<option value="관리">관리</option> 
+					<option value="건설">건설</option>
+					<option value="경비">경비</option>
+					<option value="경영">경영/회계,사무</option>
+					<option value="교육">교육/연구</option>
+					<option value="금융">금융/보험</option>
+					<option value="군인">군인</option>
+					<option value="기계">기계</option>
+					<option value="농림어업">농림어업</option>
+					<option value="문화">문화/예술/방송</option>
+					<option value="미용">미용,숙박,여행</option>
+					<option value="법률">법률/경찰/소방/교도</option>
+					<option value="보건">보건/의료</option>
+					<option value="사회복지">사회복지/종교</option>
+					<option value="섬유">섬유/의복</option>
+					<option value="식품가공">식품가공</option>
+					<option value="영업">영업/판매</option>
+					<option value="운전">운전/운송</option>
+					<option value="전기">전기/전자</option>
+					<option value="인쇄">인쇄/목재/가구</option>
+					<option value="화학">화학</option>
+					<option value="학생">학생</option>
+					<option value="대학생">대학(원)생</option>
+					<option value="기타">기타</option>
+					<span id="job"></span>
+					<br>
+				</select></td>
+			</tr>
 
-        
-        
-     
-        </tbody>
-        </table>
-    </div>
+			<tr>
+				<th scope="row">최종 학력</th>
+				<td>
+				<input type="radio" id="school" name="school" value="대학원">대학원졸업
+				<input type="radio" id="school" name="school" value="대학">대학졸업
+				<input type="radio" id="school" name="school" value="고등">고등학교졸업
+				<input type="radio" id="school" name="school" value="중등">중학교졸업
+				</td>
+				<br>
+				<span id="school"></span>
+			</tr>
+
+			<tr>
+			<th scope="row">소개글</th>
+			<td>
+			<textarea id="content" name="content"></textarea>
+			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
     <div class="btn_confirm">
-        <input type="submit" value="다음" id="btn_submit" class="btn_submit" accesskey="s">
+        <input type="submit" value="회원가입 완료" id="btn_submit" class="btn_submit" accesskey="s">
         <a href="http://www.wedaehan.com" class="btn_cancel">취소</a>
     </div>
     </form>

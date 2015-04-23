@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	못찾았다
+	회원가입완료
 </body>
 </html>
