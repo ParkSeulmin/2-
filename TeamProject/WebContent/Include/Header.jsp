@@ -39,7 +39,7 @@
 
 			<ul id="tnb">
 				<li><a href="http://www.wedaehan.com/bbs/register.php">MEMBER</a></li>
-				<li><a href="http://www.wedaehan.com/bbs/login.php"><b>LOGIN</b></a></li>
+				<li><a href="/Login/Login.jsp"><b>LOGIN</b></a></li>
 				<li><a href="http://www.wedaehan.com/sub/sitemap.php">SITE
 						MAP</a></li>
 				<li><a href="http://www.wedaehan.com/sub/sub01_05.php">CONTACT
