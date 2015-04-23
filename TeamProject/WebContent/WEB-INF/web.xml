@@ -21,7 +21,6 @@
     <servlet-name>JoinController</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>PwdSearchController</servlet-name>
     <servlet-class>Login.Controller.PwdSearchController</servlet-class>
@@ -30,23 +29,21 @@
     <servlet-name>PwdSearchController</servlet-name>
     <url-pattern>*.da</url-pattern>
   </servlet-mapping>
-
-   <!-- BoardFrontController -->
-   <servlet>
-      <servlet-name>BoardFrontController</servlet-name>
-      <servlet-class>Board.Controller.BoardFrontController</servlet-class>
+  <servlet>
+    <servlet-name>BoardFrontController</servlet-name>
+    <servlet-class>Board.Controller.BoardFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>BoardFrontController</servlet-name>
-      <url-pattern>*.bo</url-pattern>
-   </servlet-mapping>
-   
-   <servlet>
-     <servlet-name>LoginController</servlet-name>
-     <servlet-class>Login.Controller.Login_Controller</servlet-class>
+    <servlet-name>BoardFrontController</servlet-name>
+    <url-pattern>*.bo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>CheckController</servlet-name>
+  <servlet-class>Login.Controller.JoinCheck_Controller</servlet-class>
   </servlet>
   <servlet-mapping>
-     <servlet-name>LoginController</servlet-name>
-     <url-pattern>*.login</url-pattern>
+  <servlet-name>CheckController</servlet-name>
+  <url-pattern>*.ch</url-pattern>
   </servlet-mapping>
 </web-app>

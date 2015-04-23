@@ -53,8 +53,8 @@ public class JoinAction implements Action {
 			  
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(true);
-		forward.setPath("/Login/Join_exe.jsp");
+		forward.setRedirect(false);
+		forward.setPath("/WebContent/Main.jsp");
 		return forward;
 	}
 }

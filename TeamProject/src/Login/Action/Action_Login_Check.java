@@ -14,7 +14,7 @@ public class Action_Login_Check implements Action {
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-Login_DAO logindao = new Login_DAO();
+		Login_DAO logindao = new Login_DAO();
 		
 		String idpwd = logindao.getLoginCheck(request.getParameter("mb_id"));
 		String pwd = request.getParameter("mb_password");
