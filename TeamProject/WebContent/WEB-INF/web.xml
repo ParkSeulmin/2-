@@ -5,15 +5,6 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>DBCPInit</servlet-name>
-    <servlet-class>JDBC.loader.DBCPInit</servlet-class>
-    <init-param>
-      <param-name>jdbcdriver</param-name>
-      <param-value>oracle.jdbc.OracleDriver</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet>
     <servlet-name>JoinController</servlet-name>
     <servlet-class>Login.Controller.JoinController</servlet-class>
   </servlet>

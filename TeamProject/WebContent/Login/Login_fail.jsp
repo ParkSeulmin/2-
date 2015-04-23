@@ -1,3 +1,4 @@
+<%@page import="org.eclipse.jdt.internal.compiler.lookup.Scope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 	<h1>로그인 실패</h1>
-	<input type="button" name="btn" id="btn" onclick="">
+	<%= request.getAttribute("result") %>
+	<a href="/TeamProject/Main.jsp">메인으로 가기</a>
+</center>
 </body>
 </html>

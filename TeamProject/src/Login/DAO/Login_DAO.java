@@ -25,13 +25,13 @@ public class Login_DAO {
       //CRUD 작업
       // method 공통 사용 ....
       // 초기자 { } static 초기자 : static{ }
-         static 
+         static DataSource ds;
          Connection conn;
          PreparedStatement pstmt;
          ResultSet rs;
          String aaa;//
 
-         /*static {
+         static {
             InitialContext ctx;
             try {
                ctx = new InitialContext();
@@ -41,12 +41,12 @@ public class Login_DAO {
             } catch (NamingException e) {
                System.out.println("lookup Fail : " + e.getMessage());
             }
-         }*/
+         }
          
          //회원가입
          public String getLoginCheck(String id) throws SQLException{
             try {
-               conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:/pool");
+               conn = ds.getConnection();
                System.out.println("conn : "+conn);
                System.out.println("id : "+id);
                String sql = 
