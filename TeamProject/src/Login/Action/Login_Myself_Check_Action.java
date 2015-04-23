@@ -19,11 +19,11 @@ public class Login_Myself_Check_Action implements Action {
 		member.setName(name);
 		
 		Login_Id_Check_DAO dao=new Login_Id_Check_DAO();
-		Member ID_result = dao.Login_Myself_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
+		Member J_result = dao.Login_Myself_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
 		//
 		//정보가 여기까지 넘어왔다.
-		if(ID_result!=null){
-			request.setAttribute("result", ID_result);//멤버 객체를 request에 담아줌.
+		if(J_result!=null){
+			request.setAttribute("result", J_result);//멤버 객체를 request에 담아줌.
 		}
 		else{
 			Member member2=new Member();
