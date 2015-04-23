@@ -31,7 +31,7 @@
 		</div>
 		<div id="hd_wrapper">
 
-			<div id="logo2">
+			<div id="logo2">3
 				<a href="http://www.wedaehan.com"><img
 					src="http://www.wedaehan.com/img/logo2.png"
 					alt="품 / 격 / 이 / 다 / 른 / 소 / 개 / 팅"></a>
@@ -39,7 +39,7 @@
 
 			<ul id="tnb">
 				<li><a href="http://www.wedaehan.com/bbs/register.php">MEMBER</a></li>
-				<li><a href="http://www.wedaehan.com/bbs/login.php"><b>LOGIN</b></a></li>
+				<li><a href="/Login/Login.jsp"><b>LOGIN</b></a></li>
 				<li><a href="http://www.wedaehan.com/sub/sitemap.php">SITE
 						MAP</a></li>
 				<li><a href="http://www.wedaehan.com/sub/sub01_05.php">CONTACT
