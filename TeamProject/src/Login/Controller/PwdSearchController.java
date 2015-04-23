@@ -1,16 +1,20 @@
 package Login.Controller;
 
 import java.io.IOException;
-import Login.DTO.Member;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Login.Action.ActionForward;
+import Login.Action.Action_PwdSearch;
+import Login.DTO.Member;
 
-//@WebServlet("*.do")
+
+//@WebServlet("*.da")
 public class PwdSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,19 +31,30 @@ public class PwdSearchController extends HttpServlet {
 		Process(request,response);
 	}
 	
-	private void Process(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
-		String command = req.getParameter("cmd");
+	private void Process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		ActionForward forward = null;
+		Action_PwdSearch action = null;
 		
-		if(command.equals("registerok")){
-			String name = req.getParameter("id");
-			String id = req.getParameter("id");
-			String email = req.getParameter("email");
+		String RequestURI = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String cmd = RequestURI.substring(contextPath.length());
 			
-			Member dto = new Member();		
-			dto.setName(name);
-			dto.setId(id);
-			dto.setEmail(email);
+		if(cmd.equals("/Login/PwdSearch.da")){	
+			try {
+				forward = new ActionForward();
+				action = new Action_PwdSearch();
+				forward = action.execute(request, response);
+				
+				if (forward != null) {
+					Member member = (Member) request.getAttribute("result");
+					request.setAttribute("member", member);
+					RequestDispatcher dispatcher = request
+							.getRequestDispatcher(forward.getPath());
+					dispatcher.forward(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
 		}
-	}
-		
+	}		
 }
