@@ -1,6 +1,7 @@
 package Login.DAO;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,13 +25,13 @@ public class Login_DAO {
       //CRUD 작업
       // method 공통 사용 ....
       // 초기자 { } static 초기자 : static{ }
-         static DataSource ds;
+         static 
          Connection conn;
          PreparedStatement pstmt;
          ResultSet rs;
          String aaa;//
 
-         static {
+         /*static {
             InitialContext ctx;
             try {
                ctx = new InitialContext();
@@ -40,12 +41,12 @@ public class Login_DAO {
             } catch (NamingException e) {
                System.out.println("lookup Fail : " + e.getMessage());
             }
-         }
+         }*/
          
          //회원가입
          public String getLoginCheck(String id) throws SQLException{
             try {
-               conn = ds.getConnection();
+               conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:/pool");
                System.out.println("conn : "+conn);
                System.out.println("id : "+id);
                String sql = 
@@ -62,8 +63,9 @@ public class Login_DAO {
                System.out.println("aaa = "+aaa);
                return aaa;
             }finally{
+               if(rs != null)rs.close();
                if(pstmt != null)pstmt.close();
-               if(conn != null)pstmt.close();
+               if(conn != null)conn.close();
             }
          }
       
