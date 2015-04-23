@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import Login.DAO.* ;
 import Login.DTO.Member;
+import Login.DTO.Personal_Info;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -65,6 +66,12 @@ public class JoinController extends HttpServlet {
 		int U_AGE= 2016-(Integer.parseInt(req.getParameter("mb_birth").substring(0,2))+1900);//성별
 		String U_ADDR = req.getParameter("address");// 이메일
 
+		int SAL = Integer.parseInt(req.getParameter("sal"));//연봉
+		int HEIGHT = Integer.parseInt(req.getParameter("height"));//키
+		int WEIGHT = Integer.parseInt(req.getParameter("weight"));//몸무게
+		String JOB = req.getParameter("job");//직업
+		String FSCHOOL = req.getParameter("school");//최종학력
+		String CONTENT = req.getParameter("content");//소개말
 /*		System.out.println(U_ID);
 		System.out.println(U_PWD);
 		System.out.println(U_PWD2);
@@ -93,6 +100,16 @@ public class JoinController extends HttpServlet {
 		  dto.setPhone(U_PHONE);
 		  dto.setPw(U_PWD);
 		  dto.setAddress(U_ADDR);
+		  
+		  //추가정보
+		  Personal_Info dto_plus = new Personal_Info();//추가정보 객체
+		  dto_plus.setU_ID(U_ID);
+		  dto_plus.setContent(CONTENT);
+		  dto_plus.setFschool(FSCHOOL);
+		  dto_plus.setHeight(HEIGHT);
+		  dto_plus.setJob(JOB);
+		  dto_plus.setSal(SAL);
+		  dto_plus.setWeight(WEIGHT);
 		
 		   // DB작업 DAO 객체 생성 mvcRegisterdao dao = new mvcRegisterdao(); int
 		  Join dao = new Join();

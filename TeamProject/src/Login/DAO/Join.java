@@ -14,6 +14,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import Login.DTO.Member;
+import Login.DTO.Personal_Info;
 
 
 
@@ -42,7 +43,7 @@ public class Join {
 				}
 			}
 			
-			//회원가입
+			//회원가입 기본정보 입력
 			public int writeok(Member memberdto) throws SQLException{
 				try {
 					conn = ds.getConnection();
@@ -61,6 +62,24 @@ public class Join {
 					pstmt.setInt(9,memberdto.getAge());
 					pstmt.setString(10,memberdto.getAddress());
 
+					int row = pstmt.executeUpdate();//db확인
+					
+					return row;
+				}finally{
+					if(pstmt != null)pstmt.close();
+					if(conn != null)pstmt.close();
+				}
+			}
+			
+			//회원가입 추가정보 함수
+			public int writeplus(Personal_Info memberdto) throws SQLException{
+				try {
+					conn = ds.getConnection();
+					String sql = 
+					"INSERT INTO MEMBER(U_ID,U_PWD,U_NAME,U_JUMIN,U_PHONE,U_NNAME,U_GENDER,U_EMAIL,U_AGE,U_ADDR)"
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
+					pstmt = conn.prepareStatement(sql);
+					
 					int row = pstmt.executeUpdate();//db확인
 					
 					return row;
