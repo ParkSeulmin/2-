@@ -22,9 +22,13 @@ public class Mypage_Id_Check_Action implements Mypage_Action {
 		Member ID_result = dao.Mypage_Id_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
 		//
 		//정보가 여기까지 넘어왔다.
-		System.out.println(ID_result.getName()+"바로 위 ");
-		
-		request.setAttribute("result", ID_result);//멤버 객체를 request에 담아줌.
+		if(ID_result!=null){
+			request.setAttribute("result", ID_result);//멤버 객체를 request에 담아줌.
+		}
+		else{
+			Member member2=new Member();
+			request.setAttribute("result", member2);
+		}
 		Mypage_ActionForward forward = new Mypage_ActionForward();
 		forward.setRedirect(false);		//담을 객체를 날려줄 페이지
 		forward.setPath("Mypage_Find_Result.jsp");

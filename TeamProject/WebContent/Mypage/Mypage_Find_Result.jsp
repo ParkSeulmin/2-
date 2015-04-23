@@ -8,17 +8,30 @@
 <title>Insert title here</title>
 	<%
 		Member member=(Member)request.getAttribute("member");
-		String id=member.getId();
-		String name=member.getName();
-		String email=member.getEmail();
+	String id="";
+	String name="";
+	String email="";
+	String msg="";
+	
+	if (member.getId()!=null){
+		msg="일치 합니다.";
+		id=member.getId();
+		name=member.getName();
+		email=member.getEmail();
 		
+	}
+	else{
+		msg="값이 틀렸당";
+	}
 	%> 
 	
 </head>
 <body>
 
-<%=id %>
-	<%=name %>
-	<%=email %> 
+	msg :<%=msg %><br>
+	너의 ID값 : <%=id %><br>
+	너의 Name 값 : <%=name %><br>
+	너의 email 값 : <%=email %><br> 
+	
 </body>
 </html>
