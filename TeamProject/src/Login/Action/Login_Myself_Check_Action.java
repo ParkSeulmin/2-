@@ -11,7 +11,7 @@ public class Login_Myself_Check_Action implements Action {
 
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String name=request.getParameter("name");
-		String jumin=request.getParameter("jumin");
+		String jumin=request.getParameter("birthdate");
 		
 		Member member= new Member();
 

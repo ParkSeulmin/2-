@@ -9,14 +9,14 @@
 		<table>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" size="20" name="name"></td>
-				<!-- 테스트하기 위해 readonly 풀어 둠  -->
-				<td colspan="2"><input type="button" value="본인확인"></td>
+				<td><input type="text" size="20" name="name" readonly="readonly"></td>
+				<td colspan="2"><input type="button" id="selfcheck" value="본인확인" 
+				onclick="window.open('Login_Myself_popup.jsp','zip','width=500 height=200')"></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
 				<td><input type="text" name="email"></td>
-				<td><input type="text" size="1" value="@" readonly="readonly"></td>
+				<td>@</td>
 				<td><input type="text" name="email_domain" size="20"></td>
 			</tr>
 			<tr>
