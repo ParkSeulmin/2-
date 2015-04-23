@@ -1,15 +1,15 @@
-package Mypage.Action;
+package Login.Action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Login.DAO.Mypage_Id_Check_DAO;
 import Login.DTO.Member;
-import Mypage.DAO.Mypage_Id_Check_DAO;
 
 
-public class Mypage_Id_Check_Action implements Mypage_Action {
+public class Login_Id_Check_Action implements Action {
 
-	public Mypage_ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String name=request.getParameter("name");
 		String email=request.getParameter("email")+"@"+request.getParameter("email_domain");
 		
@@ -29,9 +29,9 @@ public class Mypage_Id_Check_Action implements Mypage_Action {
 			Member member2=new Member();
 			request.setAttribute("result", member2);
 		}
-		Mypage_ActionForward forward = new Mypage_ActionForward();
+		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);		//담을 객체를 날려줄 페이지
-		forward.setPath("Mypage_Find_Result.jsp");
+		forward.setPath("Login_Find_Result.jsp");
 		//넘어가는 모든 데이터
 		return forward;
 	}

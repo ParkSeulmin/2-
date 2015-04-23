@@ -1,4 +1,4 @@
-package Mypage.DAO;
+package Login.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,9 +36,6 @@ public class Mypage_Id_Check_DAO {
 	}
 	public Member Mypage_Id_Test(Member member) throws SQLException{
 
-		String member_id=null;
-		String member_email=null;
-		String member_name=null;
 		Member result_member=null;
 		try {
 			System.out.println("DB접근");
@@ -57,7 +54,7 @@ public class Mypage_Id_Check_DAO {
 				result_member.setId(rs.getString("u_id"));
 				result_member.setEmail(rs.getString("u_email"));
 				result_member.setName(rs.getString("u_name"));
-				System.out.println("DB접근 성공");
+				System.out.println("DB`접근 성공");
 				System.out.println("찾고자 하는 값 " +rs.getString("u_id"));
 			}
 			System.out.println("틀릴 때DB접근 성공");
