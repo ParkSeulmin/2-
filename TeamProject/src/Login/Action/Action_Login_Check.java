@@ -20,18 +20,37 @@ public class Action_Login_Check implements Action {
 		String pwd = request.getParameter("mb_password");
 		String result = "";
 		
-		if(idpwd.equals(pwd)){
+		
+		if(idpwd == null){
+			result += "잘못된 아이디입니다.";
+			ActionForward forward = new ActionForward();
+			
+			request.setAttribute("result", result);
+			forward.setRedirect(false);
+			forward.setPath("/Login/Login_fail.jsp");
+			
+			return forward;
+		}else if(idpwd.equals(pwd)){
 			result += "로그인 성공";
+			ActionForward forward = new ActionForward();
+			
+			forward.setRedirect(false);
+			forward.setPath("/Login/Login_Check.jsp?result="+request.getParameter("mb_id"));
+			
+			return forward;
 		}else{
-			result += "로그인 실패";
+			result += "암호가 틀렸습니다.";
+			ActionForward forward = new ActionForward();
+			
+			request.setAttribute("result", result);
+			forward.setRedirect(false);
+			forward.setPath("/Login/Login_fail.jsp");
+			
+			return forward;
 		}
 		
-		System.out.println(result);
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("/Login/Login_Check.jsp?result="+request.getParameter("mb_id"));
-		System.out.println(forward.getPath());
-		return forward;
+		
+		
 		
 	}
 	

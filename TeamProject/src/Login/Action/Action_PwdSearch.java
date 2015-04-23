@@ -18,7 +18,8 @@ public class Action_PwdSearch implements Action {
 		member.setName(name);
 		member.setId(id);
 		member.setEmail(email);
-		
+		System.out.println(name);
+		System.out.println("여기까진될까?");
 		PwdSearch_DAO dao = new PwdSearch_DAO();
 		Member result = dao.Search_Pwd(member);
 		
