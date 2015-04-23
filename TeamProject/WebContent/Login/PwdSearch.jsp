@@ -16,7 +16,7 @@
 	<div id="find_info" class="new_win mbskin">
 		<h1 id="win_title">비밀번호 찾기</h1>
 
-		<form name="checkform" action="PwdSearch.do?cmd=pwdsearchok"  method="post">
+		<form name="checkform" action="PwdSearch.da?cmd=pwdsearchok"  method="post">
 			<fieldset id="info_fs">
 				<p>
 					회원가입 시 등록하신 아이디, 이름, 이메일 주소를 입력해 주세요.<br> 본인 확인 후 정확한 정보를 입력해 주세요.

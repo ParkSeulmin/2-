@@ -1,5 +1,4 @@
-/*
-import java.sql.Connection;
+/*import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,10 +19,12 @@ public class Join {
 	ResultSet rs;
 
 	
-	 * Statement stmt=null; ResultSet rs = null; Context context = new
-	 * InitialContext(); DataSource datasource=
-	 * (DataSource)context.lookup("java:comp/env/jdbc/oracle"); Connection conn
-	 * = datasource.getConnection();
+	 Statement stmt=null; 
+	 ResultSet rs = null; 
+	 Context context = new
+	 InitialContext(); DataSource datasource=
+	 (DataSource)context.lookup("java:comp/env/jdbc/oracle"); 
+	 Connection conn = datasource.getConnection();
 	 
 	public Join() {
 		try {
