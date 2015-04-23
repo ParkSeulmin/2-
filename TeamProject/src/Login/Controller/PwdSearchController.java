@@ -54,7 +54,9 @@ public class PwdSearchController extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-			}	
+			}finally{
+				
+			}
 		}
 	}		
 }

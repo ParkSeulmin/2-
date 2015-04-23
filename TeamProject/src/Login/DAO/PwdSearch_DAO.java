@@ -28,27 +28,28 @@ public class PwdSearch_DAO {
         }
 	}
 	public Member Search_Pwd(Member member) throws SQLException{
-		String name = null;
-		String id = null;
-		String email = null;
-		String pwd = null;
 		Member result = null;
 		
 		try {
+			
 			conn = ds.getConnection();
-			String sql = "select u_name, u_id, u_email, u_pwd from member where u_name=? u_id=? and u_email=?";
+			System.out.println("dao 접근확인222");
+			String sql = "select u_name, u_id, u_email, u_pwd from member where u_name=? and u_id=? and u_email=?";
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getName());
 			pstmt.setString(2, member.getId());
 			pstmt.setString(3, member.getEmail());
 			rs = pstmt.executeQuery();
-			
+			System.out.println("dao 접근확인");
 			if(rs.next()){
 				result = new Member();
 				result.setName(rs.getString("u_name"));
 				result.setId(rs.getString("u_id"));
 				result.setEmail(rs.getString("u_email"));
-				result.setPw(rs.getString("u_pwd"));		
+				result.setPw(rs.getString("u_pwd"));	
+				System.out.println("객체 생성 확인");
+				
 			}
 			return result;
 				
