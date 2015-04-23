@@ -19,7 +19,7 @@ public class Login_Id_Check_Action implements Action {
 		member.setName(name);
 		
 		Login_Id_Check_DAO dao=new Login_Id_Check_DAO();
-		Member ID_result = dao.Mypage_Id_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
+		Member ID_result = dao.Login_Id_Test(member);//멤버 객체를 받아옴 , null 값을 받아왔다면 ID_result에는 null값
 		//
 		//정보가 여기까지 넘어왔다.
 		if(ID_result!=null){
