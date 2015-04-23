@@ -103,8 +103,7 @@ public class JoinController extends HttpServlet {
 		  
 
 			// view 설정
-			RequestDispatcher dis = req
-					.getRequestDispatcher("/WebContent/Login/Join_Plus.html");
+			RequestDispatcher dis = req.getRequestDispatcher("/WebContent/Login/Join_Plus?id="+U_ID);
 
 			// forward
 			dis.forward(req, res);
