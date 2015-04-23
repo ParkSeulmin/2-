@@ -16,7 +16,7 @@
 	<div id="find_info" class="new_win mbskin">
 		<h1 id="win_title">비밀번호 찾기</h1>
 
-		<form name="checkform" action="PwdSearch.da?cmd=pwdsearchok"  method="post">
+		<form name="checkform" action="PwdSearch.da"  method="post">
 			<fieldset id="info_fs">
 				<p>
 					회원가입 시 등록하신 아이디, 이름, 이메일 주소를 입력해 주세요.<br> 본인 확인 후 정확한 정보를 입력해 주세요.
@@ -24,8 +24,8 @@
 				<label for="name">이름<strong class="sound_only1"></strong></label> 
 				<input type="text" name="name" id="name" required class="required frm_input" size="30" readonly>
 				<input type="button" value="본인확인" onclick="window.open('PwdCheckName.html', 'zip', 'width=500 height=250')"><br>
-				<label for="userid">아이디<strong class="sound_only1"></strong></label>
-				<input type="text" name="userid" id="userid" required class="required frm_input"size="30"><br>  
+				<label for="id">아이디<strong class="sound_only1"></strong></label>
+				<input type="text" name="id" id="id" required class="required frm_input"size="30"><br>  
 				<label for="email">이메일<strong class="sound_only3"></strong></label> 
 				<input type="text" name="email" id="email" required class="required frm_input email" size="30">
 			</fieldset>

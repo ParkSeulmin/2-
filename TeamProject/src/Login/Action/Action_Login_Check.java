@@ -26,7 +26,7 @@ public class Action_Login_Check implements Action {
 			ActionForward forward = new ActionForward();
 			
 			request.setAttribute("result", result);
-			forward.setRedirect(false);+
+			forward.setRedirect(false);
 			forward.setPath("/Login/Login_fail.jsp");
 			
 			return forward;
