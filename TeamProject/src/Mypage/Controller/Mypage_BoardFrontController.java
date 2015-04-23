@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Login.DTO.Member;
 import Mypage.Action.Mypage_Action;
 import Mypage.Action.Mypage_ActionForward;
 import Mypage.Action.Mypage_Id_Check_Action;
@@ -42,38 +43,39 @@ public class Mypage_BoardFrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String cmd = RequestURI.substring(contextPath.length());
 
-		// String cmd = request.getParameter("cmd")
-		// if(cmd.equals("boardlist"){}
-		// 위 처럼 parameter 넘어오는 값으로 판단 하지 않겠다
-
-		if (cmd.equals("/Mypage/find_id.check")) {
+		if (cmd.equals("/Mypage/find_id.check")) {//명령이 id찾기인 경우
 			try {
-				action = new Mypage_Id_Check_Action();
+				forward=new Mypage_ActionForward();
+				action = new Mypage_Id_Check_Action();//
+				//액션에서 만들어 온 forward 객체를 가져옴.(Execute)
+				//Member me=(Member) request.getAttribute("result");
+				
 				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			if (forward != null) {
-				if (forward.isRedirect()) {
-					response.sendRedirect(forward.getPath());
-				} else {
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher(forward.getPath());
+				//forward.setRedirect(false);		<<결과를 가져옴 
+				//forward.setPath("IdView.check");
+				
+				if(forward!=null){
+					RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 					dispatcher.forward(request, response);
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		} else if (cmd.equals("/Mypage/IdView.check")) {
 			try {
-				forward = action.execute(request, response);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("Mypage_Find_Result.jsp");
+					dispatcher.forward(request, response);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			forward.setRedirect(false);
-			forward.setPath("/Mypage/Mypage_Find_Fail.jsp");
-			RequestDispatcher dispatcher = request.getRequestDispatcher(forward
-					.getPath());
-			dispatcher.forward(request, response);
+			//forward.setRedirect(true); 	
+			forward.setPath("/Mypage/Mypage_Find_Result.jsp");
+			
 		}
-
+		/*if(forward!=null){
+			RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+			dispatcher.forward(request, response);
+		}*/
 	}
 }

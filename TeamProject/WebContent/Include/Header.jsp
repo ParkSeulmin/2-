@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="Css/default.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Header</title>
+	<link rel="stylesheet" href="http://www.wedaehan.com/css/default.css">
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script>
 		// 자바스크립트에서 사용하는 전역변수 선언
@@ -29,7 +31,7 @@
 		</div>
 		<div id="hd_wrapper">
 
-			<div id="logo2">
+			<div id="logo2">3
 				<a href="http://www.wedaehan.com"><img
 					src="http://www.wedaehan.com/img/logo2.png"
 					alt="품 / 격 / 이 / 다 / 른 / 소 / 개 / 팅"></a>
@@ -37,7 +39,7 @@
 
 			<ul id="tnb">
 				<li><a href="http://www.wedaehan.com/bbs/register.php">MEMBER</a></li>
-				<li><a href="http://www.wedaehan.com/bbs/login.php"><b>LOGIN</b></a></li>
+				<li><a href="<%=request.getContextPath()%>/Login/Login.jsp"><b>LOGIN</b></a></li>
 				<li><a href="http://www.wedaehan.com/sub/sitemap.php">SITE
 						MAP</a></li>
 				<li><a href="http://www.wedaehan.com/sub/sub01_05.php">CONTACT
@@ -53,7 +55,7 @@
 					height="42" title="위대한 만남"></a>
 			</div>
 			<div id="gnb_1">
-				<link rel="stylesheet" type="text/css" href="Css/menu.css"
+				<link rel="stylesheet" type="text/css" href="http://www.wedaehan.com/css/menu.css"
 					media="screen">
 				<!-- <script type="text/javascript" src="http://www.wedaehan.com/js/jquery.easing-sooper.js"></script> -->
 				<script type="text/javascript" src="http://www.wedaehan.com/js/jquery.sooperfish.js"></script>
@@ -234,6 +236,5 @@
 
 	</div>
 	<!-- } Header End -->
-	
 </body>
 </html>
