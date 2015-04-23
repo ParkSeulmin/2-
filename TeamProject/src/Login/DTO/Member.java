@@ -10,6 +10,14 @@ public class Member {
 	private String email;//이메일
 	private int gender;//성별
 	private int age;//나이
+	private String address;
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getId() {
 		return id;
 	}
@@ -64,7 +72,4 @@ public class Member {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
-	
 }
