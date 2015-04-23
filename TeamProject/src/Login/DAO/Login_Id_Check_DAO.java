@@ -1,6 +1,7 @@
 package Login.DAO;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,12 +19,12 @@ import Login.DTO.Member;
 
 public class Login_Id_Check_DAO {
 
-	static DataSource ds;
+	/*static DataSource ds;*/
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	static{
+	/*static{
 		InitialContext ctx;
 		try {
 			ctx=new InitialContext();
@@ -32,13 +33,13 @@ public class Login_Id_Check_DAO {
 		} catch (NamingException e) {
 		}
 		
-	}
+	}*/
 	public Member Login_Id_Test(Member member) throws SQLException{
 
 		Member result_member=null; //id 찾아주는 메서드
 		try {
 			System.out.println("DB접근");
-			conn=ds.getConnection();
+			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:/pool");
 			String sql ="select u_id,u_email,u_name from member where u_email=? and u_name=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, member.getEmail()); //action에서 넘겨 받은(입력받은) Email값
@@ -72,7 +73,7 @@ public class Login_Id_Check_DAO {
 		Member result_member=null;//본인 인증해주는 메서드
 		try {
 			System.out.println("DB접근");
-			conn=ds.getConnection();
+			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:/pool");
 			String sql ="select u_jumin,u_name from member where u_email=? and u_jumin=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, member.getEmail()); //action에서 넘겨 받은(입력받은) Email값

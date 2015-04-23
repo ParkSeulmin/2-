@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Login.Action.Action;
 import Login.Action.ActionForward;
 import Login.Action.Login_Id_Check_Action;
+import Login.Action.Login_Myself_Check_Action;
 import Login.DTO.Member;
 
 @WebServlet("*.check")
@@ -68,7 +69,7 @@ public class Login_BoardFrontController extends HttpServlet {
 		} else if (cmd.equals("/MySelf.check")) {
 			try {
 				forward = new ActionForward();
-				action = new Login_MySelf_Check_Action();// 해당하는 액션 넣어주기
+				action = new Login_Myself_Check_Action();// 해당하는 액션 넣어주기
 				forward = action.execute(request, response);
 
 				if (forward != null) {
