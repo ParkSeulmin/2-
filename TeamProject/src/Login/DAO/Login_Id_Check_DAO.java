@@ -33,7 +33,7 @@ public class Login_Id_Check_DAO {
 		}
 		
 	}
-	public Member Mypage_Id_Test(Member member) throws SQLException{
+	public Member Login_Id_Test(Member member) throws SQLException{
 
 		Member result_member=null;
 		try {
