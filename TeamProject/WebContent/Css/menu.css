@@ -1,0 +1,172 @@
+@CHARSET "UTF-8";
+
+ul#nav {
+	float: left;
+}
+
+ul#nav ul {
+	background: #36393f;
+}
+
+#logo img {
+	width: 172px;
+	position: absolute;
+	left: 0;
+	top: 14px
+}
+
+ul#nav li a {
+	width: 150px;
+	padding: 23px 0 25px 0px;
+	text-decoration: none;
+	color: #aeafb0;
+	font-size: 18px;
+	text-align: center;
+}
+
+ul#nav ul li a:hover, ul#nav ul li a:focus {
+	color: #fff;
+	margin-top: -1px;
+	background: #c1454a;
+	border-top: 1px solid #c1454a;
+}
+
+ul#nav ul li a {
+	font-size: 13px;
+	padding: 15px 0px;
+	margin: 0;
+	text-align: center;
+}
+
+ul#nav ul li.end {
+	border-bottom: 4px solid #c1454a
+}
+
+span.sf-arrow {
+	top: 18px;
+	right: 2px;
+	background-image: url('Images/all/'); /* 이거 뭔가 이상해 다른거 넣을까 */
+}
+
+ul ul span.sf-arrow {
+	right: 12px;
+	top: 16px;
+}
+
+/*  */
+ul.sf-menu, ul.sf-menu * {
+	margin: 0;
+	padding: 0;
+}
+
+ul.sf-menu {
+	display: block;
+	position: relative;
+}
+
+ul.sf-menu li {
+	display: block;
+	list-style: none;
+	float: left;
+	position: relative;
+	font-weight: bold;
+}
+
+ul.sf-menu li:hover {
+	visibility: inherit; /* fixes IE7 'sticky bug' */
+}
+
+ul.sf-menu a {
+	display: block;
+	position: relative;
+}
+
+ul.sf-menu ul {
+	position: absolute;
+	left: 0;
+	width: 150px;
+	top: 69px;
+	left: -999999px;
+}
+
+ul.sf-menu ul a {
+	zoom: 1; /* IE6/7 fix */
+}
+
+ul.sf-menu ul li {
+	float: left;
+	/* Must always be floated otherwise there will be a rogue 1px margin-bottom in IE6/7 */
+	width: 150px;
+	border-top: 1px solid #42464d;
+}
+
+ul.sf-menu ul ul {
+	top: 0;
+	margin: 0 0 0 150px
+}
+
+ul.sf-menu li:hover ul, ul.sf-menu li:focus ul, ul.sf-menu li.sf-hover ul
+	{ /*first level*/
+	left: auto;
+}
+
+ul.sf-menu li:hover ul ul, ul.sf-menu li:focus ul ul, ul.sf-menu li.sf-hover ul ul
+	{
+	left: -999999px;
+}
+
+ul.sf-menu ul li:hover ul, ul.sf-menu ul li:focus ul, ul.sf-menu ul li.sf-hover ul
+	{ /*second level*/
+	left: auto;
+}
+
+ul.sf-menu ul li:hover ul ul, ul.sf-menu ul li:focus ul ul, ul.sf-menu ul li.sf-hover ul ul
+	{
+	left: -999999px;
+}
+
+ul.sf-menu ul ul li:hover ul, ul.sf-menu ul ul li:focus ul, ul.sf-menu ul ul li.sf-hover ul
+	{ /*third level*/
+	left: auto;
+}
+
+ul.sf-menu ul ul li:hover ul ul, ul.sf-menu ul ul li:focus ul ul, ul.sf-menu ul ul li.sf-hover ul ul
+	{
+	left: -999999px;
+}
+
+ul.sf-menu ul ul ul li:hover ul, ul.sf-menu ul ul ul li:focus ul, ul.sf-menu ul ul ul li.sf-hover ul
+	{ /*fourth level*/
+	left: auto;
+}
+
+ul.sf-menu ul ul ul li:hover ul ul, ul.sf-menu ul ul ul li:focus ul ul,
+	ul.sf-menu ul ul ul li.sf-hover ul ul {
+	left: -999999px;
+}
+
+/* autoArrows CSS */
+span.sf-arrow {
+	width: 6px;
+	height: 6px;
+	position: absolute;
+	top: 32px;
+	right: 0;
+	display: block;
+	background: url(../Images/all/menu_arrow.gif) no-repeat 0 0;
+	overflow: hidden;
+	/* making sure IE6 doesn't overflow and expand the box */
+	font-size: 1px;
+}
+
+ul ul span.sf-arrow {
+	right: 12px;
+	top: 3px;
+	background-position: 0;
+}
+
+.new_icon {
+	position: absolute;
+	top: 5px;
+	right: 5px
+}
