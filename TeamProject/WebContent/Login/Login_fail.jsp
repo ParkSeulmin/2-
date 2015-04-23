@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>로그인 실패</h1>
-	<input type="button">
+	<input type="button" name="btn" id="btn" onclick="">
 </body>
 </html>
