@@ -79,9 +79,15 @@ public class Join {
 				try {
 					conn = ds.getConnection();
 					String sql = 
-					"INSERT INTO MEMBER(U_ID,U_PWD,U_NAME,U_JUMIN,U_PHONE,U_NNAME,U_GENDER,U_EMAIL,U_AGE,U_ADDR)"
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
+					"INSERT INTO PERSONALINFO VALUES(?,?,?,?,?,?,?)"; 
 					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, memberdto.getU_ID());
+					pstmt.setInt(2, memberdto.getSal());
+					pstmt.setInt(3, memberdto.getHeight());
+					pstmt.setInt(4,memberdto.getWeight());
+					pstmt.setString(5,memberdto.getJob());
+					pstmt.setString(6,memberdto.getFschool());
+					pstmt.setString(7,memberdto.getContent());
 					
 					int row = pstmt.executeUpdate();//db확인
 					
