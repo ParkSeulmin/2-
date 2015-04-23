@@ -6,18 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-	<%--  <%
-	Member member=(Member) request.getAttribute("result"); 
-	String id=member.getId();
-	String name=member.getName();
-	String email=member.getEmail();
-	%> --%>
+	<%
+		Member member=(Member)request.getAttribute("member");
+		String id=member.getId();
+		String name=member.getName();
+		String email=member.getEmail();
+		
+	%> 
 	
 </head>
 <body>
 
-<%-- 	<%=id %>
+<%=id %>
 	<%=name %>
-	<%=email %> --%>
+	<%=email %> 
 </body>
 </html>
