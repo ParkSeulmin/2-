@@ -30,7 +30,7 @@
     <servlet-name>PwdSearchController</servlet-name>
     <url-pattern>*.da</url-pattern>
   </servlet-mapping>
-  
+
    <!-- BoardFrontController -->
    <servlet>
 		<servlet-name>BoardFrontController</servlet-name>
