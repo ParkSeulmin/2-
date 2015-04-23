@@ -1,4 +1,4 @@
-/*package Login.Controller;
+package Login.Controller;
 
 import java.io.IOException;
 import Login.DTO.Member;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.java.util.jar.pack.Package.Class.Member;
 
 //@WebServlet("*.do")
 public class PwdSearchController extends HttpServlet {
@@ -40,8 +39,7 @@ public class PwdSearchController extends HttpServlet {
 			dto.setName(name);
 			dto.setId(id);
 			dto.setEmail(email);
-			
 		}
+	}
 		
 }
-*/
