@@ -40,4 +40,15 @@
 		<servlet-name>BoardFrontController</servlet-name>
 		<url-pattern>*.bo</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+  	<servlet-name>LoginController</servlet-name>
+  	<servlet-class>Login.Controller.Login_Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginController</servlet-name>
+  	<url-pattern>*.login</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+

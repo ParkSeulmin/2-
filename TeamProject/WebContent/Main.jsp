@@ -12,7 +12,7 @@
 <body>
 	<c:import url="/Include/Header.jsp" />
 		<!-- <p><a href="BoardList.bo">로그인</a></p> -->
-		<c:import url="/Login/Join.jsp"></c:import>
+		<c:import url="/Login/Login.jsp"></c:import>
 	<c:import url="/Include/Footer.jsp" />
 </body>
 </html>
