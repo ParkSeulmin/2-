@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>본인 인증</title>
+<<<<<<< HEAD
 
 <script type="text/javascript">
+=======
+>>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 <%	String name = "";
 	String msg = "";
 	if ((String) request.getAttribute("result") != null) {
@@ -21,8 +24,16 @@
 		}
 		
 %>
+<<<<<<< HEAD
 	
 	/////얘가 팝업 된 녀석입니다.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======
+<script type="text/javascript">
+	function insert(){
+		opener.document.getElementById("name").value='<%=name%>';
+		window.close();
+	}
+>>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 </script>
 </head>
 <body>
@@ -31,7 +42,7 @@
 		<table>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" size="20" name="name" id="name"></td>
+				<td><input type="text" size="20" name="name" id="popname"></td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
@@ -40,7 +51,8 @@
 				<td><input type="submit" value="본인확인"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="확인" onclick="checkok()">
+				<td><input type="button" value="확인"	onclick="insert()"></td>
+
 			</tr>
 		</table>
 	</form>

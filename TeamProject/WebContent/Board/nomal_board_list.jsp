@@ -64,7 +64,12 @@
 				</td>
 				
 				<td style="font-family:Tahoma;font-size:10pt;">
-					<div align="left"><%=bl.getBo_title() %></div>
+					<div align="left">
+					
+					<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">
+						<%=bl.getBo_title()%>
+					</a>
+					</div>
 				</td>
 				
 				<td style="font-family:Tahoma;font-size:10pt;">
