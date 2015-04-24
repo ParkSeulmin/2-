@@ -76,6 +76,7 @@ public class JoinController extends HttpServlet {
 
 			try {
 				forward = action.execute(req, res);
+				
 				System.out.println("Join :" + forward.getPath());
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -54,7 +54,7 @@ public class JoinAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WebContent/Main.jsp");
+		forward.setPath("/Main.jsp");
 		return forward;
 	}
 }

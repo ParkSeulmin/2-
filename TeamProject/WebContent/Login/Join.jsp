@@ -35,6 +35,12 @@ request.setCharacterEncoding("UTF-8");
 	}
  */
 
+ 
+ //회원가입 완료메시지 띄우기
+ 		function showalert() {
+			alert('회원가입완료');
+		}
+
 	//우편번호 api 사용
 	function openDaumPostcode() {
 		new daum.Postcode({
@@ -143,16 +149,15 @@ request.setCharacterEncoding("UTF-8");
 		</script>
 
 		<script type="text/javascript">
-								//닉네임 중복 확인
-								//아이디 중복 확인
+								
+								
 								$(function() {
+									//아이디 중복 확인
 									$("#idcheck").click(function() {
-										//var id = $('#reg_mb_id').val();//아이디 받아오기
 										var id_data= {
+												tag : "1",
 												id : $('#reg_mb_id').val()
 											};
-										//alert('id는'  + id);
-
 										$.ajax({
 											type:"POST",
 											url:"CheckController.ch",//보낼 주소
@@ -174,7 +179,31 @@ request.setCharacterEncoding("UTF-8");
 										});
 									});
 							
-								
+									//닉네임 중복 확인
+									$("#nickcheck").click(function() {
+										var nick_data= {
+												tag : "2",
+												nick : $('#mb_nick').val()
+											};
+										$.ajax({
+											type:"POST",
+											url:"CheckController.ch",//보낼 주소
+											data: nick_data,
+											dataType : "html",
+											success: function(responseData) {//서버에서 보낸 데이터
+											var result = JSON.parse(responseData);
+											if(result == 1){
+												alert("닉네임 중복입니다.");
+											}else{
+												alert("사용가능한 닉네임 입니다.");
+											}
+												
+											},
+											error: function(e) {
+												alert("에러발생");
+											}			
+										});
+									});
 								
 								$("#reg_zip_find").css("display",
 										"inline-block");
@@ -227,7 +256,6 @@ request.setCharacterEncoding("UTF-8");
 										});
 								
 								//비밀번호 중복 체크
-								
 									$('#reg_mb_password_re').keyup(function() {
 										if ($('#reg_mb_password').val() == $('#reg_mb_password_re').val()) {
 											$("#message").html("<font color='red'> ※비밀번호가 일치합니다.</font>");
@@ -235,6 +263,18 @@ request.setCharacterEncoding("UTF-8");
 											$("#message").html("<font color='red'> ※비밀번호가 일치하지 않습니다.</font>");
 										}
 									});
+								
+								//주민번호 앞자리체크
+								//frm.name.value.substring(i, i+1); 
+								//$( 'p' ).text().substring( 0, 40 );
+								$('#mb_birth2').keyup(function() {
+									
+									if ($('#mb_birth2').val().substr(0,1)!="1" && $('#mb_birth2').val().substr(0,1)!= "2" ) {
+										$("#message1").html("<font color='red'> ※올바른 주민번호를 입력해주세요.</font>");
+									}else{
+										$("#message1").html("");
+									}
+								});
 														
 								$('#reg_mb_id').keyup(function() {
 									$("#msg_mb_id").html("");
@@ -376,7 +416,7 @@ request.setCharacterEncoding("UTF-8");
 									numeric="" title="주민번호" value=""> - <input class="text"
 									type="password" name="mb_birth2" id="mb_birth2" size="15"
 									maxlength="7" minlength="7" required="" numeric="" title="주민번호"
-									value=""> <input type="button" value="본인확인" onclick="">
+									value=""> <div id="message1"></div>
 								</td>
 							</tr>
 							<tr>
@@ -598,7 +638,7 @@ request.setCharacterEncoding("UTF-8");
 
 				<div class="btn_confirm">
 					<input type="submit" value="회원가입 완료" id="btn_submit"
-						class="btn_submit" accesskey="s"> <a
+						class="btn_submit" accesskey="s" onclick="showalert();"> <a
 						href="http://www.wedaehan.com" class="btn_cancel">취소</a>
 				</div>
 			</form>
