@@ -43,8 +43,8 @@
 				<td><input type="submit" value="본인확인"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="확인"	onclick="insert()"></td>
-				<input type="button" value="취소" onclick="window.close();"></td>
+				<td><input type="button" value="확인"	onclick="insert()">
+    			<input type="button" value="취소" onclick="window.close();"></td>
 
 			</tr>
 		</table>
