@@ -8,7 +8,6 @@
 <title>본인 인증</title>
 
 <script type="text/javascript">
-	
 <%	String name = "";
 	String msg = "";
 	if ((String) request.getAttribute("result") != null) {
@@ -20,8 +19,9 @@
 				msg="본인 인증에 실패했습니다.";
 			}
 		}
-			
+		
 %>
+	
 	/////얘가 팝업 된 녀석입니다.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </script>
 </head>
@@ -31,7 +31,7 @@
 		<table>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" size="20" name="name"></td>
+				<td><input type="text" size="20" name="name" id="name"></td>
 				<td colspan="2"></td>
 			</tr>
 			<tr>
@@ -40,7 +40,7 @@
 				<td><input type="submit" value="본인확인"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="확인"></td>
+				<td><input type="button" value="확인" onclick="checkok()">
 			</tr>
 		</table>
 	</form>
