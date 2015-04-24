@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Header</title>
 	<link rel="stylesheet" href="http://www.wedaehan.com/css/default.css">
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
 		// 자바스크립트에서 사용하는 전역변수 선언
 		var g5_url = "http://www.wedaehan.com";
@@ -18,7 +21,15 @@
 		var g5_sca = "";
 		var g5_editor = "ckeditor43";
 		var g5_cookie_domain = "";
+		var id = document.getElementById('id');
+		
+		
+		
+
 	</script>
+	
+	
+	
 </head>
 <body>
 <!-- Header { -->
@@ -38,12 +49,26 @@
 			</div>
 
 			<ul id="tnb">
-				<li><a href="http://www.wedaehan.com/bbs/register.php">MEMBER</a></li>
-				<li><a href="<%=request.getContextPath()%>/Login/Login.jsp"><b>LOGIN</b></a></li>
-				<li><a href="http://www.wedaehan.com/sub/sitemap.php">SITE
-						MAP</a></li>
-				<li><a href="http://www.wedaehan.com/sub/sub01_05.php">CONTACT
-						US</a></li>
+				
+					
+						
+				<div id="tnb_div">
+				<c:if test="${param.mb_id != null}">
+				<li><%=request.getParameter("mb_id") %>+" 님 환영합니다.</li>
+ 				<li><a href='http://www.wedaehan.com/sub/sitemap.php'>SITE
+ 						MAP</a></li>
+ 				<li><a href='http://www.wedaehan.com/sub/sub01_05.php'>CONTACT
+ 						US</a></li>	</c:if>
+				<c:if test="${param.mb_id == null}"><li><a href='http://www.wedaehan.com/bbs/register.php'>MEMBER</a></li>
+   				<li><a href='<%=request.getContextPath()%>/Login/Login.jsp'><b>LOGIN</b></a></li>
+ 				<li><a href='http://www.wedaehan.com/sub/sitemap.php'>SITE
+ 						MAP</a></li>
+ 				<li><a href='http://www.wedaehan.com/sub/sub01_05.php'>CONTACT
+ 						US</a></li>	</c:if>
+				
+				
+				
+				</div>
 			</ul>
 		</div>
 
@@ -236,5 +261,10 @@
 
 	</div>
 	<!-- } Header End -->
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<%=request.getParameter("id")%>
+	<%=request.getParameter("id")%>
+	console.log(request.getParameter("id"));
+	
 </body>
 </html>
