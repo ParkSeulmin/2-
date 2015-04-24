@@ -1,3 +1,4 @@
+<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,7 +10,6 @@
 <link rel="stylesheet" href="http://www.wedaehan.com/skin/member/basic/style.css">
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://www.wedaehan.com/js/wrest.js"></script>
-
 </head>
 <body>
 	<!-- 회원정보 찾기 시작 { -->
@@ -35,5 +35,8 @@
 			</div>
 		</form>
 	</div>
+	<%if("error" != null){ %>
+	<%= request.getAttribute("error") %>
+	<%} %>
 </body>
 </html>

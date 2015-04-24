@@ -13,12 +13,12 @@
 	String email = member.getEmail();
 	String pwd = member.getPw();
 %>
-	<%=name %>
-	<%=id %>
-	<%=email %>
-	<%=pwd %>
 </head>
 <body>
+	이름 : <%=name %><br>
+	아이디 : <%=id %><br>
+	이메일 : <%=email %><br>
+	비밀번호 : <%=pwd %>
 
 </body>
 </html>

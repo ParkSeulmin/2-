@@ -1,4 +1,4 @@
-<%@page import="org.apache.tomcat.jdbc.pool.DataSource"%>
+<%@page import="javax.sql.DataSource"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>

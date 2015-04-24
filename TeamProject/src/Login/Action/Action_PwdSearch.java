@@ -22,11 +22,21 @@ public class Action_PwdSearch implements Action {
 		System.out.println("여기까진될까?");
 		PwdSearch_DAO dao = new PwdSearch_DAO();
 		Member result = dao.Search_Pwd(member);
+		String error = "잘못넣었습니다.";
 		
-		request.setAttribute("result", result);
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("PwdSearchOk.jsp");
-		return forward;	
+		if(result != null){
+			request.setAttribute("result", result);
+			ActionForward forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("PwdSearchOk.jsp");
+			return forward;	
+		}else{
+			request.setAttribute("error", error);
+			ActionForward forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("PwdSearch.jsp");
+			return forward;	
+		}
+	
 	}
 }
