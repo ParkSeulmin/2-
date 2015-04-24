@@ -44,6 +44,7 @@
 			</tr>
 			<tr>
 				<td><input type="button" value="확인"	onclick="insert()"></td>
+				<input type="button" value="취소" onclick="window.close();"></td>
 
 			</tr>
 		</table>
