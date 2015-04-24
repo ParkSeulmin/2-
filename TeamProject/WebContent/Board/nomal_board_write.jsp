@@ -35,42 +35,6 @@
 </head>
 <body>
 <c:import url="/Include/Header.jsp" />
-<<<<<<< HEAD
-	<div style="padding: 200px;"> <!-- 임의임의임의  -->
-		<!-- 게시판 등록 -->
-		<form action="./BoardAddAction.bo?boardtype=<%=boardtype%>" method="post" 
-			enctype="multipart/form-data" name="boardform">
-		<input type="hidden" name="BOARD_ID" value="<%=id %>">
-		<table cellpadding="0" cellspacing="0" width="100%">
-			<tr align="center" valign="middle">
-				<td colspan="5">MVC 게시판</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center">글쓴이</div>
-				</td>
-				<td>
-					<input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
-						value="<%=id %>" readonly/>
-						
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center">제 목</div>
-				</td>
-				<td>
-					<input id="bo_title" name="bo_title" type="text" size="50" maxlength="100" 
-						value=""/>
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center">내 용</div>
-				</td>
-				<td>
-					<textarea id="bo_content" name="bo_content" cols="80" rows="15"></textarea>
-=======
 	<div style="padding: 200px;"> <!-- 임의임의임의  -->
 		<!-- 게시판 등록 -->
 		<form action="./BoardAddAction.bo" method="post" 
@@ -103,7 +67,6 @@
 				</td>
 				<td>
 					<textarea id="bo_content" name="bo_content" cols="80" rows="15"></textarea>
->>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 					<script>
 					 CKEDITOR.replace('bo_content',{
 				            toolbar: 'Full'
