@@ -44,4 +44,13 @@
   	<servlet-name>MypageController</servlet-name>
   	<url-pattern>*.my</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SearchController</servlet-name>
+    <servlet-class>Date.Controller.Search_Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchController</servlet-name>
+    <url-pattern>*.search</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

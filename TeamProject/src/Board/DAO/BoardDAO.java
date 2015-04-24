@@ -65,7 +65,7 @@ public class BoardDAO {
 							   +" 	from (select *" 
 							   +" 		 	from board"
 							   +"		 	  where bo_id = ?"			
-							   +"	          order by rownum desc)"
+							   +"	          order by bo_no desc)"
 							   +"       )"
 							   +" where rn between ? and ? ";
  
@@ -114,7 +114,7 @@ public class BoardDAO {
 			try{
 				con = ds.getConnection();
 				pstmt=con.prepareStatement(
-						"select max(board_num) from memberboard");
+						"select max(bo_no) from board");
 				rs = pstmt.executeQuery();
 				
 				if(rs.next())
@@ -123,7 +123,7 @@ public class BoardDAO {
 					num=1;
 				
 				sql="INSERT INTO BOARD(BO_NO, BO_WRITER, BO_TITLE, BO_CONTENT, BO_FILE, BO_ID)";
-				sql+= " VALUES(?, ?, ?, ?, ?)";
+				sql+= " VALUES(?, ?, ?, ?, ?, ?)";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, num);

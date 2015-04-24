@@ -4,7 +4,11 @@
 	// 일단 wirte 기능을 처리하기 위해
 	//String id = request.getParameter("id");
 	String id = "HYEJUNG22";
+
+	int boardtype = Integer.parseInt(request.getParameter("boardtype"));
+	System.out.println("write boardtype: "+boardtype);
 %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -14,6 +18,7 @@
 	</script>
 	<script language="javascript">
 		function addboard(){
+			
 			
 			var ckeditor = CKEDITOR.instances['bo_content']; //객체가져오기
 	        if (ckeditor.getData()=="") {//null값은 안옴 = 빈문자열
@@ -32,7 +37,7 @@
 <c:import url="/Include/Header.jsp" />
 	<div style="padding: 200px;"> <!-- 임의임의임의  -->
 		<!-- 게시판 등록 -->
-		<form action="./BoardAddAction.bo" method="post" 
+		<form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
 			enctype="multipart/form-data" name="boardform">
 		<input type="hidden" name="BOARD_ID" value="<%=id %>">
 		<table cellpadding="0" cellspacing="0" width="100%">
@@ -44,7 +49,9 @@
 					<div align="center">글쓴이</div>
 				</td>
 				<td>
-					<%=id %>
+					<input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
+						value="<%=id %>" readonly/>
+					
 				</td>
 			</tr>
 			<tr>
