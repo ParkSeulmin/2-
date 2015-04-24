@@ -6,11 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>본인 인증</title>
-<<<<<<< HEAD
-
 <script type="text/javascript">
-=======
->>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 <%	String name = "";
 	String msg = "";
 	if ((String) request.getAttribute("result") != null) {
