@@ -37,7 +37,7 @@
 <c:import url="/Include/Header.jsp" />
 	<div style="padding: 200px;"> <!-- 임의임의임의  -->
 		<!-- 게시판 등록 -->
-		<form action="./BoardAddAction.bo" method="post" 
+		<form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
 			enctype="multipart/form-data" name="boardform">
 		<input type="hidden" name="BOARD_ID" value="<%=id %>">
 		<table cellpadding="0" cellspacing="0" width="100%">
@@ -49,7 +49,9 @@
 					<div align="center">글쓴이</div>
 				</td>
 				<td>
-					<%=id %>
+					<input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
+						value="<%=id %>" readonly/>
+					
 				</td>
 			</tr>
 			<tr>
