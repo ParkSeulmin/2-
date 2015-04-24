@@ -148,9 +148,9 @@
 							</div>
 					</a>
 						<ul>
-							<li><a href="BoardList.bo?boardtype=20">Real 후기</a></li>
-							<li><a href="BoardList.bo?boardtype=30">남자 게시판</a></li>
-							<li><a href="BoardList.bo?boardtype=40">여자 게시판</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=20">Real 후기</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=30">남자 게시판</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=40">여자 게시판</a></li>
 							<li class="end"><a href="BoardList.bo?boardtype=50">1:1문의하기</a></li>
 						</ul></li>
 
@@ -212,10 +212,10 @@
 					</li>
 					<li>후기&문의
 						<ul>
-							<li><a href="BoardList.bo?boardtype=20">Real 후기</a></li>
-							<li><a href="BoardList.bo?boardtype=30">남자 게시판</a></li>
-							<li><a href="BoardList.bo?boardtype=40">여자 게시판</a></li>
-							<li><a href="BoardList.bo?boardtype=50">1:1문의하기</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=20">Real 후기</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=30">남자 게시판</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=40">여자 게시판</a></li>
+							<li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=50">1:1문의하기</a></li>
 						</ul>
 					</li>
 					<li>마이페이지

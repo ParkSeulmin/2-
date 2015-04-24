@@ -36,13 +36,14 @@ public class BoardAddAction implements Action {
    					new DefaultFileRenamePolicy());
    			
    			boarddata.setBo_writer(multi.getParameter("bo_writer"));
-	   		boarddata.setBo_title(multi.getParameter("bo_subject"));
+	   		boarddata.setBo_title(multi.getParameter("bo_title"));
 	   		boarddata.setBo_content(multi.getParameter("bo_content"));
 	   		/*boarddata.setBo_file(
 	   				multi.getFilesystemName(
 	   						(String)multi.getFileNames().nextElement()));*/
 	   		boarddata.setBo_file(null);
-	   		boarddata.setBo_id(Integer.parseInt(multi.getParameter("boardtype")));
+	   		int boardtype = Integer.parseInt(request.getParameter("boardtype"));
+	   		boarddata.setBo_id(boardtype);
 	  
 	   		
 	   		result=boarddao.boardInsert(boarddata);
@@ -54,7 +55,7 @@ public class BoardAddAction implements Action {
 	   		System.out.println("게시판 등록 완료");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./BoardList.bo");
+	   		forward.setPath("./BoardList.bo?boardtype="+boardtype);
 	   		return forward;
 	   		
   		}catch(Exception ex){

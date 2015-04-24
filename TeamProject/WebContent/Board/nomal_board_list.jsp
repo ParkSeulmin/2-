@@ -15,6 +15,7 @@
 	int maxpage=((Integer)request.getAttribute("maxpage")).intValue();
 	int startpage=((Integer)request.getAttribute("startpage")).intValue();
 	int endpage=((Integer)request.getAttribute("endpage")).intValue();
+	int boardtype = ((Integer)request.getAttribute("boardtype")).intValue();
 %>
 
 <html>
@@ -112,7 +113,7 @@
 					<%-- <%if(id!=null && id.equals("admin")){%>
 						<a href="./MemberListAction.me">[회원관리]</a>
 					<%}%> --%>
-			   		<a href="./BoardWrite.bo">[글쓰기]</a>
+			   		<a href="./BoardWrite.bo?boardtype=<%=boardtype%>">[글쓰기]</a>
 				</td>
 			</tr>
 		</table>
