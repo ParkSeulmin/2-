@@ -24,16 +24,12 @@
 		}
 		
 %>
-<<<<<<< HEAD
-	
-	/////얘가 팝업 된 녀석입니다.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-=======
+
 <script type="text/javascript">
 	function insert(){
 		opener.document.getElementById("name").value='<%=name%>';
 		window.close();
 	}
->>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 </script>
 </head>
 <body>
