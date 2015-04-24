@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>본인 인증</title>
+<script type="text/javascript">
 <%	String name = "";
 	String msg = "";
 	if ((String) request.getAttribute("result") != null) {
@@ -17,8 +18,9 @@
 				msg="본인 인증에 실패했습니다.";
 			}
 		}
-			
+		
 %>
+
 <script type="text/javascript">
 	function insert(){
 		opener.document.getElementById("name").value='<%=name%>';
@@ -41,7 +43,9 @@
 				<td><input type="submit" value="본인확인"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="확인"	onclick="insert()"></td>
+				<td><input type="button" value="확인"	onclick="insert()">
+    			<input type="button" value="취소" onclick="window.close();"></td>
+
 			</tr>
 		</table>
 	</form>
