@@ -50,7 +50,7 @@
 		</table>
 	</form>
 	<div>
-		<%=msg%>
+		<span style="color: red;"><%=msg%></span><br>
 		<%=name%>
 		<!-- 본인확인에 대한 메세지  -->
 	</div>
