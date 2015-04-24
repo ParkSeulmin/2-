@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>본인 인증</title>
-<script type="text/javascript">
 <%	String name = "";
 	String msg = "";
 	if ((String) request.getAttribute("result") != null) {
@@ -20,11 +19,11 @@
 		}
 		
 %>
-
 <script type="text/javascript">
 	function insert(){
-		opener.document.getElementById("name").value='<%=name%>';
 		window.close();
+		<%--  opener.document.getElementById("name").value='<%=name%>';
+		 window.close(); --%>
 	}
 </script>
 </head>
@@ -45,7 +44,6 @@
 			<tr>
 				<td><input type="button" value="확인"	onclick="insert()">
     			<input type="button" value="취소" onclick="window.close();"></td>
-
 			</tr>
 		</table>
 	</form>
