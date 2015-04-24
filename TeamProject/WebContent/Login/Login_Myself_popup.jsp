@@ -22,6 +22,7 @@
 <script type="text/javascript">
 	function insert(){
 		opener.document.getElementById("name").value='<%=name%>';
+		window.close();
 	}
 </script>
 </head>
