@@ -69,9 +69,12 @@
 					회원으로 가입 후 이용해 주십시오.
 				</p>
 				<div>
-					<a href="http://www.wedaehan.com/bbs/password_lost.php"
-						target="_blank" id="login_password_lost" class="btn02">아이디
-						비밀번호 찾기</a> <a href="./register.php" class="btn01">회원 가입</a>
+				
+					<a href="Login_Find_Id.html" id="login_password_lost" class="btn02">아이디 찾기
+					</a>
+					<a href="PwdSearch.jsp" id="login_password_lost" class="btn02">비밀번호 찾기
+						</a> 
+						<a href="./register.php" class="btn01">회원 가입</a>
 				</div>
 			</aside>
 
