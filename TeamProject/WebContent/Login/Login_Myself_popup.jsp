@@ -23,8 +23,8 @@
 <script type="text/javascript">
 	function insert(){
 		window.close();
-		<%--  opener.document.getElementById("name").value='<%=name%>';
-		 window.close(); --%>
+		opener.document.getElementById("name").value='<%=name%>';
+		window.close();
 	}
 </script>
 </head>
