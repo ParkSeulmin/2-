@@ -1,3 +1,4 @@
+
 package Board.Action;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,4 +64,5 @@ public class BoardAddAction implements Action {
    		}
   		return null;
 	}  	
+
 }

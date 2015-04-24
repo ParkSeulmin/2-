@@ -73,11 +73,11 @@
 					<div align="center">첨부파일</div>
 				</th>
 				<td style="font-family:돋음; font-size:12">
-				<%if(!(board.getBo_file()==null)){ %>
-				<a href="./boardupload/<%=board.getBo_file()%>">
-					<%=board.getBo_file() %>
+				<%-- <%if(!(board.getBOARD_FILE()==null)){ %>
+				<a href="./boardupload/<%=board.getBOARD_FILE()%>">
+					<%=board.getBOARD_FILE() %>
 				</a>
-				<%} %>
+				<%} %> --%>
 				</td>
 			</tr>
 			<tr bgcolor="cccccc">
@@ -106,4 +106,5 @@
 	</div>
 <c:import url="/Include/Footer.jsp" />
 </body>
+
 </html>
