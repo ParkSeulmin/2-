@@ -66,16 +66,17 @@ public class Login_BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (cmd.equals("/MySelf.check")) {
+		} else if (cmd.equals("/Login/MySelf.check")) {
 			try {
+				String na=request.getParameter("name");
+				request.setAttribute("name1", na);
 				forward = new ActionForward();
 				action = new Login_Myself_Check_Action();// 해당하는 액션 넣어주기
 				forward = action.execute(request, response);
 
 				if (forward != null) {
-					Member member = (Member) request.getAttribute("result");
-					request.setAttribute("member", member);
-					System.out.println(member.getEmail() + "여긴되야됭");
+					String result = (String) request.getAttribute("result");
+					request.setAttribute("result", result);
 					RequestDispatcher dispatcher = request
 							.getRequestDispatcher(forward.getPath());
 					dispatcher.forward(request, response);
