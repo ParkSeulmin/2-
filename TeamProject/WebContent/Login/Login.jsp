@@ -8,8 +8,6 @@
 <link rel="stylesheet" href="http://www.wedaehan.com/css/default.css">
 <link rel="stylesheet"
 	href="http://www.wedaehan.com/skin/member/basic/style.css">
-<link rel="stylesheet" type="text/css" href="/css/main.css">
-<link rel="stylesheet" type="text/css" href="/css/sub.css">
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600"
 	rel="stylesheet" type="text/css">

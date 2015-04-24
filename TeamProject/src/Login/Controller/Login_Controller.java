@@ -64,11 +64,6 @@ public class Login_Controller extends HttpServlet {
 					.getRequestDispatcher("/Main.html");
 			dis.forward(req, res);
 			System.out.println(pwd);
-		}else if(command.equals("Main.html")){
-			RequestDispatcher dis = req
-					.getRequestDispatcher("/Main.html");
-			dis.forward(req, res);
-			System.out.println(pwd);
 		}
 		
 		if(forward != null){
@@ -82,6 +77,8 @@ public class Login_Controller extends HttpServlet {
 				req.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(req, res);
 				req.setAttribute("result",req.getParameter("result"));
+				
+				
 			}
 		}
 	}
