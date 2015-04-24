@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Board.Action.Action;
 import Board.Action.ActionForward;
+import Board.Action.BoardAddAction;
+import Board.Action.BoardDetailAction;
 import Board.Action.BoardListAction;
 
  public class BoardFrontController 
@@ -22,7 +24,7 @@ import Board.Action.BoardListAction;
 		 ActionForward forward=null;
 		 Action action=null;
 		   System.out.println("command: "+command);
-		   if(command.equals("/BoardList.bo")){
+		   if(command.equals("/BoardList.bo")){		// 공지사항 게시판
 			   action = new BoardListAction();
 			   try{
 				   forward=action.execute(request, response);
@@ -32,8 +34,23 @@ import Board.Action.BoardListAction;
 		   }else if(command.equals("/BoardWrite.bo")){
 			   forward=new ActionForward();
 			   forward.setRedirect(false);
-			   forward.setPath("./board/qna_board_write.jsp");
+			   forward.setPath("/Board/nomal_board_write.jsp");
+		   }else if(command.equals("/BoardAddAction.bo")){
+			   action  = new BoardAddAction();
+			   try {
+				   forward=action.execute(request, response );
+			   } catch (Exception e) {
+				   e.printStackTrace();
+			   }
+		   }else if(command.equals("/BoardDetailAction.bo")){
+			   action = new BoardDetailAction();
+			   try{
+				   forward=action.execute(request, response);
+			   }catch(Exception e){
+				   e.printStackTrace();
+			   }
 		   }
+		   
 		   if(forward != null){
 			   if(forward.isRedirect()){
 				   response.sendRedirect(forward.getPath());

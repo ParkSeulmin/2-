@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -140,17 +141,17 @@
 							<li class="end"><a href="http://www.wedaehan.com/sub/sub03_03.php">스피드 데이트 is</a></li>
 						</ul></li>
 
-					<li><a href="BoardList.bo">
+					<li><a href="BoardList.bo?boardtype=20">
 							<div class="menu"
 								style="border: 0px; height: 21px; overflow: hidden;">
 								후기&문의<br> Epilogue
 							</div>
 					</a>
 						<ul>
-							<li><a href="BoardList.bo">Real 후기</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li class="end"><a href="#">1:1
-									문의하기</a></li>
+							<li><a href="BoardList.bo?boardtype=20">Real 후기</a></li>
+							<li><a href="BoardList.bo?boardtype=30">남자 게시판</a></li>
+							<li><a href="BoardList.bo?boardtype=40">여자 게시판</a></li>
+							<li class="end"><a href="BoardList.bo?boardtype=50">1:1문의하기</a></li>
 						</ul></li>
 
 					<li><a href="http://www.wedaehan.com/bbs/wishlist.php">
@@ -211,9 +212,10 @@
 					</li>
 					<li>후기&문의
 						<ul>
-							<li><a href="BoardList.bo">Real 후기</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">1:1 문의하기</a></li>
+							<li><a href="BoardList.bo?boardtype=20">Real 후기</a></li>
+							<li><a href="BoardList.bo?boardtype=30">남자 게시판</a></li>
+							<li><a href="BoardList.bo?boardtype=40">여자 게시판</a></li>
+							<li><a href="BoardList.bo?boardtype=50">1:1문의하기</a></li>
 						</ul>
 					</li>
 					<li>마이페이지
@@ -235,6 +237,6 @@
 		</nav>
 
 	</div>
-	<!-- } Header End -->
+	<!-- } Header End -->s
 </body>
 </html>
