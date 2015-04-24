@@ -20,7 +20,7 @@
 		}
 		
 %>
-
+</script>
 <script type="text/javascript">
 	function insert(){
 		opener.document.getElementById("name").value='<%=name%>';
