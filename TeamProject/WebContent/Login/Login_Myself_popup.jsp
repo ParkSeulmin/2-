@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>본인 인증</title>
-<script type="text/javascript">
 <%	String name = "";
 	String msg = "";
 	if ((String) request.getAttribute("result") != null) {
@@ -21,7 +20,6 @@
 		
 %>
 
-</script>
 <script type="text/javascript">
 	function insert(){
 		window.close();
