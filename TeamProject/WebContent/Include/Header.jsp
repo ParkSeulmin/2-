@@ -161,7 +161,7 @@
 							</div>
 					</a>
 						<ul>
-							<li><a href="http://www.wedaehan.com/bbs/wishlist.php">My 미팅 현황</a></li>
+							<li><a href="MypageMeeting.my">My 미팅 현황</a></li>
 							<li><a href="http://www.wedaehan.com/bbs/mypage.php">My 티켓내역</a></li>
 							<li class="end"><a
 								href="http://www.wedaehan.com/bbs/member_confirm.php?url=/bbs/register_profile.php">My
@@ -220,8 +220,8 @@
 					</li>
 					<li>마이페이지
 						<ul>
-							<li><a href="http://www.wedaehan.com/bbs/wishlist.php">My 미팅 현황</a></li>
-							<li><a href="http://www.wedaehan.com/bbs/mypage.php">My 티켓내역</a></li>
+							<li><a href="MypageMeeting.my">My 미팅 현황</a></li>
+							<li><a href="http://www.wedaehan.com/bbs/mypage.php">My 파티 내역</a></li>
 							<li><a href="http://www.wedaehan.com/bbs/wishlist.php">My 프로필 수정</a></li>
 						</ul>
 					</li>

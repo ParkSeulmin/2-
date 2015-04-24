@@ -28,13 +28,20 @@
     <servlet-name>BoardFrontController</servlet-name>
     <url-pattern>*.bo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>CheckController</servlet-name>
-  <servlet-class>Login.Controller.JoinCheck_Controller</servlet-class>
+    <servlet-name>CheckController</servlet-name>
+    <servlet-class>Login.Controller.JoinCheck_Controller</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>CheckController</servlet-name>
-  <url-pattern>*.ch</url-pattern>
+    <servlet-name>CheckController</servlet-name>
+    <url-pattern>*.ch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>MypageController</servlet-name>
+  	<servlet-class>Mypage.Controller.MypageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MypageController</servlet-name>
+  	<url-pattern>*.my</url-pattern>
   </servlet-mapping>
 </web-app>
