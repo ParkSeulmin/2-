@@ -1,3 +1,4 @@
+<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,7 +10,6 @@
 <link rel="stylesheet" href="http://www.wedaehan.com/skin/member/basic/style.css">
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://www.wedaehan.com/js/wrest.js"></script>
-
 </head>
 <body>
 	<!-- 회원정보 찾기 시작 { -->
@@ -22,8 +22,9 @@
 					회원가입 시 등록하신 아이디, 이름, 이메일 주소를 입력해 주세요.<br> 본인 확인 후 정확한 정보를 입력해 주세요.
 				</p>
 				<label for="name">이름<strong class="sound_only1"></strong></label> 
-				<input type="text" name="name" id="name" required class="required frm_input" size="30" ><br>
-				<!-- <input type="button" value="본인확인" onclick="window.open('PwdCheckName.html', 'zip', 'width=500 height=250')"><br> -->
+				<input type="text" name="name" id="name" class="required frm_input" size="30" readonly>
+				<input type="button" id="selfcheck" value="본인확인" 
+				onclick="window.open('Login_Myself_popup.jsp','zip','width=500 height=200')"><br>
 				<label for="id">아이디<strong class="sound_only1"></strong></label>
 				<input type="text" name="id" id="id" required class="required frm_input"size="30"><br>  
 				<label for="email">이메일<strong class="sound_only3"></strong></label> 
@@ -35,5 +36,8 @@
 			</div>
 		</form>
 	</div>
+	<%if("error" != null){ %>
+	<%= request.getAttribute("error") %>
+	<%} %>
 </body>
 </html>

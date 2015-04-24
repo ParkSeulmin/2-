@@ -35,13 +35,13 @@
 <!-- Header { -->
 	<div id="hd">
 		<h1 id="hd_h1">♡품격이 다른 소개팅 위대한 만남 입니다♡</h1>
-
-
+		
 		<div id="skip_to_container">
 			<a href="#container">본문 바로가기</a>
 		</div>
 		<div id="hd_wrapper">
 
+			
 			<div id="logo2">3
 				<a href="http://www.wedaehan.com"><img
 					src="http://www.wedaehan.com/img/logo2.png"
@@ -54,7 +54,8 @@
 						
 				<div id="tnb_div">
 				<c:if test="${param.mb_id != null}">
-				<li><%=request.getParameter("mb_id") %>+" 님 환영합니다.</li>
+				<li><%=request.getParameter("mb_id") %>" 님 환영합니다.</li>
+				<li>LOGOUT</li>
  				<li><a href='http://www.wedaehan.com/sub/sitemap.php'>SITE
  						MAP</a></li>
  				<li><a href='http://www.wedaehan.com/sub/sub01_05.php'>CONTACT
@@ -260,11 +261,8 @@
 		</nav>
 
 	</div>
+
 	<!-- } Header End -->
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<%=request.getParameter("id")%>
-	<%=request.getParameter("id")%>
-	console.log(request.getParameter("id"));
 	
 </body>
 </html>

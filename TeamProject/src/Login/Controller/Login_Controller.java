@@ -40,16 +40,9 @@ public class Login_Controller extends HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 		String command = req.getParameter("cmd");
-		String id = req.getParameter("mb_id");
-		String pwd = req.getParameter("mb_password");
 		 	
 		if (command.equals("logincheck")) {
-			
-			/*RequestDispatcher dis = req
-					.getRequestDispatcher("/Login/logintest.html");
-			dis.forward(req, res);
-			System.out.println(id);*/
-	
+		
 			action = new  Action_Login_Check(); 
 			
 			System.out.println(action);
@@ -63,7 +56,7 @@ public class Login_Controller extends HttpServlet {
 			RequestDispatcher dis = req
 					.getRequestDispatcher("/Main.html");
 			dis.forward(req, res);
-			System.out.println(pwd);
+			
 		}
 		
 		if(forward != null){

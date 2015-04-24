@@ -17,8 +17,8 @@
 </head>
 <body>
 
-<%=id %>
-	<%=name %>
-	<%=email %> 
+	<%=name %>님이 찾으시는 아이디는 "<%=id %>"입니다.
+	<hr>
+	<br>전송할 Email값  <%=email %> 
 </body>
 </html>

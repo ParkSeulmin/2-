@@ -35,7 +35,7 @@ public class Action_Login_Check implements Action {
 			ActionForward forward = new ActionForward();
 			
 			forward.setRedirect(false);
-			forward.setPath("Main.jsp?result="+request.getParameter("mb_id"));
+			forward.setPath("/Main.jsp?mb_id="+request.getParameter("mb_id"));
 			
 			return forward;
 		}else{

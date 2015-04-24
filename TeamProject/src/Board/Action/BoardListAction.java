@@ -27,13 +27,19 @@ import Board.DAO.BoardDAO;
 		
 	  	int page=1;
 		int limit=10;
+		int boardtype=20; // 게시판 타입
+		
 		
 		if(request.getParameter("page")!=null){
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		int listcount=boarddao.getListCount(); //총 리스트 수를 받아 옴
-		boardlist = boarddao.getBoardList(page,limit); //리스트를 받아 옴
+		if(request.getParameter("boardtype")!=null){
+			boardtype = Integer.parseInt(request.getParameter("boardtype"));
+		}
+		
+		int listcount=boarddao.getListCount(boardtype); //총 리스트 수를 받아 옴
+		boardlist = boarddao.getBoardList(page,limit,boardtype); //리스트를 받아 옴
 		
 		//총 페이지 수
    		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리
@@ -50,6 +56,7 @@ import Board.DAO.BoardDAO;
    		request.setAttribute("endpage", endpage);  //현재 페이지에 표시할 끝 페이지 수
 		request.setAttribute("listcount",listcount);  //글 수
 		request.setAttribute("boardlist", boardlist);
+		request.setAttribute("boardtype", boardtype); // 게시판 타입 10:공지사항 20:후기 30:남자 40:여자 50:1:1문의
 		
 	   	forward.setRedirect(false);
    		forward.setPath("./Board/nomal_board_list.jsp");
