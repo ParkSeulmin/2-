@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,7 +13,8 @@
 <body>
 	<c:import url="/Include/Header.jsp" />
 		<!-- <p><a href="BoardList.bo">로그인</a></p> -->
-		<c:import url="/Login/Login.jsp"></c:import>
+		 <c:import url="/Login/Login.jsp"></c:import> 
+		
 	<c:import url="/Include/Footer.jsp" />
 </body>
 </html>

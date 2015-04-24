@@ -1,7 +1,7 @@
 <object class="org.apache.commons.dbcp.PoolableConnectionFactory"
    xmlns="http://apache.org/xml/xmlns/jakarta/commons/jocl">
    <object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
-      <string value="jdbc:oracle:thin:@192.168.7.17:1521:XE" />
+      <string value="jdbc:oracle:thin:@192.168.7.17:1521:XE"/>
       <string value="HYEJUNG" />
       <string value="1004" />
    </object>

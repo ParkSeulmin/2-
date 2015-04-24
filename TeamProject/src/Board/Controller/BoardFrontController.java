@@ -29,15 +29,19 @@ import Board.Action.BoardListAction;
 			   }catch(Exception e){
 				   e.printStackTrace();
 			   }
+		   }else if(command.equals("/BoardWrite.bo")){
+			   forward=new ActionForward();
+			   forward.setRedirect(false);
+			   forward.setPath("./board/qna_board_write.jsp");
 		   }
 		   if(forward != null){
-		   if(forward.isRedirect()){
-			   response.sendRedirect(forward.getPath());
-		   }else{
-			   RequestDispatcher dispatcher=
-				   request.getRequestDispatcher(forward.getPath());
-			   dispatcher.forward(request, response);
-		   }
+			   if(forward.isRedirect()){
+				   response.sendRedirect(forward.getPath());
+			   }else{
+				   RequestDispatcher dispatcher=
+					   request.getRequestDispatcher(forward.getPath());
+				   dispatcher.forward(request, response);
+			   }
 		   }
 	 }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 

@@ -1,6 +1,7 @@
 package Login.DAO;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -62,8 +63,9 @@ public class Login_DAO {
                System.out.println("aaa = "+aaa);
                return aaa;
             }finally{
+               if(rs != null)rs.close();
                if(pstmt != null)pstmt.close();
-               if(conn != null)pstmt.close();
+               if(conn != null)conn.close();
             }
          }
       
