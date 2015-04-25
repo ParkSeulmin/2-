@@ -97,5 +97,64 @@ public class Join {
 					if(conn != null)pstmt.close();
 				}
 			}
+			
+			//닉네임 체크 쿼리
+			public int nickcheck(String nick) throws SQLException{
+				
+				int check = 0 ;//id값 존재하는지 return 
+				System.out.println("DAO 받아온 id " + nick);
+				
+				try {
+					conn = ds.getConnection();
+					String sql = 
+					"SELECT U_NNAME FROM MEMBER WHERE U_NNAME=?"; 
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, nick);
+					
+					rs = pstmt.executeQuery();
+		               if(rs.next()){
+		            	   //아이디 중복입니다
+		            	  check=1;
+		            	  System.out.println("nickcheck : 중복");
+		               }else{
+		            	   //아이디 사용가능합니다
+			            	System.out.println("nickcheck : 사용가능");
+		            	   check=0;
+		               }
+				}finally{
+					if(pstmt != null)pstmt.close();
+					if(conn != null)pstmt.close();
+				}
+	               return check;
+			}
+			
+			public int idcheck(String id) throws SQLException{
+				
+				int check = 0 ;//id값 존재하는지 return 
+				System.out.println("받아온 id " + id);
+				
+				try {
+					conn = ds.getConnection();
+					String sql = 
+					"SELECT U_ID FROM MEMBER WHERE U_ID=?"; 
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
+					
+					rs = pstmt.executeQuery();
+		               if(rs.next()){
+		            	   //아이디 중복입니다
+		            	  check=1;
+		            	  System.out.println("idcheck : 중복");
+		               }else{
+		            	   //아이디 사용가능합니다
+			            	System.out.println("idcheck : 사용가능");
+		            	   check=0;
+		               }
+				}finally{
+					if(pstmt != null)pstmt.close();
+					if(conn != null)pstmt.close();
+				}
+	               return check;
+			}
 		
 }

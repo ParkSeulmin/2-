@@ -35,6 +35,7 @@ public class BoardDAO {
 	
 	//글의 개수 구하기.
 	public int getListCount(int boardtype) {
+		
 		int x= 0;
 		
 		try{

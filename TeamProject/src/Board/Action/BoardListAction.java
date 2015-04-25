@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
 
-
-
  public class BoardListAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		ActionForward forward= new ActionForward();
@@ -71,4 +69,5 @@ import Board.DTO.Board;
    		forward.setPath("./Board/nomal_board_list.jsp");
    		return forward;
 	 }
+
  }
