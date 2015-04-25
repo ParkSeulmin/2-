@@ -19,6 +19,11 @@
 	<script language="javascript">
 		function addboard(){
 			
+			if (!boardform.bo_title.value) {
+				alert("제목을 입력하세요");
+				boardform.bo_title.focus();
+				return false;
+			}
 			
 			var ckeditor = CKEDITOR.instances['bo_content']; //객체가져오기
 	        if (ckeditor.getData()=="") {//null값은 안옴 = 빈문자열

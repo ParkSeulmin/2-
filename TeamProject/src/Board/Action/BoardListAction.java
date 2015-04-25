@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
+import Board.DTO.Board;
 
 
 
@@ -24,6 +25,7 @@ import Board.DAO.BoardDAO;
    		
 		BoardDAO boarddao=new BoardDAO();
 		List boardlist=new ArrayList();
+		List replylistnum = new ArrayList();
 		
 	  	int page=1;
 		int limit=10;
@@ -41,6 +43,12 @@ import Board.DAO.BoardDAO;
 		int listcount=boarddao.getListCount(boardtype); //총 리스트 수를 받아 옴
 		boardlist = boarddao.getBoardList(page,limit,boardtype); //리스트를 받아 옴
 		
+		// 댓글 수 가지고오기
+		for(int i=0 ; i<boardlist.size(); i++){
+			Board num = (Board) boardlist.get(i);
+			replylistnum.add(boarddao.getReply(num.getBo_no()).size());
+		}
+		
 		//총 페이지 수
    		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리
    		//현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
@@ -57,6 +65,7 @@ import Board.DAO.BoardDAO;
 		request.setAttribute("listcount",listcount);  //글 수
 		request.setAttribute("boardlist", boardlist);
 		request.setAttribute("boardtype", boardtype); // 게시판 타입 10:공지사항 20:후기 30:남자 40:여자 50:1:1문의
+		request.setAttribute("replylistnum", replylistnum); // 댓글 리스트
 		
 	   	forward.setRedirect(false);
    		forward.setPath("./Board/nomal_board_list.jsp");

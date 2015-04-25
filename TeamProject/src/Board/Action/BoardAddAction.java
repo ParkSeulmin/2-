@@ -1,6 +1,8 @@
 
 package Board.Action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,24 +41,31 @@ public class BoardAddAction implements Action {
    			boarddata.setBo_writer(multi.getParameter("bo_writer"));
 	   		boarddata.setBo_title(multi.getParameter("bo_title"));
 	   		boarddata.setBo_content(multi.getParameter("bo_content"));
-	   		/*boarddata.setBo_file(
+	   		boarddata.setBo_file(
 	   				multi.getFilesystemName(
-	   						(String)multi.getFileNames().nextElement()));*/
-	   		boarddata.setBo_file(null);
+	   						(String)multi.getFileNames().nextElement()));
+	   		//boarddata.setBo_file(null);
 	   		int boardtype = Integer.parseInt(request.getParameter("boardtype"));
 	   		boarddata.setBo_id(boardtype);
 	  
 	   		
 	   		result=boarddao.boardInsert(boarddata);
 	   		
-	   		if(result==false){
-	   			System.out.println("게시판 등록 실패");
-	   			return null;
+	   		String msg = "";
+	   		String url = "";
+	   		if(result == false){
+	   			msg = "게시판 등록 실패";
+	   			url = "./BoardList.bo?boardtype="+boardtype;
+	   		}else{
+	   			msg = "게시판 등록 성공";
+	   			url ="./BoardList.bo?boardtype="+boardtype;
 	   		}
-	   		System.out.println("게시판 등록 완료");
 	   		
-	   		forward.setRedirect(true);
-	   		forward.setPath("./BoardList.bo?boardtype="+boardtype);
+	   		request.setAttribute("board_msg", msg);
+	   		request.setAttribute("board_url", url);
+	   		
+	   		forward.setRedirect(false);
+	   		forward.setPath("/Board/redirect.jsp");
 	   		return forward;
 	   		
   		}catch(Exception ex){

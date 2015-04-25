@@ -33,7 +33,7 @@
 		</div>
 		<div id="hd_wrapper">
 
-			<div id="logo2">3
+			<div id="logo2">
 				<a href="http://www.wedaehan.com"><img
 					src="http://www.wedaehan.com/img/logo2.png"
 					alt="품 / 격 / 이 / 다 / 른 / 소 / 개 / 팅"></a>

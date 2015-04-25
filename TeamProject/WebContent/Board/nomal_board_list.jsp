@@ -1,3 +1,4 @@
+<%@page import="Board.DTO.Reply"%>
 <%@page import="Board.DTO.Board"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*"%>
@@ -10,6 +11,7 @@
 		id=(String)session.getAttribute("id");
 	} */
 	List boardList=(List)request.getAttribute("boardlist");
+	List replylistnum = (List)request.getAttribute("replylistnum");
 	int listcount=((Integer)request.getAttribute("listcount")).intValue();
 	int nowpage=((Integer)request.getAttribute("page")).intValue();
 	int maxpage=((Integer)request.getAttribute("maxpage")).intValue();
@@ -56,34 +58,38 @@
 			<%
 				for(int i=0;i<boardList.size();i++){
 					Board bl=(Board)boardList.get(i);
+					int rl=(Integer)replylistnum.get(i);					
 			%>
-			<tr align="center" valign="middle" bordercolor="#333333"
-				onmouseover="this.style.backgroundColor='F8F8F8'"
-				onmouseout="this.style.backgroundColor=''">
-				<td height="23" style="font-family:Tahoma;font-size:10pt;">
-					<%=bl.getBo_no()%>
-				</td>
+					<tr align="center" valign="middle" bordercolor="#333333"
+						onmouseover="this.style.backgroundColor='F8F8F8'"
+						onmouseout="this.style.backgroundColor=''">
+						<td height="23" style="font-family:Tahoma;font-size:10pt;">
+							<%=bl.getBo_no()%>
+						</td>
+						
+						<td style="font-family:Tahoma;font-size:10pt;">
+							<div align="left">
+							
+							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">
+								<%=bl.getBo_title()%>
+							</a>
+							&nbsp;[<%=rl%>]
+							</div>
+						</td>
+						
+						<td style="font-family:Tahoma;font-size:10pt;">
+							<div align="center"><%=bl.getBo_writer() %></div>
+						</td>
+						<td style="font-family:Tahoma;font-size:10pt;">
+							<div align="center"><%=bl.getBo_date() %></div>
+						</td>	
+						<td style="font-family:Tahoma;font-size:10pt;">
+							<div align="center"><%=bl.getBo_count() %></div>
+						</td>
+					</tr>
+			<%		} 
 				
-				<td style="font-family:Tahoma;font-size:10pt;">
-					<div align="left">
-					
-					<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">
-						<%=bl.getBo_title()%>
-					</a>
-					</div>
-				</td>
-				
-				<td style="font-family:Tahoma;font-size:10pt;">
-					<div align="center"><%=bl.getBo_writer() %></div>
-				</td>
-				<td style="font-family:Tahoma;font-size:10pt;">
-					<div align="center"><%=bl.getBo_date() %></div>
-				</td>	
-				<td style="font-family:Tahoma;font-size:10pt;">
-					<div align="center"><%=bl.getBo_count() %></div>
-				</td>
-			</tr>
-			<%} %>
+			%>
 			<tr align=center height=20>
 				<td colspan=7 style=font-family:Tahoma;font-size:10pt;>
 					<%if(nowpage<=1){ %>
