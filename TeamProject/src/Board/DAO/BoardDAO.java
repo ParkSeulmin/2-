@@ -188,14 +188,28 @@ public class BoardDAO {
 		}
 		
 		//조회수 업데이트.
-		public void setReadCountUpdate(int num) throws Exception{
+		public void setReadCountUpdate(int num, String sessionid) throws Exception{
+			String sql_writer = "select bo_writer from board where bo_no="+num;
+			
 			String sql="update board set bo_count = "+
 				"bo_count+1 where bo_no = "+num;
 			
 			try{
 				con=ds.getConnection();
-				pstmt=con.prepareStatement(sql);
-				int i = pstmt.executeUpdate();
+				
+				pstmt=con.prepareStatement(sql_writer);
+				rs = pstmt.executeQuery();
+				
+				// userid(session id)와 글쓴이가 같으면 조회수가 올라가지 않는다.
+			   	// 즉 자신의 글은 조회수가 올라가지 않음
+				if(rs.next()){
+					if(!(rs.getString("bo_writer").equals(sessionid))){
+						pstmt=con.prepareStatement(sql);
+						pstmt.executeUpdate();
+					}
+				}
+				
+				
 				
 			}catch(SQLException ex){
 				System.out.println("setReadCountUpdate 에러 : "+ex);

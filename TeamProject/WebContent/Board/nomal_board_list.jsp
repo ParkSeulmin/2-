@@ -6,10 +6,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	/* String id=null;
-	if(session.getAttribute("id")!=null){
-		id=(String)session.getAttribute("id");
-	} */
+	String userid=null;
+	if(session.getAttribute("userid")!=null){
+		userid=(String)session.getAttribute("userid");
+	} 
 	List boardList=(List)request.getAttribute("boardlist");
 	List replylistnum = (List)request.getAttribute("replylistnum");
 	int listcount=((Integer)request.getAttribute("listcount")).intValue();
@@ -22,12 +22,19 @@
 
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>MVC 게시판</title>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  	
 </head>
 
 <body>
 <c:import url="/Include/Header.jsp" />
+		
 	<div style="padding: 200px;"> <!-- 임의임의임의  -->
+	<input type="hidden" id="sessionid" value="<%=userid %>">	
 		<!-- 게시판 리스트 -->
 		<table width=570 border="0" cellpadding="0" cellspacing="0">
 			<tr align="center" valign="middle">
@@ -119,7 +126,18 @@
 					<%-- <%if(id!=null && id.equals("admin")){%>
 						<a href="./MemberListAction.me">[회원관리]</a>
 					<%}%> --%>
-			   		<a href="./BoardWrite.bo?boardtype=<%=boardtype%>">[글쓰기]</a>
+					<%-- <input type="hidden" id="sessionid" value="<%=userid%>">	
+					<div  id="dialog-message" title="글쓰기">
+					  <p>
+					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+					    	회원만 게시물 등록이 가능합니다^ ^
+					  </p>
+					  <p>
+					     <b>로그인 해주세요^ ^</b>.
+					  </p>
+					</div> --%>
+					
+					<a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">[글쓰기]</a>
 				</td>
 			</tr>
 		</table>

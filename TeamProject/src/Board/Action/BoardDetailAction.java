@@ -20,7 +20,14 @@ import Board.DTO.Reply;
 	   	List replylist = new ArrayList();
 	   	
 		int num=Integer.parseInt(request.getParameter("num"));
-		boarddao.setReadCountUpdate(num);
+		String sessionid = "";
+		if(request.getSession().getAttribute("userid") != null){	
+			sessionid = (String)request.getSession().getAttribute("userid");
+		}
+		
+		// userid(session id)와 글쓴이가 같으면 조회수가 올라가지 않는다.
+	   	// 즉 자신의 글은 조회수가 올라가지 않음
+		boarddao.setReadCountUpdate(num, sessionid);
 	   	boarddata=boarddao.getDetail(num);
 	   	
 	   	if(boarddata==null){
