@@ -37,12 +37,12 @@
     <url-pattern>*.ch</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>MypageController</servlet-name>
-  	<servlet-class>Mypage.Controller.MypageController</servlet-class>
+    <servlet-name>MypageController</servlet-name>
+    <servlet-class>Mypage.Controller.MypageController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>MypageController</servlet-name>
-  	<url-pattern>*.my</url-pattern>
+    <servlet-name>MypageController</servlet-name>
+    <url-pattern>*.my</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>SearchController</servlet-name>
@@ -52,13 +52,21 @@
     <servlet-name>SearchController</servlet-name>
     <url-pattern>*.search</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-     <servlet-name>LoginController</servlet-name>
-     <servlet-class>Login.Controller.Login_Controller</servlet-class>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>Login.Controller.Login_Controller</servlet-class>
   </servlet>
   <servlet-mapping>
-     <servlet-name>LoginController</servlet-name>
-     <url-pattern>*.login</url-pattern>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>*.login</url-pattern>
+  </servlet-mapping>
+  
+<servlet>
+    <servlet-name>DateController</servlet-name>
+    <servlet-class>Date.Controller.DateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DateController</servlet-name>
+    <url-pattern>*.daa</url-pattern>
   </servlet-mapping>
 </web-app>

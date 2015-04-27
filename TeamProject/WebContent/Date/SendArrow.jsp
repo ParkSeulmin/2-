@@ -47,7 +47,6 @@
 <body>
 	<c:import url="/Include/Header.jsp" />
 	<div align="center">
-		<form action="" style="" >
 			<select>
 				<option class="지역">지역 선택</option>
 				<option class="서울">서울</option>
@@ -92,27 +91,26 @@
 			</select>
 			<input type="button" value="검색">
 			
-		</form>
 		
+		<form name="DateCheck" action="SendArrow.daa" method="post" >
 		<table border="1">
 			<tr>
 				<td>사진</td>
-				<td>사는곳</td>
+				<td>이름</td>
+				<td>주소</td>
 				<td>나이</td>
-				<td>연봉</td>
-				<td>신장</td>
 				<td>신청하기</td>
 			</tr>
 			<tr> 
-				<td><img alt="" src="../Images/111.JPG" height="100" width="150"></td>
-				<td>경기도 성남</td>
-				<td>30</td>
-				<td>2000</td>
-				<td>170</td>
-				<td><input type="button" value="신청"></td>
+				<td><img alt="" src="../Images/111.JPG" height="100" width="150" id="img" name="img"></td>
+				<td><input type="text" value="junghyun" name="name"></td>
+				<td><input type="text" value="sungnam" name="add"></td>
+				<td><input type="text" value="30" name="age"></td>
+				<td><input type="submit" value="신청" class="btn_submit"></td>
 			</tr>
 		</table>
 	 	</div>
+	 	</form>
  	
 	<c:import url="/Include/Footer.jsp" />
 </body>
