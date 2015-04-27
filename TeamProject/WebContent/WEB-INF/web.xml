@@ -78,4 +78,12 @@
     <servlet-name>PartyController</servlet-name>
     <url-pattern>*.party</url-pattern>
   </servlet-mapping>
+	<servlet>
+		<servlet-name>SearchControllerMin</servlet-name>
+		<servlet-class>Date.Controller.Search_Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchControllerMin</servlet-name>
+		<url-pattern>*.sear</url-pattern>
+	</servlet-mapping>
 </web-app>
