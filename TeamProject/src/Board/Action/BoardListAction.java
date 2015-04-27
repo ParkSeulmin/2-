@@ -41,6 +41,8 @@ import Board.DTO.Board;
 		int listcount=boarddao.getListCount(boardtype); //총 리스트 수를 받아 옴
 		boardlist = boarddao.getBoardList(page,limit,boardtype); //리스트를 받아 옴
 		
+		String boardname = boarddao.getBoardName(boardtype);
+		
 		// 댓글 수 가지고오기
 		for(int i=0 ; i<boardlist.size(); i++){
 			Board num = (Board) boardlist.get(i);
@@ -64,6 +66,7 @@ import Board.DTO.Board;
 		request.setAttribute("boardlist", boardlist);
 		request.setAttribute("boardtype", boardtype); // 게시판 타입 10:공지사항 20:후기 30:남자 40:여자 50:1:1문의
 		request.setAttribute("replylistnum", replylistnum); // 댓글 리스트
+		request.setAttribute("boardname", boardname);	// board 이름
 		
 	   	forward.setRedirect(false);
    		forward.setPath("./Board/nomal_board_list.jsp");

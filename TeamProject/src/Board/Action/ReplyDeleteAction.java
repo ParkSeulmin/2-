@@ -15,26 +15,26 @@ public class ReplyDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("utf-8");
 		
-		//HttpSession session=request.getSession();
-		//String id=(String)session.getAttribute("id");
+		HttpSession session=request.getSession();
+		String userid=(String)session.getAttribute("userid");
 		
 	   	boolean result=false;
-	   	//boolean usercheck=false;
+	   	boolean usercheck=false;
 	   	int num=Integer.parseInt(request.getParameter("replynum"));
 	   	
 	   	BoardDAO boarddao=new BoardDAO();
-	   	/*usercheck=boarddao.isBoardWriter(num, id);
+	   	usercheck=boarddao.isReplyWriter(num, userid);
 	   	
 	   	if(usercheck==false){
 	   		response.setContentType("text/html;charset=utf-8");
 	   		PrintWriter out=response.getWriter();
 	   		out.println("<script>");
 	   		out.println("alert('삭제할 권한이 없습니다.');");
-	   		out.println("location.href='./BoardList.bo';");
+	   		out.println("history.back()");
 	   		out.println("</script>");
 	   		out.close();
 	   		return null;
-	   	}*/
+	   	}
 	   	int bo_no = Integer.parseInt(request.getParameter("bo_no"));
 	   	result=boarddao.ReplyDelete(num);
 	

@@ -1,11 +1,26 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+// login session
+		String id = (String)session.getAttribute("userid");
+		System.out.println("session id check: "+ id);
+
+%>
+<c:set var="userid" value="<%=id%>" /><!-- id값 -->
 
 	<div id="hd_wrapper">	
        <ul id="tnb">
-				<li><a href="#">MEMBER</a></li>
-				<li><a href="#"><b>LOGIN</b></a></li>
+       <c:choose>
+       		<c:when test="${userid != null}">
+       			<li><div id='#welcomeuser'>[${userid}] 님 환영합니다.</div></li>
+       		</c:when>
+       		<c:otherwise>
+       			<li><a href="#">MEMBER</a></li>
+				<li><a href="<%=request.getContextPath()%>/Login/Login.jsp"><b>LOGIN</b></a></li>
+       		</c:otherwise>
+       </c:choose>
 				<li><a href="#">SITE MAP</a></li>
 				<li><a href="#">CONTACT US</a></li>
 		</ul>   
@@ -42,7 +57,7 @@
 					</a>
 					<ul class="dropdown-menu" role="menu">
                           <li><a href="#">about 만남의 품격</a></li>
-                          <li><a href="#">공지사항</a></li>
+                          <li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=10">공지사항</a></li>
                           <li><a href="#">Contact Us</a></li>
                           <li class="divider"></li>
                          
@@ -64,7 +79,7 @@
 				</li>
 				
 				<li class="dropdown">
-					<a href="index.html" data-toggle="dropdown" role="button" aria-expanded="false">
+					<a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=20" data-toggle="dropdown" role="button" aria-expanded="false">
 						게시판
 						<span class="caret"></span>
 					</a>

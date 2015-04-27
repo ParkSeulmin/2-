@@ -16,7 +16,7 @@
     <title>main</title>
     
     <!--  -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 	
@@ -45,9 +45,9 @@
 </head>
 <body>
 	 <c:import url="/Include/Header.jsp" />
-	 ---------------------------------------<br>
-	
-	 ---------------------------------------<br>
+
+		<%-- <c:import url="/Login/Login.jsp"></c:import> --%>
+
 	  <c:import url="/Include/Footer.jsp" />
 </body>
 </html>
