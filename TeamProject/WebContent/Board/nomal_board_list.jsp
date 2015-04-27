@@ -71,75 +71,69 @@
 	        interval: 5000 //changes the speed
 	    })
     </script>
+    
+    
+    
+   <!-- 테이블에 쓸려고 CSS -->
+    <!-- <link rel="stylesheet" href="http://www.wedaehan.com/css/default.css">
+    <link rel="stylesheet" href="http://www.wedaehan.com/css/board.css">
+    <link rel="stylesheet" type="text/css" href="http://www.wedaehan.com/css/main.css">
+    <link rel="stylesheet" type="text/css" href="http://www.wedaehan.com/css/sub.css">  -->
 </head>
 
 <body>
- <c:import url="/Include/Header.jsp" /> 
+ <c:import url="/Include/Header.jsp" />
+
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
-	<!-- <div style="padding: 200px;"> 임의임의임의  -->
+	<div> 
 	<input type="hidden" id="sessionid" value="<%=userid %>">	
 		<!-- 게시판 리스트 -->
-		<table width=570 border="0" cellpadding="0" cellspacing="0">
-			<tr align="center" valign="middle">
-				<td colspan="4"><%=boardname%></td>
-				<td align=right>
-					<font size=2>글 개수 : ${listcount }</font>
+		<div>${boardname}</div>
+		 <div class="bo_list">
+		<div class="tbl_head01 tbl_wrap">
+	        <table>
+				
+		       <tr>
+				<td align=left colspan="4">
+					<font size=2>Total : ${listcount}
+								| ${page} 페이지	
+					</font>
 				</td>
 			</tr>
-			
-			<tr align="center" valign="middle" bordercolor="#333333">
-				<td style="font-family:Tahoma;font-size:8pt;" width="8%" height="26">
-					<div align="center">번호</div>
-				</td>
-				<td style="font-family:Tahoma;font-size:8pt;" width="50%">
-					<div align="center">제목</div>
-				</td>
-				<td style="font-family:Tahoma;font-size:8pt;" width="14%">
-					<div align="center">작성자</div>
-				</td>
-				<td style="font-family:Tahoma;font-size:8pt;" width="17%">
-					<div align="center">날짜</div>
-				</td>
-				<td style="font-family:Tahoma;font-size:8pt;" width="11%">
-					<div align="center">조회수</div>
-				</td>
-			</tr>
-			
-			<%
+		        <tr>
+		            <th scope="col" class="td_num">번호</th>
+		            <th scope="col" class="td_num">제목</th>
+		            <th scope="col" class="td_name sv_use">글쓴이</th>
+		            <th scope="col" class="td_date"><a href="/bbs/board.php?bo_table=real_after&amp;sop=and&amp;sst=wr_datetime&amp;sod=desc&amp;sfl=&amp;stx=&amp;page=1">날짜</a></th>
+		            <th scope="col" class="td_num"><a href="/bbs/board.php?bo_table=real_after&amp;sop=and&amp;sst=wr_hit&amp;sod=desc&amp;sfl=&amp;stx=&amp;page=1">조회</a></th>
+		        </tr>
+		       
+	        	<tbody>
+	        	<%
 				for(int i=0;i<boardList.size();i++){
 					Board bl=(Board)boardList.get(i);
 					int rl=(Integer)replylistnum.get(i);					
-			%>
-					<tr align="center" valign="middle" bordercolor="#333333"
-						onmouseover="this.style.backgroundColor='F8F8F8'"
+				%>
+	                <tr class="" align="center" valign="middle" bordercolor="#333333"
+						onmouseover="this.style.backgroundColor='#FFEBFF'"
 						onmouseout="this.style.backgroundColor=''">
-						<td height="23" style="font-family:Tahoma;font-size:10pt;">
-							<%=bl.getBo_no()%>
-						</td>
-						
-						<td style="font-family:Tahoma;font-size:10pt;">
-							<div align="left">
-							
+	            <td class="td_num"> <%=bl.getBo_no()%> </td>
+	                        <td class="td_subject">
+	                
+	               
 							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">
 								<%=bl.getBo_title()%>
 							</a>
 							&nbsp;[<%=rl%>]
-							</div>
-						</td>
-						
-						<td style="font-family:Tahoma;font-size:10pt;">
-							<div align="center"><%=bl.getBo_writer() %></div>
-						</td>
-						<td style="font-family:Tahoma;font-size:10pt;">
-							<div align="center"><%=bl.getBo_date() %></div>
-						</td>	
-						<td style="font-family:Tahoma;font-size:10pt;">
-							<div align="center"><%=bl.getBo_count() %></div>
-						</td>
-					</tr>
-			<%		} 
+	
+	                <img src="http://www.wedaehan.com/skin/board/after/img/icon_hot.gif" alt="인기글">            </td>
+	            <td class="td_name sv_use"><span class="sv_member"><%=bl.getBo_writer()%></span></td>
+	            <td class="td_date"><%=bl.getBo_date() %></td>
+	            <td class="td_num"><%=bl.getBo_count() %></td>
+	       		 </tr>
+	               <%		} 
 				
 			%>
 			<tr align=center height=20>
@@ -212,8 +206,17 @@
 					 </script>
 				</td>
 			</tr>
-		</table>
-	<!-- </div> -->
+	            </tbody>
+	        </table>
+	    </div>
+	   </div>
+  	
+	 </div>
+	 
+	 
+	 
+	 
+	
  <c:import url="/Include/Footer.jsp" /> 
 
 </body>

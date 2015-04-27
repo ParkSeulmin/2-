@@ -39,8 +39,13 @@ hr {
 }
 
 
-/* �� ���� �� */
 
+/* -------------------------장혜정이장혜정이쓰고있다장혜정이 쓰고있음------------------------------- */
+/* 맨위  랩퍼 */
+#hd_wrapper {position:relative;margin:0 auto;padding:0;max-width:1280px;height:35px;zoom:1;overflow:hidden}
+#hd_wrapper:after {display:block;visibility:hidden;clear:both;content:""}
+
+/* 맨 위의 탭 */
 #tnb {float:right;margin:0;padding:0;list-style:none;zoom:1}
 #tnb li {float:left;margin:0px}
 #tnb a {display:inline-block;padding:11px 10px;color:#a1a1a4;letter-spacing:0em;font-size:10px;font-family:tahoma}
@@ -48,9 +53,74 @@ hr {
 
 #tnb div {display:inline-block;padding:11px 10px;color:#a1a1a4;letter-spacing:0em;font-size:13px;font-family:tahoma}
 
-#hd_wrapper {position:relative;margin:0 auto;padding:0;max-width:1280px;height:35px;zoom:1;overflow:hidden}
-#hd_wrapper:after {display:block;visibility:hidden;clear:both;content:""}
+/* board list */
+.tbl_wrap table {width:100%;border-collapse:collapse;border-spacing:0}
+.tbl_wrap caption {padding:10px 0;font-weight:bold;text-align:left}
 
+#bo_list {margin:0;padding:0em;font-size:0.95em}
+#bo_list .tbl_head01 {}
+#bo_list .tbl_head01 caption {}
+#bo_list .tbl_head01 thead th {padding:10px 0;border-top:1px solid #d1dee2;border-bottom:1px solid #d1dee2;background:#e5ecef;color:#383838;font-size:0.95em;text-align:center;}
+#bo_list .tbl_head01 thead a {}
+#bo_list .tbl_head01 thead th input {} /* middle */
+#bo_list .tbl_head01 tfoot th {}
+#bo_list .tbl_head01 tfoot td {}
+#bo_list .tbl_head01 tbody th {}
+#bo_list .tbl_head01 td {padding:12px 0.25em;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9;line-height:1.5em;word-break:break-all}
+#bo_list .tbl_head01 a {}
+#bo_list td.empty_table {}
+
+#bo_list .td_board {text-align:center;}
+#bo_list .td_chk {width:2em;text-align:center}
+#bo_list .td_date {display:none;width:4em;text-align:center}
+#bo_list .td_datetime {display:none;display:none;text-align:center}
+#bo_list .td_group {display:none;text-align:center}
+#bo_list .td_mb_id {display:none;text-align:center}
+#bo_list .td_mng {text-align:center;margin:0;padding:0}
+#bo_list .td_age {text-align:center}
+#bo_list .td_height {text-align:center}
+#bo_list .td_school {text-align:center}
+#bo_list .td_work {text-align:center}
+#bo_list .td_img{text-align:center;margin:0;padding:0}
+#bo_list .td_img img{width:65px;height:86px;text-align:center;margin:0;padding:0}
+#bo_list .td_img2{width:100px;text-align:left;}
+#bo_list .td_img2 img{width:90px;height:90px;text-align:center}
+#bo_list .td_name {display:none;text-align:center;font-size:0.95em}
+#bo_list .td_nick {display:none;text-align:center}
+#bo_list .td_num {display:none;text-align:center}
+#bo_list .td_numbig {display:none;text-align:center}
+
+#bo_list .txt_active {color:#5d910b}
+#bo_list .txt_expired {color:#ccc}
+
+
+.bo_fx {margin-bottom:5px;zoom:1; align:right;}
+.bo_fx:after {display:block;visibility:hidden;clear:both;content:""}
+.bo_fx ul {margin:0;padding:0;list-style:none}
+#bo_list_total {float:left;padding-top:5px}
+
+/* 테이블 항목별 정의 */
+.td_board {text-align:center}
+.td_category {text-align:center}
+.td_subject {text-align:left}
+.td_chk {text-align:center}
+.td_date {text-align:center}
+.td_datetime {text-align:center}
+.td_group {text-align:center}
+.td_mb_id {text-align:center}
+.td_mng {text-align:center}
+.td_name {text-align:left}
+.td_nick {text-align:center}
+.td_num {text-align:center}
+.td_numbig {text-align:center}
+.td_stat {text-align:center}
+
+.txt_active {color:#5d910b}
+.txt_done {color:#e8180c}
+.txt_expired {color:#ccc}
+.txt_rdy {color:#8abc2a}
+
+/* -------------------------장혜정이장혜정이쓰고있다장혜정이 쓰고있음------------------------------- */
 
 .brand,
 .address-bar {
