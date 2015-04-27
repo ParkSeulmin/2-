@@ -8,7 +8,9 @@
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script type="text/javascript">
 		
-		$(function() {
+
+		
+		<%-- $(function() {
 			$("#idfindbtn").click(function() {
 				console.log("btnclicked");
 				$.ajax({
@@ -20,7 +22,7 @@
 						}
 				});
 			});
-		});
+		}); --%>
 	</script>
 </head>
 <body>
@@ -39,7 +41,7 @@
 				<td><input type="text" name="email_domain" size="20"></td>
 			</tr>
 			<tr>
-				<td><input type="button" id="idfindbtn" value="아이디 찾기"></td>
+				<td><input type="submit" id="idfindbtn" value="아이디 찾기"></td>
 				<td><input type="reset" value="다시작성"></td>
 			</tr>
 		</table>

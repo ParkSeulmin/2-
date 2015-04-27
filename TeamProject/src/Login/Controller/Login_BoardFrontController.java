@@ -46,6 +46,8 @@ public class Login_BoardFrontController extends HttpServlet {
 
 		if (cmd.equals("/Login/find_id.check")) {// 명령이 id찾기인 경우
 			try {
+				System.out.println("ㅁ머나이러ㅏㅁ닝러ㅏㅣㅁㄴㅇ러ㅏㅣ 값은 넘어감");
+				
 				forward = new ActionForward();
 				action = new Login_Id_Check_Action();//
 				// 액션에서 만들어 온 forward 객체를 가져옴.(Execute)
