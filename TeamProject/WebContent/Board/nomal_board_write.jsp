@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%
-	//String id=(String)session.getAttribute("id"); 
+	String userid=(String)session.getAttribute("userid"); 
 	// 일단 wirte 기능을 처리하기 위해
 	//String id = request.getParameter("id");
-	String id = "HYEJUNG22";
+	//String id = "HYEJUNG22";
 
 	int boardtype = Integer.parseInt(request.getParameter("boardtype"));
 	System.out.println("write boardtype: "+boardtype);
@@ -19,6 +19,11 @@
 	<script language="javascript">
 		function addboard(){
 			
+			if (!boardform.bo_title.value) {
+				alert("제목을 입력하세요");
+				boardform.bo_title.focus();
+				return false;
+			}
 			
 			var ckeditor = CKEDITOR.instances['bo_content']; //객체가져오기
 	        if (ckeditor.getData()=="") {//null값은 안옴 = 빈문자열
@@ -39,7 +44,7 @@
 		<!-- 게시판 등록 -->
 		<form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
 			enctype="multipart/form-data" name="boardform">
-		<input type="hidden" name="BOARD_ID" value="<%=id %>">
+		<input type="hidden" name="BOARD_ID" value="<%=userid %>">
 		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr align="center" valign="middle">
 				<td colspan="5">MVC 게시판</td>
@@ -50,7 +55,7 @@
 				</td>
 				<td>
 					<input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
-						value="<%=id %>" readonly/>
+						value="<%=userid %>" readonly/>
 					
 				</td>
 			</tr>
