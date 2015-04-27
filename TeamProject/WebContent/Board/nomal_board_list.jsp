@@ -27,13 +27,47 @@
 	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  
+	  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>board</title>
+   
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style type="text/css">
+	
+		#tnb {float:right;margin:0;padding:0;list-style:none;zoom:1}
+		#tnb li {float:left;margin:0px}
+		#tnb a {display:inline-block;padding:11px 10px;color:#a1a1a4;letter-spacing:0em;font-size:10px;font-family:tahoma}
+		#tnb a:focus, #tnb a:hover, #tnb a:active {text-decoration:none}
+	
+	</style>
   	
 </head>
 
 <body>
-<c:import url="/Include/Header.jsp" />
+ <c:import url="/Include/Header.jsp" /> 
 		
-	<div style="padding: 200px;"> <!-- 임의임의임의  -->
+	<!-- <div style="padding: 200px;"> 임의임의임의  -->
 	<input type="hidden" id="sessionid" value="<%=userid %>">	
 		<!-- 게시판 리스트 -->
 		<table width=570 border="0" cellpadding="0" cellspacing="0">
@@ -138,10 +172,45 @@
 					</div> --%>
 					
 					<a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">[글쓰기]</a>
+					<div  id="dialog-message" title="글쓰기">
+					  <p>
+					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+					    	회원만 게시물 등록이 가능합니다^ ^
+					  </p>
+					  <p>
+					     <b>로그인 해주세요^ ^</b>.
+					  </p>
+					</div>
+					<script>
+					  	$(function(){
+							//var sessionid = $('#sessionid').val();
+							
+							$("#dialog-message").dialog({
+									 autoOpen: false,
+									 modal: true,
+									 buttons: {
+										Ok: function() {
+											
+											$( this ).dialog( "close" );
+										
+										}
+								     }
+								});
+							
+						   	$('#writeboard').click(function(){
+						   		//if(sessionid == null){	
+						   			$("#dialog-message").dialog( "open" );
+						   			
+						   			
+						   	 	//}
+					 		});
+						});
+					 </script>
 				</td>
 			</tr>
 		</table>
-	</div>
-<c:import url="/Include/Footer.jsp" />
+	<!-- </div> -->
+ <c:import url="/Include/Footer.jsp" /> 
+
 </body>
 </html>

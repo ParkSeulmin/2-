@@ -1,5 +1,6 @@
 package Login.Action;
 import java.util.Properties;
+
 import javax.activation.CommandMap;
 import javax.activation.MailcapCommandMap;
 import javax.mail.Authenticator;
@@ -13,16 +14,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import Login.DTO.Member;
+
 public class mailtest {
-	public static void main(String[] args){
-		try{
-			new mailtest();
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}
-	}
-	public mailtest() throws Exception{
+	public mailtest(Member result) throws Exception{
 		
         Properties props = new Properties(); 
         props.setProperty("mail.transport.protocol", "smtp"); 
@@ -33,6 +28,12 @@ public class mailtest {
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"); 
         props.put("mail.smtp.socketFactory.fallback", "false"); 
         props.setProperty("mail.smtp.quitwait", "false");
+        
+        Member member = result;
+        String id = member.getId();
+        String pwd = member.getPw();
+        String name = member.getName();
+        String email = member.getEmail();
         
         Action_PwdSearch ap = new Action_PwdSearch();
         
@@ -48,14 +49,22 @@ public class mailtest {
         MimeMessage message = new MimeMessage(session); 
         message.setSender(new InternetAddress("hyun74445874@gmail.com")); //보내는 사람 ID
         
-        message.setSubject("test"); //제목
+        if(member.getId() != null ){
+        	message.setSubject("ID 확인"); //제목
+        }else if(member.getPw() != null){
+        	message.setSubject("비밀번호 확인"); //제목
+        }
 
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress("hyun5874@naver.com")); //받는사람 ID
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(email)); //받는사람 ID
         
         Multipart mp = new MimeMultipart();
         MimeBodyPart mbp1 = new MimeBodyPart();
         
-        mbp1.setText("Test Contents"); //내용
+        if(member.getId() != null ){
+        	mbp1.setText(name + "님의 ID는 : " + id); //내용
+        }else if(member.getPw() != null){
+        	mbp1.setText(name + "님의 비밀번호는 : " + pwd); //내용
+        }
         
         mp.addBodyPart(mbp1);
 
@@ -71,4 +80,5 @@ public class mailtest {
         
         Transport.send(message);
 	}
+
 }
