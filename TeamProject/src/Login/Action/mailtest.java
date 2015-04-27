@@ -49,7 +49,11 @@ public class mailtest {
         MimeMessage message = new MimeMessage(session); 
         message.setSender(new InternetAddress("hyun74445874@gmail.com")); //보내는 사람 ID
         
-        message.setSubject("비밀번호 확인"); //제목
+        if(member.getId() != null ){
+        	message.setSubject("ID 확인"); //제목
+        }else if(member.getPw() != null){
+        	message.setSubject("비밀번호 확인"); //제목
+        }
 
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(email)); //받는사람 ID
         
@@ -57,7 +61,7 @@ public class mailtest {
         MimeBodyPart mbp1 = new MimeBodyPart();
         
         if(member.getId() != null ){
-        	mbp1.setText(name + "님의 비밀번호는 : " + id); //내용
+        	mbp1.setText(name + "님의 ID는 : " + id); //내용
         }else if(member.getPw() != null){
         	mbp1.setText(name + "님의 비밀번호는 : " + pwd); //내용
         }
