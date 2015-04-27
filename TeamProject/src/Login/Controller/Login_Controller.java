@@ -52,7 +52,7 @@ public class Login_Controller extends HttpServlet {
 	     		   e.printStackTrace();
 	     	   }
 			
-		} else if(command.equals("Main.html")){
+		} else if(command.equals("Main")){
 			RequestDispatcher dis = req
 					.getRequestDispatcher("/Main.html");
 			dis.forward(req, res);

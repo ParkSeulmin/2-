@@ -15,12 +15,14 @@
        <c:choose>
        		<c:when test="${userid != null}">
        			<li><div id='#welcomeuser'>[${userid}] 님 환영합니다.</div></li>
+       			<li><a href="<%=request.getContextPath()%>/Login.login">LogOut</a></li>
        		</c:when>
        		<c:otherwise>
        			<li><a href="#">MEMBER</a></li>
 				<li><a href="<%=request.getContextPath()%>/Login/Login.jsp"><b>LOGIN</b></a></li>
        		</c:otherwise>
        </c:choose>
+       			
 				<li><a href="#">SITE MAP</a></li>
 				<li><a href="#">CONTACT US</a></li>
 		</ul>   

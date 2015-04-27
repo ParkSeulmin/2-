@@ -11,7 +11,16 @@ public class Member {
 	private int gender;//성별
 	private int age;//나이
 	private String address;
+	private int admin;
 	
+	
+	
+	public int getAdmin() {
+		return admin;
+	}
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
 	public String getAddress() {
 		return address;
 	}

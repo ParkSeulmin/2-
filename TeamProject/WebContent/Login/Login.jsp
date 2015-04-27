@@ -62,13 +62,13 @@
 				<tr>
 					<td>
 						<div class="form-group col-lg-4" align="center">
-							<label>아이디</label> <input type="text" name="mb_id" id="login_id"
+							<label>아이디&nbsp;&nbsp;&nbsp;&nbsp;</label> <input type="text" name="mb_id" id="login_id"
 								size="20" maxlength="20">
 						</div>
 
 						<div class="form-group col-lg-4" align="center">
 							<label>비밀번호</label> <input type="password" name="mb_password"
-								maxlength="20">
+								maxlength="20" size="20" >
 						</div>
 					</td>
 
