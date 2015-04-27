@@ -2,11 +2,13 @@
 package Board.Action;
 
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
-
 import Board.DTO.Reply;
 
 
@@ -22,6 +24,20 @@ public class ReplyAddAction implements Action {
 
    		
    		boolean result=false;
+   		
+   		HttpSession session=request.getSession();
+		String userid=(String)session.getAttribute("userid");
+		
+		if(userid == null){
+	   		response.setContentType("text/html;charset=utf-8");
+	   		PrintWriter out=response.getWriter();
+	   		out.println("<script>");
+	   		out.println("alert('회원만 댓글 등록이 가능합니다.');");
+	   		out.println("history.back();");
+	   		out.println("</script>");
+	   		out.close();
+	   		return null;
+	   	}   		
    		
    		try{
    			

@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
@@ -18,23 +19,28 @@ import Board.DTO.Board;
 		 boolean result = false;
 		 
 		 int num=Integer.parseInt(request.getParameter("BOARD_NUM"));
+		 HttpSession session=request.getSession();
+		 String userid=(String)session.getAttribute("userid");
+		 
+		 System.out.println("수정 할때 session id: "+ userid);
 		 
 		 BoardDAO boarddao=new BoardDAO();
 		 Board boarddata=new Board();
 		 
-		 /*boolean usercheck=boarddao.isBoardWriter(
-				 				num, request.getParameter("BOARD_ID"));
+		 boolean usercheck = false;
+		 usercheck=boarddao.isBoardWriter(num, userid);
+		
 		 if(usercheck==false){
 		   		response.setContentType("text/html;charset=utf-8");
 		   		PrintWriter out=response.getWriter();
 		   		out.println("<script>");
 		   		out.println("alert('수정할 권한이 없습니다.');");
-		   		out.println("location.href='./BoardList.bo';");
+		   		out.println("history.back();");
 		   		out.println("</script>");
 		   		out.close();
 		   		return null;
 		 }
-		 */
+		 
 		 try{
 			 boarddata.setBo_no(num);
 			 boarddata.setBo_title(

@@ -69,4 +69,13 @@
     <servlet-name>DateController</servlet-name>
     <url-pattern>*.daa</url-pattern>
   </servlet-mapping>
+    
+<servlet>
+    <servlet-name>PartyController</servlet-name>
+    <servlet-class>Meeting.Controller.PartyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PartyController</servlet-name>
+    <url-pattern>*.party</url-pattern>
+  </servlet-mapping>
 </web-app>

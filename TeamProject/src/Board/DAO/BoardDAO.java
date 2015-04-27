@@ -365,7 +365,64 @@ public class BoardDAO {
 			return false;
 		}
 		
-		//댓글 삭제
+				//글쓴이인지 확인.
+				public boolean isBoardWriter(int num,String userid){
+					System.out.println("id="+userid);
+					String board_sql=
+						"select * from board where bo_no=?";
+					
+					try{
+						con=ds.getConnection();
+						pstmt=con.prepareStatement(board_sql);
+						pstmt.setInt(1, num);
+						rs=pstmt.executeQuery();
+						rs.next();
+						
+						if(rs.getString("bo_writer").equals(userid)){
+							return true;
+						}
+					}catch(SQLException ex){
+						System.out.println("isBoardWriter 에러 : "+ex);
+					}
+					finally{
+						try{
+							if(pstmt!=null)pstmt.close();
+							if(con!=null)con.close();
+						}catch(Exception ex) {}
+					}
+					return false;
+				}
+				
+				
+				//댓글 글쓴이인지 확인.
+				public boolean isReplyWriter(int num,String userid){
+					System.out.println("id="+userid);
+					String board_sql=
+						"select * from reply where r_no=?";
+					
+					try{
+						con=ds.getConnection();
+						pstmt=con.prepareStatement(board_sql);
+						pstmt.setInt(1, num);
+						rs=pstmt.executeQuery();
+						rs.next();
+						
+						if(rs.getString("RE_WRITER").equals(userid)){
+							return true;
+						}
+					}catch(SQLException ex){
+						System.out.println("isREplydWriter 에러 : "+ex);
+					}
+					finally{
+						try{
+							if(pstmt!=null)pstmt.close();
+							if(con!=null)con.close();
+						}catch(Exception ex) {}
+					}
+					return false;
+				}
+				
+				//댓글 삭제
 				public boolean ReplyDelete(int num){
 					String del_reply_sql = 
 							"delete from reply where r_no=?";
@@ -395,5 +452,34 @@ public class BoardDAO {
 					return false;
 				}
 		
+				// board name 가져오기
+				public String getBoardName(int boardtype){
+					System.out.println("getBoardName="+boardtype);
+					String boardname_sql=
+						"select bo_name from boardtype where bo_id=?";
+					String boardname = null;
+					try{
+						con=ds.getConnection();
+						pstmt=con.prepareStatement(boardname_sql);
+						pstmt.setInt(1, boardtype);
+						rs=pstmt.executeQuery();
+						
+						if(rs.next()){
+							boardname = rs.getString("bo_name");
+						}
+							
+						
+						return boardname;
+					}catch(SQLException ex){
+						System.out.println("isREplydWriter 에러 : "+ex);
+					}
+					finally{
+						try{
+							if(pstmt!=null)pstmt.close();
+							if(con!=null)con.close();
+						}catch(Exception ex) {}
+					}
+					return null;
+				}
 }
 	

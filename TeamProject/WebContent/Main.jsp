@@ -7,6 +7,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="Stylesheet" href="style/default.css">
+<title>Main</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +20,7 @@
     <title>main</title>
     
     <!--  -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
     <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 	
@@ -45,9 +49,9 @@
 </head>
 <body>
 	 <c:import url="/Include/Header.jsp" />
-	 ---------------------------------------<br>
-	
-	 ---------------------------------------<br>
+
+		<%-- <c:import url="/Login/Login.jsp"></c:import> --%>
+
 	  <c:import url="/Include/Footer.jsp" />
 </body>
 </html>

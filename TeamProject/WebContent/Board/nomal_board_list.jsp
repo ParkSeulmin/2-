@@ -18,15 +18,15 @@
 	int startpage=((Integer)request.getAttribute("startpage")).intValue();
 	int endpage=((Integer)request.getAttribute("endpage")).intValue();
 	int boardtype = ((Integer)request.getAttribute("boardtype")).intValue();
+	
+	String boardname = (String)request.getAttribute("boardname");
 %>
 
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>MVC 게시판</title>
-	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<title><%= boardname %></title>
+	  
 	  
 	  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,12 +36,16 @@
 
     <title>board</title>
    
+	  <!--  -->
+ 
+    <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/business-casual.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/business-casual.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -58,21 +62,28 @@
 		#tnb {float:right;margin:0;padding:0;list-style:none;zoom:1}
 		#tnb li {float:left;margin:0px}
 		#tnb a {display:inline-block;padding:11px 10px;color:#a1a1a4;letter-spacing:0em;font-size:10px;font-family:tahoma}
+		#tnb #welcomeuser {display:inline-block;padding:11px 10px;color:#a1a1a4;letter-spacing:0em;font-size:10px;font-family:tahoma}
 		#tnb a:focus, #tnb a:hover, #tnb a:active {text-decoration:none}
 	
 	</style>
-  	
+  	<script>+
+	    $('.carousel').carousel({
+	        interval: 5000 //changes the speed
+	    })
+    </script>
 </head>
 
 <body>
  <c:import url="/Include/Header.jsp" /> 
-		
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
 	<!-- <div style="padding: 200px;"> 임의임의임의  -->
 	<input type="hidden" id="sessionid" value="<%=userid %>">	
 		<!-- 게시판 리스트 -->
 		<table width=570 border="0" cellpadding="0" cellspacing="0">
 			<tr align="center" valign="middle">
-				<td colspan="4">MVC 게시판</td>
+				<td colspan="4"><%=boardname%></td>
 				<td align=right>
 					<font size=2>글 개수 : ${listcount }</font>
 				</td>
@@ -160,18 +171,15 @@
 					<%-- <%if(id!=null && id.equals("admin")){%>
 						<a href="./MemberListAction.me">[회원관리]</a>
 					<%}%> --%>
-					<%-- <input type="hidden" id="sessionid" value="<%=userid%>">	
-					<div  id="dialog-message" title="글쓰기">
-					  <p>
-					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-					    	회원만 게시물 등록이 가능합니다^ ^
-					  </p>
-					  <p>
-					     <b>로그인 해주세요^ ^</b>.
-					  </p>
-					</div> --%>
+					<c:choose>
+						<c:when test="${userid != null}">
+							<a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">[글쓰기]</a>
+						</c:when>
+						<c:otherwise>
+						    <a href="#" id="writeboarderror">[글쓰기]</a>
+						</c:otherwise>
+					</c:choose>
 					
-					<a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">[글쓰기]</a>
 					<div  id="dialog-message" title="글쓰기">
 					  <p>
 					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
@@ -181,28 +189,24 @@
 					     <b>로그인 해주세요^ ^</b>.
 					  </p>
 					</div>
+					
 					<script>
 					  	$(function(){
-							//var sessionid = $('#sessionid').val();
 							
 							$("#dialog-message").dialog({
 									 autoOpen: false,
 									 modal: true,
 									 buttons: {
 										Ok: function() {
-											
+											//$('#writeboard').attr("href", "#");
 											$( this ).dialog( "close" );
 										
 										}
 								     }
 								});
 							
-						   	$('#writeboard').click(function(){
-						   		//if(sessionid == null){	
+						   	$('#writeboarderror').click(function(){
 						   			$("#dialog-message").dialog( "open" );
-						   			
-						   			
-						   	 	//}
 					 		});
 						});
 					 </script>

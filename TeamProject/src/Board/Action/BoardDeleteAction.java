@@ -15,27 +15,28 @@ public class BoardDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("utf-8");
 		
-		//HttpSession session=request.getSession();
-		//String id=(String)session.getAttribute("id");
+		HttpSession session=request.getSession();
+		String userid=(String)session.getAttribute("userid");
+		int boardtype = Integer.parseInt(request.getParameter("boardtype"));
 		
 	   	boolean result=false;
-	   	//boolean usercheck=false;
+	   	boolean usercheck=false;
 	   	int num=Integer.parseInt(request.getParameter("num"));
 	   	
 	   	BoardDAO boarddao=new BoardDAO();
-	   	/*usercheck=boarddao.isBoardWriter(num, id);
+	   	usercheck = boarddao.isBoardWriter(num, userid);
 	   	
 	   	if(usercheck==false){
 	   		response.setContentType("text/html;charset=utf-8");
 	   		PrintWriter out=response.getWriter();
 	   		out.println("<script>");
 	   		out.println("alert('삭제할 권한이 없습니다.');");
-	   		out.println("location.href='./BoardList.bo';");
+	   		out.println("history.back();");
 	   		out.println("</script>");
 	   		out.close();
 	   		return null;
-	   	}*/
-	   	int boardtype = Integer.parseInt(request.getParameter("boardtype"));
+	   	}
+	   	
 	   	result=boarddao.boardDelete(num);
 	
 	   	String msg = "";
