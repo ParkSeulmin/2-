@@ -26,7 +26,7 @@
 	<!-- 로그인 시작 { -->
 	<div id="mb_login" class="mbskin">
 		<h1>로그인</h1>
-
+		
 		<form name="flogin"
 			action="Login.login?cmd=logincheck"
 			onsubmit="return flogin_submit(this);" method="post">

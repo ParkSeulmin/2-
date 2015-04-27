@@ -51,8 +51,8 @@ public class Action_PwdSearch implements Action {
 		System.out.println("여기까진될까?");
 		PwdSearch_DAO dao = new PwdSearch_DAO();
 		Member result = dao.Search_Pwd(member);
-		String error = "잘못넣었습니다.";
-		String result1 = "잘못다.";
+		String error = "정보틀림";
+		String result1 = "정보맞음";
 		
 		if(result != null){
 			mailtest(result);
