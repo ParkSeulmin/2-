@@ -81,17 +81,13 @@
 
 			<div id="login_info" align="center">
 				<div>
-					<<<<<<< HEAD ======= <a href="Login_Find_Id.jsp"
+					<a href="Login_Find_Id.jsp"
 						id="login_password_lost" class="btn02">아이디 찾기 </a> <a
 						href="PwdSearch.jsp" id="login_password_lost" class="btn02">비밀번호
 						찾기 </a> <a href="./register.php" class="btn01">회원 가입</a>
 				</div>
 				</aside>
-				>>>>>>> branch 'master' of
-				https://github.com/ParkSeulmin/2Team_Project.git <a
-					href="Login_Find_Id.html" id="login_password_lost" class="btn02">아이디
-					찾기 </a> <a href="PwdSearch.jsp" id="login_password_lost" class="btn02">비밀번호
-					찾기 </a> <a href="./register.php" class="btn01">회원 가입</a>
+				
 			</div>
 	</div>
 
@@ -169,7 +165,6 @@
 			return true;
 		}
 	</script>
-	<<<<<<< HEAD =======
 	<!-- } 로그인 끝 -->
 
 	<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->

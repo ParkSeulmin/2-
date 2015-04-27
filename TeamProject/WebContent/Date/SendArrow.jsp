@@ -103,9 +103,9 @@
 			</tr>
 			<tr> 
 				<td><img alt="" src="../Images/111.JPG" height="100" width="150" id="img" name="img"></td>
-				<td><input type="text" value="junghyun" name="name"></td>
-				<td><input type="text" value="sungnam" name="add"></td>
-				<td><input type="text" value="30" name="age"></td>
+				<td>김정현</td>
+				<td>경기도 성남시</td>
+				<td>32</td>
 				<td><input type="submit" value="신청" class="btn_submit"></td>
 			</tr>
 		</table>
