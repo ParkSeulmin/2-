@@ -1,4 +1,3 @@
-<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,22 +8,16 @@
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script type="text/javascript">
 		
-		
 		$(function() {
 			$("#idfindbtn").click(function() {
-				<% Member mb= (Member)request.getAttribute("member");%>
-				console.log(<%=mb%>);
+				console.log("btnclicked");
 				$.ajax({
 					method : "GET",
 					url : "find_id.check",
 					dataType : "html",
-					success : function(data) { //서버가 보낸 data
-						if(<%=mb%> != null){
-							$('#respan').text("Email로 당신의 ID가 발송 되었습니다.");}
-						else{
-							$('#respan').text("일치하지 않습니다..");
+					success:function(data){ //서버가 보낸 data
+							$('#respan').html(data);	
 						}
-					}
 				});
 			});
 		});

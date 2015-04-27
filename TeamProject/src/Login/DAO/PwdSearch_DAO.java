@@ -45,7 +45,6 @@ public class PwdSearch_DAO {
 			if(rs.next()){
 				result = new Member();
 				result.setName(rs.getString("u_name"));
-				result.setId(rs.getString("u_id"));
 				result.setEmail(rs.getString("u_email"));
 				result.setPw(rs.getString("u_pwd"));	
 				System.out.println("객체 생성 확인");
