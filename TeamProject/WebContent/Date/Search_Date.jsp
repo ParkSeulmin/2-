@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-<script type="text/javascript" src="http://www.antisingle.com/js_new/jquery.selectbox-0.2.js"></script>
+<%
+	session.setAttribute("user", "gathering1");
+%>
+<script type="text/javascript"
+	src="http://www.antisingle.com/js_new/jquery.selectbox-0.2.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -171,7 +177,7 @@
 						<option value="200.HEIGHT">200</option>
 				</select>
 				</li>
-				
+
 				<li>연봉 <select name="search_pay">
 						<option value="0.SAL">무관</option>
 						<option value="1000.SAL">1000</option>
@@ -181,39 +187,38 @@
 						<option value="5000.SAL">5000</option>
 				</select>
 				</li>
-				
+
 				<li><select name="job">
-					<option value="0.JOB">직업선택</option>
-					<option value="관리.JOB">관리</option> 
-					<option value="건설.JOB">건설</option>
-					<option value="경비.JOB">경비</option>
-					<option value="경영.JOB">경영/회계,사무</option>
-					<option value="교육.JOB">교육/연구</option>
-					<option value="금융.JOB">금융/보험</option>
-					<option value="군인.JOB">군인</option>
-					<option value="기계.JOB">기계</option>
-					<option value="농림어업.JOB">농림어업</option>
-					<option value="문화.JOB">문화/예술/방송</option>
-					<option value="미용.JOB">미용,숙박,여행</option>
-					<option value="법률.JOB">법률/경찰/소방/교도</option>
-					<option value="보건.JOB">보건/의료</option>
-					<option value="사회복지.JOB">사회복지/종교</option>
-					<option value="섬유.JOB">섬유/의복</option>
-					<option value="식품가공.JOB">식품가공</option>
-					<option value="영업.JOB">영업/판매</option>
-					<option value="운전.JOB">운전/운송</option>
-					<option value="전기.JOB">전기/전자</option>
-					<option value="인쇄.JOB">인쇄/목재/가구</option>
-					<option value="화학.JOB">화학</option>
-					<option value="학생.JOB">학생</option>
-					<option value="대학생.JOB">대학(원)생</option>
-					<option value="기타.JOB">기타</option>
-					
-					
+						<option value="0.JOB">직업선택</option>
+						<option value="관리.JOB">관리</option>
+						<option value="건설.JOB">건설</option>
+						<option value="경비.JOB">경비</option>
+						<option value="경영.JOB">경영/회계,사무</option>
+						<option value="교육.JOB">교육/연구</option>
+						<option value="금융.JOB">금융/보험</option>
+						<option value="군인.JOB">군인</option>
+						<option value="기계.JOB">기계</option>
+						<option value="농림어업.JOB">농림어업</option>
+						<option value="문화.JOB">문화/예술/방송</option>
+						<option value="미용.JOB">미용,숙박,여행</option>
+						<option value="법률.JOB">법률/경찰/소방/교도</option>
+						<option value="보건.JOB">보건/의료</option>
+						<option value="사회복지.JOB">사회복지/종교</option>
+						<option value="섬유.JOB">섬유/의복</option>
+						<option value="식품가공.JOB">식품가공</option>
+						<option value="영업.JOB">영업/판매</option>
+						<option value="운전.JOB">운전/운송</option>
+						<option value="전기.JOB">전기/전자</option>
+						<option value="인쇄.JOB">인쇄/목재/가구</option>
+						<option value="화학.JOB">화학</option>
+						<option value="학생.JOB">학생</option>
+						<option value="대학생.JOB">대학(원)생</option>
+						<option value="기타.JOB">기타</option>
 				</select></li>
 			</ul>
 			<input type="submit" value="검색" class="btn_submit">
 		</form>
 	</div>
 
-</body></html>
+</body>
+</html>

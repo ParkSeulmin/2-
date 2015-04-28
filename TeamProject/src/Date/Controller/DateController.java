@@ -12,7 +12,7 @@ import Date.Action.ActionDate;
 import Login.Action.ActionForward;
 import Login.DTO.Member;
 
-//@WebServlet("/DateController")
+
 public class DateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +36,13 @@ public class DateController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String cmd = RequestURI.substring(contextPath.length());
 		if(cmd.equals("/Date/SendArrow.daa")){	
+			
+			String sender_id=request.getParameter("sender");
+			String u_id=request.getParameter("id");
+			
+			request.setAttribute("sender", sender_id);
+			request.setAttribute("id", u_id);
+			
 			try {
 				forward = new ActionForward();
 				action = new ActionDate();
