@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
 import Board.DTO.Reply;
+import Login.DTO.Member;
 
  public class BoardDetailAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) 
@@ -21,8 +22,13 @@ import Board.DTO.Reply;
 	   	
 		int num=Integer.parseInt(request.getParameter("num"));
 		String sessionid = "";
-		if(request.getSession().getAttribute("userid") != null){	
-			sessionid = (String)request.getSession().getAttribute("userid");
+		if(request.getSession().getAttribute("user") != null){
+			Member user = null;
+			user = (Member)request.getSession().getAttribute("user");
+			System.out.println("board detail member: "+user);
+			if(boarddao.isBoardWriter(num, user.getId())){
+				sessionid=user.getId();
+			}		
 		}
 		
 		// userid(session id)와 글쓴이가 같으면 조회수가 올라가지 않는다.

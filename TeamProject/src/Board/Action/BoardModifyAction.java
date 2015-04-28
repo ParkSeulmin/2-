@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
+import Login.DTO.Member;
 
 
 
@@ -20,15 +21,15 @@ import Board.DTO.Board;
 		 
 		 int num=Integer.parseInt(request.getParameter("BOARD_NUM"));
 		 HttpSession session=request.getSession();
-		 String userid=(String)session.getAttribute("userid");
+		 Member user=(Member)session.getAttribute("user");
 		 
-		 System.out.println("수정 할때 session id: "+ userid);
+		 System.out.println("수정 할때 session id: "+ user.getId());
 		 
 		 BoardDAO boarddao=new BoardDAO();
 		 Board boarddata=new Board();
 		 
 		 boolean usercheck = false;
-		 usercheck=boarddao.isBoardWriter(num, userid);
+		 usercheck=boarddao.isBoardWriter(num, user.getId());
 		
 		 if(usercheck==false){
 		   		response.setContentType("text/html;charset=utf-8");

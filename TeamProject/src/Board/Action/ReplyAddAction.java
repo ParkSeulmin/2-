@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
 import Board.DTO.Reply;
+import Login.DTO.Member;
 
 
 
@@ -26,9 +27,9 @@ public class ReplyAddAction implements Action {
    		boolean result=false;
    		
    		HttpSession session=request.getSession();
-		String userid=(String)session.getAttribute("userid");
+		Member user=(Member)session.getAttribute("user");
 		
-		if(userid == null){
+		if(user == null){
 	   		response.setContentType("text/html;charset=utf-8");
 	   		PrintWriter out=response.getWriter();
 	   		out.println("<script>");
@@ -53,7 +54,7 @@ public class ReplyAddAction implements Action {
 	   		String msg = "";
 	   		String url = "";
 	   		if(result == false){
-	   			msg = "댓글 등록 실패";
+	   			msg = "1자 이상 써주세요";
 	   			url = "./BoardDetailAction.bo?num="+bo_no;
 	   		}else{
 	   			msg = "댓글 등록 성공";

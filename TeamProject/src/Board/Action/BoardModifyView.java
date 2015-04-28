@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
+import Login.DTO.Member;
 
 
 public class BoardModifyView implements Action {
@@ -21,8 +22,11 @@ public class BoardModifyView implements Action {
 		   	
 			int num=Integer.parseInt(request.getParameter("num"));
 			HttpSession session=request.getSession();
-			String userid=(String)session.getAttribute("userid");
-			
+			Member user=(Member)session.getAttribute("user");
+			String userid = "";
+			if(user != null){
+				userid = user.getId();
+			}
 			boolean usercheck=false;
 			usercheck = boarddao.isBoardWriter(num, userid);
 			

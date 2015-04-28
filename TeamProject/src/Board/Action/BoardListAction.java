@@ -1,5 +1,6 @@
 ﻿package Board.Action;
 
+import java.io.PrintWriter;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,19 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
+import Login.DTO.Member;
 
  public class BoardListAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		ActionForward forward= new ActionForward();
 		HttpSession session=request.getSession();
 		
-	/*	String id=(String)session.getAttribute("id");
-   		if(id==null){
-			forward.setRedirect(true);
-			forward.setPath("./MemberLogin.me");
-			return forward;
-   		}*/
-   		
 		BoardDAO boarddao=new BoardDAO();
 		List boardlist=new ArrayList();
 		List replylistnum = new ArrayList();
@@ -29,14 +24,56 @@ import Board.DTO.Board;
 		int limit=10;
 		int boardtype=20; // 게시판 타입
 		
+		if(request.getParameter("boardtype")!=null){
+			boardtype = Integer.parseInt(request.getParameter("boardtype"));
+		}
 		
+		
+		// session user 가져와서 여자인지 남자인지 
+		Member user = null;
+		user=(Member)session.getAttribute("user");
+		
+		if(boardtype==30 || boardtype==40){
+			if(user == null){
+		   		response.setContentType("text/html;charset=utf-8");
+		   		PrintWriter out=response.getWriter();
+		   		out.println("<script>");
+		   		out.println("alert('이 게시물은 회원만 열람이 가능합니다.');");
+		   		out.println("history.back();");
+		   		out.println("</script>");
+		   		out.close();
+		   		return null;
+		   	}else{
+		   		if(boardtype == 30){	// 남자 게시판 일때
+		   			if(user.getGender() != 1){	// 해당 session user의 gender가 아닐때 (1=>남자)
+		   				response.setContentType("text/html;charset=utf-8");
+				   		PrintWriter out=response.getWriter();
+				   		out.println("<script>");
+				   		out.println("alert('이 게시물은 남자회원만 열람이 가능합니다.');");
+				   		out.println("history.back();");
+				   		out.println("</script>");
+				   		out.close();
+				   		return null;
+		   			}
+		   		}else if(boardtype == 40){	// 여자 게시판 일때
+		   			if(user.getGender() != 2){	// 해당 session user의 gender가 아닐때 (2=>여자)
+		   				response.setContentType("text/html;charset=utf-8");
+				   		PrintWriter out=response.getWriter();
+				   		out.println("<script>");
+				   		out.println("alert('이 게시물은 여자회원만 열람이 가능합니다.');");
+				   		out.println("history.back();");
+				   		out.println("</script>");
+				   		out.close();
+				   		return null;
+		   			}
+		   		}
+		   	}
+		}
+
 		if(request.getParameter("page")!=null){
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		if(request.getParameter("boardtype")!=null){
-			boardtype = Integer.parseInt(request.getParameter("boardtype"));
-		}
 		
 		int listcount=boarddao.getListCount(boardtype); //총 리스트 수를 받아 옴
 		boardlist = boarddao.getBoardList(page,limit,boardtype); //리스트를 받아 옴

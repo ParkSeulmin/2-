@@ -49,7 +49,7 @@ public class BoardAddAction implements Action {
 		   		boarddata.setBo_file(
 		   				multi.getFilesystemName(
 		   						(String)multi.getFileNames().nextElement()));
-		   		//boarddata.setBo_file(null);
+		   		 
 		   		
 		   		boarddata.setBo_id(boardtype);
 		  
@@ -72,14 +72,7 @@ public class BoardAddAction implements Action {
 		   		forward.setPath("/Board/redirect.jsp");
 		   		return forward;
 		   		
-   			/*} else{
-   				msg = "회원만 게시물 등록이 가능합니다^ ^";
-	   			url ="./BoardList.bo?boardtype="+boardtype;
-   				
-   				forward.setRedirect(false);
-   		   		forward.setPath("/Board/redirect.jsp");
-   		   		return forward;*/
-   			//}
+   			 
 
   		}catch(Exception ex){
    			ex.printStackTrace();

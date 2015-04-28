@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
+import Login.DTO.Member;
 
 
 public class BoardDeleteAction implements Action {
@@ -16,13 +17,17 @@ public class BoardDeleteAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		HttpSession session=request.getSession();
-		String userid=(String)session.getAttribute("userid");
+		Member user=(Member)session.getAttribute("user");
 		int boardtype = Integer.parseInt(request.getParameter("boardtype"));
 		
 	   	boolean result=false;
 	   	boolean usercheck=false;
 	   	int num=Integer.parseInt(request.getParameter("num"));
-	   	
+	   	String userid = "";
+		if(user != null){
+			userid = user.getId();
+		}
+		
 	   	BoardDAO boarddao=new BoardDAO();
 	   	usercheck = boarddao.isBoardWriter(num, userid);
 	   	

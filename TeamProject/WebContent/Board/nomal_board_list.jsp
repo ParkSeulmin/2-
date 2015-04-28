@@ -1,3 +1,4 @@
+<%@page import="Login.DTO.Member"%>
 <%@page import="Board.DTO.Reply"%>
 <%@page import="Board.DTO.Board"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
@@ -6,10 +7,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	String userid=null;
-	if(session.getAttribute("userid")!=null){
-		userid=(String)session.getAttribute("userid");
-	} 
+// session
+		Member user = null;
+		String id = null;
+		if(session.getAttribute("user") != null){
+			user = (Member)session.getAttribute("user");
+			id = user.getId();
+		}		
+		
+		System.out.println("session id check: "+ id);
+		
+		
 	List boardList=(List)request.getAttribute("boardlist");
 	List replylistnum = (List)request.getAttribute("replylistnum");
 	int listcount=((Integer)request.getAttribute("listcount")).intValue();
@@ -88,7 +96,7 @@
 	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
 	<div> 
-	<input type="hidden" id="sessionid" value="<%=userid %>">	
+	<%-- <input type="hidden" id="sessionid" value="<%=user.getId() %>"> --%>
 		<!-- 게시판 리스트 -->
 		<div>${boardname}</div>
 		 <div class="bo_list">
@@ -165,8 +173,11 @@
 					<%-- <%if(id!=null && id.equals("admin")){%>
 						<a href="./MemberListAction.me">[회원관리]</a>
 					<%}%> --%>
+					<c:set var="id" value="<%=id%>"/>
+					
 					<c:choose>
-						<c:when test="${userid != null}">
+						<c:when test="${id != null}">
+						
 							<a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">[글쓰기]</a>
 						</c:when>
 						<c:otherwise>

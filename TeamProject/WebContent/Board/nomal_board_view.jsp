@@ -1,3 +1,4 @@
+<%@page import="Login.DTO.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="Board.DTO.Reply"%>
 <%@page import="Board.DTO.Board"%>
@@ -9,10 +10,15 @@
 
 	System.out.println("board_view bo_no: "+board.getBo_no());
 
-	String userid=null;
-	if(session.getAttribute("userid")!=null){
-		userid=(String)session.getAttribute("userid");
-	} 
+	// login session
+			Member user = null;
+			String id = "";
+			if(session.getAttribute("user") != null){
+				user = (Member)session.getAttribute("user");
+				id = user.getId();
+			}		
+			
+			System.out.println("session id check: "+ id);
 %>
 
 <html>
@@ -39,20 +45,8 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	<style type="text/css">
-	
-		#tnb {float:right;margin:0;padding:0;list-style:none;zoom:1}
-		#tnb li {float:left;margin:0px}
-		#tnb a {display:inline-block;padding:11px 10px;color:#a1a1a4;letter-spacing:0em;font-size:10px;font-family:tahoma}
-		#tnb a:focus, #tnb a:hover, #tnb a:active {text-decoration:none}
-	
-	</style>
+    
+ 
   	<script>+
 	    $('.carousel').carousel({
 	        interval: 5000 //changes the speed
@@ -77,6 +71,16 @@
 				
 				<td style="font-family:돋음; font-size:12">
 				<%=board.getBo_title()%>
+				</td>
+				
+			</tr>
+			<tr>
+				<th style="font-family:돋음; font-size:12" height="20">
+					<div align="center">작성자&nbsp;&nbsp;</div>
+				</th>
+				
+				<td style="font-family:돋음; font-size:12">
+				<%=board.getBo_writer()%>
 				</td>
 				
 			</tr>
@@ -162,7 +166,7 @@
 		<!--  꼬리글 달기 테이블 -->
 		<form name="reply" action="ReplyWrite.bo" method="POST">
 			<input type="hidden" name="bo_no" name="bo_id" value="<%=board.getBo_no()%>">
-			<input type="hidden" name="re_writer" id="re_writer" value="${userid}"> <!-- 임의 아이디 -->
+			<input type="hidden" name="re_writer" id="re_writer" value="<%=id%>"> <!-- 임의 아이디 -->
 			<!-- hidden data -->
 			<table>
 				<tr bgcolor="cccccc" >

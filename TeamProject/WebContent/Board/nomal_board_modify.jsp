@@ -1,10 +1,18 @@
+<%@page import="Login.DTO.Member"%>
 <%@page import="Board.DTO.Board"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	String userid=(String)session.getAttribute("userid");
-	//String id ="HYEJUNG22";
+	Member user = null;
+	String id = "";
+	if(session.getAttribute("user") != null){
+		user = (Member)session.getAttribute("user");
+		id = user.getId();
+	}		
+	
+	System.out.println("session id check: "+ id);
+
 	Board board = (Board)request.getAttribute("boarddata");
 	System.out.println(board.getBo_no());
 %>
@@ -91,7 +99,7 @@
 		<!-- 게시판 수정 -->
 		<form action="BoardModifyAction.bo" method="post" name="modifyform">
 		<input type="hidden" name="BOARD_NUM" value="<%=board.getBo_no() %>">
-		<input type="hidden" name="BOARD_ID" value="<%=userid %>">
+		<input type="hidden" name="BOARD_ID" value="<%=user.getId()%>">
 		
 		<table cellpadding="0" cellspacing="0">
 			<tr align="center" valign="middle">

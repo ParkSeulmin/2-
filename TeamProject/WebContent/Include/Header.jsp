@@ -1,24 +1,31 @@
 
+<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 // login session
-		String id = (String)session.getAttribute("userid");
+		Member user = null;
+		String id = null;
+		if(session.getAttribute("user") != null){
+			user = (Member)session.getAttribute("user");
+			id = user.getId();
+		}		
+		
 		System.out.println("session id check: "+ id);
 
 %>
-<c:set var="userid" value="<%=id%>" /><!-- id값 -->
+<c:set var="id" value="<%=id%>" /><!-- id값 -->
 
 	<div id="hd_wrapper">	
        <ul id="tnb">
        <c:choose>
-       		<c:when test="${userid != null}">
-       			<li><div id='#welcomeuser'>[${userid}] 님 환영합니다.</div></li>
-       			<li><a href="<%=request.getContextPath()%>/Login.login">LogOut</a></li>
+       		<c:when test="${(id != null)}">
+       			<li><div id='#welcomeuser'>[${id}] 님 환영합니다.</div></li>
+       			<li><a href="<%=request.getContextPath()%>/Login/LogoutOk.jsp">LogOut</a></li>
        		</c:when>
        		<c:otherwise>
-       			<li><a href="#">MEMBER</a></li>
+       			<li><a href="<%=request.getContextPath()%>/Login/Terms.html">MEMBER</a></li>
 				<li><a href="<%=request.getContextPath()%>/Login/Login.jsp"><b>LOGIN</b></a></li>
        		</c:otherwise>
        </c:choose>
@@ -43,7 +50,7 @@
 					class="icon-bar"></span>
 			</button>
 			<!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-			<a class="navbar-brand" href="index.html">Business Casual</a>
+			<a class="navbar-brand" href="#">Business Casual</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 
