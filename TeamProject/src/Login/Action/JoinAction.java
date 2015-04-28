@@ -3,6 +3,9 @@ package Login.Action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import Login.Action.*;
 import Login.DAO.Join;
 import Login.DTO.Member;
@@ -18,27 +21,50 @@ public class JoinAction implements Action {
 		Member dto = new Member();//회원기본정보
 		Personal_Info dto_plus = new Personal_Info();//추가정보
 
+		String realFolder="";
+   		String saveFolder="boardupload";
+   		
+   		int fileSize=5*1024*1024;
+   		
+   		realFolder=req.getRealPath(saveFolder);
+   		
+   		System.out.println("joinAction realFolder image: "+realFolder);
+		
+   		MultipartRequest multi=null;
+   		
+   		multi=new MultipartRequest(req,
+					realFolder,
+					fileSize,
+					"utf-8",
+					new DefaultFileRenamePolicy());
+   		System.out.println("multi.getparameber mb_id"+multi.getParameter("mb_id"));
 
 			//회원 기본정보 set
-		  dto.setId(req.getParameter("mb_id"));
-		  dto.setAge(2016-(Integer.parseInt(req.getParameter("mb_birth").substring(0,2))+1900));
-		  dto.setEmail(req.getParameter("mb_email1")+"@"+req.getParameter("mb_email2"));
-		  dto.setGender(Integer.parseInt(req.getParameter("gender")));
-		  dto.setJumin(req.getParameter("mb_birth")+ req.getParameter("mb_birth2"));
-		  dto.setName(req.getParameter("mb_name"));
-		  dto.setNick(req.getParameter("mb_nick"));
-		  dto.setPhone(req.getParameter("mb_hp1")+ req.getParameter("mb_hp2")+ req.getParameter("mb_hp3"));
-		  dto.setPw(req.getParameter("mb_password"));
-		  dto.setAddress(req.getParameter("address"));
+		  dto.setId(multi.getParameter("mb_id"));
+		  dto.setAge(2016-(Integer.parseInt(multi.getParameter("mb_birth").substring(0,2))+1900));
+		  dto.setEmail(multi.getParameter("mb_email1")+"@"+req.getParameter("mb_email2"));
+		  dto.setGender(Integer.parseInt(multi.getParameter("gender")));
+		  dto.setJumin(multi.getParameter("mb_birth")+ multi.getParameter("mb_birth2"));
+		  dto.setName(multi.getParameter("mb_name"));
+		  dto.setNick(multi.getParameter("mb_nick"));
+		  dto.setPhone(multi.getParameter("mb_hp1")+ multi.getParameter("mb_hp2")+ req.getParameter("mb_hp3"));
+		  dto.setPw(multi.getParameter("mb_password"));
+		  dto.setAddress(multi.getParameter("address"));
 
+		  // 자신의 프로필 사진넣기 
+		  dto.setU_mypicture(
+	   				multi.getFilesystemName(
+	   						(String)multi.getFileNames().nextElement()));
+		  
+		  
 		  //회원 추가정보 set
-		  dto_plus.setU_ID(req.getParameter("mb_id"));
-		  dto_plus.setContent(req.getParameter("content"));
-		  dto_plus.setFschool(req.getParameter("school"));
-		  dto_plus.setHeight(Integer.parseInt(req.getParameter("cm")));
-		  dto_plus.setJob(req.getParameter("job"));
-		  dto_plus.setSal(Integer.parseInt(req.getParameter("sal")));
-		  dto_plus.setWeight(Integer.parseInt(req.getParameter("weight2")));
+		  dto_plus.setU_ID(multi.getParameter("mb_id"));
+		  dto_plus.setContent(multi.getParameter("content"));
+		  dto_plus.setFschool(multi.getParameter("school"));
+		  dto_plus.setHeight(Integer.parseInt(multi.getParameter("cm")));
+		  dto_plus.setJob(multi.getParameter("job"));
+		  dto_plus.setSal(Integer.parseInt(multi.getParameter("sal")));
+		  dto_plus.setWeight(Integer.parseInt(multi.getParameter("weight2")));
 	 
 		  int num = joindao.writeok(dto);// db들어갔는지 확인
 		  int num2 = joindao.writeplus(dto_plus);//추가정보 객체 넘겨줌

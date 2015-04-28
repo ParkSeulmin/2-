@@ -57,7 +57,7 @@ hr {
 .tbl_wrap table {width:100%;border-collapse:collapse;border-spacing:0}
 .tbl_wrap caption {padding:10px 0;font-weight:bold;text-align:left}
 
-#bo_list {margin:0;padding:0em;font-size:0.95em}
+#bo_list {margin:50em;padding:0em;font-size:0.95em}
 #bo_list .tbl_head01 {}
 #bo_list .tbl_head01 caption {}
 #bo_list .tbl_head01 thead th {padding:10px 0;border-top:1px solid #d1dee2;border-bottom:1px solid #d1dee2;background:#e5ecef;color:#383838;font-size:0.95em;text-align:center;}
@@ -104,16 +104,18 @@ hr {
 .td_category {text-align:center}
 .td_subject {text-align:left}
 .td_chk {text-align:center}
-.td_date {text-align:center}
+.td_date {text-align:center;  }
 .td_datetime {text-align:center}
 .td_group {text-align:center}
 .td_mb_id {text-align:center}
 .td_mng {text-align:center}
-.td_name {text-align:left}
+.td_name {text-align:left;  }
 .td_nick {text-align:center}
-.td_num {text-align:center}
+.td_num {text-align:center; }
 .td_numbig {text-align:center}
 .td_stat {text-align:center}
+
+.th_column {text-align:center; background-color: #dff0d8;}
 
 .txt_active {color:#5d910b}
 .txt_done {color:#e8180c}

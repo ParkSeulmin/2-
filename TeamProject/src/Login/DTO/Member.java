@@ -11,9 +11,16 @@ public class Member {
 	private int gender;//성별
 	private int age;//나이
 	private String address;
+	private String u_mypicture;
 	
 	public String getAddress() {
 		return address;
+	}
+	public String getU_mypicture() {
+		return u_mypicture;
+	}
+	public void setU_mypicture(String u_mypicture) {
+		this.u_mypicture = u_mypicture;
 	}
 	public void setAddress(String address) {
 		this.address = address;

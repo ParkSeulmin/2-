@@ -103,11 +103,11 @@
 				</td>
 			</tr>
 		        <tr>
-		            <th scope="col" class="td_num">번호</th>
-		            <th scope="col" class="td_num">제목</th>
-		            <th scope="col" class="td_name sv_use">글쓴이</th>
-		            <th scope="col" class="td_date"><a href="/bbs/board.php?bo_table=real_after&amp;sop=and&amp;sst=wr_datetime&amp;sod=desc&amp;sfl=&amp;stx=&amp;page=1">날짜</a></th>
-		            <th scope="col" class="td_num"><a href="/bbs/board.php?bo_table=real_after&amp;sop=and&amp;sst=wr_hit&amp;sod=desc&amp;sfl=&amp;stx=&amp;page=1">조회</a></th>
+		            <th class="th_column">번호</th>
+		            <th class="th_column">제목</th>
+		            <th class="th_column sv_use">글쓴이</th>
+		            <th class="th_column">날짜</th>
+		            <th class="th_column">조회</th>
 		        </tr>
 		       
 	        	<tbody>

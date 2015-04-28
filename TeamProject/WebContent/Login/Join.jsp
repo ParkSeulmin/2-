@@ -383,7 +383,7 @@ request.setCharacterEncoding("UTF-8");
 			<script src="http://www.wedaehan.com/js/certify.js"></script>
 
 			<form id="fregisterform" name="fregisterform"
-				action="JoinController.do" method="get">
+				action="JoinController.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="w" value=""> <input type="hidden"
 					name="cert_value" id="cert_value" value=""> <input
 					type="hidden" name="url"
@@ -401,7 +401,7 @@ request.setCharacterEncoding("UTF-8");
 							<col class="grid_4">
 							<col>
 						</colgroup>
-						<tbody>
+						<!-- <tbody> -->
 							<tr>
 								<th scope="row"><label for="reg_mb_name">이름<span>＊</span><strong
 										class="sound_only">필수</strong></label></th>
@@ -450,7 +450,7 @@ request.setCharacterEncoding("UTF-8");
 							</tr>
 							<!--암호 맞는지 메시지 출력  -->
 							
-						</tbody>
+						<!-- </tbody> -->
 					</table>
 				</div>
 
@@ -461,7 +461,7 @@ request.setCharacterEncoding("UTF-8");
 							<col class="grid_4">
 							<col>
 						</colgroup>
-						<tbody>
+						<!-- <tbody> -->
 							<tr>
 								<th scope="row"><label for="reg_mb_nick">닉네임<strong
 										class="sound_only">필수</strong></label></th>
@@ -547,8 +547,11 @@ request.setCharacterEncoding("UTF-8");
 									여자 <input type="radio" id="mb_sex" name="gender" value="1">
 									남자</td>
 							</tr>
-
-						</tbody>
+							<tr>
+								<th scope="row">프로필 사진</th>
+								<td><input id="u_mypicture" name="u_mypicture" type="file"/></td>
+							</tr>
+						<!-- </tbody> -->
 					</table>
 				</div>
 
@@ -560,7 +563,7 @@ request.setCharacterEncoding("UTF-8");
 							<col class="grid_4">
 							<col>
 						</colgroup>
-						<tbody>
+						<!-- <tbody> -->
 							<tr>
 								<th scope="row"><label for="sal">연봉</label></th>
 								<td><select name="sal" id="sal">
@@ -632,7 +635,7 @@ request.setCharacterEncoding("UTF-8");
 								<th scope="row">소개글</th>
 								<td><textarea id="content" name="content"></textarea></td>
 							</tr>
-						</tbody>
+						<!-- </tbody> -->
 					</table>
 				</div>
 

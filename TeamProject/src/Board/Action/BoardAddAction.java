@@ -26,6 +26,7 @@ public class BoardAddAction implements Action {
    		int fileSize=5*1024*1024;
    		
    		realFolder=request.getRealPath(saveFolder);
+   		System.out.println("board file realFolder: "+ realFolder);
    		
    		boolean result=false;
    		String msg = "";

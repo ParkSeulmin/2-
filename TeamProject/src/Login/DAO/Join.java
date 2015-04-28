@@ -51,8 +51,8 @@ public class Join {
 				try {
 					conn = ds.getConnection();
 					String sql = 
-					"INSERT INTO MEMBER(U_ID,U_PWD,U_NAME,U_JUMIN,U_PHONE,U_NNAME,U_GENDER,U_EMAIL,U_AGE,U_ADDR)"
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
+					"INSERT INTO MEMBER(U_ID,U_PWD,U_NAME,U_JUMIN,U_PHONE,U_NNAME,U_GENDER,U_EMAIL,U_AGE,U_ADDR, U_MYPICTURE)"
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)"; 
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, memberdto.getId());
 					pstmt.setString(2, memberdto.getPw());
@@ -64,6 +64,9 @@ public class Join {
 					pstmt.setString(8,memberdto.getEmail());
 					pstmt.setInt(9,memberdto.getAge());
 					pstmt.setString(10,memberdto.getAddress());
+					
+					pstmt.setString(11, memberdto.getU_mypicture());
+					
 
 					int row = pstmt.executeUpdate();//db확인
 					
