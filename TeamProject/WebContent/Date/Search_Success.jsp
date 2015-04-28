@@ -12,7 +12,8 @@
 		function dataSend(iddata){
 			var id_data = {
 					id : iddata,
-					sender : <%=session.getAttribute("user")%>}
+					sender : "<%=session.getAttribute("user")%>"
+					}
 			$.ajax({
 				url : "SendArrow.daa",
 				data : id_data,
