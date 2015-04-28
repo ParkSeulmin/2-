@@ -52,8 +52,7 @@ public class Search_Controller extends HttpServlet {
 				if (forward != null) {
 					Member member = (Member) request.getAttribute("result");
 					request.setAttribute("member", member);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher(forward.getPath());
+					RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 					dispatcher.forward(request, response);
 				}
 			} catch (Exception e) {

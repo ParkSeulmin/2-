@@ -12,25 +12,22 @@ import Login.DTO.Member;
 
 public class ActionDate implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String img = request.getParameter("img");
-		String name = request.getParameter("name");
-		String add = request.getParameter("add");
-		String age = request.getParameter("age");
-		int age2 = Integer.parseInt(age);
+		String id = request.getParameter("id");
+		
 		Member member = new Member();
-		member.setName(name);
-		member.setAddress(add);
-		member.setAge(age2);
-		System.out.println(name);
-		System.out.println(add);
-		System.out.println(age2);
+		member.setId(id);
 		SendArrow_DAO dao = new SendArrow_DAO();
+		Member result = dao.ArrowSearch_DAO(member);
+		Member result2 = dao.ArrowSearchTo_DAO(member);
 		
-		
-		
-		
-		
-		
+		if((request != null) && (result2 != null)){
+			request.setAttribute("result", result);
+			request.setAttribute("result2", result2);
+			ActionForward forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("ArrowOk.jsp");
+			return forward;	
+		}
 		return null;
 	}
 }

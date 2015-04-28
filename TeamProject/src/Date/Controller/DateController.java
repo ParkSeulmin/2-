@@ -40,8 +40,10 @@ public class DateController extends HttpServlet {
 				forward = new ActionForward();
 				action = new ActionDate();
 				forward = action.execute(request, response);
+				System.out.println("1번");
 				
 				if (forward != null) {
+					System.out.println("2번");
 					Member member = (Member) request.getAttribute("result");
 					request.setAttribute("member", member);
 					RequestDispatcher dispatcher = request

@@ -106,7 +106,7 @@
 				<td>김정현</td>
 				<td>경기도 성남시</td>
 				<td>32</td>
-				<td><input type="submit" value="신청" class="btn_submit"></td>
+				<td><input type="text" id="id" name="id"><input type="submit" value="신청" class="btn_submit"></td>
 			</tr>
 		</table>
 	 	</div>
