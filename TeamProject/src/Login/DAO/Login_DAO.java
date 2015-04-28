@@ -29,8 +29,8 @@ public class Login_DAO {
          Connection conn;
          PreparedStatement pstmt;
          ResultSet rs;
-         String aaa;//
-
+         Member member;
+         
          static {
             InitialContext ctx;
             try {
@@ -44,24 +44,35 @@ public class Login_DAO {
          }
          
          //회원가입
-         public String getLoginCheck(String id) throws SQLException{
+         public Member getLoginCheck(String id) throws SQLException{
             try {
                conn = ds.getConnection();
-               System.out.println("conn : "+conn);
-               System.out.println("id : "+id);
                String sql = 
-               "select u_pwd from member where u_id=?"; 
+               "select * from member where u_id=?"; 
                pstmt = conn.prepareStatement(sql);
                pstmt.setString(1,id);
                
 
                rs = pstmt.executeQuery();
                if(rs.next()){
-            	   aaa = rs.getString(1);
-            	   System.out.println(rs.getString(1));
+            	   member = new Member();
+            	   
+            	   member.setId(rs.getString(1));
+            	   member.setPw(rs.getString(2));
+            	   member.setName(rs.getString(3));
+            	   member.setJumin(rs.getString(4));
+            	   member.setPhone(rs.getString(5));
+            	   member.setNick(rs.getString(6));
+            	   member.setGender(rs.getInt(7));
+            	   member.setEmail(rs.getString(8));
+            	   member.setAge(rs.getInt(9));
+            	   member.setAddress(rs.getString(10));
+            	   member.setAdmin(rs.getInt(11));
+            	   
+            	   
                }
-               System.out.println("aaa = "+aaa);
-               return aaa;
+               
+               return member;
             }finally{
                if(rs != null)rs.close();
                if(pstmt != null)pstmt.close();

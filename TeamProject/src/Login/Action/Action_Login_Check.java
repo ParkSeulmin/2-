@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Login.DAO.Login_DAO;
+import Login.DTO.Member;
 
 public class Action_Login_Check implements Action {
 
@@ -17,13 +18,13 @@ public class Action_Login_Check implements Action {
 		
 		Login_DAO logindao = new Login_DAO();
 		
-		String idpwd = logindao.getLoginCheck(request.getParameter("mb_id"));
+		Member user = logindao.getLoginCheck(request.getParameter("mb_id"));
 		String pwd = request.getParameter("mb_password");
 		String result = "";
 		// session
 		HttpSession session=request.getSession();
 		
-		if(idpwd == null){
+		if(user.getId() == null){
 			result += "잘못된 아이디입니다.";
 			ActionForward forward = new ActionForward();
 			
@@ -32,12 +33,12 @@ public class Action_Login_Check implements Action {
 			forward.setPath("/Login/Login_fail.jsp");
 			
 			return forward;
-		}else if(idpwd.equals(pwd)){
+		}else if(user.getPw().equals(pwd)){
 			result += "로그인 성공";
 			ActionForward forward = new ActionForward();
 			
 			// session set
-			session.setAttribute("userid", request.getParameter("mb_id"));
+			session.setAttribute("user",user);
 			
 			forward.setRedirect(true);
 			/*forward.setPath("/Main.jsp?mb_id="+request.getParameter("mb_id"));*/
