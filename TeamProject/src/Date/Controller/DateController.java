@@ -31,7 +31,7 @@ public class DateController extends HttpServlet {
 	private void Process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{	
 		ActionForward forward = null;
 		ActionDate action = null;
-		
+		System.out.println("process접근");
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmd = RequestURI.substring(contextPath.length());
@@ -47,10 +47,9 @@ public class DateController extends HttpServlet {
 				forward = new ActionForward();
 				action = new ActionDate();
 				forward = action.execute(request, response);
-				System.out.println("1번");
+				
 				
 				if (forward != null) {
-					System.out.println("2번");
 					Member member = (Member) request.getAttribute("result");
 					request.setAttribute("member", member);
 					RequestDispatcher dispatcher = request
