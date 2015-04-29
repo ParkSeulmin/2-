@@ -1,5 +1,7 @@
 package Login.DTO;
 
+import java.sql.Date;
+
 public class Member {
 	private String id;//ID
 	private String pw;//암호
@@ -16,7 +18,7 @@ public class Member {
 	
 	private int admin;	// 관리자=>1 / 일반회원=>0
 	
-	
+	private Date u_joindate; // 회원 가입일자 
 	
 	public int getAdmin() {
 		return admin;
@@ -89,5 +91,11 @@ public class Member {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public Date getU_joindate() {
+		return u_joindate;
+	}
+	public void setU_joindate(Date u_joindate) {
+		this.u_joindate = u_joindate;
 	}
 }

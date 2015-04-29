@@ -44,28 +44,30 @@ import Login.DTO.Member;
 		   		out.close();
 		   		return null;
 		   	}else{
-		   		if(boardtype == 30){	// 남자 게시판 일때
-		   			if(user.getGender() != 1){	// 해당 session user의 gender가 아닐때 (1=>남자)
-		   				response.setContentType("text/html;charset=utf-8");
-				   		PrintWriter out=response.getWriter();
-				   		out.println("<script>");
-				   		out.println("alert('이 게시물은 남자회원만 열람이 가능합니다.');");
-				   		out.println("history.back();");
-				   		out.println("</script>");
-				   		out.close();
-				   		return null;
-		   			}
-		   		}else if(boardtype == 40){	// 여자 게시판 일때
-		   			if(user.getGender() != 2){	// 해당 session user의 gender가 아닐때 (2=>여자)
-		   				response.setContentType("text/html;charset=utf-8");
-				   		PrintWriter out=response.getWriter();
-				   		out.println("<script>");
-				   		out.println("alert('이 게시물은 여자회원만 열람이 가능합니다.');");
-				   		out.println("history.back();");
-				   		out.println("</script>");
-				   		out.close();
-				   		return null;
-		   			}
+		   		if(user.getAdmin() != 1){
+			   		if(boardtype == 30){	// 남자 게시판 일때
+			   			if(user.getGender() != 1){	// 해당 session user의 gender가 아닐때 (1=>남자)
+			   				response.setContentType("text/html;charset=utf-8");
+					   		PrintWriter out=response.getWriter();
+					   		out.println("<script>");
+					   		out.println("alert('이 게시물은 남자회원만 열람이 가능합니다.');");
+					   		out.println("history.back();");
+					   		out.println("</script>");
+					   		out.close();
+					   		return null;
+			   			}
+			   		}else if(boardtype == 40){	// 여자 게시판 일때
+			   			if(user.getGender() != 2){	// 해당 session user의 gender가 아닐때 (2=>여자)
+			   				response.setContentType("text/html;charset=utf-8");
+					   		PrintWriter out=response.getWriter();
+					   		out.println("<script>");
+					   		out.println("alert('이 게시물은 여자회원만 열람이 가능합니다.');");
+					   		out.println("history.back();");
+					   		out.println("</script>");
+					   		out.close();
+					   		return null;
+			   			}
+			   		}
 		   		}
 		   	}
 		}

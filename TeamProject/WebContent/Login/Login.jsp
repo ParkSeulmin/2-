@@ -21,12 +21,22 @@
 <title>Login</title>
 <!-- Bootstrap Core CSS -->
  <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
+    <title>DASHGUM - Bootstrap Admin Template</title>
 
-<!-- Custom CSS -->
-<link href="<%=request.getContextPath() %>/css/business-casual.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
 
-   
 <!-- Fonts -->
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
@@ -34,13 +44,7 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
 	rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+ 
     <script>+
 	    $('.carousel').carousel({
 	        interval: 5000 //changes the speed
@@ -48,7 +52,7 @@
     </script>
 </head>
 <body>
-<c:import url="/Include/Header.jsp" />
+ 
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
 		type="text/javascript"></script>
@@ -61,55 +65,43 @@
 	
 
 	
-	
+	 <div id="login-page">
+	  	<div class="container">
 
-	<div class="box">
-
-		<form name="flogin" action="Login.login?cmd=logincheck"
-			onsubmit="return flogin_submit(this);" method="post">
-			<table align="center">
-
-				<tr>
-					<td>
-						<div class="form-group col-lg-4" align="center">
-							<label>아이디&nbsp;&nbsp;&nbsp;&nbsp;</label> <input type="text" name="mb_id" id="login_id"
-								size="20" maxlength="20">
-						</div>
-
-						<div class="form-group col-lg-4" align="center">
-							<label>비밀번호</label> <input type="password" name="mb_password"
-								maxlength="20" size="20" >
-						</div>
-					</td>
-
-					<td><input type="submit" value="로그인"></td>
-
-				</tr>
-			</table>
-
-
-
-			<div id="login_info" align="center">
-				<div>
-					<a href="Login_Find_Id.jsp"
-						id="login_password_lost" class="btn02">아이디 찾기 </a> <a
-						href="PwdSearch.jsp" id="login_password_lost" class="btn02">비밀번호
-						찾기 </a> <a href="./register.php" class="btn01">회원 가입</a>
-				</div>
-				</aside>
-				
-			</div>
-	</div>
-
-	</form>
+		 <form class="form-login" 
+		      		name="flogin"  action ="Login.login?cmd=logincheck"
+					onsubmit="return flogin_submit(this);" method="post"	
+		      >
+		        <h2 class="form-login-heading">sign in now</h2>
+		        <div class="login-wrap">
+		            <input type="text" class="form-control"  name="mb_id" id="login_id" placeholder="User ID" autofocus>
+		            <br>
+		            <input type="password" class="form-control" name="mb_password" placeholder="Password">
+		            <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+		
+		                </span>
+		            </label>
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+		  </form>         
+		            <hr>
+		            
+		             
+		            <div class="registration">
+		                Don't have an account yet?<br/>
+		                <a class="" href="<%=request.getContextPath()%>/Login/Terms.html">
+		                    Create an account
+		                </a>
+		            </div>
+		
+		        </div>
+			
+			 	  
 
 	</div>
+	  </div>
 
-
-
-	  <c:import url="/Include/Footer.jsp" />
-
-	 
 	<script>
 		$(function() {
 			$("#login_auto_login")
@@ -126,7 +118,16 @@
 		}
 	</script>
 	 
+ 	<!-- js placed at the end of the document so the pages load faster -->
+    <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="<%=request.getContextPath()%>/text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <!-- <script>
+        $.backstretch("../assets/img/login-bg.jpg", {speed: 500});
+    </script> -->
 
 
 </body>

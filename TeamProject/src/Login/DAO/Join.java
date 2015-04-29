@@ -67,6 +67,7 @@ public class Join {
 					
 					pstmt.setString(11, memberdto.getU_mypicture());
 					
+					
 
 					int row = pstmt.executeUpdate();//db확인
 					

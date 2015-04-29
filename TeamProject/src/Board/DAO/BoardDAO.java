@@ -62,7 +62,7 @@ public class BoardDAO {
 		System.out.println("boardtype: "+boardtype);
 		String board_list_sql = " select *" 
 							   +" from" 
-							   +" 	(select rownum rn, BO_NO, BO_TITLE, BO_WRITER, BO_COUNT, BO_DATE, BO_ID"
+							   +" 	(select rownum rn, BO_NO, BO_TITLE, BO_WRITER, BO_COUNT, BO_DATE, BO_ID, bo_content"
 							   +" 	from (select *" 
 							   +" 		 	from board"
 							   +"		 	  where bo_id = ?"			
@@ -91,6 +91,7 @@ public class BoardDAO {
 				 board.setBo_count(rs.getInt("BO_COUNT"));
 				 board.setBo_date(rs.getDate("BO_DATE"));
 				 board.setBo_id(rs.getInt("BO_ID"));
+				 board.setBo_content(rs.getString("bo_content"));
 				list.add(board);
 			}
 			

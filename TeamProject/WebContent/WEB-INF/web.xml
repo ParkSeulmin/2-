@@ -86,4 +86,13 @@
 		<servlet-name>SearchControllerMin</servlet-name>
 		<url-pattern>*.sear</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+    <servlet-name>AdminFrontController</servlet-name>
+    <servlet-class>Admin.Controller.AdminFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminFrontController</servlet-name>
+    <url-pattern>*.admin</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,128 +1,152 @@
-
-<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="Login.DTO.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
 // login session
-		Member user = null;
-		String id = null;
-		if(session.getAttribute("user") != null){
-			user = (Member)session.getAttribute("user");
-			id = user.getId();
-		}		
-		
-		System.out.println("session id check: "+ id);
+      Member user = null;
+      String id = null;
+      int admin = 0;      // 관리자(1) 일반회원(0) 
+      if(session.getAttribute("user") != null){
+         user = (Member)session.getAttribute("user");
+         id = user.getId();
+         if(user.getAdmin() == 1){
+             admin = user.getAdmin();
+          }
+      }      
+      
+      System.out.println("session id check: "+ id);   
+      System.out.println("session admin check:"+admin);
 
 %>
+
+
 <c:set var="id" value="<%=id%>" /><!-- id값 -->
+	 <c:set var="admin"	value="<%=admin%>" /><!-- id값 --> 
 
-	<div id="hd_wrapper">	
-       <ul id="tnb">
-       <c:choose>
-       		<c:when test="${(id != null)}">
-       			<li><div id='#welcomeuser'>[${id}] 님 환영합니다.</div></li>
-       			<li><a href="<%=request.getContextPath()%>/Login/LogoutOk.jsp">LogOut</a></li>
-       		</c:when>
-       		<c:otherwise>
-       			<li><a href="<%=request.getContextPath()%>/Login/Terms.html">MEMBER</a></li>
-				<li><a href="<%=request.getContextPath()%>/Login/Login.jsp"><b>LOGIN</b></a></li>
-       		</c:otherwise>
-       </c:choose>
-       			
-				<li><a href="#">SITE MAP</a></li>
-				<li><a href="#">CONTACT US</a></li>
-		</ul>   
-    </div>
-	
-	<div class="brand">위대한 만남</div>
-	<div class="address-bar">품격이 다른 소개팅</div>
-
-	<!-- Navigation -->
-	<nav class="navbar navbar-default" role="navigation">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-			<a class="navbar-brand" href="#">Business Casual</a>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			
-			
-			<ul class="nav navbar-nav">
-				<li class="dropdown">
-					<a href="index.html" data-toggle="dropdown" role="button" aria-expanded="false">
-						만남의 품격
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-                          <li><a href="#">about 만남의 품격</a></li>
-                          <li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=10">공지사항</a></li>
-                          <li><a href="#">Contact Us</a></li>
-                          <li class="divider"></li>
-                         
-                    </ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="index.html" data-toggle="dropdown" role="button" aria-expanded="false">
-						데이트
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-                          <li><a href="#">데이트 하기</a></li>
-                          <li><a href="#">이상형 찾기</a></li>
-                          <li><a href="#">파티 </a></li>
-                          <li class="divider"></li>
-                         
-                    </ul>
-				</li>
-				
-				<li class="dropdown">
-					<a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=20" data-toggle="dropdown" role="button" aria-expanded="false">
-						게시판
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-                          <li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=20">후기 게시판</a></li>
-                          <li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=30">남자 게시판</a></li>
-                          <li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=40">여자 게시판 </a></li>
-                          <li class="divider"></li>
-                          <li><a href="<%=request.getContextPath()%>/BoardList.bo?boardtype=50">1:1 문의 게시판 </a></li>
-                         
-                    </ul>
-				</li>
-				
-				
-				<li class="dropdown">
-					<a href="index.html" data-toggle="dropdown" role="button" aria-expanded="false">
-						My Page
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-                          <li><a href="#">정보수정하기</a></li>
-                           <li class="divider"></li>
-                          <li><a href="#">나의 데이트 신청</a></li>
-                          <li><a href="#">나의 파티 신청</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">나의 쪽지 보기</a></li>
-                    </ul>
-				</li>
-				
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
+	<section id="container"> 
+	<header class="header black-bg">
+	<div class="sidebar-toggle-box">
+		<div class="fa fa-bars tooltips" data-placement="right"
+			data-original-title="Toggle Navigation"></div>
 	</div>
-	
-	<!-- /.container --> </nav>
-	
+	<!--logo start--> <a href="" class="logo">Quality of meeting<b></b></a>
+	<!--logo end-->
+	<div class="nav notify-row" id="top_menu">
+		<!--  notification start -->
+		<ul class="nav top-menu">
+			<!-- settings start -->
 
+			<!-- settings end -->
+		</ul>
+		<!--  notification end -->
+	</div>
+	<div class="top-menu">
+		<c:choose>
+			<c:when test="${id != null}">
+				<ul class="nav pull-right top-menu">
+				<li><a class="logout" href="<%=request.getContextPath()%>/Login/LogoutOk.jsp">Logout</a></li>
+				</ul>
+			</c:when>
+			<c:otherwise>
+				<ul class="nav pull-right top-menu">
+				<li><a class="logout" href="<%=request.getContextPath()%>/Login/Login.jsp">Login</a></li>
+				</ul>
+			</c:otherwise>
+		
+		</c:choose>
+			
+	</div>
+	</header> 
+	 
+	<!--sidebar start--> 
+	<aside>
+	<div id="sidebar" class="nav-collapse ">
+		<!-- sidebar menu start-->
+		<ul class="sidebar-menu" id="nav-accordion">
+
+			<p class="centered">
+				<a href="profile.html"><img src="assets/img/ui-sam.jpg"
+					class="img-circle" width="60"></a>
+			</p>
+			<h5 class="centered">Quality of meeting</h5>
+
+			<!--  <li class="mt">
+                      <a href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>만남의 품격</span>
+                      </a>
+                  </li> -->
+
+			<li class="sub-menu"><a href="javascript:;"> <i
+					class="fa fa-desktop"></i> <span>만남의 품격</span>
+			</a>
+				<ul class="sub">
+					<li><a href="#">about 만남의 품격</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=10">공지사항</a></li>
+					<li><a href="#">Contact Us</a></li>
+				</ul></li>
+
+			<li class="sub-menu"><a href="javascript:;"> <i
+					class="fa fa-cogs"></i> <span>데이트</span>
+			</a>
+				<ul class="sub">
+					<li><a href="#">데이트 하기</a></li>
+					<li><a href="#">이상형 찾기</a></li>
+					<li><a href="#">파티 참석</a></li>
+				</ul></li>
+			<li class="sub-menu"><a href="javascript:;"> <i
+					class="fa fa-book"></i> <span>게시판</span>
+			</a>
+				<ul class="sub">
+					<li><a
+						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=20">후기
+							게시판</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=30">남자
+							게시판</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=40">여자
+							게시판 </a></li>
+
+					<li><a
+						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=50">1:1
+							문의 게시판 </a></li>
+				</ul></li>
+
+
+			<c:choose>
+				<c:when test="${admin == 1}">
+					<li class="sub-menu"><a href="javascript:;"> <i
+							class="fa fa-tasks"></i> <span>관리자 페이지</span>
+					</a>
+						<ul class="sub">
+							<li><a href="#">관리자 정보</a></li>
+							<li class="divider"></li>
+							<li><a href="<%=request.getContextPath()%>/MemberList.admin">회원관리정보</a></li>
+							<li class="divider"></li>
+						</ul></li>
+				</c:when>
+				<c:otherwise>
+					<li class="sub-menu"><a href="javascript:;"> <i
+							class="fa fa-th"></i> <span>My Page</span>
+					</a>
+						<ul class="sub">
+							<li><a href="#">개인정보 수정</a></li>
+							<li><a href="#">데이트 신청 리스트</a></li>
+							<li><a href="#">파티 신청 리스트</a></li>
+							<li><a href="#">보낸 쪽지함</a></li>
+							<li><a href="#">받은 쪽지함</a></li>
+						</ul></li>
+				</c:otherwise>
+
+			</c:choose>
+
+		</ul>
+		<!-- sidebar menu end-->
+	</div>
+	</aside> <!--sidebar end--> </section>
+
+	

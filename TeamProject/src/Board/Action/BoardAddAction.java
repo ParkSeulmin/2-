@@ -5,9 +5,11 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Board.DAO.BoardDAO;
 import Board.DTO.Board;
+import Login.DTO.Member;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -19,6 +21,20 @@ public class BoardAddAction implements Action {
 		BoardDAO boarddao=new BoardDAO();
 	   	Board boarddata=new Board();
 	   	ActionForward forward=new ActionForward();
+	   	
+	   	HttpSession session=request.getSession();
+		//Member user=(Member)session.getAttribute("user");
+
+		if(session.getAttribute("user") == null){
+	   		response.setContentType("text/html;charset=utf-8");
+	   		PrintWriter out=response.getWriter();
+	   		out.println("<script>");
+	   		out.println("alert('회원만 글쓰기가 가능합니다.');");
+	   		out.println("history.back();");
+	   		out.println("</script>");
+	   		out.close();
+	   		return null;
+	   	}   		
 	   	
 		String realFolder="";
    		String saveFolder="boardupload";
