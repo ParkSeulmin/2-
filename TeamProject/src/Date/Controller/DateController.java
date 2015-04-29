@@ -1,9 +1,12 @@
 package Date.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +38,7 @@ public class DateController extends HttpServlet {
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmd = RequestURI.substring(contextPath.length());
+		PrintWriter out = response.getWriter();
 		if(cmd.equals("/Date/SendArrow.daa")){	
 			
 			String sender_id=request.getParameter("sender");
@@ -48,14 +52,10 @@ public class DateController extends HttpServlet {
 				action = new ActionDate();
 				forward = action.execute(request, response);
 				
+				String ar=(String)request.getAttribute("result");
+				System.out.println("컨트롤러에 넘어오나"+ar);
+				out.write(ar);
 				
-				if (forward != null) {
-					Member member = (Member) request.getAttribute("result");
-					request.setAttribute("member", member);
-					RequestDispatcher dispatcher = request
-							.getRequestDispatcher(forward.getPath());
-					dispatcher.forward(request, response);
-				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{

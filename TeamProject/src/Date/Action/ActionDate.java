@@ -22,12 +22,11 @@ public class ActionDate implements Action {
 		
 		SendArrow_DAO dao = new SendArrow_DAO();//보내고자 하는 사람의 아이디 
 		String result=dao.ArrowRegister_DAO(s_id, u_id);
-
+		//화살이 어쩌구되었습니다.
+		System.out.println(result+"action단 에 넘어올까");
 		ActionForward forward = new ActionForward();
 		
-		request.setAttribute("arrow_result", result);
-		forward.setRedirect(false);
-		forward.setPath("/Date/ArrowResult.jsp");
+		request.setAttribute("result", result);
 		return forward;
 	}
 }

@@ -109,16 +109,17 @@ public class SendArrow_DAO {
 				System.out.println("2");
 
 				if(row>0){
-					result= "화살이 날아갔습니다!";
+					result= "success!";
 				}
 				else{
-					result= "화살 날리기에 실패했습니다.";
+					result= "you failed.";
 				}
-				System.out.println(result);
+			
 			}
 			else{
-				result= "화살 날리기에 실패했습니다.";
+				result= "you failed.";
 			}
+			System.out.println("여기	"+result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
