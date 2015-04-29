@@ -19,8 +19,14 @@
 				url : "SendArrow.daa",
 				data : id_data,
 				success : function(data) {
-					$("#"+iddata).val(data);
-
+					//$("#"+iddata).val(data);
+					$("#"+iddata).hide(function(){
+						if(data == "success!"){
+							$(this).replaceWith('<span style="color: blue">'+data+'</span>');
+						}else{
+							$(this).replaceWith('<span style="color: red">'+data+'</span>');
+						}
+					});
 				}
 			});
 		}
@@ -37,7 +43,7 @@
 <%
 	for(int i=0; i<searMemberSearch.size(); i++){
 %>
-		<%=searMemberSearch.get(i).getId()%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="친구맺기" id="<%=searMemberSearch.get(i).getId() %>" name="<%=searMemberSearch.get(i).getId() %>" onclick="dataSend(this.name)" ><br>
+		<%=searMemberSearch.get(i).getId()%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="친구맺기" id="<%=searMemberSearch.get(i).getId() %>" name="<%=searMemberSearch.get(i).getId() %>" onclick="dataSend(this.name)" /><br>
 <%
 	}
 %>

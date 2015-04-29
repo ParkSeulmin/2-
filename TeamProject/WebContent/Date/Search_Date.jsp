@@ -6,7 +6,7 @@
    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 <%
-   session.setAttribute("user", "gathering1");
+   session.setAttribute("user", "JUNGHYEUN11");
 %>
 <script type="text/javascript"
    src="http://www.antisingle.com/js_new/jquery.selectbox-0.2.js"></script>
@@ -216,9 +216,8 @@
                   <option value="기타.JOB">기타</option>
             </select></li>
          </ul>
-         <input type="submit" value="검색" class="btn_submit">
+         <input type="submit" value="검색" class="btn_submit"></input>
       </form>
    </div>
-
 </body>
 </html>
