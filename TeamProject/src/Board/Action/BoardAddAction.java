@@ -24,7 +24,7 @@ public class BoardAddAction implements Action {
 	   	
 	   	HttpSession session=request.getSession();
 		//Member user=(Member)session.getAttribute("user");
-
+	   	System.out.println("session.getAttribute: ?!?"+session.getAttribute("user"));
 		if(session.getAttribute("user") == null){
 	   		response.setContentType("text/html;charset=utf-8");
 	   		PrintWriter out=response.getWriter();

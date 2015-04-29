@@ -20,21 +20,21 @@ public class Action_Login_Check implements Action {
 		
 		Member user = logindao.getLoginCheck(request.getParameter("mb_id"));
 		String pwd = request.getParameter("mb_password");
-		String result = "";
+		
 		// session
 		HttpSession session=request.getSession();
 		
 		if(user.getId() == null){
-			result += "잘못된 아이디입니다.";
+			//잘못된 아이디값
 			ActionForward forward = new ActionForward();
-			
-			request.setAttribute("result", result);
+	
+			session.setAttribute("user",user);
 			forward.setRedirect(false);
 			forward.setPath("/Login/Login_fail.jsp");
 			
 			return forward;
 		}else if(user.getPw().equals(pwd)){
-			result += "로그인 성공";
+			//로그인 성공
 			ActionForward forward = new ActionForward();
 			
 			// session set
@@ -46,10 +46,10 @@ public class Action_Login_Check implements Action {
 			
 			return forward;
 		}else{
-			result += "암호가 틀렸습니다.";
+			//암호가 다름
 			ActionForward forward = new ActionForward();
 			
-			request.setAttribute("result", result);
+			session.setAttribute("user",user);
 			forward.setRedirect(false);
 			forward.setPath("/Login/Login_fail.jsp");
 			
@@ -60,32 +60,4 @@ public class Action_Login_Check implements Action {
 		
 		
 	}
-	
-
-	/*public ActionForward execute(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		
-		Login_DAO logindao = new Login_DAO();
-		
-		String idpwd = logindao.getLoginCheck(request.getParameter("mb_id"));
-		String pwd = request.getParameter("mb_password");
-		String result = "";
-		
-		if(idpwd.equals(pwd)){
-			result += "로그인 성공";
-		}else{
-			result += "로그인 실패";
-		}
-		
-		System.out.println(result);
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("/Login/Login_Check.jsp?result="+request.getParameter("mb_id"));
-		System.out.println(forward.getPath());
-		return forward;
-		
-		
-	}
-	*/
-
 }

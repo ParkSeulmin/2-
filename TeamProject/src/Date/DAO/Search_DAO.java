@@ -24,7 +24,7 @@ import Login.DTO.Member;
 
 
 public class Search_DAO {
-    
+	
       //DB연결
       //CRUD 작업
       // method 공통 사용 ....

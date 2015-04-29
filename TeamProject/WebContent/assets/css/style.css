@@ -413,8 +413,8 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #ffd777;
-    border-bottom: 1px solid #c9aa5f;
+    background: #C1454A;/* #ffd777 */
+    border-bottom: 1px solid #A50000;
 }
 
 .wrapper {
@@ -1361,7 +1361,7 @@ PANELS CONFIGURATIONS
 
 /* BLOG PANEL */
 #blog-bg {
-	background: url(../img/blog-bg.jpg) no-repeat center top;
+	background: url(../img/blog-bg.PNG) no-repeat center top;
 	margin-top: -15px;
 	background-attachment: relative;
 	background-position: center center;
@@ -1382,14 +1382,15 @@ PANELS CONFIGURATIONS
 	left: 35px;
 }
 .badge-popular {
-	background: #3498db;
+	background: url(../img/heart.png) ;
 	width: 70px;
 	height: 70px;
 	line-height: 70px;
 	font-size: 13px;
 	color: #fff;
 	text-align: center;
-	border-radius: 100%;
+	border-radius: 100%; 
+	opacity: 0.6;
 }
 .blog-title {
 	background: rgba(0,0,0,0.5);

@@ -28,6 +28,7 @@
 	int boardtype = ((Integer)request.getAttribute("boardtype")).intValue();
 	
 	String boardname = (String)request.getAttribute("boardname");
+	System.out.println("nomal_board_list.jsp: "+boardtype);
 %>
 
  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -110,7 +111,7 @@
   	
   	<div class="col-md-12 mt">
 	      <div class="content-panel">
-	            <table class="table table-hover">
+	            <table class="table">
 	             <h4><i class="fa fa-angle-right"></i>${boardname}</h4>
 	          <hr>
 		          <div>
@@ -123,6 +124,9 @@
 	                               
 	                              <tbody>
 	         <tr>
+	         
+	         
+	         
 	              <%
 				for(int i=0;i<boardList.size();i++){
 					Board bl=(Board)boardList.get(i);
@@ -131,10 +135,26 @@
 			<!-- Blog Panel -->
 			<div class="col-lg-4 col-md-4 col-sm-4 mb">
 				<div class="content-panel pn">
-					<div id="blog-bg">
+					<c:set var="boardtype" value="<%=boardtype%>"/>
+					<c:out value="${boardtype}"/>
+						<c:choose>
+							<c:when test="${boardtype == 20}">
+								 <div id="blog-bg-2">
+									<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+									<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div id="blog-bg">
+									<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+									<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					<%-- <div id="blog-bg">
 						<div class="badge badge-popular"><%=bl.getBo_no()%></div>
 						<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
-						</div>
+						</div> --%>
 					<div class="blog-text">
 					<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
 						<p> <%
@@ -186,7 +206,7 @@
 					<%-- <%if(id!=null && id.equals("admin")){%>
 						<a href="./MemberListAction.me">[회원관리]</a>
 					<%}%> --%>
-				<a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
+				<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
 				<button type="button" class="btn btn-theme04">
 					<i class="fa fa-heart"></i> 
 						글쓰기

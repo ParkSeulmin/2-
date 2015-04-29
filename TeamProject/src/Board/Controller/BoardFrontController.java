@@ -39,9 +39,22 @@ import Board.Action.ReplyDeleteAction;
 				   e.printStackTrace();
 			   }
 		   }else if(command.equals("/BoardWrite.bo")){
-			   forward=new ActionForward();
-			   forward.setRedirect(false);
-			   forward.setPath("/Board/nomal_board_write.jsp");
+			   if(request.getSession().getAttribute("user") == null){
+				   response.setContentType("text/html;charset=utf-8");
+			   		PrintWriter out=response.getWriter();
+			   		out.println("<script>");
+			   		out.println("alert('회원만 글쓰기가 가능합니다.');");
+			   		out.println("history.back();");
+			   		out.println("</script>");
+			   		out.close();
+			   		
+			   		forward=new ActionForward();
+					forward.setRedirect(false);
+					forward.setPath("/BoardWrite.bo?boardtype="+request.getAttribute("boardtype"));
+			   }
+				   forward=new ActionForward();
+				   forward.setRedirect(false);
+				   forward.setPath("/Board/nomal_board_write.jsp");
 		   }else if(command.equals("/BoardAddAction.bo")){
 			   action  = new BoardAddAction();
 			   try {
