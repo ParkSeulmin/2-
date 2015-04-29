@@ -100,7 +100,7 @@ public class SendArrow_DAO {
          System.out.println(result);
          // return 
          String arrow_reg_sql="insert into arrow (a_id,a_recieveid,a_sendid) "
-               + "values(arrowseq.nextval(),?,?)";
+               + "values(arrowseq.nextval,?,?)";
          pstmt=conn.prepareStatement(arrow_reg_sql);
          pstmt.setString(1, reciever);
          pstmt.setString(2, sender);

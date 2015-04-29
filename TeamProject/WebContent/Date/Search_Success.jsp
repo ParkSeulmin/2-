@@ -19,7 +19,7 @@
 				data : id_data,
 				dataType : "HTML",
 				success : function(data) {
-
+					
 				}
 			});
 			console.log("끝");
