@@ -9,7 +9,7 @@
    session.setAttribute("user", "JUNGHYEUN11");
 %>
 <script type="text/javascript"
-   src="http://www.antisingle.com/js_new/jquery.selectbox-0.2.js"></script>
+   src="http://www.antisingle.com/js_new/jquery.selectbox-\0.2.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>

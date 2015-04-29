@@ -49,6 +49,7 @@
 	        interval: 5000 //changes the speed
 	    })
     </script>
+<script type="text/javascript">
 <%	String name = "";
 String msg = "";
 if ((String) request.getAttribute("result") != null) {
@@ -83,7 +84,7 @@ function insert(){
 	</script>
 
 	 <div id="login-page" class="container">
-		 <form class="form-login" action ="MySelf.check" method="post"	>
+		 <form class="form-login" action ="PwdSearch.da" method="post"	>
 		        <div class="login-wrap">
 		        	<input type="text" class="form-control"  name="name" id="popname" placeholder="이름을 입력 하세요.">
 		            <br>
@@ -93,15 +94,15 @@ function insert(){
 		               	<input type="submit" class="btn btn-theme" id="selfcheck" value="본인 인증"">
 		                </span>
 		            <br><br>
-		            <input type="text" class="form-control" value="<%=name%>" name="name1" id="name1" readonly>
-		            
+		            <input type="text" class="form-control"  name="id" id="id" placeholder="ID를 입력 하세요." >
+		            <br>
+		            <input type="text" class="form-control" name="email" id="email" placeholder="E-mail을 입력 하세요." >
 		            <label class="checkbox">
 		                <span class="pull-right"> 
 		                <input type="button" class="btn btn-theme " value="확인"	onclick="insert()">
 		            	<input type="button" class="btn btn-theme04" value="취소" onclick="window.close();">
 		                </span>
 		            </label>
-		            </div>
        
 		  </form>         
 
@@ -109,7 +110,7 @@ function insert(){
 			
 			 	  
 
-
+	</div>
 
 
 	 
