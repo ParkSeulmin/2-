@@ -65,7 +65,6 @@ public class SendArrow_DAO {
 		return member;
 	}
 		
-
 	//화살감소 
 	public String ArrowSearch_DAO(String sender){
 		//본인아이디를 세션값으로 받아야 한다.. 현재는 받는 사람의 id값만 매개변수로 이용중이다.
@@ -127,3 +126,4 @@ public class SendArrow_DAO {
 		return result;
 	}
 }
+

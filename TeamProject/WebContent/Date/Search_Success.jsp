@@ -19,7 +19,6 @@
 				url : "SendArrow.daa",
 				data : id_data,
 				success : function(data) {
-					console.log(data)
 					$("#"+iddata).val(data);
 				}
 			});
