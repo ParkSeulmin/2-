@@ -21,7 +21,7 @@ import Login.DTO.Member;
 		List replylistnum = new ArrayList();
 		
 	  	int page=1;
-		int limit=10;
+		int limit=9;
 		int boardtype=20; // 게시판 타입
 		
 		if(request.getParameter("boardtype")!=null){

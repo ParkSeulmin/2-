@@ -37,11 +37,24 @@ public class Login_Controller extends HttpServlet {
 	private void doProcess(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
+		String RequestURI = req.getRequestURI();
+		String ContextPath = req.getContextPath();
+
+		String command = RequestURI.substring(ContextPath.length());
+
+		// RequestURI : /Web_JSP17_ServletBoard/boardList.do
+		// ContextPath : /Web_JSP17_ServletBoard
+		// command : /boardList.do
+
+		System.out.println("RequestURI : " + RequestURI);
+		System.out.println("ContextPath : " + ContextPath);
+		System.out.println("command : " + command);
+		
 		ActionForward forward = null;
 		Action action = null;
-		String command = req.getParameter("cmd");
+		
 		 	
-		if (command.equals("logincheck")) {
+		if (command.equals("/Login/Login.login")) {
 		
 			action = new  Action_Login_Check(); 
 			

@@ -46,7 +46,7 @@
 		<c:choose>
 			<c:when test="${id != null}">
 				<ul class="nav pull-right top-menu">
-				<li><a class="logout" href="<%=request.getContextPath()%>/Login/LogoutOk.jsp">Logout</a></li>
+				<li><a class="logout" href="<%=request.getContextPath()%>/Login/Logout.jsp">Logout</a></li>
 				</ul>
 			</c:when>
 			<c:otherwise>
@@ -67,7 +67,7 @@
 		<ul class="sidebar-menu" id="nav-accordion">
 
 			<p class="centered">
-				<a href="profile.html"><img src="assets/img/ui-sam.jpg"
+				<a href="profile.html"><img src="assets/img/logo.png"
 					class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
@@ -94,7 +94,7 @@
 			</a>
 				<ul class="sub">
 					<li><a href="#">데이트 하기</a></li>
-					<li><a href="#">이상형 찾기</a></li>
+					<li><a href="<%=request.getContextPath()%>/Date/Search_Date.jsp">이상형 찾기</a></li>
 					<li><a href="#">파티 참석</a></li>
 				</ul></li>
 			<li class="sub-menu"><a href="javascript:;"> <i
@@ -149,4 +149,20 @@
 	</div>
 	</aside> <!--sidebar end--> </section>
 
+	 <!-- <div class="col-lg-3 ds">
+	 	CALENDAR
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div>/ calendar
+                      
+	 </div> -->
 	
