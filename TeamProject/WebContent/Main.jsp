@@ -12,6 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="Dashboard">
 <meta name="keyword"
+
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
 <title>DASHGUM - FREE Bootstrap Admin Template</title>

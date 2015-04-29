@@ -1,4 +1,4 @@
-/*package Mypage.Controller;
+package Mypage.Controller;
 
 import java.io.IOException;
 
@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Mypage.Action.Action;
 import Mypage.Action.ActionForward;
-import Mypage.Action.MeetingAction;
+import Mypage.Action.MyPartyAction;
+
 
 //@WebServlet("/MypageController")
 public class MypageController extends HttpServlet {
@@ -40,8 +41,9 @@ public class MypageController extends HttpServlet {
 				 
 				 System.out.println("command: "+command);
 				   
-				   if(command.equals("/MypageMeeting.my")){	//메시지 리스트
-					   action = new MeetingAction();
+				   if(command.equals("/MypageParty.my")){	//메시지 리스트
+					   System.out.println("myparty 들어옴");
+					   action = new MyPartyAction();//party 리스트 액션
 					   try{
 						   forward=action.execute(request, response);
 					   }catch(Exception e){
@@ -60,4 +62,3 @@ public class MypageController extends HttpServlet {
 				   }
 			 }
 }
-*/

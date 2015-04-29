@@ -136,7 +136,7 @@
 						<ul class="sub">
 							<li><a href="#">개인정보 수정</a></li>
 							<li><a href="#">데이트 신청 리스트</a></li>
-							<li><a href="#">파티 신청 리스트</a></li>
+							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
 							<li><a href="#">보낸 쪽지함</a></li>
 							<li><a href="#">받은 쪽지함</a></li>
 						</ul></li>
