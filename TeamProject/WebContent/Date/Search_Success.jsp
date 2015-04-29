@@ -5,43 +5,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript">
+	
+	
 		function dataSend(iddata){
 			var id_data = {
 					id : iddata,
-					sender : "<%=session.getAttribute("user")%>"
-					}
+					sender : "<%=session.getAttribute("user")%>" }
 			$.ajax({
 				url : "SendArrow.daa",
 				data : id_data,
-				dataType : "HTML",
 				success : function(data) {
-
+					console.log(iddata);
+					var aa="#"+id_data;
+					$(aa).val(data);
 				}
 			});
-			console.log("끝");
 		}
 	</script>
 </head>
 <%
-   ArrayList<Search_DTO> searMemberSearch = new ArrayList<Search_DTO>();
-   searMemberSearch = (ArrayList<Search_DTO>)session.getAttribute("searMemberSearch");
-   int arrsize=searMemberSearch.size();
+	ArrayList<Search_DTO> searMemberSearch = new ArrayList<Search_DTO>();
+	searMemberSearch = (ArrayList<Search_DTO>)session.getAttribute("searMemberSearch");
 %>
+	
 <body>
-
+<span id="myspan"></span>
 
 <%
-   for(int i=0; i<searMemberSearch.size(); i++){
+	for(int i=0; i<searMemberSearch.size(); i++){
 %>
-
 		<%=searMemberSearch.get(i).getId()%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="친구맺기" name="<%=searMemberSearch.get(i).getId() %>" onclick="dataSend(this.name)" ><br>
-
 <%
-   }
+	}
 %>
 </body>
 </html>
