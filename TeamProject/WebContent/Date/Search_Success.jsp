@@ -19,9 +19,8 @@
 				url : "SendArrow.daa",
 				data : id_data,
 				success : function(data) {
-					console.log(iddata);
-					var aa="#"+id_data;
-					$(aa).val(data);
+					console.log(data)
+					$("#"+iddata).val(data);
 				}
 			});
 		}
@@ -38,7 +37,7 @@
 <%
 	for(int i=0; i<searMemberSearch.size(); i++){
 %>
-		<%=searMemberSearch.get(i).getId()%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="친구맺기" name="<%=searMemberSearch.get(i).getId() %>" onclick="dataSend(this.name)" ><br>
+		<%=searMemberSearch.get(i).getId()%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="친구맺기" id="<%=searMemberSearch.get(i).getId() %>" name="<%=searMemberSearch.get(i).getId() %>" onclick="dataSend(this.name)" ><br>
 <%
 	}
 %>
