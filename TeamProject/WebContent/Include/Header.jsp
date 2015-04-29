@@ -95,7 +95,7 @@
 				<ul class="sub">
 					<li><a href="#">데이트 하기</a></li>
 					<li><a href="<%=request.getContextPath()%>/Date/Search_Date.jsp">이상형 찾기</a></li>
-					<li><a href="#">파티 참석</a></li>
+					<li><a href="<%=request.getContextPath()%>/Partylist.party">파티 참석</a></li>
 				</ul></li>
 			<li class="sub-menu"><a href="javascript:;"> <i
 					class="fa fa-book"></i> <span>게시판</span>

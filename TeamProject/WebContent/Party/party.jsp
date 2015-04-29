@@ -11,214 +11,193 @@
 	 } */
 	//list get해서 가져오기
 	List partylist = (List) request.getAttribute("partylist");
+	int count = (Integer) request.getAttribute("count");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<link rel="stylesheet" href="http://www.wedaehan.com/css/default.css">
-<link rel="stylesheet" href="http://www.wedaehan.com/css/board.css">
-<link rel="stylesheet"
-	href="http://www.wedaehan.com/skin/board/speeddate/style.css">
-<link rel="canonical"
-	href="http://www.wedaehan.com/bbs/board.php?bo_table=speeddate&amp;sca=%EC%84%9C%EC%9A%B8%2F%EC%88%98%EB%8F%84%EA%B6%8C">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Dashboard">
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+<title>DASHGUM - FREE Bootstrap Admin Template</title>
+
+<!-- Bootstrap core CSS -->
+<link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
+	rel="stylesheet">
+<!--external css-->
+<link
+	href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css"
+	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="http://www.wedaehan.com/css/sub.css">
+	href="<%=request.getContextPath()%>/assets/css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css"
-	href="http://www.wedaehan.com/css/all_menu.css">
+	href="<%=request.getContextPath()%>/assets/js/gritter/css/jquery.gritter.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/lineicons/style.css">
 
-<!-- google font link-->
+<!-- Custom styles for this template -->
+<link href="<%=request.getContextPath()%>/assets/css/style.css"
+	rel="stylesheet">
 <link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600"
-	rel="stylesheet" type="text/css">
-<!-- //google font link-->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>party</title>
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+	href="<%=request.getContextPath()%>/assets/css/style-responsive.css"
+	rel="stylesheet">
 
-<!-- Custom CSS -->
-<link href="css/business-casual.css" rel="stylesheet">
+<script
+	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
 
-<!-- Fonts -->
-<link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
-	rel="stylesheet" type="text/css">
-<link
-	href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
-	rel="stylesheet" type="text/css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 <style type="text/css">
-
-#container_sub {
-	position: relative;
-}
-
-#content_list {
-	margin: 0;
-	padding: 5em 2em 5em 2em;
-	max-width: 1280px;
-	min-height: 540px;
-	background: #fff;
-}
-
-#right_btn {
+.jqstooltip {
 	position: absolute;
-	top: 160px;
-	right: 0;
-	z-index: 9;
-	background: #c1454a
-}
-
-}
-.speed_comment a {
-	font-size: 18px;
-	color: #ed1e40;
-}
-
-.speed_comment a:hover {
-	font-size: 18px;
-	color: black;
-	padding: 1px 0 0 4px;
-	text-decoration: none;
-	font-weight: bold;
-}
-#tnb {
-	float: right;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	zoom: 1
-}
-
-#tnb li {
-	float: left;
-	margin: 0px
-}
-
-#tnb a {
-	display: inline-block;
-	padding: 11px 10px;
-	color: #a1a1a4;
-	letter-spacing: 0em;
-	font-size: 10px;
-	font-family: tahoma
-}
-
-#tnb a:focus, #tnb a:hover, #tnb a:active {
-	text-decoration: none
-}
-
-#hd_wrapper {
-	position: relative;
-	margin: 0 auto;
-	padding: 0;
-	max-width: 1280px;
-	height: 35px;
-	zoom: 1;
-	overflow: hidden
-}
-
-#hd_wrapper:after {
+	left: 0px;
+	top: 0px;
 	display: block;
 	visibility: hidden;
-	clear: both;
-	content: ""
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	padding: 5px 5px 8px 5px;
+	font: 10px arial, san serif;
+	text-align: left;
 }
 </style>
 </head>
-<body>
+<body style>
 	<c:import url="/Include/Header.jsp" />
 
-	<!-- //Wrapper -->
-	<!-- <div id="wrapper"
-		style="background: url(http://www.wedaehan.com/image/overlays/01.png) 50% 0% repeat transparent;"> -->
 
-
-	<!-- Contenter_Sub -->
-	<div id="container_sub">
-
-		<!-- Content_List -->
-		<!-- Sub Page Background -->
-
-		<div id="content_list">
-
-			<div class="title">
-				<!-- sub_menu-->
-			</div>
-
-			<!-- 게시판 목록 시작 { -->
-			<div id="bo_list">
-
-				<!-- 게시판 페이지 정보 및 버튼 시작 { -->
-				<div class="bo_fx">
-					<div id="bo_list_total">
-						<span>Total 10건</span> 1 페이지
+	<section id="main-content"> 
+	<section class="wrapper site-min-height">
+	<h3>
+		<i class="fa fa-angle-right"></i> Partylist
+	</h3>
+	<hr>
+	<div class="row mt">
+	<%
+			for (int i = 0; i < partylist.size(); i++) {
+			Party_DTO pl = (Party_DTO) partylist.get(i);
+	%>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+			<div class="project-wrapper">
+				<div class="project">
+					<div class="photo-wrapper">
+						<div class="photo">
+							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
+								class="img-responsive" src="assets/img/portfolio/port04.jpg"
+								alt=""></a>
+						</div>
+						<div class="overlay"></div>
 					</div>
-
 				</div>
-				<!-- } 게시판 페이지 정보 및 버튼 끝 -->
-
-				<form name="fboardlist" id="fboardlist"
-					action="./board_list_update.php"
-					onsubmit="return fboardlist_submit(this);" method="post">
-					<input type="hidden" name="bo_table" value="speeddate"> <input
-						type="hidden" name="sfl" value=""> <input type="hidden"
-						name="stx" value=""> <input type="hidden" name="spt"
-						value="-13"> <input type="hidden" name="sca"
-						value="서울/수도권"> <input type="hidden" name="page" value="1">
-					<input type="hidden" name="sw" value="">
-
-					<div class="tbl_head01 tbl_wrap">
-						<table>
-							<caption>스피드데이트 목록</caption>
-
-							<tbody>
-								<%
-										for (int i = 0; i < partylist.size(); i++) {
-											Party_DTO pl = (Party_DTO) partylist.get(i);
-									%>
-								<tr>
-									<td class="td_num"><%=pl.getP_ID()%></td>
-									<td class="td_img2"><a
-										href="http://www.wedaehan.com/bbs/board.php?bo_table=speeddate&amp;wr_id=16&amp;sca=%EC%84%9C%EC%9A%B8%2F%EC%88%98%EB%8F%84%EA%B6%8C">
-											<img src="Images/party.jpg" alt="" title="">
-									</a></td>
-
-									<td class="td_subject" valign="top">
-										<!--표전체묶기  --> <span class="speed_comment"><a href="">♥<%=pl.getP_TITLE()%>♥
-										</a></span> <br>
-										<div class="sd_list">
-											<li><div>
-													<img src="Images/icon/date.gif">
-												</div>: <a href=""><%=pl.getP_DATE()%></a></li>
-											<li><div>
-													<img src="Images/icon/place.gif">
-												</div>: <a href=""><%=pl.getP_AREA()%></a></li>
-										</div>
-										<div class="sd_list">
-											<li><div>
-													<img src="Images/icon/end.gif">
-												</div> <a href="">:<%=pl.getP_STATUS()%></a></li>
-											<li class="end"><div>
-													<img src="Images/icon/man.gif">
-												</div> <a href="">: <%=pl.getP_MAXPEOPLE()%></a></li>
-										</div>
-									</td>
-								</tr>
-								<%
-										}
-									%>
-							</tbody>
-						</table>
-					</div>
-				</form>
 			</div>
 		</div>
-	</div>
-	</div>
+	<!-- col-lg-4 -->
+<%
+			}
+	
+%>
+</div>
+	<!-- /row -->
+	 </section> 
+</section>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
+		type="text/javascript"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
 
-	<!-- 게시판 목록 시작 { -->
-	<c:import url="/Include/Footer.jsp" />
 
+	<!--common script for all pages-->
+	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
+
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
+
+	<!--script for this page-->
+	<script
+		src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+
+
+
+	<script type="application/javascript">
+		
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+        
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+        
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			//    fancybox
+			jQuery(".fancybox").fancybox();
+		});
+	</script>
+	<script>
+		//custom select box
+
+		$(function() {
+			$("select.styled").customSelect();
+		});
+	</script>
 </body>
-</html>

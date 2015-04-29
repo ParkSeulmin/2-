@@ -15,6 +15,7 @@ public class PartyAction implements Action {
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
+		
 		HttpSession session = request.getSession();
 
 		Party_DAO dao = new Party_DAO();// DAO 호출

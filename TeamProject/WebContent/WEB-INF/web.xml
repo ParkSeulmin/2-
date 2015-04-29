@@ -78,6 +78,14 @@
     <servlet-name>PartyController</servlet-name>
     <url-pattern>*.party</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>PartyDetailController</servlet-name>
+    <servlet-class>Meeting.Controller.PartydetailsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PartyDetailController</servlet-name>
+    <url-pattern>*.ps</url-pattern>
+  </servlet-mapping>
 	<servlet>
 		<servlet-name>SearchControllerMin</servlet-name>
 		<servlet-class>Date.Controller.Search_Controller</servlet-class>
