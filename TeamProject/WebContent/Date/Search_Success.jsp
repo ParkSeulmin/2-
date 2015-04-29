@@ -21,7 +21,7 @@
 				success : function(data) {
 					console.log(iddata);
 					var aa="#"+id_data;
-					$(aa).val(data);
+					$('aa').val(data);
 
 				}
 			});
