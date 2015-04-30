@@ -151,7 +151,8 @@
 							%>
 							<%=bo_content%>
 						    &nbsp;&nbsp;
-						<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">Read More</a></p>
+						<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+						Read More</a></p>
 					</div>
 				</div>
 			</div><!-- /col-md-4-->

@@ -93,55 +93,7 @@
               <div class="row">
                   <div class="col-lg-9 main-chart">
 
-					 
-					 <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
-								<style type="text/css">
-						#clock {
-							width: 320px;
-							height: 320px;
-							margin:0;
-							padding:0;
-							position: relative;
-							top: 80px;
-							left: 110px;
-						}
-						
-						.rotatingHands {
-							position: absolute;
-							width: 320px;
-							height: 320px;
-							top: 0px;
-							left: 0px;
-						}
-						
-						#hours, #minutes, #seconds {
-							position: absolute;
-							display: block;
-						}
-						
-						.glass {
-							position: absolute;
-							width: 320px;
-							height: 320px;
-							top: 0px;
-							left: 0px;
-						}
-						</style>
-						
-						
-						
-						<div id="clock">
-							<div class="rotatingHands"><img id="hours" src="http://www.wedaehan.com/css/images/hours.png" style="-webkit-transform: rotate(80.5deg);"></div>
-							<div class="rotatingHands"><img id="minutes" src="http://www.wedaehan.com/css/images/minutes.png" style="-webkit-transform: rotate(246deg);"></div>
-							<div class="rotatingHands"><img id="seconds" src="http://www.wedaehan.com/css/images/seconds.png" style="-webkit-transform: rotate(18deg);"></div>
-							<!-- <div class="glass"><img src="images/glass.png" /></div> -->
-							<img src="http://www.wedaehan.com/css/images/clock.png">
-						</div>		
-							</div>
-					 
-					 
-					 
-                      	
+				 
 
                     </div><!-- /row -->
                     
@@ -150,7 +102,7 @@
 						<!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
 						Functions
-						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> -->
+						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> 
 						
 					 
                   
@@ -161,9 +113,9 @@
                   
                   <div class="col-lg-3 ds">
                     <!--COMPLETED ACTIONS DONUTS CHART-->
-						<h3>NOTIFICATIONS</h3>
+					<!-- 	<h3>NOTIFICATIONS</h3>
                                         
-                      <!-- First Action -->
+                      First Action
                       <div class="desc">
                       	<div class="thumb">
                       		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
@@ -174,7 +126,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Second Action -->
+                      Second Action
                       <div class="desc">
                       	<div class="thumb">
                       		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
@@ -185,7 +137,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Third Action -->
+                      Third Action
                       <div class="desc">
                       	<div class="thumb">
                       		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
@@ -196,7 +148,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Fourth Action -->
+                      Fourth Action
                       <div class="desc">
                       	<div class="thumb">
                       		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
@@ -207,7 +159,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Fifth Action -->
+                      Fifth Action
                       <div class="desc">
                       	<div class="thumb">
                       		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
@@ -219,9 +171,9 @@
                       	</div>
                       </div>
 
-                       <!-- USERS ONLINE SECTION -->
+                       USERS ONLINE SECTION
 						<h3>TEAM MEMBERS</h3>
-                      <!-- First Member -->
+                      First Member
                       <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
@@ -232,7 +184,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Second Member -->
+                      Second Member
                       <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
@@ -243,7 +195,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Third Member -->
+                      Third Member
                       <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
@@ -254,7 +206,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Fourth Member -->
+                      Fourth Member
                       <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-zac.jpg" width="35px" height="35px" align="">
@@ -265,7 +217,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Fifth Member -->
+                      Fifth Member
                       <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-sam.jpg" width="35px" height="35px" align="">
@@ -275,7 +227,7 @@
                       		   <muted>Available</muted>
                       		</p>
                       	</div>
-                      </div>
+                      </div> -->
 						
 						 <!-- CALENDAR-->
                         <div id="calendar" class="mb">
@@ -322,26 +274,7 @@
 	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
-	   <script type="text/javascript">
-        $(document).ready(function () {
-        var unique_id = $.gritter.add({
-            // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
-            // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
-            // (string | optional) the image to display on the left
-            image: 'assets/img/ui-sam.jpg',
-            // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: true,
-            // (int | optional) the time you want it to be alive for before fading out
-            time: '',
-            // (string | optional) the class name you want to apply to that specific message
-            class_name: 'my-sticky-class'
-        });
-
-        return false;
-        });
-   </script>
+	   
 
 	<script type="application/javascript">
         $(document).ready(function () {
