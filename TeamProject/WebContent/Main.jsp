@@ -150,7 +150,7 @@
 						<!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
 						Functions
-						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> -->
+						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> -->
 						
 					 
                   
