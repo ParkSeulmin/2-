@@ -33,8 +33,9 @@ public class DateController extends HttpServlet {
 	}
 	private void Process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{	
 		request.setCharacterEncoding("UTF-8");
-	      response.setContentType("text/html;charset=utf-8");
-	      response.setCharacterEncoding("utf-8");
+	    response.setContentType("text/html;charset=utf-8");
+	    response.setCharacterEncoding("utf-8");
+	    
 		ActionForward forward = null;
 		Action action = null;
 		System.out.println("process접근");
