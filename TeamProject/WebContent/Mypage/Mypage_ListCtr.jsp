@@ -29,6 +29,6 @@
 	<a href='CheckArrow.daa?user=<%=userid%>'>친구 요청받은 리스트</a><br>
 	<hr>
 	<a href='CheckSendArrow.daa?user=<%=userid%>'>내가 요청한 친구 리스트</a><br>
-	
+	<hr>
 </body>
 </html>

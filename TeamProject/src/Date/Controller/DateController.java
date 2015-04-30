@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Date.Action.ActionDate;
 import Date.Action.ActionDetailInfo;
@@ -47,6 +48,7 @@ public class DateController extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		if(cmd.equals("/Date/SendArrow.daa")){	
+			
 			String sender_id=request.getParameter("sender");
 			String u_id=request.getParameter("id");
 			

@@ -18,11 +18,11 @@
 <%
 	request.setCharacterEncoding("UTF-8");
   
-	Member user = null;
-	String id = null;
+	String user = null;
+	Member id = null;
 	if(session.getAttribute("user") != null){
-		user = (Member)session.getAttribute("user");
-		id = user.getId();
+		id = (Member)session.getAttribute("user");
+		user = id.getId();
 	}		
 
 	
@@ -101,8 +101,8 @@
  
   function dataSend(iddata){
 		var id_data = {
-				id : iddata,
-				sender : "<%=session.getAttribute("user")%>" }
+				id : iddata,//여기
+				sender : "<%=user%>" }
 		$.ajax({
 			url : "SendArrow.daa",
 			data : id_data,
