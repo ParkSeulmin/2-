@@ -10,6 +10,7 @@
 <head>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <link rel="stylesheet" href="http://www.wedaehan.com/css/default.css"> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 
@@ -24,8 +25,8 @@
 		id = user.getId();
 	}		
 
+	
 %>
-
   $(function(){
 	  $('#submit').click(function(){
 		  
@@ -82,14 +83,7 @@
 			data : id_data,
 			success : function(data) {
 				var options = {};
-				
-				$("#"+iddata).hide(function(){
-					if(data == "success!"){
-						$(this).replaceWith('<span style="color: blue">'+data+'</span>');
-					}else{
-						$(this).replaceWith('<span style="color: red">'+data+'</span>');
-					}
-				});
+				$("#"+iddata).val(data);
 			}
 		});
 	}
@@ -106,6 +100,11 @@
     <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     
     <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">

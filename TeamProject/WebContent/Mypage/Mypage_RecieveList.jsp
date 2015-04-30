@@ -1,3 +1,4 @@
+<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import="java.util.List"%>
@@ -78,6 +79,9 @@
 <%
 	List<Arrow_DTO> mylist=new ArrayList<Arrow_DTO>();
 	mylist=(ArrayList<Arrow_DTO>)request.getAttribute("result");
+	
+	List<Member> friends=new ArrayList<Member>();
+	friends=(ArrayList<Member>)request.getAttribute("friends");
 %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
@@ -117,14 +121,27 @@
 	}
 </script>
 </head>
-<body style>
-<%-- <c:import url="/Include/Header.jsp"/> --%>
-<h3 align="center">친구 등록 요청 LIST</h3>
+
+<body>
+<h3 align="center">현재 친구  LIST</h3>
+
 user : <%=request.getParameter("user")%><br>
 
 <form>
 <table align="center" border="1">
 	
+<%
+	for(int i=0; i<friends.size(); i++){
+%>	<tr>
+		<td><%=friends.get(i).getId()%></td>
+		<td><%=friends.get(i).getName()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+<%
+	}
+%>
+</table>
+<h3 align="center">친구 등록 요청 LIST</h3>
+<table align="center" border="1">
 <%
 	for(int i=0; i<mylist.size(); i++){
 %>	<tr>
