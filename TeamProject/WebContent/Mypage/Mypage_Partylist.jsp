@@ -10,8 +10,7 @@
 	 userid = (String) session.getAttribute("userid");
 	 } */
 	//list get해서 가져오기
-	List partylist = (List) request.getAttribute("partylist");
-	int count = (Integer) request.getAttribute("count");
+	List partylist = (List) request.getAttribute("partylist");//파티리스트 가져옴
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
@@ -84,76 +83,81 @@
 </head>
 <body style>
 	<c:import url="/Include/Header.jsp" />
-
-
 	<section id="main-content"> 
-	<section class="wrapper site-min-height">
-	<h3>
-		<i class="fa fa-angle-right"></i> Partylist
+		<section class="wrapper">
+		<h3>
+		<i class="fa fa-angle-right"></i> My Partylist
 	</h3>
 	<hr>
-	<div class="row mt">
-	<%
-			for (int i = 0; i < partylist.size(); i++) {
-			Party_DTO pl = (Party_DTO) partylist.get(i);
-	%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-			<div class="project-wrapper">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="assets/img/portfolio/port04.jpg"
-								alt=""></a>
-						</div>
-						<div class="overlay"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- col-lg-4 -->
-<%
-			}
-	
-%>
-</div>
-	<!-- /row -->
-	 </section> 
+			<div class="row mtbox">
+					<%
+								for (int i = 0; i < partylist.size(); i++) {
+									Party_DTO list = (Party_DTO) partylist.get(i);
+					%>
+                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                  			<div class="box1">
+					  			<span class="li_heart"></span>
+					  			<h3><%=list.getP_TITLE() %></h3>
+                  			</div>
+                  				<p>날짜:<%=list.getP_DATE() %></p>
+					  			<p>장소:<%=list.getP_AREA() %></p>
+                  		</div>
+                  		<%
+							}
+                  		%>
+                  	</div>
+	</section> 
 </section>
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
-		type="text/javascript"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
-
-
-	<!--common script for all pages-->
-	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
-
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
-
-	<!--script for this page-->
-	<script
-		src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+</body>
+<!--main content end-->
 
 
 
-	<script type="application/javascript">
-		
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery-1.8.3.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript"
+	src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="assets/js/jquery.sparkline.js"></script>
+
+
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+<div id="ascrail2000" class="nicescroll-rails"
+	style="width: 3px; z-index: auto; cursor: default; position: fixed; height: 683px; display: none; opacity: 0; background: rgb(64, 64, 64);">
+	<div
+		style="position: relative; top: 0px; float: right; width: 3px; height: 0px; border-radius: 10px; background-color: rgb(78, 205, 196); background-clip: padding-box;"></div>
+</div>
+<div id="ascrail2000-hr" class="nicescroll-rails"
+	style="height: 3px; z-index: auto; position: fixed; cursor: default; display: none; opacity: 0; background: rgb(64, 64, 64);">
+	<div
+		style="position: relative; top: 0px; height: 3px; width: 0px; border-radius: 10px; left: 0px; background-color: rgb(78, 205, 196); background-clip: padding-box;"></div>
+</div>
+<div id="ascrail2001" class="nicescroll-rails"
+	style="width: 6px; z-index: 1000; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; opacity: 0; background: rgb(64, 64, 64);">
+	<div
+		style="position: relative; top: 0px; float: right; width: 6px; height: 103px; border-radius: 10px; background-color: rgb(78, 205, 196); background-clip: padding-box;"></div>
+</div>
+<div id="ascrail2001-hr" class="nicescroll-rails"
+	style="height: 6px; z-index: 1000; position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: block; opacity: 0; background: rgb(64, 64, 64);">
+	<div
+		style="position: relative; top: 0px; height: 6px; width: 657px; border-radius: 10px; left: 0px; background-color: rgb(78, 205, 196); background-clip: padding-box;"></div>
+</div>
+
+<script type="text/javascript"
+	src="assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+<!--script for this page-->
+<script src="assets/js/sparkline-chart.js"></script>
+<script src="assets/js/zabuto_calendar.js"></script>
+
+	
+
+<script type="application/javascript">
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -179,25 +183,13 @@
             });
         });
         
+        
         function myNavFunction(id) {
             $("#date-popover").hide();
             var nav = $("#" + id).data("navigation");
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
-    
-	</script>
-	<script type="text/javascript">
-		$(function() {
-			//    fancybox
-			jQuery(".fancybox").fancybox();
-		});
-	</script>
-	<script>
-		//custom select box
+    </script>
 
-		$(function() {
-			$("select.styled").customSelect();
-		});
-	</script>
-</body>
+

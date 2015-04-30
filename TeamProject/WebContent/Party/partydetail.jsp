@@ -1,20 +1,22 @@
-<%@page import="Meeting.DAO.Party_DAO"%>
+<%@page import="Login.DTO.Member"%>
 <%@page import="Meeting.DTO.Party_DTO"%>
 <%@page import="java.util.List"%>
+<%@page import="Meeting.DTO.Party_DTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	/* 	String userid = null;
-	 if (session.getAttribute("userid") != null) {
-	 userid = (String) session.getAttribute("userid");
-	 } */
-	//list get해서 가져오기
-	List partylist = (List) request.getAttribute("partylist");
-	int count = (Integer) request.getAttribute("count");
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<%
+	List detaillist = (List) request.getAttribute("detail");
+	Member user = (Member) session.getAttribute("user");
+	if (session.getAttribute("user") != null) {
+		user = (Member) session.getAttribute("user");
+	}
+	String partyid = request.getParameter("partyid");//party_idx
+	System.out.println("partydetail.jsp " + partyid);
+%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -85,41 +87,59 @@
 <body style>
 	<c:import url="/Include/Header.jsp" />
 
+	<form action="./Partydetailinsert.ps">
+		<section id="main-content"> <input type="hidden"
+			name="user" id="user" value="<%=user.getId()%>"> <input
+			type="hidden" name="partyid" id="partyid" value="<%=partyid%>">
+		<section class="wrapper site-min-height">
+		<div class="content-panel">
+			<h4>
+				<i class="fa fa-angle-right"></i> Party 상세정보
+			</h4>
+			<hr>
+			<table class="table table-striped table-advance table-hover">
+				<thead>
+					<tr>
+						<th><i class="fa fa-bullhorn"></i>제목</th>
+						<th class="hidden-phone"><i class="fa fa-question-circle"></i>일정</th>
+						<th><i class="fa fa-bookmark"></i>장소</th>
+						<th><i class=" fa fa-edit"></i> 최대인원</th>
+						<th><i class=" fa fa-edit"></i> 상태</th>
+						<th><i class=" fa fa-edit"></i> 신청</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+								for (int i = 0; i < detaillist.size(); i++) {
+									Party_DTO list = (Party_DTO) detaillist.get(i);
+							%>
+					<tr>
+						<td><a href=""><%=list.getP_TITLE() %></a></td>
+						<td class="hidden-phone"><%=list.getP_DATE() %></td>
+						<td><%=list.getP_AREA() %></td>
+						<td><%=list.getP_MAXPEOPLE() %></td>
+						<td><%=list.getP_STATUS() %></td>
+						<td><input type="submit" class="btn btn-danger" value="파티신청"></td>
+					</tr>
+					<%
+								}
+                              %>
+				</tbody>
 
-	<section id="main-content"> 
-	<section class="wrapper site-min-height">
-	<h3>
-		<i class="fa fa-angle-right"></i> Partylist
-	</h3>
-	<hr>
-	<div class="row mt">
-	<%
-			for (int i = 0; i < partylist.size(); i++) {
-			Party_DTO pl = (Party_DTO) partylist.get(i);
-	%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-			<div class="project-wrapper">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="assets/img/portfolio/port04.jpg"
-								alt=""></a>
-						</div>
-						<div class="overlay"></div>
-					</div>
-				</div>
+			</table>
+			<div align="center">
+				<a href="./Partylist.party">
+					<button type="button" class="btn btn-theme04">
+						<i class="fa fa-heart"></i>목록
+					</button>
+				</a>
 			</div>
 		</div>
-	<!-- col-lg-4 -->
-<%
-			}
-	
-%>
-</div>
-	<!-- /row -->
-	 </section> 
-</section>
+
+
+
+		</section> </section>
+	</form>
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script

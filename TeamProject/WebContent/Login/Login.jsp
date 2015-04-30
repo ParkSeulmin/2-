@@ -92,7 +92,7 @@
 		             
 		            <div class="registration">
 		                Don't have an account yet?<br/>
-		                <a class="" href="<%=request.getContextPath()%>/Login/Terms.html">
+		                <a class="" href="<%=request.getContextPath()%>/Login/Terms.jsp">
 		                    Create an account
 		                </a>
 		            </div>
