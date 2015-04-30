@@ -2,6 +2,7 @@ package Date.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import Date.Action.ActionDetailInfo;
 import Date.Action.ActionRecievedDate;
 import Login.Action.Action;
 import Login.Action.ActionForward;
+import Mypage.DTO.Arrow_DTO;
 
 
 public class DateController extends HttpServlet {
@@ -66,7 +68,7 @@ public class DateController extends HttpServlet {
 			}
 		}
 
-		else if(cmd.equals("/CheckArrow.daa")){
+		else if(cmd.equals("/Mypage/CheckArrow.daa")){
 			System.out.println("controller 탄다.");
 			try {
 				forward = new ActionForward();
@@ -150,6 +152,36 @@ public class DateController extends HttpServlet {
 				
 				String str = (String) request.getAttribute("result");
 				out.write(str);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				
+			}
+		}
+		else if(cmd.equals("/Mypage/CheckSendArrow.daa")){
+			//내가 날린 화살을 보고싶을 때
+			System.out.println("명령 체크");
+			request.setAttribute("user", request.getParameter("user"));
+			try {
+				forward=new ActionForward();
+				action = new ActionCheckSend();
+				forward=action.execute(request, response);
+				
+				if(forward != null){
+					
+					if(forward.isRedirect()){ //view 단 바로....
+						response.sendRedirect(forward.getPath());
+					}else{
+						
+						System.out.println("여기 타는거 맞지?");
+						System.out.println(request.getAttribute("arrowlist"));
+						RequestDispatcher dispatcher =
+						request.getRequestDispatcher(forward.getPath());
+						dispatcher.forward(request, response);
+					}
+				}
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
