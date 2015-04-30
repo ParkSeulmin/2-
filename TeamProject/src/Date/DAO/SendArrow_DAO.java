@@ -135,16 +135,12 @@ public class SendArrow_DAO {
 				System.out.println(me);
 				System.out.println("여기까지만?");
 				while(rs.next()){
-					System.out.println("rs 접근");
 					myar=new Arrow_DTO();
 					
 					myar.setA_id(rs.getInt(1));
 					myar.setA_date(rs.getDate(2));
 					myar.setA_status(rs.getString(3));
 					myar.setA_sendid(rs.getString(5));
-					
-					System.out.println(rs.getInt(1));
-					System.out.println("여기찍어주세용");
 					arlist.add(myar);
 			}
 		} catch (SQLException e) {
@@ -170,27 +166,33 @@ public class SendArrow_DAO {
 			pstmt = conn.prepareStatement(regsql1);
 			pstmt.setString(1, s_id);
 			pstmt.setString(2, r_id);
-			rs1 = pstmt.executeUpdate();
 			
+			System.out.println(s_id+"여기는 샌더");
+			System.out.println(r_id+"여기는 리시버");
+			
+			System.out.println("두번째쿼리가 안되는거");
+			rs1 = pstmt.executeUpdate();
+			System.out.println("여기서 안되는건가?");
 			String regsql2 = "insert into ssomelist values(?,?)"; 
 			System.out.println("Dao 단 접근");
 			pstmt = conn.prepareStatement(regsql2);
-			pstmt.setString(2, s_id);
 			pstmt.setString(1, r_id);
+			pstmt.setString(2, s_id);
+			System.out.println("Dao 단 접근2");
 			rs2 = pstmt.executeUpdate();
-			
+			System.out.println("Dao 단 접근3");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			if (pstmt.isClosed()) {pstmt.close();}
-			if (rs.isClosed()) {rs.close();}
-			if (conn.isClosed()){conn.close();}
-		}
-		
-		if(rs1+rs2==2){
-			result="성공했습니다.";
-		}else{
-			result="친구등록에 실패했습니다.";
+		} 
+		finally {
+			if(rs1+rs2==2){
+				result="친구 등록되었습니다.";
+			}else{
+				result="친구등록에 실패했습니다.";
+			}
+			System.out.println("쿼리까지는 다 돼!");
+			pstmt.close();
+			conn.close();
 		}
 
 		return result;

@@ -32,7 +32,8 @@
 			url:"register.daa",
 			data:sdid,
 			success : function(data){
-				$("#"+sender).hide();
+				alert(data);
+				//$("#"+sender).hide();
 			}
 		});
 	}
@@ -40,6 +41,8 @@
 </head>
 <body>
 <h3 align="center">친구 등록 요청 LIST</h3>
+user : <%=request.getParameter("user")%><br>
+
 <form>
 <table align="center" border="1">
 	

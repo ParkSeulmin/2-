@@ -20,6 +20,7 @@ public class ActionRegister implements Action {
 		//화살 삭제하는 것도 필요함.메서드생성해야함 
 		
 		request.setAttribute("result", result);
+		System.out.println("action단 : "+result);
 		return forward;
 	}
 
