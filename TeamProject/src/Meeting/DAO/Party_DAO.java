@@ -81,6 +81,7 @@ public class Party_DAO {
 						party.setP_MAXPEOPLE(rs.getInt("P_MAXPEOPLE"));
 						party.setP_STATUS(rs.getString("P_STATUS"));
 						party.setP_TITLE(rs.getString("P_TITLE"));
+						party.setP_IMG(rs.getString("P_IMG"));
 						partylist.add(party);
 					}
 					

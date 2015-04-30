@@ -86,7 +86,7 @@
 					<li><a href="#">about 만남의 품격</a></li>
 					<li><a
 						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=10">공지사항</a></li>
-					<li><a href="#">Contact Us</a></li>
+					<li><a href="<%=request.getContextPath()%>/Notice/Contact.jsp">Contact Us</a></li>
 				</ul></li>
 
 			<li class="sub-menu"><a href="javascript:;"> <i
