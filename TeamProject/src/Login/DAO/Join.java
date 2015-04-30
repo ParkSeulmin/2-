@@ -64,7 +64,6 @@ public class Join {
 					pstmt.setString(8,memberdto.getEmail());
 					pstmt.setInt(9,memberdto.getAge());
 					pstmt.setString(10,memberdto.getAddress());
-					
 					pstmt.setString(11, memberdto.getU_mypicture());
 					
 					
