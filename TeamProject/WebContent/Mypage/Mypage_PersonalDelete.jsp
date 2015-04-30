@@ -1,19 +1,16 @@
-<%@page import="Meeting.DAO.Party_DAO"%>
-<%@page import="Meeting.DTO.Party_DTO"%>
-<%@page import="java.util.List"%>
+<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	/* 	String userid = null;
-	 if (session.getAttribute("userid") != null) {
-	 userid = (String) session.getAttribute("userid");
-	 } */
-	//list get해서 가져오기
-	List partylist = (List) request.getAttribute("partylist");
-	int count = (Integer) request.getAttribute("count");
-%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+	Member user = null;
+	String userid = null;
+	if (session.getAttribute("user") != null) {
+		user = (Member) session.getAttribute("user");
+		userid = user.getId();
+	}
+%>
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,6 +44,7 @@
 
 <script
 	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -81,45 +79,13 @@
 	text-align: left;
 }
 </style>
+
 </head>
 <body style>
 	<c:import url="/Include/Header.jsp" />
 
+</body>
 
-	<section id="main-content"> 
-	<section class="wrapper site-min-height">
-	<h3>
-		<i class="fa fa-angle-right"></i> Partylist
-	</h3>
-	<hr>
-	<div class="row mt">
-	<%
-			for (int i = 0; i < partylist.size(); i++) {
-			Party_DTO pl = (Party_DTO) partylist.get(i);
-	%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-			<div class="project-wrapper">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="/Images/party/<%=pl.getP_IMG() %>"
-								alt=""></a>
-						</div>
-						<div class="overlay"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- col-lg-4 -->
-<%
-			}
-	
-%>
-</div>
-	<!-- /row -->
-	 </section> 
-</section>
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script
@@ -154,6 +120,7 @@
 
 	<script type="application/javascript">
 		
+		
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -186,18 +153,14 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     
+	
 	</script>
-	<script type="text/javascript">
-		$(function() {
-			//    fancybox
-			jQuery(".fancybox").fancybox();
-		});
-	</script>
-	<script>
-		//custom select box
 
-		$(function() {
-			$("select.styled").customSelect();
-		});
+	
+	<script>
+		//회원가입 완료메시지 띄우기
+		function showalert() {
+			alert('탈퇴완료');
+		}
 	</script>
-</body>
+</html>

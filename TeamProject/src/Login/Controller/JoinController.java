@@ -83,6 +83,7 @@ public class JoinController extends HttpServlet {
 			}
 
 		}
+		
 		if (forward != null) {
 			if (forward.isRedirect()) { // view 단 바로....
 				res.sendRedirect(forward.getPath());
