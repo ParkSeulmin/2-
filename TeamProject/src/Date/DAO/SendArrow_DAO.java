@@ -288,5 +288,38 @@ public class SendArrow_DAO {
 		}
 		return friends ;
 	}
+	public List<Arrow_DTO> CheckSend(String me) throws SQLException {
+		//arrow DTO 생성 작업 해야 함.
+		List<Arrow_DTO> arlist=new ArrayList<Arrow_DTO>();
+		Arrow_DTO ar=null; 
+		try {
+			conn = ds.getConnection();
+			
+				String arrow_reg_sql="select * from arrow where a_sendid=? ";
+				System.out.println("Dao 단 접근");
+				pstmt=conn.prepareStatement(arrow_reg_sql);
+				pstmt.setString(1, me);
+				rs=pstmt.executeQuery();
+				System.out.println(me);
+				System.out.println("여기까지만?");
+				while(rs.next()){
+					ar=new Arrow_DTO();
+					
+					ar.setA_id(rs.getInt(1));
+					ar.setA_date(rs.getDate(2));
+					ar.setA_status(rs.getString(3));
+					ar.setA_sendid(rs.getString(5));
+					arlist.add(ar);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(pstmt.isClosed()){pstmt.close();}
+			if(rs.isClosed()){rs.close();}
+			if(conn.isClosed()){conn.close();}
+			System.out.println("여기");
+		}
+		return arlist;
+	}
 }
 

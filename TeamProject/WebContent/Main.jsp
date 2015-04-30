@@ -68,23 +68,9 @@
 	text-align: left;
 }
 </style>
- 
- <style type="text/css">
 
-	div.start {
-	  float: left;
-	  width: 320px;
-	  height: 320px;
-	  margin: 0;
-	  overflow: hidden;
-	  background: url('http://www.wedaehan.com/image/main/box01_img.png') center no-repeat;
-	}
-	
-</style>
- 
 </head>
 <body style>
-<!-- <section id="container" > -->
 	 <%-- <c:import url="/Include/Header.jsp" /> --%>
 	 <c:import url="/Include/Header.jsp"/>
 	  <section id="main-content">
@@ -298,8 +284,7 @@
 	  	</section><!--/wrapper -->
      </section><!-- /MAIN CONTENT -->
 	  </section>
-	   
-	 
+
 <!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
@@ -322,7 +307,7 @@
 	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
-	   <script type="text/javascript">
+	<!--    <script type="text/javascript">
         $(document).ready(function () {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
@@ -341,7 +326,7 @@
 
         return false;
         });
-   </script>
+   </script> -->
 
 	<script type="application/javascript">
         $(document).ready(function () {
@@ -376,8 +361,6 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-
-	
 
 </body>
 </html>
