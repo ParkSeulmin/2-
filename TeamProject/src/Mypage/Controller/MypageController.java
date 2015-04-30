@@ -36,6 +36,10 @@ public class MypageController extends HttpServlet {
 				 String contextPath=request.getContextPath();
 				 String command=RequestURI.substring(contextPath.length());
 				 
+				request.setCharacterEncoding("UTF-8");
+			    response.setContentType("text/html;charset=utf-8");
+			    response.setCharacterEncoding("utf-8");
+				 
 				 ActionForward forward=null;
 				 Action action=null;
 				 

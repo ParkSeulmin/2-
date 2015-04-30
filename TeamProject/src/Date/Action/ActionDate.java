@@ -25,6 +25,7 @@ public class ActionDate implements Action {
 		//화살이 어쩌구되었습니다.
 		System.out.println(result+"action단 에 넘어올까");
 		ActionForward forward = new ActionForward();
+		
 		request.setAttribute("result", result);
 		return forward;
 	}
