@@ -34,6 +34,22 @@
 			success : function(data){
 				alert(data);
 				//$("#"+sender).hide();
+				location.reload();
+			}
+		});
+	}
+	function disagree(sender){
+		var sdid={
+					s_id:sender,
+				    r_id:'<%=session.getAttribute("user")%>'}
+
+		$.ajax({
+			url:"delete_arrow.daa",
+			data:sdid,
+			success : function(data){
+				alert(data);
+				//$("#"+sender).hide();
+				location.reload();
 			}
 		});
 	}
@@ -59,7 +75,7 @@ user : <%=request.getParameter("user")%><br>
 		name="<%=mylist.get(i).getA_sendid() %>" onclick="agree(this.name)" /></td>
 		<!-- 친구수락 -->
 		<td><input type="button" value="disagree" 
-		name="<%=mylist.get(i).getA_sendid() %>" onclick="dataSend(this.name)" /></td>
+		name="<%=mylist.get(i).getA_sendid() %>" onclick="disagree(this.name)" /></td>
 		<!-- 거절 -->
 	</tr>
 <%

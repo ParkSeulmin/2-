@@ -108,7 +108,8 @@ public class DateController extends HttpServlet {
 				e.printStackTrace();
 			}finally{
 				
-			}
+			}			
+
 		}else if(cmd.equals("/Mypage/register.daa")){
 			//친구추가
 			System.out.println("명령실행확인");
@@ -125,6 +126,26 @@ public class DateController extends HttpServlet {
 				
 				String str = (String) request.getAttribute("result");
 				System.out.println(str);
+				out.write(str);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				
+			}
+		}else if(cmd.equals("/Mypage/delete_arrow.daa")){
+			//화살삭제 /
+			System.out.println("명령들어올까");
+			System.out.println(request.getParameter("s_id"));
+			System.out.println(request.getParameter("r_id")+" :본인계정");
+			request.setAttribute("s_id", request.getParameter("s_id"));
+			request.setAttribute("r_id", request.getParameter("r_id"));
+
+			try {
+				action = new ActionDelete();
+				action.execute(request, response);
+				
+				String str = (String) request.getAttribute("result");
 				out.write(str);
 				
 			} catch (Exception e) {

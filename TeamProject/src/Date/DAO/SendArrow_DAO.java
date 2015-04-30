@@ -155,7 +155,7 @@ public class SendArrow_DAO {
 	}
 
 	public String register_friend(String s_id, String r_id) throws SQLException {
-		String result="";
+		String result="";//친추기능
 		int rs1=0;
 		int rs2=0;
 		try {
@@ -196,6 +196,37 @@ public class SendArrow_DAO {
 		}
 
 		return result;
+	}
+
+	public String deleteArrow(String s_id, String r_id) throws SQLException {
+		int result=0;//arrow 삭제 
+		String rst="";
+		try {
+			conn = ds.getConnection();
+			
+			String delsql = "delete from arrow where a_recieveid=?"
+					+ " and a_sendid=?";
+			pstmt = conn.prepareStatement(delsql);
+			pstmt.setString(1, r_id);
+			pstmt.setString(2, s_id);
+			result=pstmt.executeUpdate();
+			
+			if(result>0){
+				rst="제대로 삭제됨.";
+			}
+			else{
+				rst="안됑";
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			pstmt.close();
+			conn.close();
+		}
+
+		return rst;
 	}
 }
 
