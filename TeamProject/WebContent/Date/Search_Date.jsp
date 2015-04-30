@@ -83,14 +83,7 @@
 			data : id_data,
 			success : function(data) {
 				var options = {};
-				
-				$("#"+iddata).hide(function(){
-					if(data == "success!"){
-						$(this).replaceWith('<span style="color: blue">'+data+'</span>');
-					}else{
-						$(this).replaceWith('<span style="color: red">'+data+'</span>');
-					}
-				});
+				$("#"+iddata).val(data);
 			}
 		});
 	}
