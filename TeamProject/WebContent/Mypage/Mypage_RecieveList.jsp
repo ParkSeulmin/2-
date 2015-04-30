@@ -98,17 +98,33 @@
 			url:"register.daa",
 			data:sdid,
 			success : function(data){
-				$("#"+sender).hide();
+				alert(data);
+				//$("#"+sender).hide();
+				location.reload();
+			}
+		});
+	}
+	function disagree(sender){
+		var sdid={
+					s_id:sender,
+				    r_id:'<%=session.getAttribute("user")%>'}
+
+		$.ajax({
+			url:"delete_arrow.daa",
+			data:sdid,
+			success : function(data){
+				alert(data);
+				//$("#"+sender).hide();
+				location.reload();
 			}
 		});
 	}
 </script>
 </head>
 <body>
-<%-- <c:import url="<%=request.getContextPath()%>/Include/Header.jsp" /> --%>
-	<h3>
-		<i class="fa fa-angle-right"></i> My Partylist
-	</h3>
+
+<h3 align="center">친구 등록 요청 LIST</h3>
+user : <%=request.getParameter("user")%><br>
 
 <form>
 <table align="center" border="1">
@@ -126,7 +142,7 @@
 		name="<%=mylist.get(i).getA_sendid() %>" onclick="agree(this.name)" /></td>
 		<!-- 친구수락 -->
 		<td><input type="button" value="disagree" 
-		name="<%=mylist.get(i).getA_sendid() %>" onclick="dataSend(this.name)" /></td>
+		name="<%=mylist.get(i).getA_sendid() %>" onclick="disagree(this.name)" /></td>
 		<!-- 거절 -->
 	</tr>
 <%

@@ -13,7 +13,6 @@ public class Member {
 	private int gender;//성별
 	private int age;//나이
 	private String address;
-
 	private String u_mypicture;	// 프로필 사진
 	
 	private int admin;	// 관리자=>1 / 일반회원=>0

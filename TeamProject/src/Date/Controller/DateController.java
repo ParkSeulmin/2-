@@ -33,20 +33,15 @@ public class DateController extends HttpServlet {
 	}
 	private void Process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{	
 		request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=utf-8");
-        response.setCharacterEncoding("utf-8");
+	    response.setContentType("text/html;charset=utf-8");
+	    response.setCharacterEncoding("utf-8");
+	    
 		ActionForward forward = null;
 		Action action = null;
 		System.out.println("process접근");
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmd = RequestURI.substring(contextPath.length());
-		
-		System.out.println(request.getParameter("user"));
-		System.out.println(RequestURI);
-		System.out.println(contextPath);
-		System.out.println(cmd);
-		
 		
 		PrintWriter out = response.getWriter();
 		if(cmd.equals("/Date/SendArrow.daa")){	
@@ -114,33 +109,45 @@ public class DateController extends HttpServlet {
 				e.printStackTrace();
 			}finally{
 				
-			}
+			}			
+
 		}else if(cmd.equals("/Mypage/register.daa")){
 			//친구추가
 			System.out.println("명령실행확인");
 			System.out.println(request.getParameter("s_id"));
-			System.out.println(request.getParameter("r_id"));
+			System.out.println(request.getParameter("r_id")+" :본인계정");
 			request.setAttribute("s_id", request.getParameter("s_id"));
 			request.setAttribute("r_id", request.getParameter("r_id"));
 
 			try {
-				forward = new ActionForward();
+				//sforward = new ActionForward(); 페이지 넘기는 부분이 필요없어서 막아놈
 				action = new ActionRegister();
-				forward = action.execute(request, response);
+				//forward = action.execute(request, response);
+				action.execute(request, response);
 				
-				if(forward != null){
-					if(forward.isRedirect()){ //view 단 바로....
-						System.out.println("forward.isRedirect() : " + forward.isRedirect());
-						response.sendRedirect(forward.getPath());
-					}else{
-						System.out.println("forward.getPath() : " + forward.getPath());
-						RequestDispatcher dispatcher =
-						request.getRequestDispatcher(forward.getPath());
-						dispatcher.forward(request, response);
-					}
+				String str = (String) request.getAttribute("result");
+				System.out.println(str);
+				out.write(str);
 				
-					String str=(String)request.getAttribute("result");
-					out.write(str);}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				
+			}
+		}else if(cmd.equals("/Mypage/delete_arrow.daa")){
+			//화살삭제 /
+			System.out.println("명령들어올까");
+			System.out.println(request.getParameter("s_id"));
+			System.out.println(request.getParameter("r_id")+" :본인계정");
+			request.setAttribute("s_id", request.getParameter("s_id"));
+			request.setAttribute("r_id", request.getParameter("r_id"));
+
+			try {
+				action = new ActionDelete();
+				action.execute(request, response);
+				
+				String str = (String) request.getAttribute("result");
+				out.write(str);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
