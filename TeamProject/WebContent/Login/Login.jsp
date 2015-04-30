@@ -79,8 +79,9 @@
 		            <input type="password" class="form-control" name="mb_password" placeholder="Password">
 		            <label class="checkbox">
 		                <span class="pull-right">
-		                <a data-toggle="modal" href="<%=request.getContextPath()%>/Login/Login_Find_Id.jsp"> Forgot Id?</a>
-		                    <a data-toggle="modal" href="<%=request.getContextPath()%>/Login/PwdSearch.jsp"> Forgot Password?</a>
+		                <a data-toggle="modal" href="<%=request.getContextPath()%>/Login/Login_Find_Id.jsp"> ID찾기 </a>
+		                <a>/</a>
+		                    <a data-toggle="modal" href="<%=request.getContextPath()%>/Login/PwdSearch.jsp"> PassWord 찾기</a>
 		
 		                </span>
 		            </label>

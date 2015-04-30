@@ -51,7 +51,6 @@ public class DateController extends HttpServlet {
 				forward = new ActionForward();
 				action = new ActionDate();
 				forward = action.execute(request, response);
-				
 				String ar=(String)request.getAttribute("result");
 				System.out.println("컨트롤러에 넘어오나"+ar);
 				out.write(ar);

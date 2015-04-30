@@ -117,7 +117,7 @@ public class SendArrow_DAO {
 			
 			}
 			else{
-				result= "you failed.";
+				result= "하하.";
 			}
 			System.out.println("여기	"+result);
 		} catch (SQLException e) {

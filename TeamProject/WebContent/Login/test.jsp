@@ -25,7 +25,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>본인인증</title>
+    <title>Id Search</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
@@ -50,26 +50,17 @@
 	    })
     </script>
 <script type="text/javascript">
-<%	String name = "";
-String msg = "";
-if ((String) request.getAttribute("result") != null) {
-	msg = (String) request.getAttribute("result");
-		if (msg == "본인 인증에 성공했습니다.") {
-			name = (String) request.getAttribute("name1");
-			}
-		else{
-			msg="본인 인증에 실패했습니다.";
-		}
-	}
-	
-%>
 
-<script type="text/javascript">
-function insert(){
-	window.close();
-	opener.document.getElementById("name").value='<%=name%>';
-	window.close();
-}
+<%	
+	String msg = "";
+	String msg1 = "";
+	if (request.getAttribute("error") != null) {	
+		msg="입력한 정보가 틀렷습니다.";
+	}
+	if(request.getAttribute("result1") != null){
+		msg1="비밀번호를 메일로 전송했습니다.";
+	}
+%>
 </script>
 </head>
 <body>
@@ -84,23 +75,26 @@ function insert(){
 	</script>
 
 	 <div id="login-page" class="container">
-		 <form class="form-login" action ="PwdSearch.da" method="post"	>
+		 <form class="form-login" action ="find_id.check" method="post"	>
+		 
+		        <h2 class="form-login-heading">ID 찾기</h2>
 		        <div class="login-wrap">
-		        	<input type="text" class="form-control"  name="name" id="popname" placeholder="이름을 입력 하세요.">
+		       <%--  <p>
+		        <h3><span style="color: red; font-size: 13pt"><%=msg%></span></h3>
+				<h3><span style="color: blue; font-size: 13pt"><%=msg1%></span></h3>
+				</p> --%>
+		        	<input type="text" class="form-control"  name="name" id="name" placeholder="본인확인 버튼을 누르세요." readonly>
 		            <br>
-		            <input type="text" class="form-control"  name="birthdate" id="birthdate" placeholder="생년 월일을 입력 하세요." >
-		            <br>
-		                <span class="pull-right" style="color: red;"><%=msg%>
-		               	<input type="submit" class="btn btn-theme" id="selfcheck" value="본인 인증"">
+		                <span class="pull-right"> 
+		               	<input type="button" class="btn btn-theme" id="selfcheck" value="본인확인" onclick="window.open('Login_Myself_popup.jsp','zip','width=450 height=500')">
 		                </span>
 		            <br><br>
-		            <input type="text" class="form-control"  name="id" id="id" placeholder="ID를 입력 하세요." >
 		            <br>
 		            <input type="text" class="form-control" name="email" id="email" placeholder="E-mail을 입력 하세요." >
 		            <label class="checkbox">
 		                <span class="pull-right"> 
-		                <input type="button" class="btn btn-theme " value="확인"	onclick="insert()">
-		            	<input type="button" class="btn btn-theme04" value="취소" onclick="window.close();">
+		                <input type="submit" class="btn btn-theme " id="idfindbtn" value="확인">
+		            	<input type="button" class="btn btn-theme04" value="취소" onclick="history.back(-1)">
 		                </span>
 		            </label>
        

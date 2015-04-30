@@ -44,9 +44,10 @@ public class Login_Id_Check_DAO {
 			conn = ds.getConnection();
 			String sql = "select u_id,u_email,u_name from member where u_email=? and u_name=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getEmail()); // action에서 넘겨 받은(입력받은)
-													// Email값
+			
 			pstmt.setString(2, member.getName());
+			pstmt.setString(1, member.getEmail()); // action에서 넘겨 받은(입력받은)												// Email값
+			
 			rs = pstmt.executeQuery();
 			System.out.println("sql문 날림");
 			System.out.println("여긴" + sql);
