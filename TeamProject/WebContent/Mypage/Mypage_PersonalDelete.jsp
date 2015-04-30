@@ -1,6 +1,8 @@
 <%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	Member user = null;
@@ -83,42 +85,68 @@
 </head>
 <body style>
 	<c:import url="/Include/Header.jsp" />
+	<section id="main-content"> <section class="wrapper">
+	<div class="form-panel">
+		<form class="form-horizontal style-form" id="fregisterform"
+			name="fregisterform" method="post"
+			action="<%=request.getContextPath()%>/EditProfile.edit"
+			enctype="multipart/form-data">
+			<h4 class="mb">
+				<i class="fa fa-angle-right"></i> 회원탈퇴
+			</h4>
+			<div class="form-group">
+				<div class="col-sm-10">회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</div>
+				<div class="col-sm-10">
+					사용하고 계신 아이디(<%=userid%>)는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
+				</div>
+				<div class="col-sm-10">탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게
+					선택하시기 바랍니다.</div>
+				탈퇴 후에는 아이디
+				<%=userid%>
+				로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다. 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수
+				없습니다.
+					<div class="col-sm-10" align="center">
+						<input type="submit" class="btn btn-theme04" value="수정완료">
+					</div>
+		</form>
+	</div>
+	</section> </section>
 
 </body>
 
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
-		type="text/javascript"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
 
 
-	<!--common script for all pages-->
-	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
+<!--common script for all pages-->
+<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
 
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
 
-	<!--script for this page-->
-	<script
-		src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+<!--script for this page-->
+<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
 
 
-	<script type="application/javascript">
+<script type="application/javascript">
+	
+	
 		
 		
         $(document).ready(function () {
@@ -154,13 +182,15 @@
         }
     
 	
-	</script>
-
 	
-	<script>
-		//회원가입 완료메시지 띄우기
-		function showalert() {
-			alert('탈퇴완료');
-		}
-	</script>
+
+</script>
+
+
+<script>
+	//회원가입 완료메시지 띄우기
+	function showalert() {
+		alert('탈퇴완료');
+	}
+</script>
 </html>

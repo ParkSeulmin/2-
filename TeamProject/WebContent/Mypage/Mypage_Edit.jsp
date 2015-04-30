@@ -139,7 +139,9 @@
 					<i class="fa fa-angle-right"></i>회원탈퇴
 				</h4>
 				<div align="right">
-					<button type="button" class="btn btn-round btn-danger">Danger</button>
+					<a href="Mypage_PersonalDelete.jsp">
+					<button type="button" class="btn btn-round btn-danger">GO</button>
+					</a>
 				</div>
 			</div>
 		</div>
