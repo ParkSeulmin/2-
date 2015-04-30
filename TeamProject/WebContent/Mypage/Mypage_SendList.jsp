@@ -127,7 +127,7 @@ user : <%=request.getParameter("user")%><br>
 <%
 	}
 %>
-</table> --%>
+</table>
 <h3 align="center">내가 요청한 친구 LIST</h3>
 <table align="center" border="1">
 <%

@@ -138,7 +138,7 @@
           	</div>
 	                <hr>
            	 <div  class="col-lg-9 main-chart" align="center">
-			<h3 align="center">친구 등록 요청 LIST</h3>
+			<h3 align="center">친구 LIST</h3>
 			user : <%=request.getParameter("user")%><br>
 			
 			<form>
@@ -182,6 +182,10 @@
 			disagree->화살 테이블에서 해당 화살 삭제 
 			<br>
 			info->화살 보낸 사람의 정보를 보여주는 쿼리 
+			</div>
+			</div>
+			</section>
+			</section>
 </body>
 </html>
 
