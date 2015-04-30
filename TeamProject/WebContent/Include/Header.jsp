@@ -146,7 +146,7 @@
 							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
                      		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
  
-							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
+							<li><a href="<%=request.getContextPath()%>/Mypage/Mypage_ListCtr.jsp">데이트 신청 리스트</a></li>
 							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
 						</ul></li>
 				</c:otherwise>

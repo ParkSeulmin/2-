@@ -68,7 +68,7 @@ public class DateController extends HttpServlet {
 			}
 		}
 
-		else if(cmd.equals("/CheckArrow.daa")){
+		else if(cmd.equals("/Mypage/CheckArrow.daa")){
 			System.out.println("controller 탄다.");
 			request.setAttribute("id", request.getParameter("user"));
 			try {

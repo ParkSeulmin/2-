@@ -28,7 +28,7 @@ public class Action_Login_Check implements Action {
 			//잘못된 아이디값
 			ActionForward forward = new ActionForward();
 	
-			session.setAttribute("user",user);
+			
 			forward.setRedirect(false);
 			forward.setPath("/Login/Login_fail.jsp");
 			

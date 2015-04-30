@@ -33,7 +33,7 @@ public class ActionRecievedDate implements Action {
 
 		request.setAttribute("friends", memberlist);
 		
-		forward.setPath("Mypage/Mypage_RecieveList.jsp");
+		forward.setPath("Mypage_RecieveList.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
