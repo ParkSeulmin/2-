@@ -1,11 +1,13 @@
-<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import="java.util.List"%>
 <%@page import="Mypage.DTO.Arrow_DTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8"); 
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -79,14 +81,11 @@
 <%
 	List<Arrow_DTO> mylist=new ArrayList<Arrow_DTO>();
 	mylist=(ArrayList<Arrow_DTO>)request.getAttribute("result");
-	
-	List<Member> friends=new ArrayList<Member>();
-	friends=(ArrayList<Member>)request.getAttribute("friends");
 %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
 	function checkinfo(sendid){
-		window.open("Mypage/Mypage_MemberInfo.jsp?id="+sendid, "Popup", "width=600, height=150,scrollbars=1, menubar=1, resizable=1"); 
+		window.open("Mypage_MemberInfo.jsp?id="+sendid, "Popup", "width=600, height=150,scrollbars=1, menubar=1, resizable=1"); 
 	}
 	
 	function agree(sender){
@@ -121,27 +120,14 @@
 	}
 </script>
 </head>
-
-<body>
-<h3 align="center">현재 친구  LIST</h3>
-
+<body style>
+<c:import url="/Include/Header.jsp"/>
+<h3 align="center">친구 등록 요청 LIST</h3>
 user : <%=request.getParameter("user")%><br>
 
 <form>
 <table align="center" border="1">
 	
-<%
-	for(int i=0; i<friends.size(); i++){
-%>	<tr>
-		<td><%=friends.get(i).getId()%></td>
-		<td><%=friends.get(i).getName()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	</tr>
-<%
-	}
-%>
-</table>
-<h3 align="center">친구 등록 요청 LIST</h3>
-<table align="center" border="1">
 <%
 	for(int i=0; i<mylist.size(); i++){
 %>	<tr>

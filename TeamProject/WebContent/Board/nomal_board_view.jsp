@@ -85,63 +85,79 @@
 <body style>
   
 <c:import url="/Include/Header.jsp" />
-<section id="main-content">
+    
+      
+      
+      
+      	 <section id="main-content">
           <section class="wrapper">
-	 
-<!-- 게시판 수정 -->
-		<table cellpadding="0" cellspacing="0">
-			<tr align="center" valign="middle">
-				<td colspan="5">MVC 게시판</td>
-			</tr>
-			
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">제 목&nbsp;&nbsp;</div>
-				</th>
+           <div class="row">
+           	
+           	<h3><i class="fa fa-angle-right"></i>BOARD VIEW</h3>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          		<p>게시판 보기</p>
+          		</div>
+          	</div>
+	                <hr>
+           	 <div  class="col-lg-9 main-chart" align="center">
+           	 		
+           	 		
+           	 		<table cellpadding="0" cellspacing="0">
+				<tr align="center" valign="middle">
+					<td colspan="5">
+						<div class="alert alert-danger"><b>BOARD VIEW</b></div>
+					 </td>
+				</tr>
 				
-				<td style="font-family:돋음; font-size:12">
-				<%=board.getBo_title()%>
-				</td>
+				<tr>
+					<th style="font-family:돋음; font-size:12" height="20">
+						<div align="center"><span class="badge bg-important">&nbsp;제 목&nbsp;</span>&nbsp;&nbsp;</div>
+					</th>
+					
+					<td style="font-family:돋음; font-size:12">
+					<%=board.getBo_title()%>
+					</td>
+					
+				</tr>
+				<tr>
+					<th style="font-family:돋음; font-size:12" height="20">
+						<div align="center"><span class="badge bg-important">작성자</span>&nbsp;&nbsp;</div>
+					</th>
+					
+					<td style="font-family:돋음; font-size:12">
+					<%=board.getBo_writer()%>
+					</td>
+					
+				</tr>
+				<tr>
+					<th style="font-family:돋음; font-size:12" height="20">
+						<div align="center"><span class="badge bg-important">&nbsp;조 회&nbsp;</span>&nbsp;&nbsp;</div>
+					</th>
+					
+					<td style="font-family:돋음; font-size:12">
+						<%=board.getBo_count()%>
+					</td>
+	
+				</tr>
+				<tr>
+					<th style="font-family:돋음; font-size:12" height="20">
+						<div align="center"><span class="badge bg-important">작성일</span>&nbsp;&nbsp;</div>
+					</th>
+					
+					<td style="font-family:돋음; font-size:12">
+						<%=board.getBo_date()%>
+					</td>
+	
+				</tr>
+				<tr bgcolor="cccccc">
+					<td colspan="2" style="height:1px;">
+					</td>
+				</tr>
 				
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">작성자&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-				<%=board.getBo_writer()%>
-				</td>
-				
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">조회수&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-					<%=board.getBo_count()%>
-				</td>
-
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">작성일&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-					<%=board.getBo_date()%>
-				</td>
-
-			</tr>
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;">
-				</td>
-			</tr>
-			
-			<tr>
+				<tr>
 				<th style="font-family:돋음; font-size:12">
-					<div align="center">내 용</div>
+					<div align="center"><span class="badge bg-important">&nbsp;내 용&nbsp;</span></div>
 				</th>
 				<td style="font-family:돋음; font-size:12">
 					<table border=0 width=490 height=250 style="table-layout:fixed">
@@ -155,11 +171,11 @@
 			</tr>
 			<tr>
 				<th style="font-family:돋음; font-size:12">
-					<div align="center">첨부파일</div>
+					<div align="center"><span class="badge bg-important">첨부파일</span></div>
 				</th>
 				<td style="font-family:돋음; font-size:12">
 				<%if(!(board.getBo_file()==null)){ %>
-					<%-- <a href="./boardupload/<%=board.getBo_file()%>"> --%>
+					<a href="./boardupload/<%=board.getBo_file()%>">
 					<a href="Board/filedownlaod.jsp?file_name=<%=board.getBo_file()%>">
 						<%=board.getBo_file()%>
 					</a>
@@ -171,24 +187,26 @@
 			</tr>
 			<tr><td colspan="2">&nbsp;</td></tr>
 			<tr align="center" valign="middle">
-				<td colspan="5">
+				<td colspan="5" align="right">
 					<font size=2>
-					<%-- <a href="./BoardReplyAction.bo?num=<%=board.getBo_no() %>">
-					[답변]
-					</a>&nbsp;&nbsp; --%>
+					 
 					<a href="./BoardModify.bo?num=<%=board.getBo_no()%>">
-					[수정]
+						<span class="label label-success">수정</span>
 					</a>&nbsp;&nbsp;
 					<a href="./BoardDeleteAction.bo?num=<%=board.getBo_no()%>&boardtype=<%=board.getBo_id()%>"
 								id="deletemenu">
-					[삭제]
+						<span class="label label-danger">삭제</span>
 					</a>&nbsp;&nbsp;
-					<a href="./BoardList.bo?boardtype=<%=board.getBo_id() %>">[목록]</a>&nbsp;&nbsp;
+					<a href="./BoardList.bo?boardtype=<%=board.getBo_id() %>"> 
+						<span class="label label-warning">목록</span>
+					</a>&nbsp;&nbsp;
 					</font>
 				</td>
 			</tr>
-		</table>
-		<p>
+		                      </table>
+		                      
+		                      
+		                    	<p>
 		
 		</p>
 
@@ -204,8 +222,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th  colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
-						댓글 달기
+					<th colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
+						<span class="badge bg-important">댓글 달기</span>
 					</th>
 				</tr>
 				<tr bgcolor="cccccc" >
@@ -214,10 +232,17 @@
 				</tr>
 				<tr>
 					<td align="left" style="font-family:돋음; font-size:12; font-align: center;">
-						내&nbsp;&nbsp;용 : <textarea name="re_content" rows="1" cols="50"></textarea>
+						<span class="label label-primary">내&nbsp;&nbsp;용</span> : <textarea name="re_content" rows="1" cols="50"></textarea>
 					</td>
 					<td>
-						<input type="submit" value="등록">
+						<a href="javascript:addreply()">
+							<span class="label label-primary">등록</span>
+						</a>
+						<script type="text/javascript">
+						function addreply(){							
+							reply.submit();
+						}
+						</script>
 					</td>
 				</tr>
 				<tr bgcolor="cccccc" >
@@ -234,8 +259,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th  colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
-						댓글 
+					<th align="center" colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
+						<span class="badge bg-important">댓 글</span>
 					</th>
 				</tr>
 				<tr bgcolor="cccccc" >
@@ -277,228 +302,33 @@
 					<td   colspan="2" style="height:1px;" width=500>
 					</td>
 				</tr>
-			</table>
-	 
- 		
- 		
- 		
- 		
- 		
- 		
- 		<div class="col-lg-4 col-md-4 col-sm-4 mb">
-			<div class="product-panel-2 pn" >
-				<div class="badge badge-hot">view</div>
-				
-					<!-- 게시판 수정 -->
-		<table cellpadding="0" cellspacing="0">
-			<tr align="center" valign="middle">
-				<td colspan="5">MVC 게시판</td>
-			</tr>
-			
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">제 목&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-				<%=board.getBo_title()%>
-				</td>
-				
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">작성자&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-				<%=board.getBo_writer()%>
-				</td>
-				
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">조회수&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-					<%=board.getBo_count()%>
-				</td>
-
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12" height="20">
-					<div align="center">작성일&nbsp;&nbsp;</div>
-				</th>
-				
-				<td style="font-family:돋음; font-size:12">
-					<%=board.getBo_date()%>
-				</td>
-
-			</tr>
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;">
-				</td>
-			</tr>
-			
-			<tr>
-				<th style="font-family:돋음; font-size:12">
-					<div align="center">내 용</div>
-				</th>
-				<td style="font-family:돋음; font-size:12">
-					<table border=0 width=490 height=250 style="table-layout:fixed">
-						<tr>
-							<td valign=top style="font-family:돋음; font-size:12">
-							<%=board.getBo_content() %>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<th style="font-family:돋음; font-size:12">
-					<div align="center">첨부파일</div>
-				</th>
-				<td style="font-family:돋음; font-size:12">
-				<%if(!(board.getBo_file()==null)){ %>
-					<%-- <a href="./boardupload/<%=board.getBo_file()%>"> --%>
-					<a href="Board/filedownlaod.jsp?file_name=<%=board.getBo_file()%>">
-						<%=board.getBo_file()%>
-					</a>
-				<%} %>
-				</td>
-			</tr>
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;"></td>
-			</tr>
-			<tr><td colspan="2">&nbsp;</td></tr>
-			<tr align="center" valign="middle">
-				<td colspan="5">
-					<font size=2>
-					<%-- <a href="./BoardReplyAction.bo?num=<%=board.getBo_no() %>">
-					[답변]
-					</a>&nbsp;&nbsp; --%>
-					<a href="./BoardModify.bo?num=<%=board.getBo_no()%>">
-					[수정]
-					</a>&nbsp;&nbsp;
-					<a href="./BoardDeleteAction.bo?num=<%=board.getBo_no()%>&boardtype=<%=board.getBo_id()%>"
-								id="deletemenu">
-					[삭제]
-					</a>&nbsp;&nbsp;
-					<a href="./BoardList.bo?boardtype=<%=board.getBo_id() %>">[목록]</a>&nbsp;&nbsp;
-					</font>
-				</td>
-			</tr>
-		</table>
-		<p>
-		
-		</p>
-
-<!-- 게시판 수정 -->
-		<!--  꼬리글 달기 테이블 -->
-		<form name="reply" action="ReplyWrite.bo" method="POST">
-			<input type="hidden" name="bo_no" name="bo_id" value="<%=board.getBo_no()%>">
-			<input type="hidden" name="re_writer" id="re_writer" value="<%=id%>"> <!-- 임의 아이디 -->
-			<!-- hidden data -->
-			<table>
-				<tr bgcolor="cccccc" >
-					<td  colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
-				<tr>
-					<th  colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
-						댓글 달기
-					</th>
-				</tr>
-				<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" style="font-family:돋음; font-size:12; font-align: center;">
-						내&nbsp;&nbsp;용 : <textarea name="re_content" rows="1" cols="50"></textarea>
-					</td>
-					<td>
-						<input type="submit" value="등록">
-					</td>
-				</tr>
-				<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
-			</table>
-		</form>
-		 <br>
- 		<!-- 꼬리글 목록 테이블 -->
- 		<table>
-				<tr bgcolor="cccccc" >
-					<td  colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
-				<tr>
-					<th  colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
-						댓글 
-					</th>
-				</tr>
-				<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
-				<%if(replyList.size() > 0){	
-						for(int i=0; i<replyList.size(); i++){
-							Reply reply=(Reply)replyList.get(i); 
-				%>
-				<tr align="left" style="font-family:돋음; font-size:12; font-weight: bold;">
-					<td><%= reply.getRe_writer() %>:</td>
-					<td align="right">
-						<a href="./ReplyDeleteAction.bo?replynum=<%=reply.getR_no()%>&bo_no=<%=board.getBo_no()%>">[삭제]</a>
-					</td>
-				</tr>
-				<tr align="left" style="font-family:돋음; font-size:12;">
-					<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;<%=reply.getRe_content() %> 
-					</td>
-					<td align="right"><%=reply.getRe_date() %></td>
-				</tr>
-				<%		}
-				   }else{ 
-				%>	
-					<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-					</tr>
-					<tr>
-					<td  colspan="2" style="font-family:돋음; font-size:12;" align="center" height="20"  width=500>
-						댓글이 존재하지 않습니다. 
-					</td>
-					</tr>
-				<%
-					}
-				%>
-				<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
-			</table>
-	 
- 		
-						<button class="btn btn-small btn-theme04"
-								href="./BoardList.bo?boardtype=<%=board.getBo_id() %>"
-						>FULL REPORT</button>
-				</div>
-		</div><!--/col-md-4 -->
- 		
- 		
- 		
- 		
- 		
- 		
- 
- 
- 
-	 	</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
-	 
-	 
+			</table>  
+           	 		
+           	 </div>
+           	
+           	
+           	
+           	
+           	<div class="col-lg-3 ds">
+					 <!-- CALENDAR-->
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div> 
+                  </div>
+           
+           </div>
+          </section>
+         </section>
+      
 	 <!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>

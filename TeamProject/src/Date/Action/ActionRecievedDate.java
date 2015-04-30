@@ -24,14 +24,16 @@ public class ActionRecievedDate implements Action {
 		String recieved_id=(String)request.getAttribute("id");
 		System.out.println(recieved_id+"우다다다다다다닫다");
 		ar=Arw_dao.Recieved_Arrow(recieved_id);
+
 		memberlist=Arw_dao.getFriendList(recieved_id);
 		
 		//친구를 신청 받은 목록
+
 		request.setAttribute("result", ar);
-		//
+
 		request.setAttribute("friends", memberlist);
 		
-		forward.setPath("Mypage_RecieveList.jsp");
+		forward.setPath("Mypage/Mypage_RecieveList.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
