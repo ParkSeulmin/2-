@@ -42,8 +42,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/lineicons/style.css">
 
 <!-- Custom styles for this template -->
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
 
 <script src="assets/js/chart-master/Chart.js"></script>
 
@@ -80,10 +80,8 @@
 	text-align: left;
 }
 </style>
-</head>
-<body style>	
-	
-	<script type="text/javascript" 
+
+		<script type="text/javascript" 
 	src="<%=request.getContextPath()%>/Board/ckeditor/ckeditor.js">
 	</script>
 	<script language="javascript">
@@ -107,46 +105,61 @@
 	
 		
 	</script>
+</head>
+<body style>	
+	
+
  
 <c:import url="/Include/Header.jsp" />
- <section id="main-content">
+
+
+	<section id="main-content">
           <section class="wrapper">
-			<h3><i class="fa fa-angle-right"></i>게시글 쓰기</h3>
-          		<div class="row mt">
+           <div class="row">
+           	
+           	<h3><i class="fa fa-angle-right"></i>BOARD VIEW</h3>
+          	<div class="row mt">
           		<div class="col-lg-12">
-          		<p>글쓰기</p>
+          		<p>게시판 보기</p>
           		</div>
           	</div>
-		<!-- 게시판 등록 -->
-		<form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
+	                <hr>
+           	 <div  class="col-lg-9 main-chart" align="center">
+           	 
+           	 
+           	 <form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
 			enctype="multipart/form-data" name="boardform">
-		<input type="hidden" name="BOARD_ID" value="<%=user.getId() %>">
+		<input type="hidden" name="bo_writer" value="<%=user.getId() %>">
 		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr align="center" valign="middle">
-				<td colspan="5">MVC 게시판</td>
+				<td colspan="5"><div class="alert alert-success"><b>BOARD WRITE</b></div>
+				 </td>
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center">글쓴이</div>
+					<div align="center"><span class="badge bg-success">글쓴이</span></div>
 				</td>
 				<td>
-					<input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
-						value="<%=user.getId() %>" readonly/>
+					<%-- <input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
+						value="<%=user.getId() %>" readonly/> --%>
+						<input id="bo_writer" class="form-control" 
+							type="text" value="<%=user.getId()%>" disabled>
 					
 				</td>
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center">제 목</div>
+					<div align="center"><span class="badge bg-success">&nbsp;제 목&nbsp;</span></div>
 				</td>
 				<td>
-					<input id="bo_title" name="bo_title" type="text" size="50" maxlength="100" 
-						value=""/>
+					<!-- <input id="bo_title" name="bo_title" type="text" size="50" maxlength="100" 
+						value=""/> -->
+						<input id="bo_title" name="bo_title" type="text" class="form-control">
 				</td>
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12">
-					<div align="center">내 용</div>
+					<div align="center"><span class="badge bg-success">&nbsp;내 용&nbsp;</span></div>
 				</td>
 				<td>
 					<textarea id="bo_content" name="bo_content" cols="80" rows="15"></textarea>
@@ -162,7 +175,7 @@
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12">
-					<div align="center">파일 첨부</div>
+					<div align="center"><span class="badge bg-success">파일첨부</span></div>
 				</td>
 				<td>
 					<input id="bo_file" name="bo_file" type="file"/>
@@ -175,15 +188,52 @@
 			<tr><td colspan="2">&nbsp;</td></tr>
 			<tr align="center" valign="middle">
 				<td colspan="5">
-					<a href="javascript:addboard()">[등록]</a>&nbsp;&nbsp;
-					<a href="javascript:history.back()">[뒤로]</a>
+					<a href="javascript:addboard()"><span class="label label-primary">등록</span></a>&nbsp;&nbsp;
+					<a href="javascript:history.back()"><span class="label label-danger">뒤로</span></a>
 				</td>
 			</tr>
 		</table>
 		</form>
-		<!-- 게시판 등록 -->
+           	 </div>
+           	 
+           	  	<div class="col-lg-3 ds">
+					 <!-- CALENDAR-->
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div> 
+                  </div>
+           	 
+           	 
+           	</div>
+          </section>
+    </section>
+           	 
+
+
+
+
+
+
+ <%-- <section id="main-content">
+          <section class="wrapper">
+			<h3><i class="fa fa-angle-right"></i>게시글 쓰기</h3>
+          		<div class="row mt">
+          		<div class="col-lg-12">
+          		<p>글쓰기</p>
+          		</div>
+          	</div>
+		 
 	</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
+      </section><!-- /MAIN CONTENT --> --%>
 	 
  <!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>

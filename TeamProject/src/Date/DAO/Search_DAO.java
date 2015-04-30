@@ -95,6 +95,7 @@ public class Search_DAO {
              	   search_dto.setAge(rs.getInt(9));
              	   search_dto.setAddress(rs.getString(10));
              	  search_dto.setAdmin(rs.getInt(11));
+             	  search_dto.setU_mypicture(rs.getString("u_mypicture"));
              	  
              	   System.out.println("search _ set id : "+rs.getString(1));
              	   seararr.add(search_dto);

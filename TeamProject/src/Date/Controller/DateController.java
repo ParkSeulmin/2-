@@ -67,8 +67,9 @@ public class DateController extends HttpServlet {
 				
 			}
 		}
-		
-		else if(cmd.equals("/Mypage/CheckArrow.daa")){
+
+		else if(cmd.equals("/CheckArrow.daa")){
+			System.out.println("controller 탄다.");
 			request.setAttribute("id", request.getParameter("user"));
 			try {
 				forward = new ActionForward();
@@ -79,6 +80,7 @@ public class DateController extends HttpServlet {
 					if(forward.isRedirect()){ //view 단 바로....
 						response.sendRedirect(forward.getPath());
 					}else{
+						System.out.println("여긴 찍히냐???");
 						RequestDispatcher dispatcher =
 						request.getRequestDispatcher(forward.getPath());
 						dispatcher.forward(request, response);
