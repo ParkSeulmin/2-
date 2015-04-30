@@ -124,49 +124,68 @@
 
 <body>
 
-user : <%=request.getParameter("user")%><br>
-
-<form>
-<h3 align="center">친구 LIST</h3>
-<table align="center" border="1">
-<%
-	for(int i=0; i<friends.size(); i++){
-%>	<tr>
-		<td><%=friends.get(i).getId()%></td>
-		<td><%=friends.get(i).getName()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	</tr>
-<%
-	}
-%>
-</table>
-<h3 align="center">친구 등록 요청 LIST</h3>
-<table align="center" border="1">
-<%
-	for(int i=0; i<mylist.size(); i++){
-%>	<tr>
-		<td><%=mylist.get(i).getA_sendid()%></td>
-		<td><%=mylist.get(i).getA_date()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td><%=mylist.get(i).getA_status()%></td>
-		<td><input type="button" value="info" 
-		name="<%=mylist.get(i).getA_sendid() %>" onclick="checkinfo(this.name)" /></td>
-		<!-- 상세보기 -->
-		<td><input type="button" value="agree" id="<%=mylist.get(i).getA_sendid() %>"
-		name="<%=mylist.get(i).getA_sendid() %>" onclick="agree(this.name)" /></td>
-		<!-- 친구수락 -->
-		<td><input type="button" value="disagree" 
-		name="<%=mylist.get(i).getA_sendid() %>" onclick="disagree(this.name)" /></td>
-		<!-- 거절 -->
-	</tr>
-<%
-	}
-%>
-</table>
-</form>
-agree->서로 친구 테이블에 등록해주는 테이블 
-<br>
-disagree->화살 테이블에서 해당 화살 삭제 
-<br>
-info->화살 보낸 사람의 정보를 보여주는 쿼리 
-
+  
+<c:import url="/Include/Header.jsp" />
+      	 <section id="main-content">
+          <section class="wrapper">
+           <div class="row">
+           	
+           	<h3><i class="fa fa-angle-right"></i>BOARD VIEW</h3>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          		<p>게시판 보기</p>
+          		</div>
+          	</div>
+	                <hr>
+           	 <div  class="col-lg-9 main-chart" align="center">
+			<h3 align="center">친구 LIST</h3>
+			user : <%=request.getParameter("user")%><br>
+			
+			<form>
+			<table align="center" border="1">
+				
+			<%
+				for(int i=0; i<friends.size(); i++){
+			%>	<tr>
+					<td><%=friends.get(i).getId()%></td>
+					<td><%=friends.get(i).getName()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+			<%
+				}
+			%>
+			</table>
+			<h3 align="center">친구 등록 요청 LIST</h3>
+			<table align="center" border="1">
+			<%
+				for(int i=0; i<mylist.size(); i++){
+			%>	<tr>
+					<td><%=mylist.get(i).getA_sendid()%></td>
+					<td><%=mylist.get(i).getA_date()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td><%=mylist.get(i).getA_status()%></td>
+					<td><input type="button" value="info" 
+					name="<%=mylist.get(i).getA_sendid() %>" onclick="checkinfo(this.name)" /></td>
+					<!-- 상세보기 -->
+					<td><input type="button" value="agree" id="<%=mylist.get(i).getA_sendid() %>"
+					name="<%=mylist.get(i).getA_sendid() %>" onclick="agree(this.name)" /></td>
+					<!-- 친구수락 -->
+					<td><input type="button" value="disagree" 
+					name="<%=mylist.get(i).getA_sendid() %>" onclick="disagree(this.name)" /></td>
+					<!-- 거절 -->
+				</tr>
+			<%
+				}
+			%>
+			</table>
+			</form>
+			agree->서로 친구 테이블에 등록해주는 테이블 
+			<br>
+			disagree->화살 테이블에서 해당 화살 삭제 
+			<br>
+			info->화살 보낸 사람의 정보를 보여주는 쿼리 
+			</div>
+			</div>
+			</section>
+			</section>
 </body>
 </html>
+
