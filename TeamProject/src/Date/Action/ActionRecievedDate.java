@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Date.DAO.SendArrow_DAO;
 import Login.Action.Action;
@@ -18,11 +19,15 @@ public class ActionRecievedDate implements Action {
 		List<Arrow_DTO> ar=new ArrayList<Arrow_DTO>();
 		List<Member> memberlist=new ArrayList<Member>();
 		
+		HttpSession session=request.getSession();
+		Member user = null;
+		user=(Member)session.getAttribute("user");
 		ActionForward forward=new ActionForward(); 
 		SendArrow_DAO Arw_dao=new SendArrow_DAO();
+		System.out.println(user + "아이디값 받아오니?");
 		
-		String recieved_id=(String)request.getAttribute("id");
-		System.out.println(recieved_id+"우다다다다다다닫다");
+		/*String recieved_id=(String)session.getAttribute(user);
+
 		ar=Arw_dao.Recieved_Arrow(recieved_id);
 
 		memberlist=Arw_dao.getFriendList(recieved_id);
@@ -34,7 +39,7 @@ public class ActionRecievedDate implements Action {
 		request.setAttribute("friends", memberlist);
 		
 		forward.setPath("Mypage/Mypage_RecieveList.jsp");
-		forward.setRedirect(false);
+		forward.setRedirect(false);*/
 		return forward;
 	}
 }

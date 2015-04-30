@@ -23,12 +23,7 @@
 
 <c:set var="id" value="<%=id%>" /><!-- id값 -->
 	 <c:set var="admin"	value="<%=admin%>" /><!-- id값 --> 
-<%-- 
 
-<%	
-	session.setAttribute("user", "HYEJUNG22");
-%>
- --%>
 
 	<section id="container"> 
 	<header class="header black-bg">
