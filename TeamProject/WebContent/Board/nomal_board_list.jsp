@@ -102,59 +102,43 @@
 		<!-- 게시판 리스트 -->
 	 <section id="main-content">
           <section class="wrapper">
+           <div class="row">
   			<h3><i class="fa fa-angle-right"></i> REAL AFTER</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
           		<p>리얼한 후기 게시판</p>
           		</div>
           	</div>
-  	
-  	<div class="col-md-12 mt">
-	      <div class="content-panel">
-	            <table class="table">
-	             <h4><i class="fa fa-angle-right"></i>${boardname}</h4>
-	          <hr>
+	             
+	  
+	         <div  class="col-lg-9 main-chart">
+	          
+	         	<h4><i class="fa fa-angle-right"></i>${boardname}</h4>
+	          	<hr>
 		          <div>
 						<font size=2> TOTAL : ${listcount}
-									| ${page} 페이지	
+									&nbsp;&nbsp;|&nbsp;&nbsp; ${page} 페이지	
 						</font>
 					  
 	            	</div>
-	             
-	                               
-	                              <tbody>
-	         <tr>
 	         
 	         
-	         
+	         <div class="row mt">
 	              <%
 				for(int i=0;i<boardList.size();i++){
 					Board bl=(Board)boardList.get(i);
 					int rl=(Integer)replylistnum.get(i);					
 				%>
 			<!-- Blog Panel -->
-			<div class="col-lg-4 col-md-4 col-sm-4 mb">
+			<!-- <div class="col-lg-4 col-md-4 col-sm-4 mb"> -->
+				<div class = "col-md-4 mb">
 				<div class="content-panel pn">
-					<c:set var="boardtype" value="<%=boardtype%>"/>
-					<c:out value="${boardtype}"/>
-						<c:choose>
-							<c:when test="${boardtype == 20}">
-								 <div id="blog-bg-2">
-									<div class="badge badge-popular"><%=bl.getBo_no()%></div>
-									<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div id="blog-bg">
-									<div class="badge badge-popular"><%=bl.getBo_no()%></div>
-									<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					<%-- <div id="blog-bg">
+					 
+					
+					<div id="blog-bg">
 						<div class="badge badge-popular"><%=bl.getBo_no()%></div>
 						<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
-						</div> --%>
+						</div>
 					<div class="blog-text">
 					<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
 						<p> <%
@@ -166,7 +150,7 @@
 								}
 							%>
 							<%=bo_content%>
-						
+						    &nbsp;&nbsp;
 						<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">Read More</a></p>
 					</div>
 				</div>
@@ -174,22 +158,19 @@
 	 	 <%		
 	 	 	} 	
 			%>
-	         	
-	         
-	         </tr>                   
-			<tr align=center height=20>
-				<td  style=font-family:Tahoma;font-size:10pt;>
-					 <%if(nowpage<=1){ %>
+	         	</div>
+	         	 <div align="center">
+	         		 <%if(nowpage<=1){ %>
 					<span class="badge">이전</span>&nbsp;
 					<%}else{ %>
-					<a href="./BoardList.bo?page=<%=nowpage-1 %>" ><span class="badge bg-warning">이전</span></a>&nbsp;
+					<a href="./BoardList.bo?page=<%=nowpage-1 %>&boardtype=<%=boardtype%>" ><span class="badge bg-warning">이전</span></a>&nbsp;
 					<%} %>
 					
 					<%for(int a=startpage;a<=endpage;a++){
 						if(a==nowpage){%>
 						<span class="badge bg-important"><%=a %></span>
 						<%}else{ %>
-						<a href="./BoardList.bo?page=<%=a %>"><span class="badge bg-inverse"><%=a %></span></a>
+						<a href="./BoardList.bo?page=<%=a %>&boardtype=<%=boardtype%>"><span class="badge bg-inverse"><%=a %></span></a>
 						
 						<%} %>
 					<%} %>
@@ -197,42 +178,42 @@
 					<%if(nowpage>=maxpage){ %>
 					<span class="badge">다음</span>
 					<%}else{ %>
-					<a href="./BoardList.bo?page=<%=nowpage+1 %>"><span class="badge bg-warning">다음</span></a>
+					<a href="./BoardList.bo?page=<%=nowpage+1 %>&boardtype=<%=boardtype%>"><span class="badge bg-warning">다음</span></a>
 					<%} %>
-				</td>
-			</tr>
-			<tr align="right">
-				<td  >
-					<%-- <%if(id!=null && id.equals("admin")){%>
-						<a href="./MemberListAction.me">[회원관리]</a>
-					<%}%> --%>
-				<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
-				<button type="button" class="btn btn-theme04">
-					<i class="fa fa-heart"></i> 
-						글쓰기
-				</button>
-				</a>
-				<%-- <a href="./BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">[글쓰기]</a> --%>
+	         	</div>
+	         	<div align="right"> 
+	         			<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
+							<button type="button" class="btn btn-theme04">
+								<i class="fa fa-heart"></i> 
+									글쓰기
+							</button>
+						</a>
+	         	</div>  
+	         </div>
+	                        
+		 
+	                        
+	                  	  
+			
+				<div class="col-lg-3 ds">
+                    
 						
-				
-						
-
-				</td>
-			</tr>
-	                              
-	                              </tbody>
-	                          </table>
-	                  	  </div><!--/content-panel -->
-	                  </div><!-- /col-md-12 -->
-	
-			    
-			 
-					
-	
-	
-	
-	
-	
+					 <!-- CALENDAR-->
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div> 
+                  </div>
+		
+			</div>
 	 	</section><!--/wrapper -->
       </section><!-- /MAIN CONTENT -->
 	 

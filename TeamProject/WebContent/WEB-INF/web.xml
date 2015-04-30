@@ -95,4 +95,12 @@
     <servlet-name>AdminFrontController</servlet-name>
     <url-pattern>*.admin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>MessageController</servlet-name>
+    <servlet-class>Mypage.Controller.MessageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageController</servlet-name>
+    <url-pattern>*.msg</url-pattern>
+  </servlet-mapping>
 </web-app>

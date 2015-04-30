@@ -30,6 +30,7 @@
   $(function(){
 	  $('#submit').click(function(){
 		  
+		  var imgpath = "/TeamProject/boardupload/";
 		   var seardata= {
 				  search_area : $('#search_area').val(),
 				  search_age1 : $('#search_age1').val(),
@@ -54,12 +55,36 @@
    			var seardata = JSON.parse(responseData);
    			//System.out.println(seardata);
    				$.each(seardata,function(index,items){
-					output+= "<tr><td><span class='label label-info label-mini'>"+items.id +"</span></td><td>"
-					+"<span class='label label-info label-mini'>"+items.admin+"</span></td><td><span class='label label-info label-mini'>"+
-					items.jumin+"</span></td><td><span class='label label-info label-mini'>"+items.phone+"</span></td>"
-					+"<td><input type='button' name='"+items.id+"' id='"+items.id+"' value='화살쏘기'"
-					+"onclick=dataSend('"+items.id+"')></td></tr>"
+   					
+   					var imgoutput = "";
+   					console.log(items.id+" / "+items.u_mypicture);
+   					console.log("if 전");
+   					console.log(items.u_mypicture);
+   					if(items.u_mypicture == ""){
+   					console.log("if 후");
+   						if(items.gender == 1){
+   							imgoutput = "<img alt='default_male'"
+   							+" src='/TeamProject/Images/defaultimg/default_male.png'"
+							+"	width='103px' height='132px'>";
+   						} else if(items.gender == 2){
+   							imgoutput = "<img alt='default_female'"
+   	   							+" src='/TeamProject/Images/defaultimg/default_female.PNG'"
+   								+"	width='103px' height='132px'>";
+   						}
+   						
+   					}else{
+   						imgoutput = "<img alt='profilepic' width='103px' height='132px' src='"+imgpath+items.u_mypicture+"'>"
+   					}
+   					
+					output+= "<tr><td>"+imgoutput+"</td>"
+							+"<td><span class='label label-info label-mini'>"+items.id +"</span></td><td>"
+							+"<span class='label label-info label-mini'>"+items.admin+"</span></td>"
+							+"<td><span class='label label-info label-mini'>"+items.jumin+"</span></td>"
+							+"<td><span class='label label-info label-mini'>"+items.phone+"</span></td>"
+							+"<td><input type='button' name='"+items.id+"' id='"+items.id+"' value='화살쏘기'"
+							+"onclick=dataSend('"+items.id+"')></td></tr>"
 					
+				
 				});
    			
    			
@@ -371,6 +396,7 @@
 	                  	  	  
                               <thead>
                               <tr>
+                              	  <th><i class="fa fa-bullhorn"></i> PROFILE PIC</th>
                                   <th><i class="fa fa-bullhorn"></i> ID</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> ADMIN</th>
                                   <th><i class="fa fa-bookmark"></i> JUMIN</th>

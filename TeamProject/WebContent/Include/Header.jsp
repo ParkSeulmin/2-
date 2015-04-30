@@ -67,7 +67,8 @@
 		<ul class="sidebar-menu" id="nav-accordion">
 
 			<p class="centered">
-				<a href="profile.html"><img src="assets/img/logo.png"
+				<a href="<%=request.getContextPath()%>/Main.jsp">
+					<img src="<%=request.getContextPath()%>/assets/img/logo.png"
 					class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
@@ -137,8 +138,8 @@
 							<li><a href="#">개인정보 수정</a></li>
 							<li><a href="#">데이트 신청 리스트</a></li>
 							<li><a href="#">파티 신청 리스트</a></li>
-							<li><a href="#">보낸 쪽지함</a></li>
-							<li><a href="#">받은 쪽지함</a></li>
+							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
+                     		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
 						</ul></li>
 				</c:otherwise>
 
@@ -148,21 +149,5 @@
 		<!-- sidebar menu end-->
 	</div>
 	</aside> <!--sidebar end--> </section>
-
-	 <!-- <div class="col-lg-3 ds">
-	 	CALENDAR
-                        <div id="calendar" class="mb">
-                            <div class="panel green-panel no-margin">
-                                <div class="panel-body">
-                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                        <div class="arrow"></div>
-                                        <h3 class="popover-title" style="disadding: none;"></h3>
-                                        <div id="date-popover-content" class="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div>/ calendar
-                      
-	 </div> -->
+	 
 	
