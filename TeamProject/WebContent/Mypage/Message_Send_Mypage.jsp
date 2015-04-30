@@ -1,34 +1,25 @@
 <%@page import="Login.DTO.Member"%>
-<%@page import="Board.DTO.Reply"%>
-<%@page import="Board.DTO.Board"%>
+<%@page import="Mypage.DTO.Message_DTO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*"%>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-// session
-		Member user = null;
-		String id = null;
-		if(session.getAttribute("user") != null){
-			user = (Member)session.getAttribute("user");
-			id = user.getId();
-		}		
-		
-		System.out.println("session id check: "+ id);
-		
-		
-	List boardList=(List)request.getAttribute("boardlist");
-	List replylistnum = (List)request.getAttribute("replylistnum");
-	int listcount=((Integer)request.getAttribute("listcount")).intValue();
+	Member user = null;
+	String userid = null;
+	if(session.getAttribute("user") != null){
+		user = (Member)session.getAttribute("user");
+		userid = user.getId();
+	}		
+	
+	System.out.println("Send session id check: "+ userid);
+	//int listcount=((Integer)request.getAttribute("listcount")).intValue();
 	int nowpage=((Integer)request.getAttribute("page")).intValue();
 	int maxpage=((Integer)request.getAttribute("maxpage")).intValue();
 	int startpage=((Integer)request.getAttribute("startpage")).intValue();
 	int endpage=((Integer)request.getAttribute("endpage")).intValue();
-	int boardtype = ((Integer)request.getAttribute("boardtype")).intValue();
-	
-	String boardname = (String)request.getAttribute("boardname");
-	System.out.println("nomal_board_list.jsp: "+boardtype);
+	int rcount = ((Integer)request.getAttribute("sendcount")).intValue();//받은 메시지 갯수
+	ArrayList<Message_DTO> rmsg = (ArrayList<Message_DTO>)request.getAttribute("sendlist");//받은 메시지리스트
 %>
 
  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -94,129 +85,156 @@
 </style>
 </head>
 <body style>
-  <c:import url="/Include/Header.jsp"/>
+	<c:import url="/Include/Header.jsp" />
+	<section id="main-content"> <section class="wrapper">
+	<h3>
+		<i class="fa fa-angle-right"></i> 보낸 메시지함
+	</h3>
+	<div class="row mt">
+		<div class="col-lg-12">
+			<p>보낸 메시지함</p>
+		</div>
+	</div>
 
- 
-	
-	<%-- <input type="hidden" id="sessionid" value="<%=user.getId() %>"> --%>
-		<!-- 게시판 리스트 -->
-	 <section id="main-content">
-          <section class="wrapper">
-           <div class="row">
-  			<h3><i class="fa fa-angle-right"></i> REAL AFTER</h3>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          		<p>리얼한 후기 게시판</p>
-          		</div>
-          	</div>
-	             
-	  
-	         <div  class="col-lg-9 main-chart">
-	          
-	         	<h4><i class="fa fa-angle-right"></i>${boardname}</h4>
-	          	<hr>
-		          <div>
-						<font size=2> TOTAL : ${listcount}
-									&nbsp;&nbsp;|&nbsp;&nbsp; ${page} 페이지	
-						</font>
-					  
-	            	</div>
-	         
-	         
-	         <div class="row mt">
-	              <%
-				for(int i=0;i<boardList.size();i++){
-					Board bl=(Board)boardList.get(i);
-					int rl=(Integer)replylistnum.get(i);					
-				%>
-			<!-- Blog Panel -->
-			<!-- <div class="col-lg-4 col-md-4 col-sm-4 mb"> -->
-				<div class = "col-md-4 mb">
-				<div class="content-panel pn">
-					 
-					
-					<div id="blog-bg">
-						<div class="badge badge-popular"><%=bl.getBo_no()%></div>
-						<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+	<div class="col-md-12 mt">
+		<div class="content-panel">
+
+			<input type="hidden" id="sessionid" value="<%=userid %>">
+			<!-- 게시판 리스트 -->
+			<table width=570 border="0" cellpadding="0" cellspacing="0"  class="table table-bordered table-striped table-condensed">
+				<tr align="center" valign="middle">
+					<td colspan="4">보낸 쪽지함</td>
+					<td colspan="2" align="middle"><font size=2>보낸 메시지 수:<%=rcount %></font></td>
+				</tr>
+
+				<tr align="center" valign="middle" bordercolor="#333333">
+					<td style="font-family: Tahoma; font-size: 8pt;" width="8%"
+						height="26">
+						<div align="center">
+							<input type="checkbox" id="check" name="check">
 						</div>
-					<div class="blog-text">
-					<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
-						<p> <%
-							String bo_content = "";
-								if(bl.getBo_content().length() >= 10){
-								 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
-								} else{
-									bo_content = bl.getBo_content();
-								}
-							%>
-							<%=bo_content%>
-						    &nbsp;&nbsp;
-						<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>">Read More</a></p>
-					</div>
-				</div>
-			</div><!-- /col-md-4-->
-	 	 <%		
-	 	 	} 	
+					</td>
+					<td style="font-family: Tahoma; font-size: 8pt;" width="14%">
+						<div align="center">받은 사람</div>
+					</td>
+					<td style="font-family: Tahoma; font-size: 8pt;" width="14%">
+						<div align="center">제목</div>
+					</td>
+					<td style="font-family: Tahoma; font-size: 8pt;" width="18%">
+						<div align="center">내용</div>
+					</td>
+					<td style="font-family: Tahoma; font-size: 8pt;" width="11%">
+						<div align="center">날짜</div>
+					</td>
+					<td style="font-family: Tahoma; font-size: 8pt;" width="11%">
+						<div align="center">상세보기</div>
+					</td>
+				</tr>
+				
+
+				<%
+			//for문 돌려서 받은 메시지 리스트 뽑기
+				for(int i=0;i<rmsg.size();i++){
+					Message_DTO rl = (Message_DTO)rmsg.get(i);
 			%>
-	         	</div>
-	         	 <div align="center">
-	         		 <%if(nowpage<=1){ %>
-					<span class="badge">이전</span>&nbsp;
-					<%}else{ %>
-					<a href="./BoardList.bo?page=<%=nowpage-1 %>&boardtype=<%=boardtype%>" ><span class="badge bg-warning">이전</span></a>&nbsp;
-					<%} %>
-					
-					<%for(int a=startpage;a<=endpage;a++){
-						if(a==nowpage){%>
-						<span class="badge bg-important"><%=a %></span>
-						<%}else{ %>
-						<a href="./BoardList.bo?page=<%=a %>&boardtype=<%=boardtype%>"><span class="badge bg-inverse"><%=a %></span></a>
+				<tr align="center" valign="middle" bordercolor="#333333"
+					onmouseover="this.style.backgroundColor='F8F8F8'"
+					onmouseout="this.style.backgroundColor=''">
+					<td height="23" style="font-family: Tahoma; font-size: 10pt;">
+						<input type="checkbox" />
+					<td style="font-family: Tahoma; font-size: 10pt;">
+						<div align="center"><%=rl.getM_RECIEVEID() %></div>
+						</td>
+					<td style="font-family: Tahoma; font-size: 10pt;">
+						<div align="center"><%=rl.getM_TITLE() %></div>
+
+					</td>
+
+					<td style="font-family: Tahoma; font-size: 10pt;">
+						<div align="center"><%=rl.getM_CONTENT() %></div>
+					</td>
+					<td style="font-family: Tahoma; font-size: 10pt;">
+						<div align="center"><%=rl.getM_DATE() %></div>
+					</td>
+					<td style="font-family: Tahoma; font-size: 10pt;">
+						<div align="center">
 						
-						<%} %>
-					<%} %>
-					
-					<%if(nowpage>=maxpage){ %>
-					<span class="badge">다음</span>
-					<%}else{ %>
-					<a href="./BoardList.bo?page=<%=nowpage+1 %>&boardtype=<%=boardtype%>"><span class="badge bg-warning">다음</span></a>
-					<%} %>
-	         	</div>
-	         	<div align="right"> 
-	         			<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
-							<button type="button" class="btn btn-theme04">
-								<i class="fa fa-heart"></i> 
-									글쓰기
-							</button>
-						</a>
-	         	</div>  
-	         </div>
-	                        
-		 
-	                        
-	                  	  
-			
-				<div class="col-lg-3 ds">
-                    
+						<input type="button" value="상세보기" width="10" height="10" class="btn btn-primary btn-xs btn-round btn-danger"
+						onclick="window.open('<%=request.getContextPath()%>/Detailsendmsg.msg?m_id=<%=rl.getM_ID()%>','zip','width=500','height=300')">
 						
-					 <!-- CALENDAR-->
-                        <div id="calendar" class="mb">
-                            <div class="panel green-panel no-margin">
-                                <div class="panel-body">
-                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                        <div class="arrow"></div>
-                                        <h3 class="popover-title" style="disadding: none;"></h3>
-                                        <div id="date-popover-content" class="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div> 
-                  </div>
-		
-			</div>
-	 	</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
-	 
+						</div>
+					</td>
+				</tr>
+				<%		} 
+				
+			%>
+				<tr align=center height=20>
+					<td colspan=7 style="font-family: Tahoma; font-size: 10pt;">
+						<%if(nowpage<=1){ %> [이전]&nbsp; <%}else{ %> <a
+						href="./Sendmsg.msg?page=<%=nowpage-1 %>">[이전]</a>&nbsp; <%} %> 
+						<%for(int a=startpage;a<=endpage;a++){
+						if(a==nowpage){%> [<%=a %>] <%}else{ %> <a
+						href="./Sendmsg.msg?page=<%=a %>">[<%=a %>]
+					</a> &nbsp; <%} %> <%} %> <%if(nowpage>=maxpage){ %> [다음] <%}else{ %> <a
+						href="./Sendmsg.msg?page=<%=nowpage+1 %>">[다음]</a> <%} %>
+					</td>
+				</tr>
+				<tr align="right">
+					<td colspan="5">
+						<%-- <%if(id!=null && id.equals("admin")){%>
+						<a href="./MemberListAction.me">[회원관리]</a>
+					<%}%> --%> 
+					
+
+						<div id="dialog-message" title="글쓰기">
+							<!--  <p>
+					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+					    	회원만 게시물 등록이 가능합니다^ ^
+
+`					  </p> -->
+							<!-- 		  <p>
+					     <b>로그인 해주세요^ ^</b>.
+					  </p> -->
+						</div> <script>
+					  	$(function(){
+							
+							$("#dialog-message").dialog({
+									 autoOpen: false,
+									 modal: true,
+									 buttons: {
+										Ok: function() {
+											//$('#writeboard').attr("href", "#");
+											$( this ).dialog( "close" );
+										
+										}
+								     }
+								});
+							
+						   	$('#writeboarderror').click(function(){
+						   			$("#dialog-message").dialog( "open" );
+					 		});
+						});
+					 </script>
+					</td>
+				</tr>
+			</table>
+
+
+
+
+		</div>
+		<!--/content-panel -->
+	</div>
+	<!-- /col-md-12 --> </section><!--/wrapper --> </section>
+	<!-- /MAIN CONTENT -->
+
+
+
+
+
+	<!-- <div style="padding: 200px;"> 임의임의임의  -->
+
+	<c:import url="/Include/Footer.jsp" />
 <!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>

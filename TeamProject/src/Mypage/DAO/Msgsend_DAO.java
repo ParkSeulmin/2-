@@ -1,4 +1,4 @@
-package Meeting.DAO;
+package Mypage.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,10 +12,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import Login.DTO.Member;
-import Meeting.DTO.Party_DTO;
 
-public class Party_DAO {
+import Mypage.DTO.Message_DTO;
+
+public class Msgsend_DAO {
+
 	//DB연결
 		//CRUD 작업
 		// method 공통 사용 ....
@@ -31,29 +32,27 @@ public class Party_DAO {
 					ctx = new InitialContext();
 					Context envCtx = (Context) ctx.lookup("java:comp/env");
 					ds = (DataSource) envCtx.lookup("/jdbc/oracle");
-					System.out.println("partyDataSource 객체 생성 성공 !");
 				} catch (NamingException e) {
-					System.out.println("lookup Fail : " + e.getMessage());
 				}
 			}
 			
 			
-			public int getcount() throws SQLException{
+			//받은 쪽지 갯수 반환
+			public int getsendmsgcount(String userid) throws SQLException{
 				try {
-					System.out.println("partydao로 넘어왔다");
 					conn = ds.getConnection();
 					String sql = 
-					"SELECT COUNT(*) FROM PARTY";
+					"select count(*) from MESSAGE where M_SENDID=?";
 					int count = 0;
 					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					Party_DTO party = new Party_DTO();
-					rs = pstmt.executeQuery();
+					pstmt.setString(1,userid);
 					
+					rs= pstmt.executeQuery();
+
 					while(rs.next()){
-						count = rs.getInt(1);
+						count = rs.getInt(1);//결과 값 받아옴 
 					}
-					System.out.println("count" + count);
+					System.out.println("send msg count" + count);
 					return count;	
 				}finally{
 					if(pstmt != null)pstmt.close();
@@ -62,36 +61,37 @@ public class Party_DAO {
 			}
 			
 			
-			//party 목록 불러오기
-			public List getpartylist() throws SQLException{
+			//id값 비교해서 목록 불러오기
+			public ArrayList<Message_DTO> getsendlist(String userid) throws SQLException{
 				try {
-					System.out.println("partydao로 넘어왔다");
 					conn = ds.getConnection();
 					String sql = 
-					"SELECT * FROM PARTY";
-					List partylist = new ArrayList();// party 리스트
+					"select * from MESSAGE where M_SENDID=? ORDER BY M_DATE desc";
+					ArrayList<Message_DTO> smsg = new ArrayList<Message_DTO>();// 받은 메시지 리스트
 					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1,userid);
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()){
-						Party_DTO party = new Party_DTO();
-						party.setP_AREA(rs.getString("P_AREA"));
-						party.setP_DATE(rs.getDate("P_DATE"));
-						party.setP_ID(rs.getInt("P_ID"));
-						party.setP_MAXPEOPLE(rs.getInt("P_MAXPEOPLE"));
-						party.setP_STATUS(rs.getString("P_STATUS"));
-						party.setP_TITLE(rs.getString("P_TITLE"));
-						party.setP_IMG(rs.getString("P_IMG"));
-						partylist.add(party);
+						Message_DTO dto = new Message_DTO();
+						dto.setM_CONTENT(rs.getString("M_CONTENT"));
+						dto.setM_TITLE(rs.getString("M_TITLE"));
+						dto.setM_DATE(rs.getDate("M_DATE"));
+						dto.setM_ID(rs.getInt("M_ID"));
+						dto.setM_RECIEVEID(rs.getString("M_RECIEVEID"));
+						dto.setM_SENDID(rs.getString("M_SENDID"));
+						smsg.add(dto);
 					}
 					
-					return partylist;	
+					return smsg;	
 				}finally{
 					if(pstmt != null)pstmt.close();
 					if(conn != null)pstmt.close();
 				}
 			}
 				
+
+
 
 
 }

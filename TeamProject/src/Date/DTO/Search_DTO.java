@@ -13,7 +13,14 @@ public class Search_DTO {
 	private String address;
 	private int admin;
 	
+	private String u_mypicture;	// 프로필 사진
 	
+	public String getU_mypicture() {
+		return u_mypicture;
+	}
+	public void setU_mypicture(String u_mypicture) {
+		this.u_mypicture = u_mypicture;
+	}
 	public String getId() {
 		return id;
 	}

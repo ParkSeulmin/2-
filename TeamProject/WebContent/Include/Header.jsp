@@ -72,8 +72,9 @@
 		<ul class="sidebar-menu" id="nav-accordion">
 
 			<p class="centered">
-				<a href="profile.html"><img src="<%=request.getContextPath()%>/assets/img/logo.png"
-					class="img-circle" width="60"></a>
+
+				<a href="<%=request.getContextPath()%>/Main.jsp">
+					<img src="<%=request.getContextPath()%>/assets/img/logo.png" class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
 
@@ -91,7 +92,7 @@
 					<li><a href="#">about 만남의 품격</a></li>
 					<li><a
 						href="<%=request.getContextPath()%>/BoardList.bo?boardtype=10">공지사항</a></li>
-					<li><a href="#">Contact Us</a></li>
+					<li><a href="<%=request.getContextPath()%>/Notice/Contact.jsp">Contact Us</a></li>
 				</ul></li>
 
 			<li class="sub-menu"><a href="javascript:;"> <i
@@ -140,10 +141,16 @@
 					</a>
 						<ul class="sub">
 							<li><a href="#">개인정보 수정</a></li>
+ 
+		
+							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
+                     		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
+ 
 							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
 							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
 							<li><a href="#">보낸 쪽지함</a></li>
 							<li><a href="#">받은 쪽지함</a></li>
+ 
 						</ul></li>
 				</c:otherwise>
 
@@ -153,6 +160,7 @@
 		<!-- sidebar menu end-->
 	</div>
 	</aside> <!--sidebar end--> </section>
+
 
 	 <!-- <div class="col-lg-3 ds">
 	 	CALENDAR
@@ -168,6 +176,7 @@
                                 </div>
                             </div>
                         </div>/ calendar
-                      
-	 </div> -->
+             -->
+
+
 	

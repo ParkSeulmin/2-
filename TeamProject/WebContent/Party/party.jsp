@@ -103,7 +103,7 @@
 					<div class="photo-wrapper">
 						<div class="photo">
 							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="assets/img/portfolio/port04.jpg"
+								class="img-responsive" src="Images/party/<%=pl.getP_IMG()%>"
 								alt=""></a>
 						</div>
 						<div class="overlay"></div>
