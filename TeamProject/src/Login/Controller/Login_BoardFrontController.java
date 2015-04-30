@@ -67,6 +67,8 @@ public class Login_BoardFrontController extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally{
+				
 			}
 		} else if (cmd.equals("/Login/MySelf.check")) {
 			try {

@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="Dashboard">
 <meta name="keyword"
+
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
@@ -65,6 +68,7 @@
 	text-align: left;
 }
 </style>
+ 
  <style type="text/css">
 
 	div.start {
@@ -77,6 +81,7 @@
 	}
 	
 </style>
+ 
 </head>
 <body style>
 <!-- <section id="container" > -->

@@ -135,7 +135,7 @@
 		                      <ul class="sub">
 		                           <li><a href="#">정보수정하기</a></li>
 				                           
-				                          <li><a href="#">데이트 신청 리스트</a></li>
+				                          <li><a href="CheckArrow.daa?user=<%=request.getAttribute("user")%>">데이트 신청 리스트</a></li>
 				                          <li><a href="#">파티 신청 리스트</a></li>
 				                          <li><a href="#">보낸 쪽지함</a></li>
 				                          <li><a href="#">받은 쪽지함</a></li>

@@ -21,9 +21,14 @@
 
 %>
 
-
 <c:set var="id" value="<%=id%>" /><!-- id값 -->
 	 <c:set var="admin"	value="<%=admin%>" /><!-- id값 --> 
+<%-- 
+
+<%	
+	session.setAttribute("user", "HYEJUNG22");
+%>
+ --%>
 
 	<section id="container"> 
 	<header class="header black-bg">
@@ -67,9 +72,9 @@
 		<ul class="sidebar-menu" id="nav-accordion">
 
 			<p class="centered">
+
 				<a href="<%=request.getContextPath()%>/Main.jsp">
-					<img src="<%=request.getContextPath()%>/assets/img/logo.png"
-					class="img-circle" width="60"></a>
+					<img src="<%=request.getContextPath()%>/assets/img/logo.png" class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
 
@@ -96,7 +101,7 @@
 				<ul class="sub">
 					<li><a href="#">데이트 하기</a></li>
 					<li><a href="<%=request.getContextPath()%>/Date/Search_Date.jsp">이상형 찾기</a></li>
-					<li><a href="#">파티 참석</a></li>
+					<li><a href="<%=request.getContextPath()%>/Partylist.party">파티 참석</a></li>
 				</ul></li>
 			<li class="sub-menu"><a href="javascript:;"> <i
 					class="fa fa-book"></i> <span>게시판</span>
@@ -136,10 +141,16 @@
 					</a>
 						<ul class="sub">
 							<li><a href="#">개인정보 수정</a></li>
-							<li><a href="#">데이트 신청 리스트</a></li>
-							<li><a href="#">파티 신청 리스트</a></li>
+ 
+		
 							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
                      		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
+ 
+							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
+							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
+							<li><a href="#">보낸 쪽지함</a></li>
+							<li><a href="#">받은 쪽지함</a></li>
+ 
 						</ul></li>
 				</c:otherwise>
 

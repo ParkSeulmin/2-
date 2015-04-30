@@ -12,8 +12,8 @@
 
 
 	 <Resource maxWait="-1" 
-	          maxIdle="20" 
-	          maxActive="10" 
+	          maxIdle="50" 
+	          maxActive="50" 
 	          password="1004"
 		      username="HYEJUNG" 
 		      url="jdbc:oracle:thin:@192.168.7.218:1521:XE"

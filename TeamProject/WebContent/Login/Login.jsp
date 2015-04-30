@@ -79,7 +79,9 @@
 		            <input type="password" class="form-control" name="mb_password" placeholder="Password">
 		            <label class="checkbox">
 		                <span class="pull-right">
-		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+		                <a data-toggle="modal" href="<%=request.getContextPath()%>/Login/Login_Find_Id.jsp"> ID찾기 </a>
+		                <a>/</a>
+		                    <a data-toggle="modal" href="<%=request.getContextPath()%>/Login/PwdSearch.jsp"> PassWord 찾기</a>
 		
 		                </span>
 		            </label>
@@ -90,7 +92,7 @@
 		             
 		            <div class="registration">
 		                Don't have an account yet?<br/>
-		                <a class="" href="<%=request.getContextPath()%>/Login/Terms.html">
+		                <a class="" href="<%=request.getContextPath()%>/Login/Terms.jsp">
 		                    Create an account
 		                </a>
 		            </div>

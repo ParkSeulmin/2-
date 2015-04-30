@@ -9,7 +9,28 @@ public class Party_DTO {
 	private String P_AREA;//파티장소
 	private String P_STATUS;//파티 상태
 	private int P_MAXPEOPLE;//파티 최대 인원
+	private int count;// 총 게시물 수 
+	private String P_IMG;//이미지
 	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getP_IMG() {
+		return P_IMG;
+	}
+	public void setP_IMG(String p_IMG) {
+		P_IMG = p_IMG;
+	}
+	public int getcount() {
+		return count;
+	}
+	public void setcount(int count) {
+		count = this.count;
+	}
 	public int getP_ID() {
 		return P_ID;
 	}
