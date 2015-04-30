@@ -68,6 +68,7 @@
 	text-align: left;
 }
 </style>
+
 </head>
 <body style>
 	 <%-- <c:import url="/Include/Header.jsp" /> --%>

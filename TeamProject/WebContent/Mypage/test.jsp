@@ -118,7 +118,7 @@
 </script>
 </head>
 <body style>
-<%-- <c:import url="/Include/Header.jsp"/> --%>
+<c:import url="/Include/Header.jsp"/>
 <h3 align="center">친구 등록 요청 LIST</h3>
 user : <%=request.getParameter("user")%><br>
 

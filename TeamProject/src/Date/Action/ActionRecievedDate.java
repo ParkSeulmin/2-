@@ -22,8 +22,11 @@ public class ActionRecievedDate implements Action {
 		String recieved_id=(String)request.getAttribute("id");
 		System.out.println(recieved_id+"우다다다다다다닫다");
 		ar=Arw_dao.Recieved_Arrow(recieved_id);
+		System.out.println("거이 다왓다");
 		request.setAttribute("result", ar);
-		forward.setPath("Mypage_RecieveList.jsp");
+		System.out.println("마지막이다.");
+		forward.setPath("Mypage/Mypage_RecieveList.jsp");
+		System.out.println("아오아오 젠장");
 		forward.setRedirect(false);
 		return forward;
 	}

@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%	
 	session.setAttribute("user", "HYEJUNG22");
-	//String user=(String)session.getAttribute("user");
-	//request.setAttribute("user", "HYEJUNG22");
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
