@@ -18,11 +18,11 @@
 <%
 	request.setCharacterEncoding("UTF-8");
   
-	Member user = null;
-	String id = null;
+	String user = null;
+	Member id = null;
 	if(session.getAttribute("user") != null){
-		user = (Member)session.getAttribute("user");
-		id = user.getId();
+		id = (Member)session.getAttribute("user");
+		user = id.getId();
 	}		
 
 	
@@ -81,10 +81,9 @@
 							+"<span class='label label-info label-mini'>"+items.admin+"</span></td>"
 							+"<td><span class='label label-info label-mini'>"+items.jumin+"</span></td>"
 							+"<td><span class='label label-info label-mini'>"+items.phone+"</span></td>"
-							+"<td><input type='button' name='"+items.id+"' id='"+items.id+"' value='화살쏘기'"
-							+"onclick=dataSend('"+items.id+"')></td></tr>"
-					
-				
+							+"<td><button type='button' class='btn btn-theme04' name='"+items.id+"' id='"+items.id
+							+"'onclick=dataSend('"+items.id+"')><i class='fa fa-heart'></i>화살쏘기</button></td></tr>"
+			
 				});
    			
    			
@@ -101,14 +100,21 @@
  
   function dataSend(iddata){
 		var id_data = {
-				id : iddata,
-				sender : "<%=session.getAttribute("user")%>" }
+				id : iddata,//여기
+				sender : "<%=user%>" }
 		$.ajax({
 			url : "SendArrow.daa",
 			data : id_data,
 			success : function(data) {
 				var options = {};
-				$("#"+iddata).val(data);
+				//$("#"+iddata).val(data);
+				$("#"+iddata).hide(function(){
+					if(data == "success!"){
+						$(this).replaceWith('<span style="color: blue">'+data+'</span>');
+					}else{
+						$(this).replaceWith('<span style="color: red">'+data+'</span>');
+					}
+				});
 			}
 		});
 	}

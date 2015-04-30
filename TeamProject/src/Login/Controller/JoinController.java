@@ -84,6 +84,7 @@ public class JoinController extends HttpServlet {
 				e.printStackTrace();
 			}
 
+ 
 		}else if(command.equals("/DeleteMember.do")){		// 회원삭제 처리
 			   action = new DeleteMemberAction();
 			   try{
@@ -93,6 +94,8 @@ public class JoinController extends HttpServlet {
 			   }
 		   } 
 		   
+ 
+ 
 		
 		if (forward != null) {
 			if (forward.isRedirect()) { // view 단 바로....

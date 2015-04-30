@@ -1,19 +1,15 @@
-<%@page import="Meeting.DAO.Party_DAO"%>
-<%@page import="Meeting.DTO.Party_DTO"%>
-<%@page import="java.util.List"%>
+<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	/* 	String userid = null;
-	 if (session.getAttribute("userid") != null) {
-	 userid = (String) session.getAttribute("userid");
-	 } */
-	//list get해서 가져오기
-	List partylist = (List) request.getAttribute("partylist");
-	int count = (Integer) request.getAttribute("count");
+	Member user = (Member) session.getAttribute("user");//로그인아이디가져옴
+	if (session.getAttribute("user") != null) {
+		user = (Member) session.getAttribute("user");
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +18,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>회원정보수정</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
@@ -47,6 +43,8 @@
 
 <script
 	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
+	
+
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -84,42 +82,72 @@
 </head>
 <body style>
 	<c:import url="/Include/Header.jsp" />
-
-
-	<section id="main-content"> 
-	<section class="wrapper site-min-height">
-	<h3>
-		<i class="fa fa-angle-right"></i> Partylist
-	</h3>
-	<hr>
+	<section id="main-content"> <section class="wrapper">
 	<div class="row mt">
-	<%
-			for (int i = 0; i < partylist.size(); i++) {
-			Party_DTO pl = (Party_DTO) partylist.get(i);
-	%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-			<div class="project-wrapper">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="/Images/party/<%=pl.getP_IMG() %>"
-								alt=""></a>
-						</div>
-						<div class="overlay"></div>
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="showback" style="width: 500px; height: 300px;">
+				<h4>
+					<i class="fa fa-angle-right"></i>비밀번호변경
+				</h4>
+				<div class="photo-wrapper">
+					<div class="photo">
+						<img class="img-responsive"
+							src="<%=request.getContextPath()%>/assets/img/portfolio/port04.jpg"
+							alt="">
 					</div>
+					<div class="overlay"></div>
+				</div>
+				<div align="right">
+					<button type="button" class="btn btn-round btn-success">Success</button>
 				</div>
 			</div>
 		</div>
-	<!-- col-lg-4 -->
-<%
-			}
-	
-%>
-</div>
-	<!-- /row -->
-	 </section> 
-</section>
+		<!-- --/col-lg-6 ---->
+
+		<!-- 개인정보변경 -->
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="showback" style="width: 500px; height: 300px;">
+				<h4>
+					<i class="fa fa-angle-right"></i>개인정보변경
+				</h4>
+				<div align="right">
+					<a href="Mypage_PersonalEdit.jsp">
+						<button type="button" class="btn btn-round btn-primary">Go</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- /col-lg-6 -->
+
+
+		<!-- 추가정보수정 -->
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="showback" style="width: 500px; height: 300px;">
+				<h4>
+					<i class="fa fa-angle-right"></i>추가정보수정
+				</h4>
+				<div align="right">
+					<button type="button" class="btn btn-round btn-warning">Warning</button>
+				</div>
+			</div>
+		</div>
+		<!-- /col-lg-6 -->
+
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class="showback" style="width: 500px; height: 300px;">
+				<h4>
+					<i class="fa fa-angle-right"></i>회원탈퇴
+				</h4>
+				<div align="right">
+					<button type="button" class="btn btn-round btn-danger">Danger</button>
+				</div>
+			</div>
+		</div>
+		<!-- /col-lg-6 -->
+
+	</div>
+	</section> </section>
+
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script
@@ -149,6 +177,11 @@
 		src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+
+
+	<!--지도api  -->
+	<script type="text/javascript"
+		src="//apis.daum.net/maps/maps3.js?apikey=ad805ca7d0ae628142425b56ee9203f6"></script>
 
 
 
@@ -185,19 +218,19 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
-    
+	
 	</script>
-	<script type="text/javascript">
-		$(function() {
-			//    fancybox
-			jQuery(".fancybox").fancybox();
-		});
-	</script>
+
 	<script>
 		//custom select box
 
 		$(function() {
-			$("select.styled").customSelect();
+			$('select.styled').customSelect();
 		});
 	</script>
+	
+
+
+
 </body>
+</html>

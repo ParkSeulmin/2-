@@ -68,23 +68,9 @@
 	text-align: left;
 }
 </style>
- 
- <style type="text/css">
 
-	div.start {
-	  float: left;
-	  width: 320px;
-	  height: 320px;
-	  margin: 0;
-	  overflow: hidden;
-	  background: url('http://www.wedaehan.com/image/main/box01_img.png') center no-repeat;
-	}
-	
-</style>
- 
 </head>
 <body style>
-<!-- <section id="container" > -->
 	 <%-- <c:import url="/Include/Header.jsp" /> --%>
 	 <c:import url="/Include/Header.jsp"/>
 	  <section id="main-content">
@@ -102,7 +88,11 @@
 						<!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
 						Functions
+ 
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> 
+ 
+						<!-- <script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> -->
+ 
 						
 					 
                   
@@ -250,8 +240,7 @@
 	  	</section><!--/wrapper -->
      </section><!-- /MAIN CONTENT -->
 	  </section>
-	   
-	 
+
 <!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
@@ -274,7 +263,30 @@
 	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
+<<<<<<< HEAD
 	   
+=======
+	<!--    <script type="text/javascript">
+        $(document).ready(function () {
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Welcome to Dashgum!',
+            // (string | mandatory) the text inside the notification
+            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
+            // (string | optional) the image to display on the left
+            image: 'assets/img/ui-sam.jpg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: true,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'my-sticky-class'
+        });
+
+        return false;
+        });
+   </script> -->
+>>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 
 	<script type="application/javascript">
         $(document).ready(function () {
@@ -309,8 +321,6 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-
-	
 
 </body>
 </html>

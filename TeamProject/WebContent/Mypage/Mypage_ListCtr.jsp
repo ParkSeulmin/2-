@@ -1,20 +1,15 @@
-<%@page import="Meeting.DAO.Party_DAO"%>
-<%@page import="Meeting.DTO.Party_DTO"%>
+<%@page import="Login.DTO.Member"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="Mypage.DTO.Arrow_DTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	/* 	String userid = null;
-	 if (session.getAttribute("userid") != null) {
-	 userid = (String) session.getAttribute("userid");
-	 } */
-	//list get해서 가져오기
-	List partylist = (List) request.getAttribute("partylist");
-	int count = (Integer) request.getAttribute("count");
-%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -22,8 +17,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
-
+<title>Insert title here</title>
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
 	rel="stylesheet">
@@ -81,59 +75,78 @@
 	text-align: left;
 }
 </style>
-</head>
-<body style>
-	<c:import url="/Include/Header.jsp" />
 
-
-	<section id="main-content"> 
-	<section class="wrapper site-min-height">
-	<h3>
-		<i class="fa fa-angle-right"></i> Partylist
-	</h3>
-	<hr>
-	<div class="row mt">
-	<%
-			for (int i = 0; i < partylist.size(); i++) {
-			Party_DTO pl = (Party_DTO) partylist.get(i);
-	%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-			<div class="project-wrapper">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="/Images/party/<%=pl.getP_IMG() %>"
-								alt=""></a>
-						</div>
-						<div class="overlay"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- col-lg-4 -->
 <%
-			}
+	List<Arrow_DTO> mylist=new ArrayList<Arrow_DTO>();
+	mylist=(ArrayList<Arrow_DTO>)request.getAttribute("result");
 	
+	List<Member> friends=new ArrayList<Member>();
+	friends=(ArrayList<Member>)request.getAttribute("friends");
 %>
-</div>
-	<!-- /row -->
-	 </section> 
-</section>
-	<!-- js placed at the end of the document so the pages load faster -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+	function checkinfo(sendid){
+		window.open("Mypage/Mypage_MemberInfo.jsp?id="+sendid, "Popup", "width=600, height=150,scrollbars=1, menubar=1, resizable=1"); 
+	}
+	
+	function agree(sender){
+		var sdid={
+					s_id:sender,
+				    r_id:'<%=session.getAttribute("user")%>'}
+
+		$.ajax({
+			url:"register.daa",
+			data:sdid,
+			success : function(data){
+				alert(data);
+				//$("#"+sender).hide();
+				location.reload();
+			}
+		});
+	}
+	function disagree(sender){
+		var sdid={
+					s_id:sender,
+				    r_id:'<%=session.getAttribute("user")%>'}
+
+		$.ajax({
+			url:"delete_arrow.daa",
+			data:sdid,
+			success : function(data){
+				alert(data);
+				//$("#"+sender).hide();
+				location.reload();
+			}
+		});
+	}
+</script>
+</head>
+
+<body>
+	<%
+	Member member=(Member)session.getAttribute("user");
+	String userid=member.getId();
+%>
+	<c:import url="/Include/Header.jsp" />
+	<section id="main-content"> <section class="wrapper">
+	<div class="row">
+	<div  class="col-lg-9 main-chart" align="center">	
+		<div>
+			<h3>현재의 나 :<%=userid%></h3><br>
+	<a href='CheckArrow.daa?user=<%=userid%>'>친구 요청받은 리스트</a><br>
+	<hr>
+	<a href='CheckSendArrow.daa?user=<%=userid%>'>내가 요청한 친구 리스트</a><br>
+	<hr>
+		
+	
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript"
 		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
-		type="text/javascript"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
 
 
 	<!--common script for all pages-->
@@ -141,19 +154,34 @@
 
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
 
 	<!--script for this page-->
-	<script
-		src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
+	<!--    <script type="text/javascript">
+        $(document).ready(function () {
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Welcome to Dashgum!',
+            // (string | mandatory) the text inside the notification
+            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
+            // (string | optional) the image to display on the left
+            image: 'assets/img/ui-sam.jpg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: true,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'my-sticky-class'
+        });
 
+        return false;
+        });
+   </script> -->
 
 	<script type="application/javascript">
-		
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -185,19 +213,14 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
-    
-	</script>
-	<script type="text/javascript">
-		$(function() {
-			//    fancybox
-			jQuery(".fancybox").fancybox();
-		});
-	</script>
-	<script>
-		//custom select box
+    </script>
+    </div>
+    </div>
+    </section>
+    </section>
 
-		$(function() {
-			$("select.styled").customSelect();
-		});
-	</script>
+
+
+>>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 </body>
+</html>

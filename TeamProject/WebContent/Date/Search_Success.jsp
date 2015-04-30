@@ -1,3 +1,4 @@
+<%@page import="Login.DTO.Member"%>
 <%@page import="Date.DTO.Search_DTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,11 +11,14 @@
 <title>Insert title here</title>
 	<script type="text/javascript">
 	
-	
+	<%
+		Member member=(Member) session.getAttribute("user");
+		String user=member.getId();
+	%>
 		function dataSend(iddata){
 			var id_data = {
 					id : iddata,
-					sender : "<%=session.getAttribute("user")%>" }
+					sender : "<%=user%>" }
 			$.ajax({
 				url : "SendArrow.daa",
 				data : id_data,
