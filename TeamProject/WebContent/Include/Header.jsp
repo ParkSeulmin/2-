@@ -67,7 +67,7 @@
 		<ul class="sidebar-menu" id="nav-accordion">
 
 			<p class="centered">
-				<a href="profile.html"><img src="assets/img/logo.png"
+				<a href="profile.html"><img src="<%=request.getContextPath()%>/assets/img/logo.png"
 					class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
