@@ -123,10 +123,10 @@
           <section class="wrapper">
            <div class="row">
            	
-           	<h3><i class="fa fa-angle-right"></i>BOARD VIEW</h3>
+           	<h3><i class="fa fa-angle-right"></i>BOARD MODIFIED</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
-          		<p>게시판 보기</p>
+          		<p>게시글 수정</p>
           		</div>
           	</div>
 	                <hr>

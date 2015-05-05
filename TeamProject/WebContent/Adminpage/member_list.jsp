@@ -94,11 +94,25 @@
   <c:import url="/Include/Header.jsp"/>
  <section id="main-content">
           <section class="wrapper">
-	 
+	 	
 		<!-- 회원 리스트 -->
 		<div>회원목록</div>
 	
-		
+		<div class="tab-pane" id="chartjs">
+                  <div class="row mt">
+                      <div class="col-lg-6">
+                          <div class="content-panel">
+							  <h4><i class="fa fa-angle-right"></i> Pie</h4>
+                              <div class="panel-body text-center">
+                                  <canvas id="pie" height="300" width="400"></canvas>
+                              </div>
+                          </div>
+                      </div>
+                       
+                  </div>
+         </div>
+         <hr>             
+		 
 		<div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
@@ -114,6 +128,7 @@
                                   <th><i class=" fa fa-edit"></i> GENDER</th>
                                   <th><i class=" fa fa-edit"></i> AGE</th>
                                   <th><i class=" fa fa-edit"></i> EMAIL</th>
+                                   <th><i class=" fa fa-edit"></i> PHONE</th>
                                   <th><i class=" fa fa-edit"></i> ADDR</th>
                                   <th><i class=" fa fa-edit"></i> JOIN-DATE</th>
                                   <th><i class=" fa fa-edit"></i> DELETE</th>
@@ -182,7 +197,8 @@
                                   <td>
                                       
                                       <button class="btn btn-danger btn-xs" 
-                                      onclick="location.href='./DeleteMember.do?u_id=<%=ml.getId()%>'">
+                                      
+                                      onclick="location.href='./AdminPwdCheckPageMember.admin?u_id=<%=ml.getId()%>'">
                                       <i class="fa fa-trash-o "></i></button>
                                   </td>
                               </tr>
@@ -249,7 +265,18 @@
 	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
-	 
+	<!--  <script src="assets/js/morris-conf.js"></script> -->
+	  <script src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/js/chartjs-conf.js"></script>
+	
+	<script>
+      //custom select box
+
+      $(function(){
+          $('select.styled').customSelect();
+      });
+
+  </script>
 
 	<script type="application/javascript">
         $(document).ready(function () {

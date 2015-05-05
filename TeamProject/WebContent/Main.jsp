@@ -91,7 +91,7 @@
  
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> 
  
-						<!-- <script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> -->
+						<!-- <script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> 
  
 						
 					 
@@ -263,9 +263,7 @@
 	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
-<<<<<<< HEAD
-	   
-=======
+ 
 	<!--    <script type="text/javascript">
         $(document).ready(function () {
         var unique_id = $.gritter.add({
@@ -286,7 +284,7 @@
         return false;
         });
    </script> -->
->>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
+ 
 
 	<script type="application/javascript">
         $(document).ready(function () {

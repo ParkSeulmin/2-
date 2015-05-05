@@ -1,23 +1,34 @@
-
 <%@page import="Login.DTO.Member"%>
+<%@page import="Board.DTO.Reply"%>
+<%@page import="Board.DTO.Board"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%
 // session
 		Member user = null;
-		String id = "";
+		String id = null;
 		if(session.getAttribute("user") != null){
 			user = (Member)session.getAttribute("user");
 			id = user.getId();
 		}		
 		
 		System.out.println("session id check: "+ id);
-
-	int boardtype = Integer.parseInt(request.getParameter("boardtype"));
-	System.out.println("write boardtype: "+boardtype);
+		
+		String u_id = "";
+		if(request.getParameter("u_id") != null){
+			u_id = request.getParameter("u_id");
+		}
+		
+		System.out.println("admin_pwd_check_member.jsp u_id: "+u_id);
+		
+		 
+		
+		 
+	 
 %>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,7 +56,7 @@
 <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
 
-<script src="assets/js/chart-master/Chart.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -80,123 +91,84 @@
 	text-align: left;
 }
 </style>
-
-		<script type="text/javascript" 
-	src="<%=request.getContextPath()%>/Board/ckeditor/ckeditor.js">
-	</script>
-	<script language="javascript">
-		function addboard(){
-			
-			if (!boardform.bo_title.value) {
-				alert("제목을 입력하세요");
-				boardform.bo_title.focus();
-				return false;
-			}
-			
-			var ckeditor = CKEDITOR.instances['bo_content']; //객체가져오기
-	        if (ckeditor.getData()=="") {//null값은 안옴 = 빈문자열
-	             alert("글 내용을 입력하세요");
-	             ckeditor.focus();
-	             return false;
-	        }
-			
-			boardform.submit();
-		}
-	
-		
-	</script>
 </head>
-<body style>	
-	
+<body style>
+  <c:import url="/Include/Header.jsp"/>
 
  
-<c:import url="/Include/Header.jsp" />
-
-
-	<section id="main-content">
+	
+	<%-- <input type="hidden" id="sessionid" value="<%=user.getId() %>"> --%>
+		<!-- 게시판 리스트 -->
+	 <section id="main-content">
           <section class="wrapper">
-           <div class="row">
-           	
-           	<h3><i class="fa fa-angle-right"></i>BOARD WRITE</h3>
+          <!--  <div class="row"> -->
+  			<h3><i class="fa fa-angle-right"></i>BOARD ADMIN</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
-          		<p>게시글 쓰기</p>
+          		<p>관리자 게시판 관리 페이지</p>
           		</div>
           	</div>
-	                <hr>
-           	 <div  class="col-lg-9 main-chart" align="center">
-           	 
-           	 
-           	 <form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
-			enctype="multipart/form-data" name="boardform">
-		<input type="hidden" name="bo_writer" value="<%=user.getId() %>">
-		<table cellpadding="0" cellspacing="0" width="100%">
-			<tr align="center" valign="middle">
-				<td colspan="5"><div class="alert alert-success"><b>BOARD WRITE</b></div>
-				 </td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center"><span class="badge bg-success">글쓴이</span></div>
-				</td>
-				<td>
-					<%-- <input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
-						value="<%=user.getId() %>" readonly/> --%>
-						<input id="bo_writer" class="form-control" 
-							type="text" value="<%=user.getId()%>" disabled>
-					
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center"><span class="badge bg-success">&nbsp;제 목&nbsp;</span></div>
-				</td>
-				<td>
-					<!-- <input id="bo_title" name="bo_title" type="text" size="50" maxlength="100" 
-						value=""/> -->
-						<input id="bo_title" name="bo_title" type="text" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-success">&nbsp;내 용&nbsp;</span></div>
-				</td>
-				<td>
-					<textarea id="bo_content" name="bo_content" cols="80" rows="15"></textarea>
-					<script>
-					 CKEDITOR.replace('bo_content',{
-				            toolbar: 'Full'
-				            
-				            
-				        }
-				    );
-					</script>
-				</td>
-			</tr>
-			<tr>
-				<td style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-success">파일첨부</span></div>
-				</td>
-				<td>
-					<input id="bo_file" name="bo_file" type="file"/>
-				</td>
-			</tr>
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;">
-				</td>
-			</tr>
-			<tr><td colspan="2">&nbsp;</td></tr>
-			<tr align="center" valign="middle">
-				<td colspan="5">
-					<a href="javascript:addboard()"><span class="label label-primary">등록</span></a>&nbsp;&nbsp;
-					<a href="javascript:history.back()"><span class="label label-danger">뒤로</span></a>
-				</td>
-			</tr>
-		</table>
-		</form>
-           	 </div>
-           	 
-           	  	<div class="col-lg-3 ds">
+	             
+	  
+	         <div  class="col-lg-9 main-chart">
+	          
+	         	<h4><i class="fa fa-angle-right"></i>게시물 열람/삭제</h4>
+	          	<hr>
+		          
+	         
+	         
+	      			<div class="row">
+                  <div class="col-md-12">
+                      <div class="content-panel">
+                      
+                          <table class="table table-striped table-advance table-hover">
+	                  	  	  <h4><i class="fa fa-angle-right"></i>관리자 비밀번호 확인</h4>
+	                  	  	  <hr>
+                              <thead>
+                              <tr>
+                                  <th><i class="fa fa-bullhorn"></i> 관리자 비밀번호</th>
+                                   
+                              </tr>
+                              </thead>
+                              <tbody>
+                                
+                              <tr>
+                                  
+                                  <td  >
+                                    <div  class="col-lg-10">
+                                    <form id="adminpwd" action="./AdminPwdCheckMember.admin">
+                                    <input type="hidden" id="u_id" name="u_id" value="<%=u_id%>">
+                                      
+                                    <input class="form-control" id="adminpwd" name="adminpwd" type="password">
+                                  	</form></div><br><br><br>
+                                  	<div align="center">
+                                  	<button type="submit"  form="adminpwd" class="btn btn-round btn-danger">
+                                  	확인</button>
+						         	&nbsp; 
+                                  	<button type="button" class="btn btn-round btn-primary" onclick="javascirpt:history.back()">취소</button>
+                                  	</div>
+                                  </td>
+                              </tr>
+                             
+				
+                              </tbody>
+                          </table>
+                      </div><!-- /content-panel -->
+                  </div><!-- /col-md-12 -->
+              </div><!-- /row -->
+	 
+	         	</div>
+	          
+	        <!--  </div> -->
+	                        
+		 
+		 
+	                        
+	                  	  
+			
+				<div class="col-lg-3 ds">
+                    
+						
 					 <!-- CALENDAR-->
                         <div id="calendar" class="mb">
                             <div class="panel green-panel no-margin">
@@ -211,31 +183,12 @@
                             </div>
                         </div> 
                   </div>
-           	 
-           	 
-           	</div>
-          </section>
-    </section>
-           	 
-
-
-
-
-
-
- <%-- <section id="main-content">
-          <section class="wrapper">
-			<h3><i class="fa fa-angle-right"></i>게시글 쓰기</h3>
-          		<div class="row mt">
-          		<div class="col-lg-12">
-          		<p>글쓰기</p>
-          		</div>
-          	</div>
-		 
-	</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT --> --%>
+		
+			</div>
+	 	</section><!--/wrapper -->
+      </section><!-- /MAIN CONTENT -->
 	 
- <!-- js placed at the end of the document so the pages load faster -->
+<!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
@@ -297,3 +250,4 @@
 
 </body>
 </html>	 
+ 
