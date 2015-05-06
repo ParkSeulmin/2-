@@ -159,6 +159,7 @@ public class Join {
 				}
 	               return check;
 			}
+		
 			
 			// 회원 삭제
 			public boolean memberdelete(String userid){
@@ -294,5 +295,4 @@ public class Join {
 				
 				return false;
 			}
-		
 }

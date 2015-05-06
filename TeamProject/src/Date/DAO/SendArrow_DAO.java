@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import Login.DTO.Member;
@@ -74,13 +75,10 @@ public class SendArrow_DAO {
 			else{
 				result= "화살 감소OK";
 			}
-			pstmt.close();
-			conn.close();
-			
 			return result ; 
 	}
 	
-	public String ArrowRegister_DAO(String sender, String reciever){
+	public String ArrowRegister_DAO(String sender, String reciever) throws SQLException{
 		String result="";
 		try {
 			
@@ -115,30 +113,42 @@ public class SendArrow_DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		pstmt.close();
+		conn.close();
 		return result;
 	}
 
-	public ArrayList<Arrow_DTO> Recieved_Arrow(String me) throws SQLException {
+	public ArrayList<Arrow_DTO> Recieved_Arrow(String me, String arrowpage) throws SQLException {
 		//arrow DTO 생성 작업 해야 함.
 		ArrayList<Arrow_DTO> arlist=new ArrayList<Arrow_DTO>();
 		Arrow_DTO myar=null; 
+		
+		int cpage=Integer.parseInt(arrowpage);
+		int pagesize=2; 
+		int start = cpage * pagesize - (pagesize - 1);
+		int end = cpage * pagesize;
+		System.out.println("start : "+start);
+		System.out.println("end : "+end);
+		System.out.println("r_id : "+me);
+		System.out.println("cpage2 : "+cpage);
+		
 		try {
 			conn = ds.getConnection();
 			
-				String arrow_reg_sql="select * from arrow where a_recieveid=? ";
-				System.out.println("Dao 단 접근");
+				String arrow_reg_sql="select a_date,a_status,a_recieveid,a_sendid from "
+						+ "(select rownum r, a_date,a_status,a_recieveid,a_sendid from arrow where a_recieveid=? and a_status='대기중') "
+						+ "where r between ? and ?";
 				pstmt=conn.prepareStatement(arrow_reg_sql);
 				pstmt.setString(1, me);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
 				rs=pstmt.executeQuery();
-				System.out.println(me);
-				System.out.println("여기까지만?");
 				while(rs.next()){
 					myar=new Arrow_DTO();
-					
-					myar.setA_id(rs.getInt(1));
-					myar.setA_date(rs.getDate(2));
-					myar.setA_status(rs.getString(3));
-					myar.setA_sendid(rs.getString(5));
+					myar.setA_date(rs.getDate(1));
+					myar.setA_status(rs.getString(2));
+					myar.setA_recieveid(rs.getString(3));
+					myar.setA_sendid(rs.getString(4));
 					arlist.add(myar);
 			}
 		} catch (SQLException e) {
@@ -147,7 +157,6 @@ public class SendArrow_DAO {
 			if(pstmt.isClosed()){pstmt.close();}
 			if(rs.isClosed()){rs.close();}
 			if(conn.isClosed()){conn.close();}
-			System.out.println("여기");
 		}
 		return arlist;
 	}
@@ -201,12 +210,13 @@ public class SendArrow_DAO {
 		String rst="";
 		try {
 			conn = ds.getConnection();
-			
+			System.out.println("여기는 r_id" +r_id);
+			System.out.println("여기는 s_id" +s_id);
 			String delsql = "delete from arrow where a_recieveid=?"
 					+ " and a_sendid=?";
 			pstmt = conn.prepareStatement(delsql);
-			pstmt.setString(1, r_id);
-			pstmt.setString(2, s_id);
+			pstmt.setString(2, r_id);
+			pstmt.setString(1, s_id);
 			result=pstmt.executeUpdate();
 			
 			if(result>0){
@@ -258,23 +268,66 @@ public class SendArrow_DAO {
 		return rst;
 		
 	}
-
-	public List<Member> getFriendList(String r_id) throws SQLException {
-		List<Member> friends = new ArrayList<Member>();
+	public String disagree_ChangeArrow(String s_id, String r_id) throws SQLException {
+		int result=0;//arrow 삭제 
+		String rst="";
 		try {
 			conn = ds.getConnection();
 			
-			String sql = "select m.u_id, m.u_name from ssomelist s "
-					+ "join member m on s.u_id=m.u_id  where s.u_ssome=?";
+			String chsql = "update arrow set a_status='거절' where a_recieveid=? and a_sendid=?";
+
+			pstmt = conn.prepareStatement(chsql);
+			pstmt.setString(1, r_id);
+			pstmt.setString(2, s_id);
+			result=pstmt.executeUpdate();
+			if(result>0){
+				rst="거절되었습니다.";
+			}
+			else{
+				rst="거절실패";
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			pstmt.close();
+			conn.close();
+		}
+
+		return rst;
+		
+	}
+
+	public List<Member> getFriendList(String r_id,String cpage) throws SQLException {
+		List<Member> friends = new ArrayList<Member>();
+		try {
+			conn = ds.getConnection();
+			int cpage2=Integer.parseInt(cpage);
+			int pagesize=2; 
+			int start = cpage2 * pagesize - (pagesize - 1);
+			int end = cpage2 * pagesize;
+			System.out.println("start : "+start);
+			System.out.println("end : "+end);
+			System.out.println("r_id : "+r_id);
+			System.out.println("cpage2 : "+cpage2);
+			String sql ="    select r,u_id,u_name from "
+					+ "(select rownum r,m.u_id, m.u_name from "
+					+ "(select u_id, u_ssome from ssomelist order by U_ID) s "
+					+ "join member m on s.u_id=m.u_id  where s.u_ssome=?) "
+					+ "where r between ? and ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, r_id);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rs=pstmt.executeQuery();
-			
 			while(rs.next()){
 				Member member= new Member();
-				member.setId(rs.getString(1));
-				member.setName(rs.getString(2));
+				member.setId(rs.getString(2));
+				member.setName(rs.getString(3));
 				friends.add(member);
+				System.out.println("요청된 친구 ID : "+rs.getString(2));
+				System.out.println("요청된 친구 이름 :"+rs.getString(3));
 			}
 
 		} catch (SQLException e) {
@@ -318,6 +371,80 @@ public class SendArrow_DAO {
 			System.out.println("여기");
 		}
 		return arlist;
+	}
+
+	public String getTotal(String me) throws SQLException {
+		String count="";
+		try {
+			conn = ds.getConnection();
+				String arrow_reg_sql="select count(*) from SSOMELIST where u_id=? ";
+				pstmt=conn.prepareStatement(arrow_reg_sql);
+				pstmt.setString(1, me);
+				rs=pstmt.executeQuery(); //전체 친구 수 
+				System.out.println(me); 
+				if(rs.next()){
+					count= rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(pstmt.isClosed()){pstmt.close();}
+			if(rs.isClosed()){rs.close();}
+			if(conn.isClosed()){conn.close();}
+		}
+		return count; 
+	}
+
+	public String SendMessage(String recieve_id,String send_id,String title , String content) throws SQLException {
+		String result="";
+		try {
+			
+			conn = ds.getConnection();
+				String sql="insert into message (m_id,m_title,m_content,m_recieveid,m_sendid) "
+						+ "values(msgsq.nextval,?,?,?,?)";
+
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, title);
+				pstmt.setString(2, content);
+				pstmt.setString(3, recieve_id);
+				pstmt.setString(4, send_id);
+				int result1=0;
+				result1=pstmt.executeUpdate(); 
+				if(result1>0){
+					result="메시지가 발송되었습니다!";
+				}else{
+					result="메시지 발송오류";
+				}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(pstmt.isClosed()){pstmt.close();}
+			if(conn.isClosed()){conn.close();}
+		}
+		return result; 
+	}
+
+	public String getRecieveTotal(String recieve_id) throws SQLException {
+		String result="";
+		int result1=0;
+		try {
+			conn = ds.getConnection();
+				String sql="select count(*) from arrow where a_recieveid=? and a_status='대기중'";
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, recieve_id);
+				rs=pstmt.executeQuery();
+				if(rs.next())
+				result1=rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if(pstmt.isClosed()){pstmt.close();}
+			if(rs.isClosed()){rs.close();}
+			if(conn.isClosed()){conn.close();}
+		}
+		result=String.valueOf(result1);
+		return result; 
 	}
 }
 
