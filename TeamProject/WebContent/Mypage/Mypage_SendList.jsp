@@ -68,6 +68,9 @@
 	String totalpagecount=(String)request.getAttribute("total");
 	int pagesize=2;
 	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
+	if((Integer.parseInt(totalpagecount))%pagesize!=0){
+		totalpagenum++;
+	}
 %>
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -96,14 +99,15 @@
 	function deletefriend(sender){
 		var sdid={
 				s_id:sender,
-			    r_id:'<%=me%>'}
-	$.ajax({
-		url:"delete_friend.daa",
-		data:sdid,
-		success : function(data){
-			$("#mydiv").html(data);
+			    r_id:'<%=me%>'
 		}
-	});
+		$.ajax({
+			url : "delete_friend.daa",
+			data : sdid,
+			success : function(data) {
+				$("#mydiv").html(data);
+			}
+		});
 	}
 </script>
   
@@ -164,16 +168,23 @@
 				<h3 align="center">내가 요청한 친구 리스트</h3>
 				<table align="center" border="1">
 					<c:set var="mysendlist" value="<%=mylist%>" />
-					<c:forEach var="sendlist" items="${mysendlist}">
-						<tr>
-							<td>${sendlist.a_date}</td>
-							<td>${sendlist.a_status}</td>
-							<td>${sendlist.a_sendid}</td>
-							<td><input type="button" name="${sendlist.a_sendid }" value="확인"
-								onclick="checkout(this.name)"> </td>
-
-						</tr>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${not empty mysendlist }">
+							<c:forEach var="sendlist" items="${mysendlist}">
+								<tr>
+									<td>${sendlist.a_date}</td>
+									<td>${sendlist.a_status}</td>
+									<td>${sendlist.a_sendid}</td>
+									<td><input type="button" name="${sendlist.a_sendid }" value="확인"
+										onclick="checkout(this.name)"> </td>
+		
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							신청하신게 없네요^^
+						</c:otherwise>
+					</c:choose>
 				</table>
 			</div>
 

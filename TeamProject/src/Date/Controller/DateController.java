@@ -283,8 +283,6 @@ public class DateController extends HttpServlet {
 						response.sendRedirect(forward.getPath());
 					}else{
 						
-						System.out.println("여기 타는거 맞지?");
-						System.out.println(request.getAttribute("arrowlist"));
 						RequestDispatcher dispatcher =
 						request.getRequestDispatcher(forward.getPath());
 						dispatcher.forward(request, response);

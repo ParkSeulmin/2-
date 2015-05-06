@@ -181,11 +181,13 @@ public class SendArrow_DAO {
 			System.out.println("두번째쿼리가 안되는거");
 			rs1 = pstmt.executeUpdate();
 			System.out.println("여기서 안되는건가?");
+			
 			String regsql2 = "insert into ssomelist values(?,?)"; 
 			System.out.println("Dao 단 접근");
 			pstmt = conn.prepareStatement(regsql2);
-			pstmt.setString(1, r_id);
-			pstmt.setString(2, s_id);
+			pstmt.setString(1, s_id);
+			pstmt.setString(2, r_id);
+			
 			System.out.println("Dao 단 접근2");
 			rs2 = pstmt.executeUpdate();
 			System.out.println("Dao 단 접근3");
@@ -233,6 +235,7 @@ public class SendArrow_DAO {
 		finally {
 			pstmt.close();
 			conn.close();
+			System.out.println("결과 : "+rst);
 		}
 
 		return rst;

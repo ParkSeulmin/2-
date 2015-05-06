@@ -13,7 +13,9 @@
 	String totalpagecount=(String)request.getAttribute("total");
 	int pagesize=2;
 	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
-	
+	if((Integer.parseInt(totalpagecount))%pagesize!=0){
+		totalpagenum++;
+	}
 	
 	String r_totalpagecount=(String)request.getAttribute("totalrecieve");
 	int r_pagesize=2;
@@ -28,11 +30,13 @@
 	List<Member> friends = new ArrayList<Member>();
 	friends = (ArrayList<Member>) request.getAttribute("friends");
 
+	Member member = (Member) session.getAttribute("user");
+	String me = member.getId();
+
 %>
 </head>
 <body>
-Jquery 이용해서 새로 받아옴.
-		<c:set var="fcount" value="<%=totalpagecount%>"/>
+<c:set var="fcount" value="<%=totalpagecount%>"/>
 				<c:choose>
 					<c:when test="${fcount>0}">
 						<table align="center" border="1">
