@@ -68,7 +68,7 @@
 			<p class="centered">
 
 				<a href="<%=request.getContextPath()%>/Mainpage.main">
-					<img src="<%=request.getContextPath()%>/assets/img/logo.png" class="img-circle" width="60"></a>
+					<img src="<%=request.getContextPath()%>/assets/img/hlogo.jpg" class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
 
