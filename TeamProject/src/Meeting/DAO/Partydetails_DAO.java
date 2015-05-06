@@ -69,7 +69,30 @@ public class Partydetails_DAO {
 		}
 	}
 	
-	
+	public int getcount(int id) throws SQLException{
+		try {
+			System.out.println("partycount로 넘어왔다");
+			conn = ds.getConnection();
+			String sql = 
+			"SELECT COUNT(*) FROM ATTEND WHERE P_ID=?";
+			int count = 0;
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			Party_DTO party = new Party_DTO();
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				count = rs.getInt(1);
+			}
+			System.out.println("count" + count);
+			return count;	
+		}finally{
+			if(pstmt != null)pstmt.close();
+			if(conn != null)pstmt.close();
+		}
+	}
 	
 	
 	public List getlist(String id) throws SQLException{

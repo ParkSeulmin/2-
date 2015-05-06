@@ -204,7 +204,7 @@ public class AdminDAO {
 					
 					// 친구목록불러오기
 					public List<Member> getSsomeList(String r_id,int cpage) throws SQLException {
-						List<Member> friends = null;
+						List<Member> friends = new ArrayList<Member>();;
 						try {
 							con = ds.getConnection();
 							int cpage2= cpage;
