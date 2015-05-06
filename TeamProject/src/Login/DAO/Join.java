@@ -160,4 +160,139 @@ public class Join {
 	               return check;
 			}
 		
+			
+			// 회원 삭제
+			public boolean memberdelete(String userid){
+				System.out.println("memberdelete userid: "+userid);
+				String del_reply_sql = 
+						"delete from reply where RE_WRITER=?";
+				String board_delete_sql=
+					"delete from board where BO_WRITER=?";
+				String del_ssomelist_sql = 
+						"delete from ssomelist where U_ID=? or U_SSOME=?";
+				String del_message_sql =
+						"delete from message where M_RECIEVEID=? or M_SENDID=?";
+				String del_arrowinfo_sql =
+						"delete from arrowinfo where U_ID=?";
+				String del_attend_sql =
+						"delete from attend where U_ID=?";
+				String del_personalinfo_sql =
+						"delete from personalinfo where U_ID=?";
+				String del_arrow_sql =
+						"delete from arrow where A_RECIEVEID=? or A_SENDID=?";
+				 
+				String del_member_sql =
+						"delete from member where U_ID=?";
+				 
+				
+				int result=0;
+				
+				try{
+					conn = ds.getConnection();
+					conn.setAutoCommit(false);
+					System.out.println("memberdelete userid~???: "+userid);
+					//1 댓글삭제
+					pstmt = conn.prepareStatement(del_reply_sql);
+					pstmt.setString(1, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("댓글삭제실패");
+					}
+					
+					//2 게시물삭제
+					pstmt=conn.prepareStatement(board_delete_sql);
+					pstmt.setString(1, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("게시물삭제실패");
+					}
+					
+					//3 썸리스트 삭제
+					pstmt = conn.prepareStatement(del_ssomelist_sql);
+					pstmt.setString(1, userid);
+					pstmt.setString(2, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("썸리스트삭제실패");
+					}
+					
+					//4 메시지 삭제
+					pstmt = conn.prepareStatement(del_message_sql);
+					pstmt.setString(1, userid);
+					pstmt.setString(2, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("메시지삭제실패");
+					}
+					
+					//5 화살 정보 삭제
+					pstmt = conn.prepareStatement(del_arrowinfo_sql);
+					pstmt.setString(1, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("화살삭제실패");
+					}
+					
+					//6 참석 삭제
+					pstmt = conn.prepareStatement(del_attend_sql);
+					pstmt.setString(1, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("참석삭제실패");
+					}
+					
+					//7 회원 상세정보 삭제
+					pstmt = conn.prepareStatement(del_personalinfo_sql);
+					pstmt.setString(1, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("회원 상세정보삭제실패");
+					}
+					
+					//8 화살 삭제
+					pstmt = conn.prepareStatement(del_arrow_sql);
+					pstmt.setString(1, userid);
+					pstmt.setString(2, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("화살삭제실패");
+					}
+					
+					//9 회원 삭제
+					pstmt = conn.prepareStatement(del_member_sql);
+					pstmt.setString(1, userid);			
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("회원삭제실패");
+					}
+					
+					if (result > 0) {
+						conn.commit(); // 정상처리
+					} else {
+						conn.rollback();
+					}
+					
+					if(result==0)return false;
+					
+					return true;
+				}catch(Exception ex){
+					System.out.println("memberDelete 에러 : "+ex);
+				}finally{
+					try{
+						if(pstmt!=null)pstmt.close();
+						if(conn!=null)conn.close();
+					}catch(Exception ex) {}
+				}
+				
+				return false;
+			}
 }
