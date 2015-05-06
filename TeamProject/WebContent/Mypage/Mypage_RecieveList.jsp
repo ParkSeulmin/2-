@@ -79,6 +79,8 @@
 </style>
 
 <%
+	
+
 	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
 	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
 
