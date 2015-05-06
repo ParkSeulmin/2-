@@ -44,6 +44,7 @@
 		<c:choose>
 			<c:when test="${id != null}">
 				<ul class="nav pull-right top-menu">
+				<li><p><h3><%=id%> 님 안녕하세요.&nbsp;&nbsp;&nbsp;</h3></p></li>
 				<li><a class="logout" href="<%=request.getContextPath()%>/Login/Logout.jsp">Logout</a></li>
 				</ul>
 			</c:when>
@@ -137,7 +138,7 @@
 							<li><a href="#">개인정보 수정</a></li>
 							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
                      		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
-							<li><a href="CheckArrow.daa">데이트 신청 리스트</a></li>
+							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
 							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
 						</ul></li>
 				</c:otherwise>

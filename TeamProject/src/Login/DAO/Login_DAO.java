@@ -48,10 +48,10 @@ public class Login_DAO {
             try {
                conn = ds.getConnection();
                String sql = 
-               "select * from member where u_id=?"; 
+               "select * from MEMBER where U_ID=?"; 
                pstmt = conn.prepareStatement(sql);
                pstmt.setString(1,id);
-               
+               System.out.println("login dao : "+id);
 
                rs = pstmt.executeQuery();
                if(rs.next()){
@@ -69,9 +69,11 @@ public class Login_DAO {
             	   member.setAddress(rs.getString(10));
             	   member.setAdmin(rs.getInt(11));
             	   
+               }else{
+            	   member = new Member();
             	   
                }
-               
+              
                return member;
             }finally{
                if(rs != null)rs.close();
