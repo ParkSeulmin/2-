@@ -131,6 +131,7 @@
 						</ul></li>
 				</c:when>
 				<c:otherwise>
+					<c:if test="${id != null}">
 					<li class="sub-menu"><a href="javascript:;"> <i
 							class="fa fa-th"></i> <span>My Page</span>
 					</a>
@@ -141,6 +142,7 @@
 							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
 							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
 						</ul></li>
+					</c:if>
 				</c:otherwise>
 
 			</c:choose>

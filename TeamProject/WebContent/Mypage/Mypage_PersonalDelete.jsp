@@ -193,12 +193,7 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     
-	
-	
-
-
 </script>
-
 
 <script>
 	//회원가입 완료메시지 띄우기

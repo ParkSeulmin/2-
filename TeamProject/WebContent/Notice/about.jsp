@@ -17,6 +17,7 @@
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
 	rel="stylesheet">
+
 <!--external css-->
 <link
 	href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css"
@@ -70,48 +71,217 @@
 	font: 10px arial, san serif;
 	text-align: left;
 }
+
+span.black_bg {
+	background-color: black;
+	color: #e3c069;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 1px 4px 1px 4px;
+}
+
+pan.black_bg2 em {
+	background-color: black;
+	color: #e3c069;
+	font-weight: bold;
+	font-size: 13px;
+	padding: 2px 2px 2px 2px;
+}
 </style>
+
+ <!--위대한 style  -->
+<!-- <style type="text/css">
+.cont01 {
+	height: 182px;
+	background: #c1454a;
+	margin: 0;
+	padding: 0;
+	background: url(../image/sub/sub01_01_img02.jpg) bottom center no-repeat
+}
+
+.cont01 h1 {
+	color: #fff;
+	font-size: 32px;
+	line-height: 28px;
+	padding: 40px 0 0 317px
+}
+
+.cont01 span {
+	color: #e1b2b4;
+	font-family: 'Source Sans Pro', serif;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 1.5px;
+	padding: 0 0 0 320px
+}
+
+.cont01 p {
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 30px 0 320px;
+	line-height: 18px
+}
+
+.cont02 {
+	height: 191px;
+	background: #c1454a;
+	margin: 0;
+	padding: 0;
+	background: url(../image/sub/sub01_01_img03.jpg) bottom center no-repeat
+}
+
+.cont02 h1 {
+	color: #fff;
+	font-size: 32px;
+	line-height: 28px;
+	padding: 50px 0 0 317px
+}
+
+.cont02 span {
+	color: #f1c2a3;
+	font-family: 'Source Sans Pro', serif;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 1.5px;
+	padding: 0 0 0 320px
+}
+
+.cont02 p {
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 30px 0 320px;
+	line-height: 18px
+}
+
+.cont03 {
+	height: 191px;
+	background: #c1454a;
+	margin: 0;
+	padding: 0;
+	background: url(../image/sub/sub01_01_img04.jpg) bottom center no-repeat
+}
+
+.cont03 h1 {
+	color: #fff;
+	font-size: 32px;
+	line-height: 28px;
+	padding: 45px 0 0 317px
+}
+
+.cont03 span {
+	color: #86888a;
+	font-family: 'Source Sans Pro', serif;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 1.5px;
+	padding: 0 0 0 320px
+}
+
+.cont03 p {
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 30px 0 320px;
+	line-height: 18px
+}
+
+.cont04 {
+	height: 191px;
+	background: #c1454a;
+	margin: 0;
+	padding: 0;
+	background: url(../image/sub/sub01_01_img05.jpg) bottom center no-repeat
+}
+
+.cont04 h1 {
+	color: #fff;
+	font-size: 32px;
+	line-height: 28px;
+	padding: 45px 0 0 317px
+}
+
+.cont04 span {
+	color: #e1b2b4;
+	font-family: 'Source Sans Pro', serif;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 1.5px;
+	padding: 0 0 0 320px
+}
+
+.cont04 p {
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 30px 0 320px;
+	line-height: 18px
+}
+
+
+</style> -->
 </head>
 <body style>
-<c:import url="/Include/Header.jsp" />
-<section id="main-content"> 
+	<c:import url="/Include/Header.jsp" />
+	<section id="main-content"> <section
+		class="wrapper site-min-height">
+
+	<h3>
+		<i class="fa fa-angle-right"></i> About Us
+	</h3>
+	<!-- 글소개 -->
 	<div class="content-panel">
-	</div>	
-</section>
+		<div class="great_date">
+			<img src="<%=request.getContextPath()%>/Images/qqqqqq.JPG">
+		</div>
+	</div>
+
+
+	<h3>
+		<i class="fa fa-angle-right"></i> WHAT?
+	</h3>
+	
+	<div class="showback">
+		<img src="<%=request.getContextPath()%>/Images/ssss.png">
+	</div>
+
+	<div style="padding: 5px;" align="center"></div>
+
+	</section> </section>
+
 </body>
-	<!--section 끝 스크립트  -->
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
-		type="text/javascript"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
+<!--section 끝 스크립트  -->
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
 
 
-	<!--common script for all pages-->
-	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
+<!--common script for all pages-->
+<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
 
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
 
-	<!--script for this page-->
-	<script
-		src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+<!--script for this page-->
+<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
 
-	<script type="application/javascript">
+<script type="application/javascript">
+	
+	
+	
+	
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -143,12 +313,16 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
-	</script>
+	
 
-	<script>
-		//custom select box
 
-		$(function() {
-			$('select.styled').customSelect();
-		});
-	</script>
+
+</script>
+
+<script>
+	//custom select box
+
+	$(function() {
+		$('select.styled').customSelect();
+	});
+</script>

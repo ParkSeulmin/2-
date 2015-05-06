@@ -103,7 +103,7 @@
                   <div class="col-lg-9 main-chart">
 
 					 
-					 <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
+					<!--  <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
 								<style type="text/css">
 						#clock {
 							width: 320px;
@@ -135,17 +135,17 @@
 							top: 0px;
 							left: 0px;
 						}
-						</style>
+						</style> -->
 						
 						
 						
-						<div id="clock">
+<!-- 						<div id="clock">
 							<div class="rotatingHands"><img id="hours" src="http://www.wedaehan.com/css/images/hours.png" style="-webkit-transform: rotate(80.5deg);"></div>
 							<div class="rotatingHands"><img id="minutes" src="http://www.wedaehan.com/css/images/minutes.png" style="-webkit-transform: rotate(246deg);"></div>
 							<div class="rotatingHands"><img id="seconds" src="http://www.wedaehan.com/css/images/seconds.png" style="-webkit-transform: rotate(18deg);"></div>
-							<!-- <div class="glass"><img src="images/glass.png" /></div> -->
+							<div class="glass"><img src="images/glass.png" /></div>
 							<img src="http://www.wedaehan.com/css/images/clock.png">
-						</div>		
+						</div>	 -->	
 							</div>
 					 
 					 
@@ -159,7 +159,7 @@
 						<!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
 						Functions
-						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> -->
+						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> -->
 						
 					 
                   

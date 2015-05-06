@@ -278,7 +278,7 @@
                            <div class="form-group" >
                               <div class="col-sm-10" align="center">
                               <input type="submit" class="btn btn-theme04" value="회원가입 완료" id="btn_submit"
-								 accesskey="s" onclick="showalert();">
+								 accesskey="s" onclick="return check();">
 								 <a href="../Main.jsp" class="btn_cancel">
 								 	<input type="button" class="btn btn-theme03" value="취소  ">
 								 </a>
@@ -491,10 +491,6 @@
 		</script>
 		<script>
  
- //회원가입 완료메시지 띄우기
- 		function showalert() {
-			alert('회원가입완료');
-		}
 
 	//우편번호 api 사용
 	function openDaumPostcode() {
@@ -521,5 +517,59 @@
         }
 	}
 </script>
+<script>
+		//유효성 체크 함수
+		function check(){
+			if($('#sal').val()=='') {
+				alert('연봉을 선택하세요');
+				return false;
+			}else if($('#cm').val()==''){
+				alert('키를 입력하세요.');
+				return false;
+			}else if($('#weight2').val()==''){
+				alert('몸무게를 입력하세요.');
+				return false;
+			}else if($('#job').val()==''){
+				alert('직업을 선택하세요.');
+				return false;
+			}else if($('#school').val()==''){
+				alert('학력을 선택하세요.');
+				return false;
+			}else if($('#content').val()==''){
+				alert('소개글을 입력하세요');
+			}else if($('#nickcheck').val()==''){
+				alert('닉네임을 입력하세요.');
+				return false;
+			}else if($('#u_mypicture').val()==''){
+				alert('사진을 첨부하세요.');
+				return false;
+			}else if($('#reg_mb_email1').val()=='' || $('#reg_mb_email2').val()==''
+					|| $('#mb_email3').val()==''){
+				alert('이메일을 입력하세요.');
+				return false;
+			}else if($('#mb_hp1').val()=='' || $('#mb_hp2').val()==''
+					|| $('#mb_hp3').val()==''){
+				alert('번호를 입력하세요.');
+				return false;
+			}else if($('#post1').val()=='' ||$('#post2').val()==''
+					||$('#address').val()=='' ||$('#address2').val()=='') {
+				alert('주소를 입력하세요.');
+				return false;
+			}else if($('#reg_mb_name').val()==''){
+				alert('이름을 입력하세요.');
+				return false;
+			}else if($('#mb_birth').val()=='' || $('#mb_birth2').val()==''){
+				alert('주민번호를 올바르게 입력하세요');
+				return false;
+			}else if($('#reg_mb_id').val()==''){
+				alert('ID를 입력하세요.');
+				return false;
+			}else{
+				//수정완료 호출
+				alert('수정 완료');
+				return true;
+			}
+		}
+	</script>
 
 </body>
