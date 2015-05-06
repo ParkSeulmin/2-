@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import Board.DTO.Board;
 import Board.DTO.Reply;
 import Login.DTO.Member;
+import Meeting.DTO.Party_DTO;
 
 public class AdminDAO {
 	
@@ -245,5 +246,52 @@ public class AdminDAO {
 						}
 						return friends ;
 					}
+					
+		// 파티 등록
+					 
+					public boolean PartyAdd(Party_DTO party){
+						int num =0;
+						String sql="";
+						
+						int result=0;
+						
+						try{
+							con = ds.getConnection();
+							pstmt=con.prepareStatement(
+									"select max(p_id) from party");
+							rs = pstmt.executeQuery();
+							
+							if(rs.next())
+								num =rs.getInt(1)+1;
+							else
+								num=1;
+							
+							sql="insert into party(p_id, p_title, p_area, p_maxpeople, p_img) ";
+							sql+= " values(?, ?, ?, ?, ?)";
+							
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, num);
+							pstmt.setString(2, party.getP_TITLE());
+							pstmt.setString(3, party.getP_AREA());
+							pstmt.setInt(4, party.getP_MAXPEOPLE());
+							pstmt.setString(5, party.getP_IMG());
+							
+							
+							
+							result=pstmt.executeUpdate();
+							System.out.println("DAO party add RESULT: "+result);
+							if(result==0)return false;
+							
+							return true;
+						}catch(Exception ex){
+							System.out.println("partyadd 에러 : "+ex);
+						}finally{
+							if(rs!=null) try{rs.close();}catch(SQLException ex){}
+							if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+							if(con!=null) try{con.close();}catch(SQLException ex){}
+						}
+						return false;
+					}			
+					
 }
 	

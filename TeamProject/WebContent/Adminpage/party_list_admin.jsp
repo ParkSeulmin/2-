@@ -142,6 +142,18 @@
 			}
 	
 %>
+	<tr>
+		<td colspan="6">
+			<div align="right"> 
+		         			<a href="<%=request.getContextPath()%>/PartyWrite.admin" id="writeparty">
+								<button type="button" class="btn btn-theme04">
+									<i class="fa fa-heart"></i> 
+										파티 만들기
+								</button>
+							</a>
+		         			</div> 
+		</td>
+	</tr>
 	</tbody>
 
 			</table>
