@@ -126,6 +126,7 @@
 							<li class="divider"></li>
 							<li><a href="<%=request.getContextPath()%>/MemberList.admin">회원관리정보</a></li>
 							<li class="divider"></li>
+							<li><a href="<%=request.getContextPath()%>/BoardListadmin.admin">게시물 관리</a></li>
 						</ul></li>
 				</c:when>
 				<c:otherwise>

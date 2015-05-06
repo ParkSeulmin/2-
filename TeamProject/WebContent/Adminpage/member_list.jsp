@@ -181,7 +181,9 @@
 					       		 
                                   <td>
                                       
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-danger btn-xs"
+                                      		onclick="location.href='./AdminPwdCheckPageMember.admin?u_id=<%=ml.getId()%>'">	
+                                      <i class="fa fa-trash-o "></i></button>
                                   </td>
                               </tr>
 					       		 
