@@ -145,6 +145,19 @@
 		console.log(data);
 		window.open("Mypage_messagesend.daa?id="+data, "Popup", "width=380, height=300,scrollbars=1, menubar=1, resizable=1"); 
 	}
+	function deletefriend(sender){
+		var sdid={
+				s_id:sender,
+			    r_id:'<%=me%>'
+		}
+		$.ajax({
+			url : "delete_friend2.daa",
+			data : sdid,
+			success : function(data) {
+				$("#mydata").html(data);
+			}
+		});
+	}
 </script>
 </head>
 <%
@@ -184,6 +197,7 @@
 								<tr>
 									<td><a name="${friendlist2.id}" onclick="sendmessage(this.name)">${friendlist2.id}</a></td>
 									<td>${friendlist2.name}</td>
+									<td><input type="button" name="${friendlist2.id}" value="친구삭제" onclick="deletefriend(this.name)" ></td>
 								</tr>
 							</c:forEach>
 						</table>

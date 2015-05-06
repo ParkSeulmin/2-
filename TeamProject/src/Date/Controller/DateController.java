@@ -15,6 +15,7 @@ import Date.Action.ActionCheckSend;
 import Date.Action.ActionDate;
 import Date.Action.ActionDelete;
 import Date.Action.ActionDeleteFriend;
+import Date.Action.ActionDeleteFriend2;
 import Date.Action.ActionDetailInfo;
 import Date.Action.ActionDisagree;
 import Date.Action.ActionMessage;
@@ -228,6 +229,30 @@ public class DateController extends HttpServlet {
 				try {
 					forward=new ActionForward();
 					action = new ActionDeleteFriend();
+					forward=action.execute(request, response);
+					if(forward != null){
+						if(forward.isRedirect()){ //view 단 바로....
+							response.sendRedirect(forward.getPath());
+						}else{
+							RequestDispatcher dispatcher =
+							request.getRequestDispatcher(forward.getPath());
+							dispatcher.forward(request, response);
+						}
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally{
+					
+				}
+			}
+			else if(cmd.equals("/delete_friend2.daa")){
+				//친구 삭제 
+				request.setAttribute("friend", request.getParameter("s_id"));
+				request.setAttribute("me", request.getParameter("r_id"));
+				try {
+					forward=new ActionForward();
+					action = new ActionDeleteFriend2();
 					forward=action.execute(request, response);
 					if(forward != null){
 						if(forward.isRedirect()){ //view 단 바로....

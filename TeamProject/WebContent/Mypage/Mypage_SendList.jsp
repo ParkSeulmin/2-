@@ -109,6 +109,7 @@
 			}
 		});
 	}
+	
 </script>
   
 </head>
@@ -121,7 +122,7 @@
            	<input type="button" id="tog_btn" value="나에게 친구요청한 사람 보기" onclick="toggle()">
            	 <div  class="col-lg-9 main-chart" align="center">
 
-			<h3 align="center">현재 친구당</h3>
+			<h3 align="center">현재 친구</h3>
 			<div id="mydiv">
 				<c:set var="fcount" value="<%=totalpagecount%>"/>
 				<c:choose>
@@ -132,6 +133,7 @@
 								<tr>
 									<td><a name="${friendlist2.id}" onclick="sendmessage(this.name)">${friendlist2.id}</a></td>
 									<td>${friendlist2.name}</td>
+									<td><input type="button" name="${friendlist2.id}" value="친구삭제" onclick="deletefriend(this.name)" ></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -142,20 +144,20 @@
 						<c:choose>
 							<c:when test="${param.rp>1 }">
 								<a
-									href="CheckArrow.daa?rp=<%=Integer.parseInt(request
+									href="CheckSendArrow.daa?rp=<%=Integer.parseInt(request
 									.getParameter("rp")) - 1%>">이전</a>
 							</c:when>
 						</c:choose>
 						<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
-							<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
+							<a href="CheckSendArrow?rp=${i}">[${i}]</a>
 						</c:forEach>
 						<c:choose>
 							<c:when test="${ empty param.rp && total!=1}">
-								<a href="CheckArrow.daa?rp=2">다음</a>
+								<a href="CheckSendArrow?rp=2">다음</a>
 							</c:when>
 							<c:when test="${total>param.rp}">
 								<a
-									href="CheckArrow.daa?rp=<%=Integer.parseInt(request
+									href="CheckSendArrow?rp=<%=Integer.parseInt(request
 									.getParameter("rp")) + 1%>">다음</a>
 							</c:when>
 						</c:choose>

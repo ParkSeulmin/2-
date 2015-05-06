@@ -36,6 +36,7 @@
 								<tr>
 									<td><a name="${friendlist2.id}" onclick="sendmessage(this.name)">${friendlist2.id}</a></td>
 									<td>${friendlist2.name}</td>
+									<td><input type="button" name="${friendlist2.id}" value="친구삭제" onclick="deletefriend(this.name)" ></td>
 								</tr>
 							</c:forEach>
 						</table>
