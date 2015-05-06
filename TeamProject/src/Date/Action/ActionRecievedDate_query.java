@@ -13,7 +13,7 @@ import Login.Action.ActionForward;
 import Login.DTO.Member;
 import Mypage.DTO.Arrow_DTO;
 
-public class ActionRecievedDate implements Action {
+public class ActionRecievedDate_query implements Action {
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		List<Arrow_DTO> ar=new ArrayList<Arrow_DTO>();	//화살 받아오는 배열
@@ -39,13 +39,12 @@ public class ActionRecievedDate implements Action {
 		ar=Arw_dao.Recieved_Arrow(recieved_id,arrowpage);
 		memberlist=Arw_dao.getFriendList(recieved_id,requestpage);
 		String totalfriend=Arw_dao.getTotal(recieved_id);
-		String totalrecieve=Arw_dao.getRecieveTotal(recieved_id);
 		
-		request.setAttribute("totalrecieve", totalrecieve);
+		
 		request.setAttribute("total", totalfriend);
 		request.setAttribute("result", ar);
 		request.setAttribute("friends", memberlist);
-		System.out.println("여기까지는 다 도나?");
+		
 		forward.setPath("/Mypage/Mypage_RecieveList.jsp");
 		forward.setRedirect(false);
 		return forward;

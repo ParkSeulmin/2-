@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<%
-		response.sendRedirect("MemberInfo.daa?id="+request.getParameter("id"));
+		response.sendRedirect("MemberInfo.daa");
 	%>
 	<!-- load되자마자 다른 페이지로 넘기기 위해서 만든 페이지
 		이 페이지가 없으면 무한 반복으로 같은 페이지를 호출하게된다. -->

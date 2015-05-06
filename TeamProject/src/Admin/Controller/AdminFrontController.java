@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Admin.Action.Action;
 import Admin.Action.ActionForward;
-import Admin.Action.AdminPwdCheckAction;
-import Admin.Action.AdminPwdCheckMemberAction;
-import Admin.Action.BoardListAdminAction;
 import Admin.Action.GetMemberListAction;
 
 
@@ -28,45 +25,14 @@ import Admin.Action.GetMemberListAction;
 		 Action action=null;
 		 
 		   System.out.println("adminctrl command: "+command);
-		   if(command.equals("/MemberList.admin")){		// 회원리스트
+		   if(command.equals("/MemberList.admin")){		// 공지사항 게시판
 			   action = new GetMemberListAction();
 			   try{
 				   forward=action.execute(request, response);
 			   }catch(Exception e){
 				   e.printStackTrace();
 			   }
-		   }else if(command.equals("/BoardListadmin.admin")){		//   게시판
-			   action = new BoardListAdminAction();
-			   try{
-				   forward=action.execute(request, response);
-			   }catch(Exception e){
-				   e.printStackTrace();
-			   }
-		   }else if(command.equals("/AdminPwdCheckPage.admin")){		//   관리자 비밀번호확인
-			   forward=new ActionForward();
-			   forward.setRedirect(false);
-			   forward.setPath( "/Adminpage/admin_pwd_check.jsp");
-			  
-		   }else if(command.equals("/AdminPwdCheckPageMember.admin")){		//   관리자 비밀번호확인
-			   forward=new ActionForward();
-			   forward.setRedirect(false);
-			   forward.setPath( "/Adminpage/admin_pwd_check_member.jsp");
-			  
-		   }else if(command.equals("/AdminPwdCheck.admin")){		//   게시판
-			   action = new AdminPwdCheckAction();
-			   try{
-				   forward=action.execute(request, response);
-			   }catch(Exception e){
-				   e.printStackTrace();
-			   }
-		   }else if(command.equals("/AdminPwdCheckMember.admin")){		//   게시판
-			   action = new AdminPwdCheckMemberAction();
-			   try{
-				   forward=action.execute(request, response);
-			   }catch(Exception e){
-				   e.printStackTrace();
-			   }
-		   }      
+		   } 
 		   
 		   if(forward != null){
 			   if(forward.isRedirect()){

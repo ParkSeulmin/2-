@@ -1,10 +1,12 @@
-package Date.Controller;
+package Date.Action;
 
+import java.net.HttpRetryException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Date.DAO.SendArrow_DAO;
 import Login.Action.Action;
@@ -21,24 +23,26 @@ public class ActionCheckSend implements Action {
 		
 		ActionForward forward =new ActionForward();
 		SendArrow_DAO dao=new SendArrow_DAO();
-		String me=(String)request.getAttribute("user");
-		arlist=dao.CheckSend(me);
 		
-		 
-		//친구 불러오는 코드 추가
- 
+		HttpSession session= request.getSession();
+		Member member=(Member)session.getAttribute("user");
+		String me=member.getId();
+		
+		arlist=dao.CheckSend(me);//
+		
 		String requestpage=request.getParameter("rp");
-	      if(request.getParameter("rp")==null){
-	         requestpage="1";
-	      }
-	      //친구 불러오는 코드 추가
-	    memberlist=dao.getFriendList(me,requestpage);
-	
+		if(request.getParameter("rp")==null){
+			requestpage="1";
+		}
+		memberlist=dao.getFriendList(me,requestpage);//
+		String totalfriend=dao.getTotal(me);//
+		
+		request.setAttribute("total", totalfriend);
 		request.setAttribute("friends", memberlist);
 		request.setAttribute("arrowlist", arlist);
 		
 		System.out.println(arlist);
-		forward.setPath("Mypage_SendList.jsp");
+		forward.setPath("/Mypage/Mypage_SendList.jsp");
 		forward.setRedirect(false);
 		System.out.println("안녕 여긴 잘 되가니>?");
 		return forward;
