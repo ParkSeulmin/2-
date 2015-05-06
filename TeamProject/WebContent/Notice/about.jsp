@@ -1,19 +1,9 @@
-<%@page import="Meeting.DAO.Party_DAO"%>
-<%@page import="Meeting.DTO.Party_DTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	/* 	String userid = null;
-	 if (session.getAttribute("userid") != null) {
-	 userid = (String) session.getAttribute("userid");
-	 } */
-	//list get해서 가져오기
-	List partylist = (List) request.getAttribute("partylist");
-	int count = (Integer) request.getAttribute("count");
-%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,43 +73,13 @@
 </style>
 </head>
 <body style>
-	<c:import url="/Include/Header.jsp" />
-
-
-	<section id="main-content"> 
-	<section class="wrapper site-min-height">
-	<h3>
-		<i class="fa fa-angle-right"></i> Partylist
-	</h3>
-	<hr>
-	<div class="row mt">
-	<%
-			for (int i = 0; i < partylist.size(); i++) {
-			Party_DTO pl = (Party_DTO) partylist.get(i);
-	%>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
-			<div class="project-wrapper">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							<a class="fancybox" href="Partydetail.ps?partyid=<%=pl.getP_ID()%>"><img
-								class="img-responsive" src="<%=request.getContextPath()%>/Images/party/<%=pl.getP_IMG() %>"
-								alt=""></a>
-						</div>
-						<div class="overlay"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- col-lg-4 -->
-<%
-			}
-	
-%>
-</div>
-	<!-- /row -->
-	 </section> 
+<c:import url="/Include/Header.jsp" />
+<section id="main-content"> 
+	<div class="content-panel">
+	</div>	
 </section>
+</body>
+	<!--section 끝 스크립트  -->
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script
@@ -151,9 +111,7 @@
 		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
 
-
 	<script type="application/javascript">
-		
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -185,19 +143,12 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
-    
 	</script>
-	<script type="text/javascript">
-		$(function() {
-			//    fancybox
-			jQuery(".fancybox").fancybox();
-		});
-	</script>
+
 	<script>
 		//custom select box
 
 		$(function() {
-			$("select.styled").customSelect();
+			$('select.styled').customSelect();
 		});
 	</script>
-</body>

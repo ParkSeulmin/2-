@@ -1,7 +1,3 @@
-//기존에 작업했던 서비스 계층
-//글을 쓰는 서비스 
-//Action 패키지 안에 구현
-
 package Login.Action;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,28 +14,30 @@ public class Action_Login_Check implements Action {
 		
 		Login_DAO logindao = new Login_DAO();
 		
-		Member user = logindao.getLoginCheck(request.getParameter("mb_id"));
+		Member userch = logindao.getLoginCheck(request.getParameter("mb_id"));
 		String pwd = request.getParameter("mb_password");
+		
 		
 		// session
 		HttpSession session=request.getSession();
 		
-		if(user.getId() == null){
+		if(userch.getId() == null){
 			//잘못된 아이디값
 			ActionForward forward = new ActionForward();
-	
+			System.out.println("잘못된 아이디값");
 			
 			forward.setRedirect(false);
 			forward.setPath("/Login/Login_fail.jsp");
 			
 			return forward;
-		}else if(user.getPw().equals(pwd)){
+		}else if((userch.getPw()).equals(pwd)){
 			//로그인 성공
 			ActionForward forward = new ActionForward();
-			
+			System.out.println("로그인 성공");
+			System.out.println(userch.getPw()==pwd);
 			// session set
-			session.setAttribute("user",user);
-			
+			session.setAttribute("user",userch);
+			session.setAttribute("u_id",request.getParameter("mb_id"));
 			forward.setRedirect(true);
 			/*forward.setPath("/Main.jsp?mb_id="+request.getParameter("mb_id"));*/
 			forward.setPath(request.getContextPath()+"/Mainpage.main");
@@ -47,9 +45,12 @@ public class Action_Login_Check implements Action {
 			return forward;
 		}else{
 			//암호가 다름
+			System.out.println(userch.getPw());
+			System.out.println(pwd);
+			System.out.println((userch.getPw()).equals(pwd));
+			System.out.println("암호가 다름");
 			ActionForward forward = new ActionForward();
 			
-			session.setAttribute("user",user);
 			forward.setRedirect(false);
 			forward.setPath("/Login/Login_fail.jsp");
 			

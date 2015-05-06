@@ -88,91 +88,93 @@
 	<!-- 회원정보 입력/수정 시작 { -->
 	<div class="form-panel">
 		<form class="form-horizontal style-form" id="fregisterform"
-			name="fregisterform" method="post" action="<%=request.getContextPath()%>/EditProfile.edit"
-			enctype="multipart/form-data">
+			name="fregisterform" method="post"
+			action="<%=request.getContextPath()%>/Editadd.edit"
+			>
 			<!--  -->
 			<h4 class="mb">
-				<i class="fa fa-angle-right"></i> 개인정보수정
+				<i class="fa fa-angle-right"></i> 추가정보수정
 			</h4>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">닉네임</label> <input
-						type="text" name="mb_nick" id="mb_nick"> <input
-						type="button" class="btn btn-danger" value="중복확인" id="nickcheck"
-						name="nickcheck">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">프로필 사진</label> <input
-						id="u_mypicture" name="u_mypicture" type="file" />
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">우편번호</label> <input
-						type="text" name="post1" value="" id="post1"> - <input
-						type="text" name="post2" value="" id="post2"> <input
-						type="button" onclick="openDaumPostcode()" class="btn btn-theme03"
-						value="우편번호 찾기">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">주소</label> <input
-						type="text" name="address" value="" id="address">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">상세 주소</label> <input
-						type="text" name="address2" value="" id="address2">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">E-mail</label> <input
-						type="text" name="mb_email1" id="reg_mb_email1" value=""
-						maxlength="100"> @ <input type="text" name="mb_email2"
-						id="reg_mb_email2" value="" maxlength="100"> <select
-						name="mb_email3" id="mb_email3"
-						onchange="document.fregisterform.mb_email2.value = this.value;document.fregisterform.mb_email2.focus()">
-						<option value="">-선택-</option>
-						<option value="daum.net">daum.net</option>
-						<option value="hanmail.net">hanmail.net</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="nate.com">nate.com</option>
-						<option value="naver.com">naver.com</option>
-						<option value="lycons.co.kr">lycons.co.kr</option>
-						<option value="netsgo.com">netsgo.com</option>
+					<label class="col-sm-2 col-sm-2 control-label">연봉</label> <select
+						name="sal" id="sal">
+						<option value="1000">2000이하</option>
+						<option value="3000">2000~4000이하</option>
+						<option value="5000">4000~6000이하</option>
+						<option value="7000">6000~8000이하</option>
+						<option value="8000">8000이상</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">휴대폰 번호</label> <select
-						name="mb_hp1" id="mb_hp1">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-						<option value="017">017</option>
-						<option value="018">018</option>
-						<option value="019">019</option>
-					</select> - <input type="text" name="mb_hp2" id="mb_hp2" value=""
-						class="frm_input hp nextFocus" title="휴대폰번호" maxlength="4"
-						size="6"> - <input type="text" name="mb_hp3" id="mb_hp3"
-						value="" class="frm_input hp" title="휴대폰번호" maxlength="4" size="6">
+					<label class="col-sm-2 col-sm-2 control-label">키</label> <input
+						type="text" name="cm" id="cm" size="20" maxlength="20">
 				</div>
 			</div>
-			<!-- 추가정보입력  -->
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="col-sm-2 col-sm-2 control-label">몸무게</label> <input
+						type="text" name="weight2" id="weight2" size="20" maxlength="20">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="col-sm-2 col-sm-2 control-label">직종</label> <select
+						name="job">
+						<option value="">직업선택</option>
+						<option value="관리">관리</option>
+						<option value="건설">건설</option>
+						<option value="경비">경비</option>
+						<option value="경영">경영/회계,사무</option>
+						<option value="교육">교육/연구</option>
+						<option value="금융">금융/보험</option>
+						<option value="군인">군인</option>
+						<option value="기계">기계</option>
+						<option value="농림어업">농림어업</option>
+						<option value="문화">문화/예술/방송</option>
+						<option value="미용">미용,숙박,여행</option>
+						<option value="법률">법률/경찰/소방/교도</option>
+						<option value="보건">보건/의료</option>
+						<option value="사회복지">사회복지/종교</option>
+						<option value="섬유">섬유/의복</option>
+						<option value="식품가공">식품가공</option>
+						<option value="영업">영업/판매</option>
+						<option value="운전">운전/운송</option>
+						<option value="전기">전기/전자</option>
+						<option value="인쇄">인쇄/목재/가구</option>
+						<option value="화학">화학</option>
+						<option value="학생">학생</option>
+						<option value="대학생">대학(원)생</option>
+						<option value="기타">기타</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="col-sm-2 col-sm-2 control-label">최종 학력</label> <input
+						type="radio" id="school" name="school" value="대학원">대학원졸업 <input
+						type="radio" id="school" name="school" value="대학">대학졸업 <input
+						type="radio" id="school" name="school" value="고등">고등학교졸업 <input
+						type="radio" id="school" name="school" value="중등">중학교졸업 <br>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="col-sm-2 col-sm-2 control-label">소개글</label>
+					<textarea id="content" name="content" cols="50px" rows="5px"></textarea>
+				</div>
+			</div>
 
 
 			<div class="form-group">
 				<div class="col-sm-10" align="center">
 					<input type="submit" class="btn btn-theme04" value="수정완료"
 						id="btn_submit" accesskey="s" onclick="return check();"> <a
-						href="Mypage_Edit.jsp" class="btn_cancel"> <input type="button"
-						class="btn btn-theme03" value="취소  ">
+						href="Mypage_Edit.jsp" class="btn_cancel"> <input
+						type="button" class="btn btn-theme03" value="취소  ">
 					</a>
 				</div>
 			</div>
@@ -275,7 +277,7 @@
 						//alert('result 값' + result);
 						if (result == 1) {
 							alert("ID 중복입니다.");
-						}else {
+						} else {
 							alert("사용가능한 ID 입니다.");
 						}
 
@@ -342,29 +344,49 @@
 									$("#message1").html("");
 								}
 							});
+
+			$('.email1').keyup(function() {
+				$("#msg_mb_email").html("");
+			});
+			$('.email1').focusout(
+					function() {
+						$('#reg_mb_email').val(
+								$('#reg_mb_email1').val() + '@'
+										+ $('#reg_mb_email2').val());
+						if ($('#reg_mb_email1').val()
+								&& $('#reg_mb_email2').val()) {
+							msg = reg_mb_email_check();
+							if (!msg) {
+								$("#msg_mb_email").css('color', 'blue');
+								$("#msg_mb_email").html("사용가능한 이메일입니다.");
+							} else {
+								$("#msg_mb_email").css('color', 'red');
+								$("#msg_mb_email").html(msg);
+							}
+						}
+					});
 		});
 	</script>
 	<script>
 		//유효성 체크 함수
 		function check(){
-			if($('#post1').val()=='' ||$('#post2').val()==''
-					||$('#address').val()=='' ||$('#address2').val()=='') {
-				alert('주소를 입력하세요.');
+			if($('#sal').val()=='') {
+				alert('연봉을 선택하세요');
 				return false;
-			}else if($('#nickcheck').val()==''){
-				alert('닉네임을 입력하세요.');
+			}else if($('#cm').val()==''){
+				alert('키를 입력하세요.');
 				return false;
-			}else if($('#u_mypicture').val()==''){
-				alert('사진을 첨부하세요.');
+			}else if($('#weight2').val()==''){
+				alert('몸무게를 입력하세요.');
 				return false;
-			}else if($('#reg_mb_email1').val()=='' || $('#reg_mb_email2').val()==''
-					|| $('#mb_email3').val()==''){
-				alert('이메일을 입력하세요.');
+			}else if($('#job').val()==''){
+				alert('직업을 선택하세요.');
 				return false;
-			}else if($('#mb_hp1').val()=='' || $('#mb_hp2').val()==''
-					|| $('#mb_hp3').val()==''){
-				alert('번호를 입력하세요.');
+			}else if($('#school').val()==''){
+				alert('학력을 선택하세요.');
 				return false;
+			}else if($('#content').val()==''){
+				alert('소개글을 입력하세요');
 			}else{
 				//수정완료 호출
 				alert('수정 완료');
@@ -372,21 +394,5 @@
 			}
 		}
 	</script>
-	
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script>
-	//우편번호 api 사용
-	function openDaumPostcode() {
-		new daum.Postcode({
-			oncomplete : function(data) {
-				document.getElementById('post1').value = data.postcode1;
-				document.getElementById('post2').value = data.postcode2;
-				document.getElementById('address').value = data.roadAddress;//도로명주소
-				document.getElementById('address2').focus();
-			}
-		}).open();
-	}
-	</script>
-	
 </body>
 </html>

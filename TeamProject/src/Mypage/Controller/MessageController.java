@@ -4,17 +4,20 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Mypage.Action.Action;
 import Mypage.Action.ActionForward;
+import Mypage.Action.Message_Close_Action;
+import Mypage.Action.Message_Delete_Action;
 import Mypage.Action.Message_Detail_Receive_Action;
 import Mypage.Action.Message_Detail_Send_Action;
-import Mypage.Action.Message_Send_Action;
 import Mypage.Action.Message_Receive_Action;
+import Mypage.Action.Message_Send_Action;
+import Mypage.Action.Message_Write_Action;
+import Mypage.Action.Message_Writeview_Action;
 
 /**
  * Servlet implementation class MessageController
@@ -75,6 +78,35 @@ public class MessageController extends HttpServlet {
 					   }catch(Exception e){
 						   e.printStackTrace();
 					   }
+				   }else if(command.equals("/Deletemsg.msg")){
+					   action = new Message_Delete_Action();//메시지 액션 소환
+					   try{
+						   forward=action.execute(request, response);
+					   }catch(Exception e){
+						   e.printStackTrace();
+					   }
+				   }else if(command.equals("/Writemsg.msg")){
+					   action = new Message_Write_Action();//메시지 액션 소환
+					   try{
+						   forward=action.execute(request, response);
+					   }catch(Exception e){
+						   e.printStackTrace();
+					   }
+				   }else if(command.equals("/Writeviewmsg.msg")){
+					   action =  new Message_Writeview_Action();//메시지 액션 소환
+					   try{
+						   forward=action.execute(request, response);
+					   }catch(Exception e){
+						   e.printStackTrace();
+					   }
+				   }else if(command.equals("/close.msg")){
+					   
+					   action = new Message_Close_Action();//메시지 액션 소환
+					   try{
+						   forward=action.execute(request, response);
+					   }catch(Exception e){
+						   e.printStackTrace();
+					   }
 				   }
 				   
 				   if(forward != null){
@@ -82,7 +114,7 @@ public class MessageController extends HttpServlet {
 						   response.sendRedirect(forward.getPath());
 					   }else{
 						   System.out.println("마지막"+forward.getPath());
-						   System.out.println(request.getAttribute("msgdto"));
+						  
 						   RequestDispatcher dispatcher=
 							   request.getRequestDispatcher(forward.getPath());
 						   dispatcher.forward(request, response);

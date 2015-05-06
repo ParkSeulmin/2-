@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>WebJSP3_Jakarta_DBCP</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>Main.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>JoinController</servlet-name>
@@ -111,6 +111,7 @@
     <servlet-name>MessageController</servlet-name>
     <url-pattern>*.msg</url-pattern>
   </servlet-mapping>
+ 
   
   <servlet>
     <servlet-name>MainFrontController</servlet-name>
@@ -119,5 +120,14 @@
   <servlet-mapping>
     <servlet-name>MainFrontController</servlet-name>
     <url-pattern>*.main</url-pattern>
+ </servlet-mapping>
+     <servlet>
+    <servlet-name>EditController</servlet-name>
+    <servlet-class>Mypage.Controller.EditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditController</servlet-name>
+    <url-pattern>*.edit</url-pattern>
+ 
   </servlet-mapping>
 </web-app>

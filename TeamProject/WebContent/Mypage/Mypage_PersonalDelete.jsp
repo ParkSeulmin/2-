@@ -89,25 +89,36 @@
 	<div class="form-panel">
 		<form class="form-horizontal style-form" id="fregisterform"
 			name="fregisterform" method="post"
-			action="<%=request.getContextPath()%>/EditProfile.edit"
+			action="<%=request.getContextPath()%>/DeleteProfile.edit"
 			enctype="multipart/form-data">
 			<h4 class="mb">
 				<i class="fa fa-angle-right"></i> 회원탈퇴
 			</h4>
-			<div class="form-group">
+			<%-- 			<div class="form-group">
 				<div class="col-sm-10">회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</div>
 				<div class="col-sm-10">
 					사용하고 계신 아이디(<%=userid%>)는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
 				</div>
 				<div class="col-sm-10">탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게
 					선택하시기 바랍니다.</div>
-				탈퇴 후에는 아이디
-				<%=userid%>
-				로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다. 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수
-				없습니다.
-					<div class="col-sm-10" align="center">
-						<input type="submit" class="btn btn-theme04" value="수정완료">
+				<div class="col-sm-10">
+				<br>
+				</div>	 --%>
+
+
+			<div class="form-group">
+				<div class="col-sm-10">
+					<div class="alert alert-danger">
+						<b>주의</b><br>회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요. <br>사용하고 계신
+						아이디(<%=userid%>)는 탈퇴할 경우 재사용 및 복구가 불가능합니다. <br>탈퇴한 아이디는 본인과
+						타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다.
 					</div>
+				</div>
+				<div class="col-sm-10" align="center">
+					<input type="submit" id="btn" name="btn" class="btn btn-theme04"
+						value="회원탈퇴" onclick="showalert();">
+				</div>
+			</div>
 		</form>
 	</div>
 	</section> </section>
@@ -147,6 +158,7 @@
 <script type="application/javascript">
 	
 	
+	
 		
 		
         $(document).ready(function () {
@@ -184,13 +196,14 @@
 	
 	
 
+
 </script>
 
 
 <script>
 	//회원가입 완료메시지 띄우기
 	function showalert() {
-		alert('탈퇴완료');
+		alert('회원 탈퇴 완료');
 	}
 </script>
 </html>

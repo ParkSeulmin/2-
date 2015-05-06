@@ -43,6 +43,7 @@ import Admin.Action.GetPartyListAction;
 			   }catch(Exception e){
 				   e.printStackTrace();
 			   }
+ 
 		   }else if(command.equals("/PartyListadmin.admin")){		//   게시판
 			   action = new GetPartyListAction();
 			   try{
@@ -50,6 +51,7 @@ import Admin.Action.GetPartyListAction;
 			   }catch(Exception e){
 				   e.printStackTrace();
 			   }
+ 
 		   }else if(command.equals("/AdminPwdCheckPage.admin")){		//   관리자 비밀번호확인
 			   forward=new ActionForward();
 			   forward.setRedirect(false);

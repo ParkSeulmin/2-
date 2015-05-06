@@ -14,8 +14,11 @@
 	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
 	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
 	
-	List<Member> ssomelist = new ArrayList<Member>();
-	ssomelist = (ArrayList<Member>) request.getAttribute("ssomelist");
+	List<Member> ssomelist = null;
+	if(request.getAttribute("ssomelist") != null){
+		ssomelist = (ArrayList<Member>) request.getAttribute("ssomelist");
+		System.out.println("ssomelist: "+ssomelist);
+	}
 	
 	if(ssomelist==null){
 		System.out.println("친구가 없어");

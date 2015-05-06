@@ -16,7 +16,7 @@ import Login.DTO.Member;
 		HttpSession session=request.getSession();
 		
 		AdminDAO admindao=new AdminDAO();
-		List ssomelist=new ArrayList(); 
+		List ssomelist= new ArrayList<Member>();
 		
 	  	int page=1;
 		int limit=10;
@@ -28,7 +28,7 @@ import Login.DTO.Member;
 		user=(Member)session.getAttribute("user");
 		if(user == null){	
 			ssomelist = null;
-			request.setAttribute("memberlist", ssomelist);
+			request.setAttribute("ssomelist", ssomelist);
 			forward.setRedirect(false);
 	   		forward.setPath("/Mainpage.main");
 	   		return forward;
