@@ -111,6 +111,16 @@
     <servlet-name>MessageController</servlet-name>
     <url-pattern>*.msg</url-pattern>
   </servlet-mapping>
+ 
+  
+  <servlet>
+    <servlet-name>MainFrontController</servlet-name>
+    <servlet-class>Admin.Controller.MainFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainFrontController</servlet-name>
+    <url-pattern>*.main</url-pattern>
+ </servlet-mapping>
      <servlet>
     <servlet-name>EditController</servlet-name>
     <servlet-class>Mypage.Controller.EditController</servlet-class>
@@ -118,5 +128,6 @@
   <servlet-mapping>
     <servlet-name>EditController</servlet-name>
     <url-pattern>*.edit</url-pattern>
+ 
   </servlet-mapping>
 </web-app>

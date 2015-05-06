@@ -40,7 +40,7 @@ public class Action_Login_Check implements Action {
 			session.setAttribute("u_id",request.getParameter("mb_id"));
 			forward.setRedirect(true);
 			/*forward.setPath("/Main.jsp?mb_id="+request.getParameter("mb_id"));*/
-			forward.setPath(request.getContextPath()+"/Main.jsp");
+			forward.setPath(request.getContextPath()+"/Mainpage.main");
 			
 			return forward;
 		}else{

@@ -11,7 +11,25 @@
 
 
 
-	 
+	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
+	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
+	
+	List<Member> ssomelist = null;
+	if(request.getAttribute("ssomelist") != null){
+		ssomelist = (ArrayList<Member>) request.getAttribute("ssomelist");
+		System.out.println("ssomelist: "+ssomelist);
+	}
+	
+	if(ssomelist==null){
+		System.out.println("친구가 없어");
+	}
+
+	/* String totalpagecount=(String)request.getAttribute("total");
+	int pagesize=2;
+	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
+	if((Integer.parseInt(totalpagecount))%pagesize!=0){
+		totalpagenum++;
+	}//친구 페이징  */
 
 %>
 
@@ -172,21 +190,92 @@
                      
 
                        <!-- USERS ONLINE SECTION -->
-						<h3>MEMBERS</h3>
+						<h3>MY FRIENDS LIST</h3>
                       <!-- First Member -->
-                      <div class="desc">
+                      <div>
+                       
+                      
+                      <% if(ssomelist != null){ 
+                    	  for(int i=0; i<ssomelist.size(); i++){
+                    		  Member ssome = ssomelist.get(i);
+                      %>
+				<c:set var="pimg" value="<%=ssome.getU_mypicture()%>" />
+				<c:set var="gender" value="<%=ssome.getGender() %>"/>
+				<%
+					String originimg = request.getContextPath()+ "/boardupload/" + ssome.getU_mypicture();
+					String default_male = request.getContextPath()+"/Images/defaultimg/default_male.png";
+					String default_female = request.getContextPath()+"/Images/defaultimg/default_female.PNG";
+				%>
+				<c:choose>
+					<c:when test="${pimg != null}">
+						<c:set var="imgsrc" value="<%=originimg%>"/>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${gender == 1}">
+								<c:set var="imgsrc" value="<%=default_male%>"/>	
+							</c:when>
+							<c:when test="${gender == 2}">
+								<c:set var="imgsrc" value="<%=default_female%>"/>	
+							</c:when>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
+
+				<div class="desc">
+		                      	<div class="thumb">
+		                      		<img class="img-circle" src="${imgsrc}" width="35px" height="35px" align="">
+		                      	</div>
+		                      	<div class="details">
+		                      		<p><a href="#"><%=ssome.getId()%></a><br>
+		                      		   <muted><%=ssome.getName() %></muted>
+		                      		</p>
+		                      	</div>
+		                      </div>
+                      
+                      <%
+                    	  }
+                    	} else{
+                      %>
+                      	 <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
                       	</div>
                       	<div class="details">
-                      		<p><a href="#">DIVYA MANIAN</a><br>
-                      		   <muted>Available</muted>
+                      		<p> 
+                      		   <muted>친구가 없습니다.</muted>
                       		</p>
                       	</div>
                       </div>
+                      <%
+                      }%>
+           <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
+			<c:choose>
+				<c:when test="${fcount!=0}">
+					<c:set var="friendlist" value="<%=ssomelist%>" />
+					<c:forEach var="friendlist" items="${friendlist}">
+						  <div class="desc">
+	                      	<div class="thumb">
+	                      		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+	                      	</div>
+	                      	<div class="details">
+	                      		<p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
+	                      		   <muted>${friendlist.name}</muted>
+	                      		</p>
+	                      	</div>
+	                      </div>
+					</c:forEach>
+				 
+				
+				 
+				</c:when>
+				<c:otherwise>
+				<br>
+				친구가 없네요 ^^ 
+				</c:otherwise>
+			</c:choose> --%>
                       
-               
-                      
+            </div>          
                       
                       
 						 <!-- CALENDAR-->

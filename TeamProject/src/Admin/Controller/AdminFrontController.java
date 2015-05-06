@@ -14,6 +14,7 @@ import Admin.Action.AdminPwdCheckAction;
 import Admin.Action.AdminPwdCheckMemberAction;
 import Admin.Action.BoardListAdminAction;
 import Admin.Action.GetMemberListAction;
+import Admin.Action.GetPartyListAction;
 
 
  public class AdminFrontController 
@@ -42,6 +43,15 @@ import Admin.Action.GetMemberListAction;
 			   }catch(Exception e){
 				   e.printStackTrace();
 			   }
+ 
+		   }else if(command.equals("/PartyListadmin.admin")){		//   게시판
+			   action = new GetPartyListAction();
+			   try{
+				   forward=action.execute(request, response);
+			   }catch(Exception e){
+				   e.printStackTrace();
+			   }
+ 
 		   }else if(command.equals("/AdminPwdCheckPage.admin")){		//   관리자 비밀번호확인
 			   forward=new ActionForward();
 			   forward.setRedirect(false);
