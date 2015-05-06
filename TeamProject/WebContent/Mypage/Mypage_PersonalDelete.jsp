@@ -116,7 +116,7 @@
 				</div>
 				<div class="col-sm-10" align="center">
 					<input type="submit" id="btn" name="btn" class="btn btn-theme04"
-						value="회원탈퇴" onclick="showalert()">
+						value="회원탈퇴" onclick="showalert();">
 				</div>
 			</div>
 		</form>
@@ -203,7 +203,7 @@
 <script>
 	//회원가입 완료메시지 띄우기
 	function showalert() {
-		alert('탈퇴완료');
+		alert('회원 탈퇴 완료');
 	}
 </script>
 </html>

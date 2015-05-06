@@ -30,10 +30,13 @@ public class DeleteAction implements Action{
 			System.out.println("회원탈퇴 업데이트 성공");
 		}
 		
-		
+
+		session.invalidate();//session 종료
+
+
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath(request.getContextPath()+"/Mypage/Mypage_Edit.jsp");
+		forward.setPath(request.getContextPath()+"/Main.jsp");
 		return forward;
 	}
 
