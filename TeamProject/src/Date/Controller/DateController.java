@@ -296,31 +296,5 @@ public class DateController extends HttpServlet {
 				
 			}
 		}
-		else if(cmd.equals("/CheckSendArrow.daa")){//Jquery용 메시지 확인
-			//내가 날린 화살을 보고싶을 때
-			request.setAttribute("user", request.getParameter("user"));
-			try {
-				forward=new ActionForward();
-				action = new ActionCheckSend();
-				forward=action.execute(request, response);
-				if(forward != null){
-					if(forward.isRedirect()){ //view 단 바로....
-						response.sendRedirect(forward.getPath());
-					}else{
-						
-						System.out.println("여기 타는거 맞지?");
-						System.out.println(request.getAttribute("arrowlist"));
-						RequestDispatcher dispatcher =
-						request.getRequestDispatcher(forward.getPath());
-						dispatcher.forward(request, response);
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally{
-				
-			}
-		}
-		
 	}		
 }
