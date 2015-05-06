@@ -171,8 +171,9 @@ public class SendArrow_DAO {
 			String regsql1 = "insert into ssomelist values(?,?)"; 
 			System.out.println("Dao 단 접근");
 			pstmt = conn.prepareStatement(regsql1);
-			pstmt.setString(1, s_id);
-			pstmt.setString(2, r_id);
+			pstmt.setString(1, r_id);//나
+			pstmt.setString(2, s_id);
+			
 			
 			System.out.println(s_id+"여기는 샌더");
 			System.out.println(r_id+"여기는 리시버");
@@ -228,6 +229,38 @@ public class SendArrow_DAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} 
+		finally {
+			pstmt.close();
+			conn.close();
+		}
+
+		return rst;
+	}
+	
+	public String deleteFriend(String me, String friend) throws SQLException {
+		int result=0;//등록 된 친구 삭제
+		String rst="";
+		try {
+			conn = ds.getConnection();
+			System.out.println("여기는 me" +me);
+			System.out.println("여기는 friend" +friend);
+			String delsql = "delete from ssomelist where u_id=? and u_ssome=?";
+			pstmt = conn.prepareStatement(delsql);
+			pstmt.setString(1, me);
+			pstmt.setString(2, friend);
+			result=pstmt.executeUpdate();
+			System.out.println(result + " result값");
+			System.out.println(delsql);
+			if(result>0){
+				rst="친구가 삭제 되었습니다";
+			}
+			else{
+				rst="삭제 실패";
+			}
+			System.out.println("실행결과 : "+rst);
+
+		} catch (SQLException e) {
 		} 
 		finally {
 			pstmt.close();
@@ -311,23 +344,23 @@ public class SendArrow_DAO {
 			System.out.println("end : "+end);
 			System.out.println("r_id : "+r_id);
 			System.out.println("cpage2 : "+cpage2);
-			String sql ="    select r,u_id,u_name from "
-					+ "(select rownum r,m.u_id, m.u_name from "
-					+ "(select u_id, u_ssome from ssomelist order by U_ID) s "
-					+ "join member m on s.u_id=m.u_id  where s.u_ssome=?) "
-					+ "where r between ? and ?";
+			String sql ="select u_id, u_name from "
+					+ "(select rownum r,m.u_id, m.u_name "
+					+ "from ssomelist s join member m on s.u_ssome=m.u_id where s.u_id=?)"
+					+ " where r between ? and ?" ; 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, r_id);
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
+				System.out.println("여길 안 타는것 같아");
 				Member member= new Member();
-				member.setId(rs.getString(2));
-				member.setName(rs.getString(3));
+				member.setId(rs.getString(1));
+				member.setName(rs.getString(2));
 				friends.add(member);
-				System.out.println("요청된 친구 ID : "+rs.getString(2));
-				System.out.println("요청된 친구 이름 :"+rs.getString(3));
+				System.out.println("요청된 친구 ID : "+rs.getString(1));
+				System.out.println("요청된 친구 이름 :"+rs.getString(2));
 			}
 
 		} catch (SQLException e) {

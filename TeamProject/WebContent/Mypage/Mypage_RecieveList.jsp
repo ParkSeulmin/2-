@@ -91,7 +91,8 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
 	function checkinfo(sendid){	//info 회원 상세보기 눌렀을 때 뜨는 팝업창 
-		window.open("Mypage/Mypage_MemberInfo.jsp?id="+sendid, "Popup", "width=600, height=150,scrollbars=1, menubar=1, resizable=1"); 
+		window.open("Mypage/Mypage_MemberInfo.jsp?id="+sendid,
+				"Popup", "width=600, height=150,scrollbars=1, menubar=1, resizable=1"); 
 	}
 	
 	function agree(sender){	//친구 수락 버튼
@@ -171,55 +172,54 @@
 		<input type="button" id="tog_btn" value="내가 신청한 친구 보기"
 			onclick="toggle()">
 		<div class="col-lg-9 main-chart" align="center">
+			
 			<h3 align="center">현재 친구</h3>
 			<div id=mydata>
 			<c:set var="fcount" value="<%=totalpagecount%>"/>
-			<c:choose>
-				<c:when test="${fcount!=0}">
-				
-				<table align="center" border="1">
-					<c:set var="friendlist" value="<%=friends%>" />
-					<c:forEach var="friendlist" items="${friendlist}">
-						<tr>
-							<td><a name="${friendlist.id}" onclick="sendmessage(this.name)">${friendlist.id}</a></td>
-							<td>${friendlist.name}</td>
-						</tr>
-					</c:forEach>
-				</table>
-				
-				<br>
-				<c:set var="total" value="<%=totalpagenum%>" />
-				
-				totalpage: ${total}
-				<br>
 				<c:choose>
-					<c:when test="${param.rp>1 }">
-						<a
-							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp")) - 1%>">이전</a>
+					<c:when test="${fcount>0}">
+						<table align="center" border="1">
+							<c:set var="friendlist" value="<%=friends%>" />
+							<c:forEach var="friendlist2" items="${friendlist}">
+								<tr>
+									<td><a name="${friendlist2.id}" onclick="sendmessage(this.name)">${friendlist2.id}</a></td>
+									<td>${friendlist2.name}</td>
+								</tr>
+							</c:forEach>
+						</table>
+
+						<br>
+						<c:set var="total" value="<%=totalpagenum%>" />
+						<br>
+						<c:choose>
+							<c:when test="${param.rp>1 }">
+								<a
+									href="CheckArrow.daa?rp=<%=Integer.parseInt(request
+									.getParameter("rp")) - 1%>">이전</a>
+							</c:when>
+						</c:choose>
+						<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
+							<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${ empty param.rp && total!=1}">
+								<a href="CheckArrow.daa?rp=2">다음</a>
+							</c:when>
+							<c:when test="${total>param.rp}">
+								<a
+									href="CheckArrow.daa?rp=<%=Integer.parseInt(request
+									.getParameter("rp")) + 1%>">다음</a>
+							</c:when>
+						</c:choose>
 					</c:when>
-				</c:choose>
-				<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
-					<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
-				</c:forEach>
-				<c:choose>
-					<c:when test="${empty param.rp}">
-						<a href="CheckArrow.daa?rp=2">다음</a>
-					</c:when>
-					<c:when test="${total>param.rp}">
-						<a
-							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))+1%>">다음</a>
-					</c:when>
-				</c:choose>
-				</c:when>
-				<c:otherwise>
-				<br>
-				친구가 없네요 ^^ 
+					<c:otherwise>
+					<br>친구가 없네요 ^^ 
 				</c:otherwise>
-			</c:choose>
-				
+				</c:choose>
+
 				<c:set var="rcount" value="<%=r_totalpagecount%>"/>
 			<c:choose>
-				<c:when test="${rcount!=0}">
+				<c:when test="${rcount>0}">
 
 				<h3 align="center">친구등록 요청 리스트</h3>
 				<table id="recieve_table" align="center" border="1">
@@ -243,7 +243,6 @@
 				<br>
 				<c:set var="rtotal" value="<%=r_totalpagenum%>" />
 				
-				r_totalpage: ${rtotal}
 				<br>
 				<c:choose>
 					<c:when test="${param.ap>1 }">
@@ -254,7 +253,7 @@
 					<a href="CheckArrow.daa?ap=${i}">[${i}]</a>
 				</c:forEach>
 				<c:choose>
-					<c:when test="${empty param.ap}">
+					<c:when test="${empty param.ap && rtotal!=1}">
 						<a href="CheckArrow.daa?ap=2">다음</a>
 					</c:when>
 					<c:when test="${rtotal>param.ap}">

@@ -17,9 +17,7 @@ public class ActionRegister implements Action {
 		
 		SendArrow_DAO mydao=new SendArrow_DAO();
 		String result=mydao.register_friend(s_id,r_id);
-		//화살 삭제하는 것도 필요함.메서드생성해야함 
 		mydao.ChangeArrow(s_id,r_id);
-		//System.out.println(mydao.deleteArrow(s_id,r_id));
 		request.setAttribute("result", result);
 		return forward;
 	}

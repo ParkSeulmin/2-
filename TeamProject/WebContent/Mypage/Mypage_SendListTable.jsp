@@ -24,59 +24,62 @@
 %>
 </head>
 <body>
-	Jquery로 update된 페이징 입니다~
 	<c:set var="fcount" value="<%=totalpagecount%>" />
-	<c:choose>
-		<c:when test="${fcount!=0}">
+				<c:choose>
+					<c:when test="${fcount!=0}">
 
-			<table align="center" border="1">
-				<c:set var="friendlist" value="<%=friends%>" />
-				<c:forEach var="friendlist" items="${friendlist}">
-					<tr>
-						<td>${friendlist.id}</td>
-						<td>${friendlist.name}</td>
-					</tr>
+						<table align="center" border="1">
+							<c:set var="friendlist" value="<%=friends%>" />
+							<c:forEach var="friendlist" items="${friendlist}">
+								<tr>
+									<td><a name="${friendlist.id}"
+										onclick="sendmessage(this.name)">${friendlist.id}</a></td>
+									<td>${friendlist.name}</td>
+									<td><input type="button" name="${friendlist.id }" value="친구삭제" onclick="deletefriend(this.name)"></td>
+								</tr>
+							</c:forEach>
+						</table>
+				<c:set var="total" value="<%=totalpagenum %>" />
+				<br>
+				<c:choose>
+					<c:when test="${param.rp>1 }">
+						<a
+							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))-1%>">이전</a>
+					</c:when>
+				</c:choose>
+				<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
+					<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
 				</c:forEach>
-			</table>
-		</c:when>
-		<c:otherwise>
-			<br>
+				<c:choose>
+					
+					<c:when test="${empty param.rp && total!=1}">
+						<a href="CheckArrow.daa?rp=2">다음</a>
+					</c:when>
+					<c:when test="${total>param.rp}">
+						<a
+							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))+1%>">다음</a>
+					</c:when>
+				</c:choose>
+				</c:when>
+					<c:otherwise>
+						<br>
 				친구가 없네요 ^^ 
 				</c:otherwise>
-	</c:choose>
+				</c:choose>
 
-	<h3 align="center">내가 요청한 친구 리스트</h3>
-<table align="center" border="1">
-<c:set var="mysendlist" value="<%=mylist%>"/>
-	<c:forEach var="sendlist" items="${mysendlist}">
-		<tr>
-			<td>${sendlist.a_date}</td>
-			<td>${sendlist.a_status}</td>
-			<td><a onclick="sendmessage(this.name)">${sendlist.a_sendid}</a></td>
-			<td><input type="button" value="확인" name="${sendlist.a_sendid}" onclick="checkout(this.name)" /></td>
-		</tr>
-	</c:forEach>
-</table>
-<br>
+				<h3 align="center">내가 요청한 친구 리스트</h3>
+				<table align="center" border="1">
+					<c:set var="mysendlist" value="<%=mylist%>" />
+					<c:forEach var="sendlist" items="${mysendlist}">
+						<tr>
+							<td>${sendlist.a_date}</td>
+							<td>${sendlist.a_status}</td>
+							<td>${sendlist.a_sendid}</td>
+							<td><input type="button" name="${sendlist.a_sendid }" value="확인"
+								onclick="checkout(this.name)"> </td>
 
-<c:set var="total" value="<%=totalpagenum %>"/>
-현재 totalpagenum: ${total}<br>
-<c:choose>
-	<c:when test="${param.rp>1 }">
-		<a href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))-1%>">이전</a>
-	</c:when>
-</c:choose>
-<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
-	<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
-</c:forEach>
-<c:choose>
-	<c:when test="${empty param.rp}">
-		<a href="CheckArrow.daa?rp=2">다음</a>
-	</c:when>
-	<c:when test="${total>param.rp}">
-		<a href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))+1%>">다음</a>
-	</c:when>
-</c:choose>
-
+						</tr>
+					</c:forEach>
+				</table>
 </body>
 </html>

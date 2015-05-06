@@ -1,6 +1,5 @@
 package Date.Action;
 
-import java.net.HttpRetryException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,15 +13,16 @@ import Login.Action.ActionForward;
 import Login.DTO.Member;
 import Mypage.DTO.Arrow_DTO;
 
-public class ActionCheckSend implements Action {
+public class ActionDeleteFriend implements Action {
 
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		ActionForward forward = new ActionForward();
+		SendArrow_DAO dao= new SendArrow_DAO();
+		String friend=(String)request.getAttribute("friend");
 		List<Member> memberlist=new ArrayList<Member>();
 		List<Arrow_DTO> arlist=new ArrayList<Arrow_DTO>();
-		
-		ActionForward forward =new ActionForward();
-		SendArrow_DAO dao=new SendArrow_DAO();
 		
 		HttpSession session= request.getSession();
 		Member member=(Member)session.getAttribute("user");
@@ -41,8 +41,8 @@ public class ActionCheckSend implements Action {
 		request.setAttribute("friends", memberlist);
 		request.setAttribute("arrowlist", arlist);
 		
-		System.out.println(arlist);
-		forward.setPath("/Mypage/Mypage_SendList.jsp");
+		dao.deleteFriend(me, friend);//친구 삭제 결과
+		forward.setPath("/Mypage/Mypage_SendListTable.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

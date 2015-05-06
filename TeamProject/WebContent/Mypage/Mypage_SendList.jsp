@@ -93,6 +93,18 @@
 		console.log(data);
 		window.open("Mypage_messagesend.daa?id="+data, "Popup", "width=380, height=300,scrollbars=1, menubar=1, resizable=1"); 
 	}
+	function deletefriend(sender){
+		var sdid={
+				s_id:sender,
+			    r_id:'<%=me%>'}
+	$.ajax({
+		url:"delete_friend.daa",
+		data:sdid,
+		success : function(data){
+			$("#mydiv").html(data);
+		}
+	});
+	}
 </script>
   
 </head>
@@ -118,20 +130,12 @@
 									<td><a name="${friendlist.id}"
 										onclick="sendmessage(this.name)">${friendlist.id}</a></td>
 									<td>${friendlist.name}</td>
+									<td><input type="button" name="${friendlist.id }" value="친구삭제" onclick="deletefriend(this.name)"></td>
 								</tr>
 							</c:forEach>
 						</table>
-					</c:when>
-					<c:otherwise>
-						<br>
-				친구가 없네요 ^^ 
-				</c:otherwise>
-				</c:choose>
-				<br>
-
-
 				<c:set var="total" value="<%=totalpagenum %>" />
-				totalpage: ${total} <br>
+				<br>
 				<c:choose>
 					<c:when test="${param.rp>1 }">
 						<a
@@ -142,13 +146,20 @@
 					<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
 				</c:forEach>
 				<c:choose>
-					<c:when test="${empty param.rp}">
+					
+					<c:when test="${empty param.rp && total!=1}">
 						<a href="CheckArrow.daa?rp=2">다음</a>
 					</c:when>
 					<c:when test="${total>param.rp}">
 						<a
 							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))+1%>">다음</a>
 					</c:when>
+				</c:choose>
+				</c:when>
+					<c:otherwise>
+						<br>
+				친구가 없네요 ^^ 
+				</c:otherwise>
 				</c:choose>
 
 				<h3 align="center">내가 요청한 친구 리스트</h3>
@@ -159,6 +170,8 @@
 							<td>${sendlist.a_date}</td>
 							<td>${sendlist.a_status}</td>
 							<td>${sendlist.a_sendid}</td>
+							<td><input type="button" name="${sendlist.a_sendid }" value="확인"
+								onclick="checkout(this.name)"> </td>
 
 						</tr>
 					</c:forEach>
