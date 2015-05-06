@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	alert("로그인 실패");
+	
+	
+	location.href="/TeamProject";
+</script>
 </head>
 <body>
-<center>
-	<h1>로그인 실패</h1>
-	<%= request.getAttribute("result") %>
-	<a href="/TeamProject/Main.jsp">메인으로 가기</a>
-</center>
+
 </body>
 </html>

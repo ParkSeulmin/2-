@@ -1,9 +1,37 @@
 
+<%@page import="Login.DTO.Member"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Mypage.DTO.Arrow_DTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<% request.setCharacterEncoding("UTF-8"); %>
+<% request.setCharacterEncoding("UTF-8"); 
+
+
+
+	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
+	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
+	
+	List<Member> ssomelist = null;
+	if(request.getAttribute("ssomelist") != null){
+		ssomelist = (ArrayList<Member>) request.getAttribute("ssomelist");
+		System.out.println("ssomelist: "+ssomelist);
+	}
+	
+	if(ssomelist==null){
+		System.out.println("친구가 없어");
+	}
+
+	/* String totalpagecount=(String)request.getAttribute("total");
+	int pagesize=2;
+	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
+	if((Integer.parseInt(totalpagecount))%pagesize!=0){
+		totalpagenum++;
+	}//친구 페이징  */
+
+%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -93,7 +121,7 @@
                   <div class="col-lg-9 main-chart">
 
 					 
-					 <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
+					<!--  <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
 								<style type="text/css">
 						#clock {
 							width: 320px;
@@ -125,17 +153,17 @@
 							top: 0px;
 							left: 0px;
 						}
-						</style>
+						</style> -->
 						
 						
 						
-						<div id="clock">
+<!-- 						<div id="clock">
 							<div class="rotatingHands"><img id="hours" src="http://www.wedaehan.com/css/images/hours.png" style="-webkit-transform: rotate(80.5deg);"></div>
 							<div class="rotatingHands"><img id="minutes" src="http://www.wedaehan.com/css/images/minutes.png" style="-webkit-transform: rotate(246deg);"></div>
 							<div class="rotatingHands"><img id="seconds" src="http://www.wedaehan.com/css/images/seconds.png" style="-webkit-transform: rotate(18deg);"></div>
-							<!-- <div class="glass"><img src="images/glass.png" /></div> -->
+							<div class="glass"><img src="images/glass.png" /></div>
 							<img src="http://www.wedaehan.com/css/images/clock.png">
-						</div>		
+						</div>	 -->	
 							</div>
 					 
 					 
@@ -149,7 +177,7 @@
 						<!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
 						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
 						Functions
-						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> --> -->
+						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> -->
 						
 					 
                   
@@ -159,123 +187,97 @@
       *********************************************************************************************************************************************************** -->                  
                   
                   <div class="col-lg-3 ds">
-                    <!--COMPLETED ACTIONS DONUTS CHART-->
-						<h3>NOTIFICATIONS</h3>
-                                        
-                      <!-- First Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>2 Minutes Ago</muted><br>
-                      		   <a href="#">James Brown</a> subscribed to your newsletter.<br>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Second Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>3 Hours Ago</muted><br>
-                      		   <a href="#">Diana Kennedy</a> purchased a year subscription.<br>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Third Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>7 Hours Ago</muted><br>
-                      		   <a href="#">Brandon Page</a> purchased a year subscription.<br>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fourth Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>11 Hours Ago</muted><br>
-                      		   <a href="#">Mark Twain</a> commented your post.<br>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fifth Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>18 Hours Ago</muted><br>
-                      		   <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br>
-                      		</p>
-                      	</div>
-                      </div>
+                     
 
                        <!-- USERS ONLINE SECTION -->
-						<h3>TEAM MEMBERS</h3>
+						<h3>MY FRIENDS LIST</h3>
                       <!-- First Member -->
-                      <div class="desc">
+                      <div>
+                       
+                      
+                      <% if(ssomelist != null && ssomelist.size()>0){ 
+                    	  for(int i=0; i<ssomelist.size(); i++){
+                    		  Member ssome = ssomelist.get(i);
+                      %>
+				<c:set var="pimg" value="<%=ssome.getU_mypicture()%>" />
+				<c:set var="gender" value="<%=ssome.getGender() %>"/>
+				<%
+					String originimg = request.getContextPath()+ "/boardupload/" + ssome.getU_mypicture();
+					String default_male = request.getContextPath()+"/Images/defaultimg/default_male.png";
+					String default_female = request.getContextPath()+"/Images/defaultimg/default_female.PNG";
+				%>
+				<c:choose>
+					<c:when test="${pimg != null}">
+						<c:set var="imgsrc" value="<%=originimg%>"/>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${gender == 1}">
+								<c:set var="imgsrc" value="<%=default_male%>"/>	
+							</c:when>
+							<c:when test="${gender == 2}">
+								<c:set var="imgsrc" value="<%=default_female%>"/>	
+							</c:when>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
+
+				<div class="desc">
+		                      	<div class="thumb">
+		                      		<img class="img-circle" src="${imgsrc}" width="35px" height="35px" align="">
+		                      	</div>
+		                      	<div class="details">
+		                      		<p><a href="#"><%=ssome.getId()%></a><br>
+		                      		   <muted><%=ssome.getName() %></muted>
+		                      		</p>
+		                      	</div>
+		                      </div>
+                      
+                      <%
+                    	  }
+                    	} else{
+                      %>
+                      	 <div class="desc">
                       	<div class="thumb">
                       		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
                       	</div>
                       	<div class="details">
-                      		<p><a href="#">DIVYA MANIAN</a><br>
-                      		   <muted>Available</muted>
+                      		<p> 
+                      		   <muted>친구가 없습니다.</muted>
                       		</p>
                       	</div>
                       </div>
-                      <!-- Second Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">DJ SHERMAN</a><br>
-                      		   <muted>I am Busy</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Third Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">DAN ROGERS</a><br>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fourth Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-zac.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">Zac Sniders</a><br>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fifth Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-sam.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">Marcel Newman</a><br>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-						
+                      <%
+                      }%>
+           <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
+			<c:choose>
+				<c:when test="${fcount!=0}">
+					<c:set var="friendlist" value="<%=ssomelist%>" />
+					<c:forEach var="friendlist" items="${friendlist}">
+						  <div class="desc">
+	                      	<div class="thumb">
+	                      		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+	                      	</div>
+	                      	<div class="details">
+	                      		<p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
+	                      		   <muted>${friendlist.name}</muted>
+	                      		</p>
+	                      	</div>
+	                      </div>
+					</c:forEach>
+				 
+				
+				 
+				</c:when>
+				<c:otherwise>
+				<br>
+				친구가 없네요 ^^ 
+				</c:otherwise>
+			</c:choose> --%>
+                      
+            </div>          
+                      
+                      
 						 <!-- CALENDAR-->
                         <div id="calendar" class="mb">
                             <div class="panel green-panel no-margin">

@@ -166,6 +166,11 @@ public class Join {
 				System.out.println("memberdelete userid: "+userid);
 				String del_reply_sql = 
 						"delete from reply where RE_WRITER=?";
+				
+				String boardreply_delete_sql=
+						" from reply where bo_no in (select bo_no from board where bo_writer=?)";
+							 
+				
 				String board_delete_sql=
 					"delete from board where BO_WRITER=?";
 				String del_ssomelist_sql = 
@@ -198,6 +203,15 @@ public class Join {
 					
 					if (result < 1) {
 						System.out.println("댓글삭제실패");
+					}
+					
+					//2 게시물 댓글삭제
+					pstmt=conn.prepareStatement(boardreply_delete_sql);
+					pstmt.setString(1, userid);
+					result=pstmt.executeUpdate();
+					
+					if (result < 1) {
+						System.out.println("게시물댓글삭제실패");
 					}
 					
 					//2 게시물삭제

@@ -13,7 +13,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="Dashboard">
@@ -136,7 +135,7 @@
 						type="text" name="mb_email1" id="reg_mb_email1" value=""
 						maxlength="100"> @ <input type="text" name="mb_email2"
 						id="reg_mb_email2" value="" maxlength="100"> <select
-						name="mb_email3"
+						name="mb_email3" id="mb_email3"
 						onchange="document.fregisterform.mb_email2.value = this.value;document.fregisterform.mb_email2.focus()">
 						<option value="">-선택-</option>
 						<option value="daum.net">daum.net</option>
@@ -171,7 +170,7 @@
 			<div class="form-group">
 				<div class="col-sm-10" align="center">
 					<input type="submit" class="btn btn-theme04" value="수정완료"
-						id="btn_submit" accesskey="s" onclick="showalert();"> <a
+						id="btn_submit" accesskey="s" onclick="return check();"> <a
 						href="Mypage_Edit.jsp" class="btn_cancel"> <input type="button"
 						class="btn btn-theme03" value="취소  ">
 					</a>
@@ -276,7 +275,7 @@
 						//alert('result 값' + result);
 						if (result == 1) {
 							alert("ID 중복입니다.");
-						} else {
+						}else {
 							alert("사용가능한 ID 입니다.");
 						}
 
@@ -343,48 +342,51 @@
 									$("#message1").html("");
 								}
 							});
-
-			$('.email1').keyup(function() {
-				$("#msg_mb_email").html("");
-			});
-			$('.email1').focusout(
-					function() {
-						$('#reg_mb_email').val(
-								$('#reg_mb_email1').val() + '@'
-										+ $('#reg_mb_email2').val());
-						if ($('#reg_mb_email1').val()
-								&& $('#reg_mb_email2').val()) {
-							msg = reg_mb_email_check();
-							if (!msg) {
-								$("#msg_mb_email").css('color', 'blue');
-								$("#msg_mb_email").html("사용가능한 이메일입니다.");
-							} else {
-								$("#msg_mb_email").css('color', 'red');
-								$("#msg_mb_email").html(msg);
-							}
-						}
-					});
 		});
 	</script>
 	<script>
-		//회원가입 완료메시지 띄우기
-		function showalert() {
-			alert('수정 완료');
+		//유효성 체크 함수
+		function check(){
+			if($('#post1').val()=='' ||$('#post2').val()==''
+					||$('#address').val()=='' ||$('#address2').val()=='') {
+				alert('주소를 입력하세요.');
+				return false;
+			}else if($('#nickcheck').val()==''){
+				alert('닉네임을 입력하세요.');
+				return false;
+			}else if($('#u_mypicture').val()==''){
+				alert('사진을 첨부하세요.');
+				return false;
+			}else if($('#reg_mb_email1').val()=='' || $('#reg_mb_email2').val()==''
+					|| $('#mb_email3').val()==''){
+				alert('이메일을 입력하세요.');
+				return false;
+			}else if($('#mb_hp1').val()=='' || $('#mb_hp2').val()==''
+					|| $('#mb_hp3').val()==''){
+				alert('번호를 입력하세요.');
+				return false;
+			}else{
+				//수정완료 호출
+				alert('수정 완료');
+				return true;
+			}
 		}
 	</script>
-		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script type="text/javascript">
-		function openDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							document.getElementById('post1').value = data.postcode1;
-							document.getElementById('post2').value = data.postcode2;
-							document.getElementById('address').value = data.roadAddress;//도로명주소
-							document.getElementById('address2').focus();
-						}
-					}).open();
-		}
+	
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script>
+	//우편번호 api 사용
+	function openDaumPostcode() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				document.getElementById('post1').value = data.postcode1;
+				document.getElementById('post2').value = data.postcode2;
+				document.getElementById('address').value = data.roadAddress;//도로명주소
+				document.getElementById('address2').focus();
+			}
+		}).open();
+	}
 	</script>
+	
 </body>
 </html>

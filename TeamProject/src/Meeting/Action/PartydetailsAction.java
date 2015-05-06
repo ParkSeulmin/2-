@@ -27,8 +27,12 @@ public class PartydetailsAction implements Action{
 */
 		Partydetails_DAO dao = new Partydetails_DAO();
 		List detail = dao.getlist(id);//select 할 id 값을 넘겨줌 
+		int count = dao.getcount(Integer.parseInt(id));//파티 몇명 참석햇는지 보여줌
+		
+		System.out.println("party" + id + "참석인원 : " + count); 
 		
 		request.setAttribute("detail", detail);
+		request.setAttribute("count", count);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

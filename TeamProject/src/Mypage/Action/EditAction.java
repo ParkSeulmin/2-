@@ -56,7 +56,7 @@ public class EditAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath(request.getContextPath()+"/Mypage_Edit.jsp");
+		forward.setPath(request.getContextPath()+"/Mypage/Mypage_Edit.jsp");
 		return forward;
 	}
 
