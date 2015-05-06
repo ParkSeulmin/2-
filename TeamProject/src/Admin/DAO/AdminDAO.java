@@ -200,5 +200,50 @@ public class AdminDAO {
 						}
 						return realadminpwd;
 					}
+					
+					
+					// 친구목록불러오기
+					public List<Member> getSsomeList(String r_id,int cpage) throws SQLException {
+						List<Member> friends = new ArrayList<Member>();
+						try {
+							con = ds.getConnection();
+							int cpage2= cpage;
+							int pagesize=2; 
+							int start = cpage2 * pagesize - (pagesize - 1);
+							int end = cpage2 * pagesize;
+							System.out.println("start : "+start);
+							System.out.println("end : "+end);
+							System.out.println("r_id : "+r_id);
+							System.out.println("cpage2 : "+cpage2);
+							String sql ="    select r,u_id,u_name,U_MYPICTURE,U_GENDER from "
+									+ "(select rownum r,m.u_id, m.u_name, m.U_MYPICTURE, m.U_GENDER from "
+									+ "(select u_id, u_ssome from ssomelist order by U_ID) s "
+									+ "join member m on s.u_id=m.u_id  where s.u_ssome=?) "
+									+ "where r between ? and ?";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setString(1, r_id);
+							pstmt.setInt(2, start);
+							pstmt.setInt(3, end);
+							rs=pstmt.executeQuery();
+							while(rs.next()){
+								Member member= new Member();
+								member.setId(rs.getString(2));
+								member.setName(rs.getString(3));
+								member.setU_mypicture(rs.getString("U_MYPICTURE"));
+								member.setGender(rs.getInt("U_GENDER"));
+								friends.add(member);
+								System.out.println("요청된 친구 ID : "+rs.getString(2));
+								System.out.println("요청된 친구 이름 :"+rs.getString(3));
+							}
+
+						} catch (SQLException e) {
+							e.printStackTrace();
+						} 
+						finally {
+							pstmt.close();
+							con.close();
+						}
+						return friends ;
+					}
 }
 	

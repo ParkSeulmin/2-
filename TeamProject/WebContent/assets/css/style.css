@@ -1362,7 +1362,7 @@ PANELS CONFIGURATIONS
 
 /* BLOG PANEL */
 #blog-bg {
-	background: url(../img/blog-bg.jpg) no-repeat center top;
+	background: url(../img/blog-bg1.jpg) no-repeat center top;
 	margin-top: -15px;
 	background-attachment: relative;
 	background-position: center center;
@@ -1378,6 +1378,98 @@ PANELS CONFIGURATIONS
     background-size: cover;
 }
 #blog-bg .badge {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+}
+
+/* BLOG PANEL */
+#blog-bg2 {
+	background: url(../img/blog-bg2.jpg) no-repeat center top;
+	margin-top: -15px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 150px;
+	width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#blog-bg2 .badge {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+}
+
+/* BLOG PANEL */
+#blog-bg4 {
+	background: url(../img/blog-bg4.jpg) no-repeat center top;
+	margin-top: -15px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 150px;
+	width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#blog-bg4 .badge {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+}
+
+/* BLOG PANEL */
+#blog-bg3 {
+	background: url(../img/blog-bg3.jpg) no-repeat center top;
+	margin-top: -15px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 150px;
+	width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#blog-bg3 .badge {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+}
+
+/* BLOG PANEL */
+#blog-bg5 {
+	background: url(../img/blog-bg5.jpg) no-repeat center top;
+	margin-top: -15px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 150px;
+	width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#blog-bg5 .badge {
 	position: absolute;
 	top: 20px;
 	left: 35px;

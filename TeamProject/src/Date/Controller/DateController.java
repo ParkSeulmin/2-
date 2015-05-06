@@ -84,7 +84,7 @@ public class DateController extends HttpServlet {
 
 		else if(cmd.equals("/CheckArrow.daa")){//자신에게 날아온 화살 확인하는 메서드
 			try {
-				forward = new ActionForward();
+				/*forward = new ActionForward();*/
 				action = new ActionRecievedDate();
 				forward = action.execute(request, response);
 				

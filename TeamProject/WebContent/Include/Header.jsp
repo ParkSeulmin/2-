@@ -66,7 +66,7 @@
 
 			<p class="centered">
 
-				<a href="<%=request.getContextPath()%>/Main.jsp">
+				<a href="<%=request.getContextPath()%>/Mainpage.main">
 					<img src="<%=request.getContextPath()%>/assets/img/logo.png" class="img-circle" width="60"></a>
 			</p>
 			<h5 class="centered">Quality of meeting</h5>
@@ -124,8 +124,10 @@
 						<ul class="sub">
 							<li><a href="#">관리자 정보</a></li>
 							<li class="divider"></li>
-							<li><a href="<%=request.getContextPath()%>/MemberList.admin">회원관리정보</a></li>
+							<li><a href="<%=request.getContextPath()%>/MemberList.admin">회원 관리</a></li>
 							<li class="divider"></li>
+							<li><a href="<%=request.getContextPath()%>/BoardListadmin.admin">게시물 관리</a></li>
+							<li><a href="<%=request.getContextPath()%>/PartyListadmin.admin">파티 관리</a></li>
 						</ul></li>
 				</c:when>
 				<c:otherwise>
@@ -136,7 +138,7 @@
 							<li><a href="#">개인정보 수정</a></li>
 							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
                      		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
-							<li><a href="CheckArrow.daa">데이트 신청 리스트</a></li>
+							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
 							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
 						</ul></li>
 				</c:otherwise>
