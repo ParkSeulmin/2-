@@ -1,3 +1,4 @@
+<%@page import="javax.naming.Context"%>
 <%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -5,11 +6,12 @@
 <%@page import="Mypage.DTO.Arrow_DTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -17,7 +19,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>Insert title here</title>
+<title>DASHGUM - FREE Bootstrap Admin Template</title>
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
 	rel="stylesheet">
@@ -77,115 +79,258 @@
 </style>
 
 <%
-	List<Arrow_DTO> mylist=new ArrayList<Arrow_DTO>();
-	mylist=(ArrayList<Arrow_DTO>)request.getAttribute("result");
-	
-	List<Member> friends=new ArrayList<Member>();
-	friends=(ArrayList<Member>)request.getAttribute("friends");
+	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
+	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
+
+	List<Member> friends = new ArrayList<Member>();
+	friends = (ArrayList<Member>) request.getAttribute("friends");
+
+	Member member = (Member) session.getAttribute("user");
+	String me = member.getId();
 %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
-	function checkinfo(sendid){
+	function checkinfo(sendid){	//info 회원 상세보기 눌렀을 때 뜨는 팝업창 
 		window.open("Mypage/Mypage_MemberInfo.jsp?id="+sendid, "Popup", "width=600, height=150,scrollbars=1, menubar=1, resizable=1"); 
 	}
 	
-	function agree(sender){
+	function agree(sender){	//친구 수락 버튼
 		var sdid={
 					s_id:sender,
-				    r_id:'<%=session.getAttribute("user")%>'}
-
+				    r_id:'<%=me%>'} 
 		$.ajax({
 			url:"register.daa",
 			data:sdid,
 			success : function(data){
 				alert(data);
-				//$("#"+sender).hide();
-				location.reload();
+			}
+		});
+		$.ajax({		//친구목록 다시 불러오는 코드
+			url:"CheckArrow_query.daa",
+			data:sdid,
+			success : function(data){
+				$("#mydata").html(data);
 			}
 		});
 	}
-	function disagree(sender){
-		var sdid={
+	
+	
+	function disagree(sender){	//친구 거절 버튼
+		 var sdid={
 					s_id:sender,
-				    r_id:'<%=session.getAttribute("user")%>'}
-
+				    r_id:'<%=me%>'
+		}
 		$.ajax({
-			url:"delete_arrow.daa",
-			data:sdid,
-			success : function(data){
+			url : "disagree_arrow.daa",
+			data : sdid,
+			success : function(data) {
 				alert(data);
-				//$("#"+sender).hide();
-				location.reload();
 			}
 		});
+		$.ajax({ 
+			url : "CheckArrow_query.daa",
+			data : sdid,
+			success : function(data) {
+				$("#mydata").html(data);
+			}
+		});
+	}
+
+	function toggle() {	//친구등록 신청한 페이지 보기 
+		location.href = "CheckSendArrow.daa";
+	}
+	
+	function sendmessage(data){
+		console.log(data);
+		window.open("Mypage_messagesend.daa?id="+data, "Popup", "width=380, height=300,scrollbars=1, menubar=1, resizable=1"); 
 	}
 </script>
 </head>
-
+<%
+		String totalpagecount=(String)request.getAttribute("total");
+		int pagesize=2;
+		int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
+		if((Integer.parseInt(totalpagecount))%pagesize!=0){
+			totalpagenum++;
+		}//친구 페이징
+		
+		 String r_totalpagecount=(String)request.getAttribute("totalrecieve");
+		int r_pagesize=2;
+		int r_totalpagenum=(Integer.parseInt(r_totalpagecount))/r_pagesize;
+		if((Integer.parseInt(r_totalpagecount))%r_pagesize!=0){
+			r_totalpagenum++;
+		}//받은거 페이징 
+%>
 <body>
-
-  
-<c:import url="/Include/Header.jsp" />
-      	 <section id="main-content">
-          <section class="wrapper">
-           <div class="row">
-           	
-           	<h3><i class="fa fa-angle-right"></i>BOARD VIEW</h3>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          		<p>게시판 보기</p>
-          		</div>
-          	</div>
-	                <hr>
-           	 <div  class="col-lg-9 main-chart" align="center">
-			<h3 align="center">친구 LIST</h3>
-			user : <%=request.getParameter("user")%><br>
-			
-			<form>
-			<table align="center" border="1">
+	<c:import url="/Include/Header.jsp" />
+	<section id="main-content"> <section class="wrapper">
+	<div class="row">
+		<h3>
+			<i class="fa fa-angle-right">친구 신청 리스트</i>
+		</h3>
+		<input type="button" id="tog_btn" value="내가 신청한 친구 보기"
+			onclick="toggle()">
+		<div class="col-lg-9 main-chart" align="center">
+			<h3 align="center">현재 친구</h3>
+			<div id=mydata>
+			<c:set var="fcount" value="<%=totalpagecount%>"/>
+			<c:choose>
+				<c:when test="${fcount!=0}">
 				
-			<%
-				for(int i=0; i<friends.size(); i++){
-			%>	<tr>
-					<td><%=friends.get(i).getId()%></td>
-					<td><%=friends.get(i).getName()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				</tr>
-			<%
-				}
-			%>
-			</table>
-			<h3 align="center">친구 등록 요청 LIST</h3>
-			<table align="center" border="1">
-			<%
-				for(int i=0; i<mylist.size(); i++){
-			%>	<tr>
-					<td><%=mylist.get(i).getA_sendid()%></td>
-					<td><%=mylist.get(i).getA_date()%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td><%=mylist.get(i).getA_status()%></td>
-					<td><input type="button" value="info" 
-					name="<%=mylist.get(i).getA_sendid() %>" onclick="checkinfo(this.name)" /></td>
-					<!-- 상세보기 -->
-					<td><input type="button" value="agree" id="<%=mylist.get(i).getA_sendid() %>"
-					name="<%=mylist.get(i).getA_sendid() %>" onclick="agree(this.name)" /></td>
-					<!-- 친구수락 -->
-					<td><input type="button" value="disagree" 
-					name="<%=mylist.get(i).getA_sendid() %>" onclick="disagree(this.name)" /></td>
-					<!-- 거절 -->
-				</tr>
-			<%
-				}
-			%>
-			</table>
-			</form>
-			agree->서로 친구 테이블에 등록해주는 테이블 
-			<br>
-			disagree->화살 테이블에서 해당 화살 삭제 
-			<br>
-			info->화살 보낸 사람의 정보를 보여주는 쿼리 
+				<table align="center" border="1">
+					<c:set var="friendlist" value="<%=friends%>" />
+					<c:forEach var="friendlist" items="${friendlist}">
+						<tr>
+							<td><a name="${friendlist.id}" onclick="sendmessage(this.name)">${friendlist.id}</a></td>
+							<td>${friendlist.name}</td>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				<br>
+				<c:set var="total" value="<%=totalpagenum%>" />
+				
+				totalpage: ${total}
+				<br>
+				<c:choose>
+					<c:when test="${param.rp>1 }">
+						<a
+							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp")) - 1%>">이전</a>
+					</c:when>
+				</c:choose>
+				<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
+					<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${empty param.rp}">
+						<a href="CheckArrow.daa?rp=2">다음</a>
+					</c:when>
+					<c:when test="${total>param.rp}">
+						<a
+							href="CheckArrow.daa?rp=<%=Integer.parseInt(request.getParameter("rp"))+1%>">다음</a>
+					</c:when>
+				</c:choose>
+				</c:when>
+				<c:otherwise>
+				<br>
+				친구가 없네요 ^^ 
+				</c:otherwise>
+			</c:choose>
+				
+				<c:set var="rcount" value="<%=r_totalpagecount%>"/>
+			<c:choose>
+				<c:when test="${rcount!=0}">
+
+				<h3 align="center">친구등록 요청 리스트</h3>
+				<table id="recieve_table" align="center" border="1">
+				<c:set var="recievelist" value="<%=mylist%>"/>
+				<c:forEach var="recievelist" items="${recievelist}">
+						<tr>
+							<td>${recievelist.a_sendid }</td>
+							<td>${recievelist.a_date }</td>
+							<td>대기중</td>
+							<td><input type="button" value="info" name="${recievelist.a_sendid}" onclick="checkinfo(this.name)" /></td>
+						<!-- 상세보기 -->
+							<td><input type="button" value="agree" id="${recievelist.a_sendid}" name="${recievelist.a_sendid}" onclick="agree(this.name)" /></td>
+						<!-- 친구수락 -->
+							<td><input type="button" value="disagree" name="${recievelist.a_sendid}" onclick="disagree(this.name)" /></td>
+						<!-- 거절 -->
+						</tr>
+				
+				</c:forEach>
+				</table>
+				
+				<br>
+				<c:set var="rtotal" value="<%=r_totalpagenum%>" />
+				
+				r_totalpage: ${rtotal}
+				<br>
+				<c:choose>
+					<c:when test="${param.ap>1 }">
+						<a href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap")) - 1%>">이전</a>
+					</c:when>
+				</c:choose>
+				<c:forEach var="i" begin="1" end="<%=r_totalpagenum%>">
+					<a href="CheckArrow.daa?ap=${i}">[${i}]</a>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${empty param.ap}">
+						<a href="CheckArrow.daa?ap=2">다음</a>
+					</c:when>
+					<c:when test="${rtotal>param.ap}">
+						<a href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap"))+1%>">다음</a>
+					</c:when>
+				</c:choose>
+				</c:when>
+				<c:otherwise>
+				<br>
+				<h3 align="center">친구등록 요청 리스트</h3>
+				<br>
+				요청들어온게 없네요 ^^
+				</c:otherwise>
+			</c:choose>
 			</div>
-			</div>
-			</section>
-			</section>
+		</div>
+	</div>
+	</section> </section>
+	<!--script for this page-->
+	<!--common script for all pages-->
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"
+		type="text/javascript"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
+	<!--common script for all pages-->
+	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
+	<!--script for this page-->
+	<script rc="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+	<script type="application/javascript">//header부분 관련 스크립트
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+        
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+        
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+	</script>
 </body>
 </html>
-

@@ -218,9 +218,5 @@
     </div>
     </section>
     </section>
-
-
-
->>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 </body>
 </html>
