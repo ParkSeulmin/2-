@@ -123,7 +123,7 @@
 							class="fa fa-tasks"></i> <span>관리자 페이지</span>
 					</a>
 						<ul class="sub">
-							<li><a href="#">관리자 정보</a></li>
+							 
 							<li class="divider"></li>
 							<li><a href="<%=request.getContextPath()%>/MemberList.admin">회원 관리</a></li>
 							<li class="divider"></li>

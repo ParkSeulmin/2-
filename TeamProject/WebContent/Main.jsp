@@ -195,7 +195,7 @@
                       <div>
                        
                       
-                      <% if(ssomelist != null){ 
+                      <% if(ssomelist != null && ssomelist.size()>0){ 
                     	  for(int i=0; i<ssomelist.size(); i++){
                     		  Member ssome = ssomelist.get(i);
                       %>

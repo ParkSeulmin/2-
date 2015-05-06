@@ -92,6 +92,7 @@
 		<i class="fa fa-angle-right"></i> Partylist
 	</h3>
 	<hr>
+	<div  class="col-lg-9 main-chart">
 	<div class="row mt">
 	<div class="content-panel">
 		<table class="table table-striped table-advance table-hover">
@@ -102,7 +103,7 @@
 						<th><i class="fa fa-bookmark"></i>장소</th>
 						<th><i class=" fa fa-edit"></i> 최대인원</th>
 						<th><i class=" fa fa-edit"></i> 상태</th>
-						<th><i class=" fa fa-edit"></i> 신청</th>
+					 
 					</tr>
 				</thead>
 				<tbody>
@@ -118,7 +119,7 @@
 						<td><%=pl.getP_AREA() %></td>
 						<td><%=pl.getP_MAXPEOPLE() %></td>
 						<td><%=pl.getP_STATUS() %></td>
-						<td> </td>
+						 
 					</tr>
 					 
 				
@@ -143,7 +144,7 @@
 	
 %>
 	<tr>
-		<td colspan="6">
+		<td colspan="5">
 			<div align="right"> 
 		         			<a href="<%=request.getContextPath()%>/PartyWrite.admin" id="writeparty">
 								<button type="button" class="btn btn-theme04">
@@ -158,7 +159,25 @@
 
 			</table>
 			</div>
+			</div>
 </div>
+	<div class="col-lg-3 ds">
+                    
+						
+					 <!-- CALENDAR-->
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div> 
+                  </div>
 	<!-- /row -->
 	 </section> 
 </section>

@@ -136,7 +136,7 @@
            	 <div  class="col-lg-9 main-chart" align="center">
            	 
            	 
-           	 <form action="./PartyAddAction.admin" method="post" 
+           	 <form action="<%=request.getContextPath()%>/PartyAddAction.admin" method="post" 
 			enctype="multipart/form-data" name="partyform">
 		 
 		<table cellpadding="0" cellspacing="0" width="100%">
