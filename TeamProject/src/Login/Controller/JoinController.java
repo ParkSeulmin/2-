@@ -3,10 +3,8 @@ package Login.Controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import Admin.Action.GetMemberListAction;
 import Login.Action.Action;
 import Login.Action.ActionForward;
-import Login.Action.DeleteMemberAction;
 import Login.Action.JoinAction;
 import Login.DAO.*;
 import Login.DTO.Member;
@@ -84,19 +82,7 @@ public class JoinController extends HttpServlet {
 				e.printStackTrace();
 			}
 
- 
-		}else if(command.equals("/DeleteMember.do")){		// 회원삭제 처리
-			   action = new DeleteMemberAction();
-			   try{
-				   forward=action.execute(req, res);
-			   }catch(Exception e){
-				   e.printStackTrace();
-			   }
-		   } 
-		   
- 
- 
-		
+		}
 		if (forward != null) {
 			if (forward.isRedirect()) { // view 단 바로....
 				res.sendRedirect(forward.getPath());

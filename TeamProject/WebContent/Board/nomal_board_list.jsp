@@ -10,9 +10,11 @@
 // session
 		Member user = null;
 		String id = null;
+		int adminnum = 0;
 		if(session.getAttribute("user") != null){
 			user = (Member)session.getAttribute("user");
 			id = user.getId();
+			adminnum = user.getAdmin();
 		}		
 		
 		System.out.println("session id check: "+ id);
@@ -103,10 +105,10 @@
 	 <section id="main-content">
           <section class="wrapper">
            <div class="row">
-  			<h3><i class="fa fa-angle-right"></i> REAL AFTER</h3>
+  			<h3><i class="fa fa-angle-right"></i>BOARD</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
-          		<p>리얼한 후기 게시판</p>
+          		<p>BOARD LIST</p>
           		</div>
           	</div>
 	             
@@ -134,26 +136,138 @@
 				<div class = "col-md-4 mb">
 				<div class="content-panel pn">
 					 
-					
-					<div id="blog-bg">
-						<div class="badge badge-popular"><%=bl.getBo_no()%></div>
-						<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+					 <c:set var="boardtype" value="<%=boardtype%>"/>
+					 <c:choose>
+					 <c:when test="${boardtype == 10}">
+					 		<div id="blog-bg">
+								<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+								<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+							</div>
+						<div class="blog-text">
+						<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
+							<p> <%
+								String bo_content = "";
+									if(bl.getBo_content().length() >= 10){
+									 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
+									} else{
+										bo_content = bl.getBo_content();
+									}
+								%>
+								<%=bo_content%>
+							    &nbsp;&nbsp;
+							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+							Read More</a></p>
 						</div>
-					<div class="blog-text">
-					<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
-						<p> <%
-							String bo_content = "";
-								if(bl.getBo_content().length() >= 10){
-								 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
-								} else{
-									bo_content = bl.getBo_content();
-								}
-							%>
-							<%=bo_content%>
-						    &nbsp;&nbsp;
-						<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
-						Read More</a></p>
-					</div>
+					 	</c:when>
+					 	 <c:when test="${boardtype == 20}">
+					 		<div id="blog-bg2">
+								<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+								<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+							</div>
+						<div class="blog-text">
+						<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
+							<p> <%
+								String bo_content = "";
+									if(bl.getBo_content().length() >= 10){
+									 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
+									} else{
+										bo_content = bl.getBo_content();
+									}
+								%>
+								<%=bo_content%>
+							    &nbsp;&nbsp;
+							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+							Read More</a></p>
+						</div>
+					 	</c:when>
+					 	<c:when test="${boardtype == 30}">
+					 		<div id="blog-bg3">
+								<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+								<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+							</div>
+						<div class="blog-text">
+						<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
+							<p> <%
+								String bo_content = "";
+									if(bl.getBo_content().length() >= 10){
+									 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
+									} else{
+										bo_content = bl.getBo_content();
+									}
+								%>
+								<%=bo_content%>
+							    &nbsp;&nbsp;
+							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+							Read More</a></p>
+						</div>
+					 	</c:when>
+					 	<c:when test="${boardtype == 40}">
+					 		<div id="blog-bg4">
+								<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+								<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+							</div>
+						<div class="blog-text">
+						<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
+							<p> <%
+								String bo_content = "";
+									if(bl.getBo_content().length() >= 10){
+									 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
+									} else{
+										bo_content = bl.getBo_content();
+									}
+								%>
+								<%=bo_content%>
+							    &nbsp;&nbsp;
+							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+							Read More</a></p>
+						</div>
+					 	</c:when>
+					 	<c:when test="${boardtype == 50}">
+					 		<div id="blog-bg5">
+								<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+								<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+							</div>
+						<div class="blog-text">
+						<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
+							<p> <%
+								String bo_content = "";
+									if(bl.getBo_content().length() >= 10){
+									 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
+									} else{
+										bo_content = bl.getBo_content();
+									}
+								%>
+								<%=bo_content%>
+							    &nbsp;&nbsp;
+							<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+							Read More</a></p>
+						</div>
+					 	</c:when>
+					 	<c:otherwise>
+					 		<div id="blog-bg">
+								<div class="badge badge-popular"><%=bl.getBo_no()%></div>
+								<div class="blog-title"><%=bl.getBo_title()%>&nbsp;[<%=rl%>]</div>
+								</div>
+							<div class="blog-text">
+							<b><%=bl.getBo_writer()%>&nbsp;(<%=bl.getBo_date() %>) &nbsp; 조회: &nbsp;<%=bl.getBo_count() %></b>
+								<p> <%
+									String bo_content = "";
+										if(bl.getBo_content().length() >= 10){
+										 	bo_content = bl.getBo_content().substring(0, 10)+"......";	
+										} else{
+											bo_content = bl.getBo_content();
+										}
+									%>
+									<%=bo_content%>
+								    &nbsp;&nbsp;
+								<a href="./BoardDetailAction.bo?num=<%=bl.getBo_no()%>&boardtype=<%=boardtype%>">
+								Read More</a></p>
+							</div>
+					 	
+					 	</c:otherwise>
+					 </c:choose>
+					
+					
 				</div>
 			</div><!-- /col-md-4-->
 	 	 <%		
@@ -182,14 +296,43 @@
 					<a href="./BoardList.bo?page=<%=nowpage+1 %>&boardtype=<%=boardtype%>"><span class="badge bg-warning">다음</span></a>
 					<%} %>
 	         	</div>
-	         	<div align="right"> 
-	         			<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
-							<button type="button" class="btn btn-theme04">
-								<i class="fa fa-heart"></i> 
-									글쓰기
-							</button>
-						</a>
-	         	</div>  
+	         	<c:set var="user" value="<%=user%>"></c:set>
+	         	<c:set var="useradmin" value="<%=adminnum %>"/>
+	         	<c:choose>
+	         		<c:when test="${boardtype == 10}">
+	         			<c:choose>
+	         				<c:when test="${user == null}">
+	         					<div align="right"> 
+	         					</div>
+	         				</c:when>	
+	         				<c:when test="${useradmin == 0}">
+	         					<div align="right"> 
+	         					</div>
+	         				</c:when>
+	         				<c:otherwise>
+		         			<div align="right"> 
+		         			<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
+								<button type="button" class="btn btn-theme04">
+									<i class="fa fa-heart"></i> 
+										글쓰기
+								</button>
+							</a>
+		         			</div> 
+		         			</c:otherwise>
+	         			</c:choose>
+	         		</c:when>
+	         		<c:otherwise>
+		         			<div align="right"> 
+		         			<a href="<%=request.getContextPath()%>/BoardWrite.bo?boardtype=<%=boardtype%>" id="writeboard">
+								<button type="button" class="btn btn-theme04">
+									<i class="fa fa-heart"></i> 
+										글쓰기
+								</button>
+							</a>
+		         			</div> 
+		         			</c:otherwise>
+	         	</c:choose>
+	         	 
 	         </div>
 	                        
 		 

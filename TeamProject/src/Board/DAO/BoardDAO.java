@@ -73,7 +73,7 @@ public class BoardDAO {
 		
 		List list = new ArrayList();
 		
-		int startrow=(page-1)*10+1; //읽기 시작할 row 번호.
+		int startrow=(page-1)*9+1; //읽기 시작할 row 번호.
 		int endrow=startrow+limit-1; //읽을 마지막 row 번호.		
 		try{
 			con=ds.getConnection();

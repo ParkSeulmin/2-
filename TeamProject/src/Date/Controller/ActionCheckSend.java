@@ -24,12 +24,17 @@ public class ActionCheckSend implements Action {
 		String me=(String)request.getAttribute("user");
 		arlist=dao.CheckSend(me);
 		
-		
-		// 
+		 
 		//친구 불러오는 코드 추가
-		memberlist=dao.getFriendList(me);
+ 
+		String requestpage=request.getParameter("rp");
+	      if(request.getParameter("rp")==null){
+	         requestpage="1";
+	      }
+	      //친구 불러오는 코드 추가
+	    memberlist=dao.getFriendList(me,requestpage);
+	
 		request.setAttribute("friends", memberlist);
-		//
 		request.setAttribute("arrowlist", arlist);
 		
 		System.out.println(arlist);

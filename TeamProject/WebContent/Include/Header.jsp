@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-// login session
       Member user = null;
       String id = null;
       int admin = 0;      // 관리자(1) 일반회원(0) 
@@ -23,7 +22,6 @@
 
 <c:set var="id" value="<%=id%>" /><!-- id값 -->
 	 <c:set var="admin"	value="<%=admin%>" /><!-- id값 --> 
-
 
 	<section id="container"> 
 	<header class="header black-bg">
@@ -46,6 +44,7 @@
 		<c:choose>
 			<c:when test="${id != null}">
 				<ul class="nav pull-right top-menu">
+				<li><p><h3><%=id%> 님 안녕하세요.&nbsp;&nbsp;&nbsp;</h3></p></li>
 				<li><a class="logout" href="<%=request.getContextPath()%>/Login/Logout.jsp">Logout</a></li>
 				</ul>
 			</c:when>
@@ -128,6 +127,7 @@
 							<li class="divider"></li>
 							<li><a href="<%=request.getContextPath()%>/MemberList.admin">회원관리정보</a></li>
 							<li class="divider"></li>
+							<li><a href="<%=request.getContextPath()%>/BoardListadmin.admin">게시물 관리</a></li>
 						</ul></li>
 				</c:when>
 				<c:otherwise>
@@ -135,15 +135,11 @@
 							class="fa fa-th"></i> <span>My Page</span>
 					</a>
 						<ul class="sub">
-							<li><a href="<%=request.getContextPath()%>/Mypage/Mypage_Edit.jsp">개인정보 수정</a></li>
- 
-		
+							<li><a href="#">개인정보 수정</a></li>
 							<li><a href="<%=request.getContextPath()%>/Sendmsg.msg">보낸 쪽지함</a></li>
                      		<li><a href="<%=request.getContextPath()%>/Receivemsg.msg">받은 쪽지함</a></li>
- 
-							<li><a href="<%=request.getContextPath()%>/Mypage/Mypage_ListCtr.jsp">데이트 신청 리스트</a></li>
+							<li><a href="<%=request.getContextPath()%>/CheckArrow.daa">데이트 신청 리스트</a></li>
 							<li><a href="<%=request.getContextPath()%>/MypageParty.my">파티 신청 리스트</a></li>
- 
 						</ul></li>
 				</c:otherwise>
 
@@ -153,23 +149,3 @@
 		<!-- sidebar menu end-->
 	</div>
 	</aside> <!--sidebar end--> </section>
-
-
-	 <!-- <div class="col-lg-3 ds">
-	 	CALENDAR
-                        <div id="calendar" class="mb">
-                            <div class="panel green-panel no-margin">
-                                <div class="panel-body">
-                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                        <div class="arrow"></div>
-                                        <h3 class="popover-title" style="disadding: none;"></h3>
-                                        <div id="date-popover-content" class="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div>/ calendar
-             -->
-
-
-	
