@@ -9,6 +9,8 @@
 		user = (Member) session.getAttribute("user");
 		userid = user.getId();
 	}
+	String pw = user.getPw();
+	System.out.println("가져온 pw값" + pw);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -88,80 +90,46 @@
 	<!-- 회원정보 입력/수정 시작 { -->
 	<div class="form-panel">
 		<form class="form-horizontal style-form" id="fregisterform"
-			name="fregisterform" method="post" action="<%=request.getContextPath()%>/EditProfile.edit"
-			enctype="multipart/form-data">
+			name="fregisterform" method="post"
+			action="<%=request.getContextPath()%>/PwdEdit.edit"
+			>
+			<input type="hidden" id="pw" name="pw" value="<%=pw%>">
 			<!--  -->
 			<h4 class="mb">
-				<i class="fa fa-angle-right"></i> 개인정보수정
+				<i class="fa fa-angle-right"></i> 비밀번호 변경
 			</h4>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">닉네임</label> <input
-						type="text" name="mb_nick" id="mb_nick"> <input
-						type="button" class="btn btn-danger" value="중복확인" id="nickcheck"
-						name="nickcheck">
+					<div class="alert alert-danger">
+						<b>주의</b><br>다른 사이트에서 사용하지 않는 고유한 비밀번호를 사용하시고, 주기적으로 변경해주세요.
+						<br>비밀번호 변경 시 모바일기기와 외부메일 계정이 모두 로그아웃 됩니다. <br>변경한 비밀번호로
+						다시 로그인해주세요.
+					</div>
+				</div>
+			</div>
+			<!-- 기존 비밀 번호 맞는지 확인 -->
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="col-sm-2 col-sm-2 control-label">현재 비밀번호</label> <input
+						type="password" name="mb_pwd" id="mb_pwd"> <input
+						type="button" class="btn btn-danger" value="확인" id="pwdcheck"
+						name="pwdcheck">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">프로필 사진</label> <input
-						id="u_mypicture" name="u_mypicture" type="file" />
+					<label class="col-sm-2 col-sm-2 control-label">비밀번호</label> <input
+						type="password" name="mb_password" id="mb_password"
+						maxlength="20" width="160px" height="34px">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">우편번호</label> <input
-						type="text" name="post1" value="" id="post1"> - <input
-						type="text" name="post2" value="" id="post2"> <input
-						type="button" onclick="openDaumPostcode()" class="btn btn-theme03"
-						value="우편번호 찾기">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">주소</label> <input
-						type="text" name="address" value="" id="address">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">상세 주소</label> <input
-						type="text" name="address2" value="" id="address2">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">E-mail</label> <input
-						type="text" name="mb_email1" id="reg_mb_email1" value=""
-						maxlength="100"> @ <input type="text" name="mb_email2"
-						id="reg_mb_email2" value="" maxlength="100"> <select
-						name="mb_email3" id="mb_email3"
-						onchange="document.fregisterform.mb_email2.value = this.value;document.fregisterform.mb_email2.focus()">
-						<option value="">-선택-</option>
-						<option value="daum.net">daum.net</option>
-						<option value="hanmail.net">hanmail.net</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="nate.com">nate.com</option>
-						<option value="naver.com">naver.com</option>
-						<option value="lycons.co.kr">lycons.co.kr</option>
-						<option value="netsgo.com">netsgo.com</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<label class="col-sm-2 col-sm-2 control-label">휴대폰 번호</label> <select
-						name="mb_hp1" id="mb_hp1">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-						<option value="017">017</option>
-						<option value="018">018</option>
-						<option value="019">019</option>
-					</select> - <input type="text" name="mb_hp2" id="mb_hp2" value=""
-						class="frm_input hp nextFocus" title="휴대폰번호" maxlength="4"
-						size="6"> - <input type="text" name="mb_hp3" id="mb_hp3"
-						value="" class="frm_input hp" title="휴대폰번호" maxlength="4" size="6">
+					<label class="col-sm-2 col-sm-2 control-label">비밀번호 확인</label> <input
+						type="password" name="mb_password_re" id="mb_password_re"
+						maxlength="20" width="160px" height="34px"> <span
+						id="message"></span>
+					<!-- 비밀번호 일치여부 출력하는 곳  -->
 				</div>
 			</div>
 			<!-- 추가정보입력  -->
@@ -171,9 +139,10 @@
 				<div class="col-sm-10" align="center">
 					<input type="submit" class="btn btn-theme04" value="수정완료"
 						id="btn_submit" accesskey="s" onclick="return check();"> <a
-						href="Mypage_Edit.jsp" class="btn_cancel"> <input type="button"
-						class="btn btn-theme03" value="취소  ">
+						href="Mypage_Edit.jsp" class="btn_cancel"> <input
+						type="button" class="btn btn-theme03" value="취소  ">
 					</a>
+					
 				</div>
 			</div>
 		</form>
@@ -259,58 +228,19 @@
 
 	<script type="text/javascript">
 		$(function() {
-			//아이디 중복 확인
-			$("#idcheck").click(function() {
-				var id_data = {
-					tag : "1",
-					id : $('#reg_mb_id').val()
-				};
-				$.ajax({
-					type : "POST",
-					url : "CheckController.ch",//보낼 주소
-					data : id_data,
-					dataType : "html",
-					success : function(responseData) {//서버에서 보낸 데이터
-						var result = JSON.parse(responseData);
-						//alert('result 값' + result);
-						if (result == 1) {
-							alert("ID 중복입니다.");
-						}else {
-							alert("사용가능한 ID 입니다.");
-						}
+			//본인 비밀 번호 맞는지 여부
+			$("#pwdcheck").click(function() {
+				if($('#mb_pwd').val() == $('#pw').val()){
+					alert('비밀번호가 일치합니다');
+					$("#mb_password").focus();
+				}else{
+					alert('비밀번호가 일치 하지않습니다.');
+					$("#mb_pwd").focus();
+				}
 
-					},
-					error : function(e) {
-						alert("에러발생");
-					}
-				});
 			});
 
-			//닉네임 중복 확인
-			$("#nickcheck").click(function() {
-				var nick_data = {
-					tag : "2",
-					nick : $('#mb_nick').val()
-				};
-				$.ajax({
-					type : "POST",
-					url : "CheckController.ch",//보낼 주소
-					data : nick_data,
-					dataType : "html",
-					success : function(responseData) {//서버에서 보낸 데이터
-						var result = JSON.parse(responseData);
-						if (result == 1) {
-							alert("닉네임 중복입니다.");
-						} else {
-							alert("사용가능한 닉네임 입니다.");
-						}
 
-					},
-					error : function(e) {
-						alert("에러발생");
-					}
-				});
-			});
 
 			//비밀번호 중복 체크
 			$('#reg_mb_password_re')
@@ -325,45 +255,14 @@
 													"<font color='red'> ※비밀번호가 일치하지 않습니다.</font>");
 								}
 							});
-
-			//주민번호 앞자리체크
-			//frm.name.value.substring(i, i+1); 
-			//$( 'p' ).text().substring( 0, 40 );
-			$('#mb_birth2')
-					.keyup(
-							function() {
-
-								if ($('#mb_birth2').val().substr(0, 1) != "1"
-										&& $('#mb_birth2').val().substr(0, 1) != "2") {
-									$("#message1")
-											.html(
-													"<font color='red'> ※올바른 주민번호를 입력해주세요.</font>");
-								} else {
-									$("#message1").html("");
-								}
-							});
+			
 		});
 	</script>
 	<script>
 		//유효성 체크 함수
 		function check(){
-			if($('#post1').val()=='' ||$('#post2').val()==''
-					||$('#address').val()=='' ||$('#address2').val()=='') {
-				alert('주소를 입력하세요.');
-				return false;
-			}else if($('#nickcheck').val()==''){
-				alert('닉네임을 입력하세요.');
-				return false;
-			}else if($('#u_mypicture').val()==''){
-				alert('사진을 첨부하세요.');
-				return false;
-			}else if($('#reg_mb_email1').val()=='' || $('#reg_mb_email2').val()==''
-					|| $('#mb_email3').val()==''){
-				alert('이메일을 입력하세요.');
-				return false;
-			}else if($('#mb_hp1').val()=='' || $('#mb_hp2').val()==''
-					|| $('#mb_hp3').val()==''){
-				alert('번호를 입력하세요.');
+			if($('#mb_password').val()=='' ||$('#mb_password_re').val()==''){
+				alert('비밀번호를 입력하세요.');
 				return false;
 			}else{
 				//수정완료 호출
@@ -372,21 +271,6 @@
 			}
 		}
 	</script>
-	
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script>
-	//우편번호 api 사용
-	function openDaumPostcode() {
-		new daum.Postcode({
-			oncomplete : function(data) {
-				document.getElementById('post1').value = data.postcode1;
-				document.getElementById('post2').value = data.postcode2;
-				document.getElementById('address').value = data.roadAddress;//도로명주소
-				document.getElementById('address2').focus();
-			}
-		}).open();
-	}
-	</script>
-	
+
 </body>
 </html>

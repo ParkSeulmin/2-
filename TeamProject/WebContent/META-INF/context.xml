@@ -16,7 +16,7 @@
 	          maxActive="50" 
 	          password="1004"
 		      username="HYEJUNG" 
-		      url="jdbc:oracle:thin:@192.168.7.218:1521:XE"
+		      url="jdbc:oracle:thin:@192.168.7.222:1521:XE"
 			  driverClassName="oracle.jdbc.OracleDriver" 
 			  type="javax.sql.DataSource"
 		      auth="Container" 

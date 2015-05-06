@@ -199,6 +199,7 @@
 							  <input type="radio" id="mb_sex" name="gender" value="1">남자
                               </div>
                           </div>    
+                          
                           <!-- 추가정보입력  -->
                           <h4 class="mb"><i class="fa fa-angle-right"></i> 추가정보입력</h4>    
                           <div class="form-group">

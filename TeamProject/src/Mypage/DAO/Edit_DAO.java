@@ -11,6 +11,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import Login.DTO.Member;
+import Login.DTO.Personal_Info;
 
 public class Edit_DAO {
 
@@ -57,5 +58,71 @@ public class Edit_DAO {
 				if(conn != null)pstmt.close();
 			}
 		}
+		
+		//회원 탈퇴
+		public int deleteok(Member dto) throws SQLException{
+			try {
+				conn = ds.getConnection();
+				String sql = 
+				"delete from  member where u_id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, dto.getId());
+			
 
+				int row = pstmt.executeUpdate();//db확인
+				
+				return row;
+			}finally{
+				if(pstmt != null)pstmt.close();
+				if(conn != null)pstmt.close();
+			}
+		}
+		
+		//추가정보수정
+		public int addinfoinsereok(Personal_Info dto) throws SQLException{
+			try {
+				conn = ds.getConnection();
+				String sql = 
+				"update PERSONALINFO set CONTENT=?,FSCHOOL=?,SAL=?,HEIGHT=?,WEIGHT=?,JOB=? where U_ID = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1,dto.getContent());
+				pstmt.setString(2, dto.getFschool());
+				pstmt.setInt(3, dto.getSal());
+				pstmt.setInt(4, dto.getHeight());
+				pstmt.setInt(5, dto.getWeight());
+				pstmt.setString(6, dto.getJob());
+				pstmt.setString(7,dto.getU_ID());
+
+				System.out.println("add dao 성공");
+				int row = pstmt.executeUpdate();//db확인
+				
+				return row;
+				
+			}finally{
+				if(pstmt != null)pstmt.close();
+				if(conn != null)pstmt.close();
+			}
+		}
+		
+
+		
+		public int pwdedit(Member dto) throws SQLException{
+			try {
+				conn = ds.getConnection();
+				String sql = 
+				"update member set U_PWD=?  where U_ID = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, dto.getPw());
+				pstmt.setString(2, dto.getId());
+
+				int row = pstmt.executeUpdate();//db확인
+				
+				return row;
+				
+			}finally{
+				if(pstmt != null)pstmt.close();
+				if(conn != null)pstmt.close();
+			}
+			
+		}
 }

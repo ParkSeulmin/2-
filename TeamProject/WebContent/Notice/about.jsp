@@ -1,13 +1,7 @@
-<%@page import="Login.DTO.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	Member user = (Member) session.getAttribute("user");//로그인아이디가져옴
-	if (session.getAttribute("user") != null) {
-		user = (Member) session.getAttribute("user");
-	}
-%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +12,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>회원정보수정</title>
+<title>DASHGUM - FREE Bootstrap Admin Template</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
@@ -43,8 +37,6 @@
 
 <script
 	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
-
-
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -81,81 +73,13 @@
 </style>
 </head>
 <body style>
-	<c:import url="/Include/Header.jsp" />
-	<section id="main-content"> <section class="wrapper">
-	<div class="row mt">
-		<div class="col-lg-6 col-md-6 col-sm-12">
-<div class="showback" style="width: 500px; height: 300px;  background-image: url('<%=request.getContextPath()%>/Images/b.jpg');">
-		<!-- <div class="showback" style="width: 500px; height: 300px;"> -->
-				<h4>
-					<i class="fa fa-angle-right"></i>비밀번호변경
-				</h4>
-				<div align="right">
-					<a href="Mypage_PwdEdit.jsp">
-						<button type="button" class="btn btn-round btn-success">Go</button>
-					</a>
-				</div>
-			</div>
-		</div>
-		<!-- --/col-lg-6 ---->
-
-		<!-- 개인정보변경 -->
-		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px; background-image: url('<%=request.getContextPath()%>/Images/aa.jpg');">
-				<h4>
-					<i class="fa fa-angle-right"></i>개인정보변경
-				</h4>
-			<div class="project-wrapper"  style="width: 350px; height: 50px;">
-				<div class="project">
-					<div class="photo-wrapper">
-						<div class="photo">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-				<div align="right" align="">
-					<a href="Mypage_PersonalEdit.jsp">
-						<button type="button" class="btn btn-round btn-primary">Go</button>
-					</a>
-				</div>
-			</div>
-		</div>
-		<!-- /col-lg-6 -->
-
-
-		<!-- 추가정보수정 -->
-		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px; background-image: url('<%=request.getContextPath()%>/Images/hhhhh.jpg');">
-				<h4>
-					<i class="fa fa-angle-right"></i>추가정보수정
-				</h4>
-				<div align="right">
-					<a href="Mypage_PersonaladdInfo.jsp">
-						<button type="button" class="btn btn-round btn-warning">GO</button>
-					</a>
-				</div>
-			</div>
-		</div>
-		<!-- /col-lg-6 -->
-
-		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px;  background-image: url('<%=request.getContextPath()%>/Images/ggggggg.jpg');">
-				<h4>
-					<i class="fa fa-angle-right"></i>회원탈퇴
-				</h4>
-				<div align="right">
-					<a href="Mypage_PersonalDelete.jsp">
-						<button type="button" class="btn btn-round btn-danger">GO</button>
-					</a>
-				</div>
-			</div>
-		</div>
-		<!-- /col-lg-6 -->
-
-	</div>
-	</section> </section>
-
+<c:import url="/Include/Header.jsp" />
+<section id="main-content"> 
+	<div class="content-panel">
+	</div>	
+</section>
+</body>
+	<!--section 끝 스크립트  -->
 	<!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
 	<script
@@ -187,14 +111,7 @@
 		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
 
-	<!--지도api  -->
-	<script type="text/javascript"
-		src="//apis.daum.net/maps/maps3.js?apikey=ad805ca7d0ae628142425b56ee9203f6"></script>
-
-
-
 	<script type="application/javascript">
-		
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -226,7 +143,6 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
-	
 	</script>
 
 	<script>
@@ -236,6 +152,3 @@
 			$('select.styled').customSelect();
 		});
 	</script>
-
-</body>
-</html>
