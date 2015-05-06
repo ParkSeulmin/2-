@@ -16,6 +16,7 @@
 	}
 	String partyid = request.getParameter("partyid");//party_idx
 	System.out.println("partydetail.jsp " + partyid);
+	int count =(Integer)request.getAttribute("count");
 %>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,7 +118,7 @@
 						<td><a href=""><%=list.getP_TITLE() %></a></td>
 						<td class="hidden-phone"><%=list.getP_DATE() %></td>
 						<td><%=list.getP_AREA() %></td>
-						<td><%=list.getP_MAXPEOPLE() %></td>
+						<td><%=count %>/<%=list.getP_MAXPEOPLE() %></td>
 						<td><%=list.getP_STATUS() %></td>
 						<td><input type="submit" class="btn btn-danger" value="파티신청"></td>
 					</tr>

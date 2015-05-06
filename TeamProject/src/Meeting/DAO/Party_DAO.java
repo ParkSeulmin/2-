@@ -38,7 +38,7 @@ public class Party_DAO {
 			}
 			
 			
-			public int getcount() throws SQLException{
+		public int getcount() throws SQLException{
 				try {
 					System.out.println("partydao로 넘어왔다");
 					conn = ds.getConnection();
@@ -48,6 +48,7 @@ public class Party_DAO {
 					pstmt = conn.prepareStatement(sql);
 					rs = pstmt.executeQuery();
 					Party_DTO party = new Party_DTO();
+					
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()){
