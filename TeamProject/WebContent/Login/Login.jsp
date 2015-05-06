@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
- 
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -127,10 +126,10 @@
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-    <script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/jquery.backstretch.min.js"></script>
-    <script>
-        $.backstretch("../assets/img/login-bg3.jpg", {speed: 500});
-    </script>
+    <script type="<%=request.getContextPath()%>/text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <!-- <script>
+        $.backstretch("../assets/img/login-bg.jpg", {speed: 500});
+    </script> -->
 
 
 </body>

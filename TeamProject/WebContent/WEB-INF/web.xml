@@ -60,7 +60,8 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>*.login</url-pattern>
   </servlet-mapping>
-  <servlet>
+  
+<servlet>
     <servlet-name>DateController</servlet-name>
     <servlet-class>Date.Controller.DateController</servlet-class>
   </servlet>
@@ -68,7 +69,8 @@
     <servlet-name>DateController</servlet-name>
     <url-pattern>*.daa</url-pattern>
   </servlet-mapping>
-  <servlet>
+    
+<servlet>
     <servlet-name>PartyController</servlet-name>
     <servlet-class>Meeting.Controller.PartyController</servlet-class>
   </servlet>
@@ -84,15 +86,16 @@
     <servlet-name>PartyDetailController</servlet-name>
     <url-pattern>*.ps</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>SearchControllerMin</servlet-name>
-    <servlet-class>Date.Controller.Search_Controller</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SearchControllerMin</servlet-name>
-    <url-pattern>*.sear</url-pattern>
-  </servlet-mapping>
-  <servlet>
+	<servlet>
+		<servlet-name>SearchControllerMin</servlet-name>
+		<servlet-class>Date.Controller.Search_Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchControllerMin</servlet-name>
+		<url-pattern>*.sear</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
     <servlet-name>AdminFrontController</servlet-name>
     <servlet-class>Admin.Controller.AdminFrontController</servlet-class>
   </servlet>
@@ -107,13 +110,5 @@
   <servlet-mapping>
     <servlet-name>MessageController</servlet-name>
     <url-pattern>*.msg</url-pattern>
-  </servlet-mapping>
-    <servlet>
-    <servlet-name>EditController</servlet-name>
-    <servlet-class>Mypage.Controller.EditController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EditController</servlet-name>
-    <url-pattern>*.edit</url-pattern>
   </servlet-mapping>
 </web-app>
