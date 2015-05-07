@@ -1,35 +1,38 @@
+
 <%@page import="Login.DTO.Member"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Mypage.DTO.Arrow_DTO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <% request.setCharacterEncoding("UTF-8"); 
 
 
 
-	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
-	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
-	
-	List<Member> ssomelist = null;
-	if(request.getAttribute("ssomelist") != null){
-		ssomelist = (ArrayList<Member>) request.getAttribute("ssomelist");
-		System.out.println("ssomelist: "+ssomelist);
-	}
-	
-	if(ssomelist==null){
-		System.out.println("친구가 없어");
-	}
+   List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
+   mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
+   
+   List<Member> ssomelist = null;
+   if(request.getAttribute("ssomelist") != null){
+      ssomelist = (ArrayList<Member>) request.getAttribute("ssomelist");
+      System.out.println("ssomelist: "+ssomelist);
+   }
+   
+   if(ssomelist==null){
+      System.out.println("친구가 없어");
+   }
 
-	/* String totalpagecount=(String)request.getAttribute("total");
-	int pagesize=2;
-	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
-	if((Integer.parseInt(totalpagecount))%pagesize!=0){
-		totalpagenum++;
-	}//친구 페이징  */
+   /* String totalpagecount=(String)request.getAttribute("total");
+   int pagesize=2;
+   int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
+   if((Integer.parseInt(totalpagecount))%pagesize!=0){
+      totalpagenum++;
+   }//친구 페이징  */
 
 %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,28 +41,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="Dashboard">
-<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/assets11/ico/favicon.png">
+<meta name="keyword"
+
+   content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
 
 <!-- Bootstrap core CSS -->
- <link href="<%=request.getContextPath()%>/assets11/css/bootstrap.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
 <!--external css-->
 <link href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/assets/css/zabuto_calendar.css">
+   href="<%=request.getContextPath()%>/assets/css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/assets/js/gritter/css/jquery.gritter.css">
+   href="<%=request.getContextPath()%>/assets/js/gritter/css/jquery.gritter.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/lineicons/style.css">
 
 <!-- Custom styles for this template -->
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/style-responsive.css" rel="stylesheet">
-<link href="assets11/css/soon.css" rel="stylesheet">
-
-<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
 <script src="assets/js/chart-master/Chart.js"></script>
 
@@ -70,131 +70,116 @@
     <![endif]-->
 <style type="text/css">
 .jqstooltip {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	display: block;
-	visibility: hidden;
-	background: rgb(0, 0, 0) transparent;
-	background-color: rgba(0, 0, 0, 0.6);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
-		endColorstr=#99000000);
-	-ms-filter:
-		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-	color: white;
-	font: 10px arial, san serif;
-	text-align: left;
-	white-space: nowrap;
-	border: 1px solid white;
-	z-index: 10000;	
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   display: block;
+   visibility: hidden;
+   background: rgb(0, 0, 0) transparent;
+   background-color: rgba(0, 0, 0, 0.6);
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+      endColorstr=#99000000);
+   -ms-filter:
+      "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+   color: white;
+   font: 10px arial, san serif;
+   text-align: left;
+   white-space: nowrap;
+   border: 1px solid white;
+   z-index: 10000;
 }
 
 .jqsfield {
-	color: white;
-	padding: 5px 5px 8px 5px;
-	font: 10px arial, san serif;
-	text-align: left;
+   color: white;
+   padding: 5px 5px 8px 5px;
+   font: 10px arial, san serif;
+   text-align: left;
 }
 </style>
  
  <style type="text/css">
 
-	div.start {
-	  float: left;
-	  width: 320px;
-	  height: 320px;
-	  margin: 0;
-	  overflow: hidden;
-	  background: url('http://www.wedaehan.com/image/main/box01_img.png') center no-repeat;
-	}
-	
-	
+   div.start {
+     float: left;
+     width: 320px;
+     height: 320px;
+     margin: 0;
+     overflow: hidden;
+     background: url('http://www.wedaehan.com/image/main/box01_img.png') center no-repeat;
+   }
+   
 </style>
  
 </head>
-<body  style class="nomobile">
+<body style>
 <!-- <section id="container" > -->
-	 <c:import url="/Include/Header.jsp"/>
-	  <section id="main-content" >
+    <c:import url="/Include/Header.jsp"/>
+     <section id="main-content">
           <section class="wrapper">
-			 <div id="layer"></div>
-			 
-        <!-- END LAYER -->
-        <!-- START SLIDER -->
-        <div id="slider" class="rev_slider">
-            <ul>
-              <li data-transition="slideleft" data-slotamount="1" data-thumb="assets11/img/slider/1.jpg">
-                <img src="assets11/img/slider/1.jpg">
-              </li>
-              <li data-transition="slideleft" data-slotamount="1" data-thumb="assets11/img/slider/2.jpg">
-                <img src="assets11/img/slider/2.jpg">
-              </li>
-              <li data-transition="slideleft" data-slotamount="1" data-thumb="assets11/img/slider/3.jpg">
-                <img src="assets11/img/slider/3.jpg">
-              </li>
-              <li data-transition="slideleft" data-slotamount="1" data-thumb="assets11/img/slider/4.jpg">
-                <img src="assets11/img/slider/4.jpg">
-              </li>
-            </ul>
-        </div>
-        <!-- END SLIDER -->
-		 
-					<!--  <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
-								<style type="text/css">
-						#clock {
-							width: 320px;
-							height: 320px;
-							margin:0;
-							padding:0;
-							position: relative;
-							top: 80px;
-							left: 110px;
-						}
-						
-						.rotatingHands {
-							position: absolute;
-							width: 320px;
-							height: 320px;
-							top: 0px;
-							left: 0px;
-						}
-						
-						#hours, #minutes, #seconds {
-							position: absolute;
-							display: block;
-						}
-						
-						.glass {
-							position: absolute;
-							width: 320px;
-							height: 320px;
-							top: 0px;
-							left: 0px;
-						}
-						</style> -->
-						
-						
-						
-<!-- 						<div id="clock">
-							<div class="rotatingHands"><img id="hours" src="http://www.wedaehan.com/css/images/hours.png" style="-webkit-transform: rotate(80.5deg);"></div>
-							<div class="rotatingHands"><img id="minutes" src="http://www.wedaehan.com/css/images/minutes.png" style="-webkit-transform: rotate(246deg);"></div>
-							<div class="rotatingHands"><img id="seconds" src="http://www.wedaehan.com/css/images/seconds.png" style="-webkit-transform: rotate(18deg);"></div>
-							<div class="glass"><img src="images/glass.png" /></div>
-							<img src="http://www.wedaehan.com/css/images/clock.png">
-						</div>	 -->	
-							</div>
-	
+           
+              <div class="row">
+                  <div class="col-lg-9 main-chart">
+
+                
+               <!--  <div class="start" style="position: absolute; z-index: 20; left: 0px; top: 160px;">
+                        <style type="text/css">
+                  #clock {
+                     width: 320px;
+                     height: 320px;
+                     margin:0;
+                     padding:0;
+                     position: relative;
+                     top: 80px;
+                     left: 110px;
+                  }
+                  
+                  .rotatingHands {
+                     position: absolute;
+                     width: 320px;
+                     height: 320px;
+                     top: 0px;
+                     left: 0px;
+                  }
+                  
+                  #hours, #minutes, #seconds {
+                     position: absolute;
+                     display: block;
+                  }
+                  
+                  .glass {
+                     position: absolute;
+                     width: 320px;
+                     height: 320px;
+                     top: 0px;
+                     left: 0px;
+                  }
+                  </style> -->
+                  
+                  
+                  
+<!--                   <div id="clock">
+                     <div class="rotatingHands"><img id="hours" src="http://www.wedaehan.com/css/images/hours.png" style="-webkit-transform: rotate(80.5deg);"></div>
+                     <div class="rotatingHands"><img id="minutes" src="http://www.wedaehan.com/css/images/minutes.png" style="-webkit-transform: rotate(246deg);"></div>
+                     <div class="rotatingHands"><img id="seconds" src="http://www.wedaehan.com/css/images/seconds.png" style="-webkit-transform: rotate(18deg);"></div>
+                     <div class="glass"><img src="images/glass.png" /></div>
+                     <img src="http://www.wedaehan.com/css/images/clock.png">
+                  </div>    -->   
+                     </div>
+                
+                
+                
+                         
 
                     </div><!-- /row -->
                     
-                    				
-					 <!-- jQuery Rotate -->
-						<!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
-						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
-						Functions
-						<script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> -->
-						
-					 
+                                
+                <!-- jQuery Rotate -->
+                  <!-- <!-- <script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
+                  <script type="text/javascript" src="http://www.wedaehan.com/js/clock/jQueryRotate.2.2.js"></script>
+                  Functions
+                  <script type="text/javascript" src="http://www.wedaehan.com/js/clock/functions.js"></script> -->
+                  
+                
                   
                   
       <!-- **********************************************************************************************************************************************************
@@ -202,97 +187,98 @@
       *********************************************************************************************************************************************************** -->                  
                   
                   <div class="col-lg-3 ds">
+                     
 
                        <!-- USERS ONLINE SECTION -->
-						<h3>MY FRIENDS LIST</h3>
+                  <h3>MY FRIENDS LIST</h3>
                       <!-- First Member -->
                       <div>
                        
                       
                       <% if(ssomelist != null && ssomelist.size()>0){ 
-                    	  for(int i=0; i<ssomelist.size(); i++){
-                    		  Member ssome = ssomelist.get(i);
+                         for(int i=0; i<ssomelist.size(); i++){
+                            Member ssome = ssomelist.get(i);
                       %>
-				<c:set var="pimg" value="<%=ssome.getU_mypicture()%>" />
-				<c:set var="gender" value="<%=ssome.getGender() %>"/>
-				<%
-					String originimg = request.getContextPath()+ "/boardupload/" + ssome.getU_mypicture();
-					String default_male = request.getContextPath()+"/Images/defaultimg/default_male.png";
-					String default_female = request.getContextPath()+"/Images/defaultimg/default_female.PNG";
-				%>
-				<c:choose>
-					<c:when test="${pimg != null}">
-						<c:set var="imgsrc" value="<%=originimg%>"/>
-					</c:when>
-					<c:otherwise>
-						<c:choose>
-							<c:when test="${gender == 1}">
-								<c:set var="imgsrc" value="<%=default_male%>"/>	
-							</c:when>
-							<c:when test="${gender == 2}">
-								<c:set var="imgsrc" value="<%=default_female%>"/>	
-							</c:when>
-						</c:choose>
-					</c:otherwise>
-				</c:choose>
+            <c:set var="pimg" value="<%=ssome.getU_mypicture()%>" />
+            <c:set var="gender" value="<%=ssome.getGender() %>"/>
+            <%
+               String originimg = request.getContextPath()+ "/boardupload/" + ssome.getU_mypicture();
+               String default_male = request.getContextPath()+"/Images/defaultimg/default_male.png";
+               String default_female = request.getContextPath()+"/Images/defaultimg/default_female.PNG";
+            %>
+            <c:choose>
+               <c:when test="${pimg != null}">
+                  <c:set var="imgsrc" value="<%=originimg%>"/>
+               </c:when>
+               <c:otherwise>
+                  <c:choose>
+                     <c:when test="${gender == 1}">
+                        <c:set var="imgsrc" value="<%=default_male%>"/>   
+                     </c:when>
+                     <c:when test="${gender == 2}">
+                        <c:set var="imgsrc" value="<%=default_female%>"/>   
+                     </c:when>
+                  </c:choose>
+               </c:otherwise>
+            </c:choose>
 
-				<div class="desc">
-		                      	<div class="thumb">
-		                      		<img class="img-circle" src="${imgsrc}" width="35px" height="35px" align="">
-		                      	</div>
-		                      	<div class="details">
-		                      		<p><a href="#"><%=ssome.getId()%></a><br>
-		                      		   <muted><%=ssome.getName() %></muted>
-		                      		</p>
-		                      	</div>
-		                      </div>
+            <div class="desc">
+                               <div class="thumb">
+                                  <img class="img-circle" src="${imgsrc}" width="35px" height="35px" align="">
+                               </div>
+                               <div class="details">
+                                  <p><a href="#"><%=ssome.getId()%></a><br>
+                                     <muted><%=ssome.getName() %></muted>
+                                  </p>
+                               </div>
+                            </div>
                       
                       <%
-                    	  }
-                    	} else{
+                         }
+                       } else{
                       %>
-                      	 <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p> 
-                      		   <muted>친구가 없습니다.</muted>
-                      		</p>
-                      	</div>
+                          <div class="desc">
+                         <div class="thumb">
+                            <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                         </div>
+                         <div class="details">
+                            <p> 
+                               <muted>친구가 없습니다.</muted>
+                            </p>
+                         </div>
                       </div>
                       <%
                       }%>
            <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
-			<c:choose>
-				<c:when test="${fcount!=0}">
-					<c:set var="friendlist" value="<%=ssomelist%>" />
-					<c:forEach var="friendlist" items="${friendlist}">
-						  <div class="desc">
-	                      	<div class="thumb">
-	                      		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-	                      	</div>
-	                      	<div class="details">
-	                      		<p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
-	                      		   <muted>${friendlist.name}</muted>
-	                      		</p>
-	                      	</div>
-	                      </div>
-					</c:forEach>
-				 
-				
-				 
-				</c:when>
-				<c:otherwise>
-				<br>
-				친구가 없네요 ^^ 
-				</c:otherwise>
-			</c:choose> --%>
+         <c:choose>
+            <c:when test="${fcount!=0}">
+               <c:set var="friendlist" value="<%=ssomelist%>" />
+               <c:forEach var="friendlist" items="${friendlist}">
+                    <div class="desc">
+                            <div class="thumb">
+                               <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                            </div>
+                            <div class="details">
+                               <p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
+                                  <muted>${friendlist.name}</muted>
+                               </p>
+                            </div>
+                         </div>
+               </c:forEach>
+             
+            
+             
+            </c:when>
+            <c:otherwise>
+            <br>
+            친구가 없네요 ^^ 
+            </c:otherwise>
+         </c:choose> --%>
                       
             </div>          
                       
                       
-						 <!-- CALENDAR-->
+                   <!-- CALENDAR-->
                         <div id="calendar" class="mb">
                             <div class="panel green-panel no-margin">
                                 <div class="panel-body">
@@ -309,36 +295,36 @@
                   </div><!-- /col-lg-3 -->
               </div>
                <!--    </div>      -->
-
-	  	</section><!--/wrapper -->
+                    
+        </section><!--/wrapper -->
      </section><!-- /MAIN CONTENT -->
-
-	   
-	 
+     </section>
+      
+    
 <!-- js placed at the end of the document so the pages load faster -->
-<%-- 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/jquery-1.8.3.min.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
+   <script class="include" type="text/javascript"
+      src="<%=request.getContextPath()%>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/jquery.scrollTo.min.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
 
 
-	<!--common script for all pages-->
-	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
+   <!--common script for all pages-->
+   <script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
 
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
+   <script type="text/javascript"
+      src="<%=request.getContextPath()%>/assets/js/gritter/js/jquery.gritter.js"></script>
+   <script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
 
-	<!--script for this page-->
-	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+   <!--script for this page-->
+   <script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+   <script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
- --%>
-	<script type="application/javascript">
+
+   <script type="application/javascript">
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -372,7 +358,7 @@
         }
     </script>
 
-	
+   
 
 </body>
 </html>
