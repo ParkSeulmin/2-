@@ -239,9 +239,16 @@
 							<span class="label label-primary">등록</span>
 						</a>
 						<script type="text/javascript">
-						function addreply(){							
-							reply.submit();
-						}
+						function addreply(){   
+		                     
+		                     if (!reply.re_content.value) {
+		                        alert("내용을 입력하세요");
+		                        reply.re_content.focus();
+		                        return false;
+		                     }
+		                     
+		                     reply.submit();
+		                  }
 						</script>
 					</td>
 				</tr>
