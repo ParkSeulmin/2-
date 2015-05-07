@@ -42,12 +42,12 @@ public class JoinAction implements Action {
 			//회원 기본정보 set
 		  dto.setId(multi.getParameter("mb_id"));
 		  dto.setAge(2016-(Integer.parseInt(multi.getParameter("mb_birth").substring(0,2))+1900));
-		  dto.setEmail(multi.getParameter("mb_email1")+"@"+req.getParameter("mb_email2"));
+		  dto.setEmail(multi.getParameter("mb_email1")+"@"+multi.getParameter("mb_email2"));
 		  dto.setGender(Integer.parseInt(multi.getParameter("gender")));
 		  dto.setJumin(multi.getParameter("mb_birth")+ multi.getParameter("mb_birth2"));
 		  dto.setName(multi.getParameter("mb_name"));
 		  dto.setNick(multi.getParameter("mb_nick"));
-		  dto.setPhone(multi.getParameter("mb_hp1")+ multi.getParameter("mb_hp2")+ req.getParameter("mb_hp3"));
+		  dto.setPhone(multi.getParameter("mb_hp1")+ multi.getParameter("mb_hp2")+ multi.getParameter("mb_hp3"));
 		  dto.setPw(multi.getParameter("mb_password"));
 		  dto.setAddress(multi.getParameter("address"));
 
