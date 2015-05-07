@@ -30,7 +30,7 @@ import Login.DTO.Member;
 			ssomelist = null;
 			request.setAttribute("ssomelist", ssomelist);
 			forward.setRedirect(false);
-	   		forward.setPath("/Mainpage.main");
+	   		forward.setPath("/Main.jsp");
 	   		return forward;
 		} 
 		
@@ -46,6 +46,8 @@ import Login.DTO.Member;
 		int membercount= admindao.getMemberListCount(); //총 리스트 수를 받아 옴
 		ssomelist = admindao.getSsomeList(user.getId(), page); //리스트를 받아 옴
 
+	
+		
 		//총 페이지 수
    		int maxpage=(int)((double)membercount/limit+0.95); //0.95를 더해서 올림 처리
    		//현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
@@ -60,7 +62,8 @@ import Login.DTO.Member;
    		request.setAttribute("mstartpage", startpage);  //현재 페이지에 표시할 첫 페이지 수
    		request.setAttribute("mendpage", endpage);  //현재 페이지에 표시할 끝 페이지 수
 		request.setAttribute("membercount",membercount);  // 회원 수 
-		request.setAttribute("ssomelist", ssomelist);
+			
+			request.setAttribute("ssomelist", ssomelist);
  
 		
 	   	forward.setRedirect(false);

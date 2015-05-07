@@ -175,7 +175,7 @@
 				</th>
 				<td style="font-family:돋음; font-size:12">
 				<%if(!(board.getBo_file()==null)){ %>
-					<a href="./boardupload/<%=board.getBo_file()%>">
+					<%-- <a href="./boardupload/<%=board.getBo_file()%>"> --%>
 					<a href="Board/filedownlaod.jsp?file_name=<%=board.getBo_file()%>">
 						<%=board.getBo_file()%>
 					</a>
