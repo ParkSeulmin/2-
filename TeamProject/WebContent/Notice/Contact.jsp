@@ -256,10 +256,10 @@
 			<tbody>
 
 				<tr>
-					<td>137-922 서울특별시 서초구 강남대로 305, 현대렉시온 1718</td>
-					<td class="hidden-phone">TEL 02-598-1207 / FAX 0303-3447-1207</td>
-					<td>wedaehan79@naver.com</td>
-					<td>ID : wedaehan79 & wedaehanH</td>
+					<td>경기도 성남시 분당구 삼평동 대왕판교로 670길 유스페이스2 B동 8층</td>
+					<td class="hidden-phone">TEL : 070-7090-4972 / FAX : 02) 408-2599</td>
+					<td>qualityofmeeting @ naver.com</td>
+					<td>ID : qualityofmeeting</td>
 				</tr>
 			</tbody>
 		</table>

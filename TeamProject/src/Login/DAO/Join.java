@@ -168,7 +168,7 @@ public class Join {
 						"delete from reply where RE_WRITER=?";
 				
 				String boardreply_delete_sql=
-						" from reply where bo_no in (select bo_no from board where bo_writer=?)";
+						"delete from reply where bo_no in (select bo_no from board where bo_writer=?)";
 							 
 				
 				String board_delete_sql=

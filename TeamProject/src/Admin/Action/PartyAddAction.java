@@ -2,12 +2,14 @@
 package Admin.Action;
 
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
  
+
 
 
 import Admin.DAO.AdminDAO;
@@ -66,6 +68,7 @@ public class PartyAddAction implements Action {
 	   			
 	   			partydata.setP_TITLE(multi.getParameter("p_title"));
 		   		partydata.setP_AREA(multi.getParameter("p_area"));
+		   		/*partydata.setP_DATE(Date.parse(multi.getParameter("p_date")));*/
 		   		partydata.setP_MAXPEOPLE(Integer.parseInt(multi.getParameter("p_maxpeople")));
 		   		partydata.setP_IMG(
 		   				multi.getFilesystemName(
@@ -78,7 +81,7 @@ public class PartyAddAction implements Action {
 		   			msg = "파티 등록 실패";
 		   			url = "./PartyListadmin.admin";
 		   		}else{
-		   			msg = "파키 등록 성공";
+		   			msg = "파티 등록 성공";
 		   			url ="./PartyListadmin.admin";
 		   		}
 	   		
