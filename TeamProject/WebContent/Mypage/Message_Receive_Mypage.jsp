@@ -36,20 +36,28 @@
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
 
 <!-- Bootstrap core CSS -->
-<link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
+	rel="stylesheet">
 <!--external css-->
-<link href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css"
+	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/assets/css/zabuto_calendar.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/assets/js/gritter/css/jquery.gritter.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/lineicons/style.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/lineicons/style.css">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/assets/css/style-responsive.css"
+	rel="stylesheet">
 
-<script src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
+<script
+	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -87,15 +95,12 @@
 </head>
 <body style>
 	<c:import url="/Include/Header.jsp" />
-	<section id="main-content"> <section class="wrapper">
-	<h3>
+	<section id="main-content">
+		<section class="wrapper">
+		<h3>
 		<i class="fa fa-angle-right"></i> 받은 메시지함
 	</h3>
-	<div class="row mt">
-		<div class="col-lg-12">
-			<p>받은 메시지함</p>
-		</div>
-	</div>
+	<hr>
 
 	<div class="col-md-12 mt">
 		<div class="content-panel">

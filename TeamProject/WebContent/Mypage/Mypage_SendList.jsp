@@ -117,8 +117,13 @@
 <c:import url="/Include/Header.jsp" />
       	 <section id="main-content">
           <section class="wrapper">
-           <div class="row">
-           	<h3><i class="fa fa-angle-right">내가 친구 요청한 사람 리스트</i></h3>
+
+           	<h3>
+           	<i class="fa fa-angle-right">내가 친구 요청한 사람 리스트</i>
+           	</h3>
+           	<hr>
+           	
+           	
            	<input type="button" id="tog_btn" value="나에게 친구요청한 사람 보기" onclick="toggle()">
            	 <div  class="col-lg-9 main-chart" align="center">
 
