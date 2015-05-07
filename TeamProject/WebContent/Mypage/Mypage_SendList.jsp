@@ -131,21 +131,19 @@
 	<c:import url="/Include/Header.jsp" />
 	<section id="main-content"> <section class="wrapper">
 
-	<h3>
-		<i class="fa fa-angle-right">내가 친구 요청한 사람 리스트</i>
-	</h3>
-	<hr>
-
 	<div class="row">
-
 
 		<div id="mydiv">
 			<div class="col-lg-9 main-chart">
+			<h3>
+				<i class="fa fa-angle-right">내가 요청한 친구 리스트</i>
+			</h3>
+			<hr>
 				<c:set var="mysendlist" value="<%=mylist%>" />
 				<c:choose>
 
 					<c:when test="${not empty mysendlist }">
-						<h3 align="center">내가 요청한 친구 리스트</h3>
+
 						<table class="table table-striped table-advance table-hover"
 							align="center">
 
@@ -184,25 +182,26 @@
 								</tr> --%>
 							</c:forEach>
 						</table>
-						<div align="right">
-							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-								onclick="toggle()">받은 화살 보기</button>
-						</div>
+						
 					</c:when>
 
 					<c:otherwise>
 						<br>
-						<h3 align="center">친구등록 요청 리스트</h3>
-						<br>
+						
 							신청하신게 없네요^^
+							
 						</c:otherwise>
 
 				</c:choose>
+				<div align="right">
+							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
+								onclick="toggle()">받은 화살 보기</button>
+						</div>
 			</div>
 			
-			
+			<br>
 			<div class="col-lg-3 ds">
-
+			
 
          <!-- USERS ONLINE SECTION -->
          <h3>MY FRIENDS LIST</h3>

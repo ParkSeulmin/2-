@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
+String Test = request.getContextPath();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -87,6 +88,11 @@
 
 	Member member = (Member) session.getAttribute("user");
 	String me = member.getId();
+	
+	
+	
+	
+	
 %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
@@ -177,19 +183,23 @@
 %>
 <body>
 	<c:import url="/Include/Header.jsp" />
-	<section id="main-content"> <section class="wrapper">
-	<h3>
-		<i class="fa fa-angle-right">친구 신청 리스트</i>
-	</h3>
-	<hr>
+
+	<section id="main-content">
+	<section class="wrapper">
+
+	
 	<div class="row">
+	
 		<div id=mydata>
-			<!-- <h3 align="center">현재 친구</h3> -->
 			<div class="col-lg-9 main-chart">
-				<c:set var="rcount" value="<%=r_totalpagecount%>" />
+			<h3>
+				<i class="fa fa-angle-right">친구등록 요청 리스트</i>
+			</h3>
+			<hr>
+				<c:set var="rcount" value="<%=r_totalpagecount %>" />
 				<c:choose>
 					<c:when test="${rcount>0}">
-						<h3 align="center">친구등록 요청 리스트</h3>
+						
 						<table class="table table-striped table-advance table-hover"
 							id="recieve_table" align="center">
 							<c:set var="recievelist" value="<%=mylist%>" />
@@ -238,6 +248,7 @@
 						</table>
 
 						<c:set var="rtotal" value="<%=r_totalpagenum%>" />
+						<div align="center">
 						<c:choose>
 							<c:when test="${param.ap>1 }">
 								<a
@@ -256,14 +267,13 @@
 									href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap"))+1%>">다음</a>
 							</c:when>
 						</c:choose>
+						</div>
 					</c:when>
 					<c:otherwise>
-						<br>
-						<h3 align="center">친구등록 요청 리스트</h3>
-						<br>
-						<hr>
-						<h4 align="center">요청들어온게 없네요 ^^</h4>
-						<hr>
+						
+						
+						<h4 align="center" style="color: blue;">현재 친구 요청이 없습니다.</h4>
+						
 					</c:otherwise>
 				</c:choose>
 				<div align="right">
@@ -274,8 +284,9 @@
 
 			
 			<!-- 친구 리스트  -->
+			<br>
 			<div class="col-lg-3 ds">
-
+			
 
          <!-- USERS ONLINE SECTION -->
          <h3>MY FRIENDS LIST</h3>
@@ -330,7 +341,7 @@
             <div class="desc">
                <div class="thumb">
                   <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px"
-                     height="35px" align="">
+                     height="35px" >
                </div>
                <div class="details">
                   <p>
@@ -386,13 +397,9 @@
 
       </div>
 
-
-
-			<div></div>
-
 		</div>
 	</div>
-                  
+       
                   
                    </section> </section>
 	<!--script for this page-->
@@ -421,6 +428,10 @@
 	<script rc="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
+
+
+       
+
 	<script type="application/javascript">
 		//header부분 관련 스크립트
         $(document).ready(function () {
@@ -454,7 +465,9 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
+        </script>
+ 
 	
-	</script>
+	
 </body>
 </html>
