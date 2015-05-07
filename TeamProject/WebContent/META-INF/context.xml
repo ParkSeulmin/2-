@@ -13,7 +13,8 @@
 
 	 <Resource maxWait="180" 
 	          maxIdle="50" 
-	          maxActive="50" 
+	          MaxPoolSize ="100"
+	          maxActive="100" 
 	          password="1004"
 		      username="HYEJUNG" 
 		      url="jdbc:oracle:thin:@192.168.7.222:1521:XE"

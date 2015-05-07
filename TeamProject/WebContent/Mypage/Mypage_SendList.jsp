@@ -194,10 +194,15 @@
 						<br>
 						<h3 align="center">친구등록 요청 리스트</h3>
 						<br>
-							신청하신게 없네요^^
+						<hr>
+						<h4 align="center">요청 하신 게 없네요 ^^</h4>
+						<hr>
 						</c:otherwise>
 
 				</c:choose>
+				<div align="right">
+					<button type="button" class="btn btn-primary btn-xs" id="tog_btn" onclick="toggle()">내가 신청한 친구 보기</button>
+				</div>
 			</div>
 			
 			
