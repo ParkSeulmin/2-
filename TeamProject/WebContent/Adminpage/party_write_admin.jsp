@@ -29,6 +29,10 @@
 
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
 
+
+  
+ 
+
 <!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
 <!--external css-->
@@ -39,11 +43,13 @@
 	href="<%=request.getContextPath()%>/assets/js/gritter/css/jquery.gritter.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/lineicons/style.css">
 
+
+
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/assets/css/style-responsive.css" rel="stylesheet">
 
-<script src="assets/js/chart-master/Chart.js"></script>
+
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -120,8 +126,8 @@
 
  
 <c:import url="/Include/Header.jsp" />
-
-
+ 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<section id="main-content">
           <section class="wrapper">
            <div class="row">
@@ -150,9 +156,24 @@
 					<div align="center"><span class="badge bg-warning">파티이름</span></div>
 				</td>
 				<td>
+				
 					 <p> </p>
 						<input id="p_title" name="p_title" type="text" class="form-control">
 					<p> </p>
+					
+				</td>
+			</tr>
+			<tr>
+				<td style="font-family:돋음; font-size:12" height="16">
+					<div align="center"><span class="badge bg-warning">파티날짜</span></div>
+				</td>
+				<td>
+
+						
+				
+				<p> </p>
+					<p>  <input type="text" id="p_date" class="form-control"></p>
+				<p> </p>
 				</td>
 			</tr>
 			<tr>
@@ -229,18 +250,9 @@
 
 
 
-
- <%-- <section id="main-content">
-          <section class="wrapper">
-			<h3><i class="fa fa-angle-right"></i>게시글 쓰기</h3>
-          		<div class="row mt">
-          		<div class="col-lg-12">
-          		<p>글쓰기</p>
-          		</div>
-          	</div>
-		 
-	</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT --> --%>
+ 
+     
+      
 	 
  <!-- js placed at the end of the document so the pages load faster -->
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.js"></script>
@@ -252,6 +264,8 @@
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="<%=request.getContextPath()%>/assets/js/jquery.sparkline.js"></script>
 
+	
+
 
 	<!--common script for all pages-->
 	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
@@ -261,10 +275,12 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/gritter-conf.js"></script>
 
 	<!--script for this page-->
-	<script src="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
+	 
 	<script src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
 
-	 
+	
+		 
+ 					
 
 	<script type="application/javascript">
         $(document).ready(function () {
@@ -290,6 +306,8 @@
                     {type: "block", label: "Regular event", }
                 ]
             });
+            
+               $("#p_date").datepicker({ minDate: -20, maxDate: "+1M +10D" });   
         });
         
         function myNavFunction(id) {
@@ -298,9 +316,19 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
+        
+        
     </script>
 
-
-
+	
+	<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ 
+	 <script>
+  $(function() {
+    $( "#p_date" ).datepicker({ minDate: -20, maxDate: "+1M +10D", dateFormat: "yy-mm-dd" });
+  });
+  </script>		 -->			 	
+ 
 </body>
 </html>	 

@@ -117,11 +117,15 @@
 <c:import url="/Include/Header.jsp" />
       	 <section id="main-content">
           <section class="wrapper">
-           <div class="row">
-           	<h3><i class="fa fa-angle-right">내가 친구 요청한 사람 리스트</i></h3>
-           	<input type="button" id="tog_btn" value="나에게 친구요청한 사람 보기" onclick="toggle()">
-           	 <div  class="col-lg-9 main-chart" align="center">
 
+           	<h3>
+           	<i class="fa fa-angle-right">내가 친구 요청한 사람 리스트</i>
+           	</h3>
+           	<hr>
+           	
+           	<div class="row">
+           	
+           	<div  class="col-lg-9 main-chart" align="center">
 			<h3 align="center">현재 친구</h3>
 			<div id="mydiv">
 				<c:set var="fcount" value="<%=totalpagecount%>"/>
@@ -167,31 +171,63 @@
 				</c:otherwise>
 				</c:choose>
 
+
+		<c:choose>
+			<c:when test="${not empty mysendlist }">
 				<h3 align="center">내가 요청한 친구 리스트</h3>
-				<table align="center" border="1">
-					<c:set var="mysendlist" value="<%=mylist%>" />
-					<c:choose>
-						<c:when test="${not empty mysendlist }">
+				<table class="table table-striped table-advance table-hover" align="center">
+						<c:set var="mysendlist" value="<%=mylist%>" />
+							<thead>
+                    	<tr>
+                        	<th><i class="fa fa-bullhorn"></i> ID</th>
+                            <th class="hidden-phone"><i class="fa fa-question-circle"></i>날짜</th>
+                            <th><i class=" fa fa-edit"></i>상태</th>
+                            <th>확인</th>
+                        </tr>
+                    		</thead>
+
 							<c:forEach var="sendlist" items="${mysendlist}">
-								<tr>
+								<tbody>
+                              		<tr>
+                                  		<td><a href="basic_table.html#">${sendlist.a_sendid}</a></td>
+                                  		<td class="hidden-phone">${sendlist.a_date}</td>
+                                  		<td><span class="label label-info label-mini">${sendlist.a_status}</span></td>
+                                  		<td>
+                                      	<button class="btn btn-success btn-xs" id="${sendlist.a_sendid }" name="${sendlist.a_sendid }" onclick="checkout(this.name)"><i class="fa fa-check">확인</i></button>
+                                  		</td>
+                              		</tr>
+                              	</tbody>
+							
+							
+							
+							
+							
+								<%-- <tr>
 									<td>${sendlist.a_date}</td>
 									<td>${sendlist.a_status}</td>
 									<td>${sendlist.a_sendid}</td>
 									<td><input type="button" name="${sendlist.a_sendid }" value="확인"
 										onclick="checkout(this.name)"> </td>
 		
-								</tr>
+								</tr> --%>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
+						<br>
+						<h3 align="center">친구등록 요청 리스트</h3>
+						<br>
 							신청하신게 없네요^^
 						</c:otherwise>
 					</c:choose>
 				</table>
+				
+				
+				<div align="right">
+			<button type="button" class="btn btn-primary btn-xs" id="tog_btn" onclick="toggle()" >받은 화살 보기</button>
+				</div>
 			</div>
-
 		</div>
-			</div>
+
 			</section>
 			</section>
 			<!--script for this page-->
