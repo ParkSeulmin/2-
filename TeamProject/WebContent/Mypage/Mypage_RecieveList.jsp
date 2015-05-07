@@ -179,7 +179,8 @@
 %>
 <body>
 	<c:import url="/Include/Header.jsp" />
-	<section id="main-content"> <section class="wrapper">
+	<section id="main-content"> 
+	<section class="wrapper">
 	<div class="row">
 		<h3>
 			<i class="fa fa-angle-right">친구 신청 리스트</i>
