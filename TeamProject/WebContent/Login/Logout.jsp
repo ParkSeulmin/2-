@@ -11,7 +11,9 @@
 <body>
 <script type="text/javascript">
 		alert("로그 아웃 성공");
-		location.href="<%=request.getContextPath()%>/Mainpage.main";
+ 
+		location.href="<%=request.getContextPath()%>/intro.html";
+ 
 	
 	</script>
 	

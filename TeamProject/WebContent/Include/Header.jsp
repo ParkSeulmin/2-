@@ -29,7 +29,7 @@
 		<div class="fa fa-bars tooltips" data-placement="right"
 			data-original-title="Toggle Navigation"></div>
 	</div>
-	<!--logo start--> <a href="" class="logo">Quality of meeting<b></b></a>
+	<!--logo start--> <a href="/TeamProject/Mainpage.main" class="logo">Quality of meeting<b></b></a>
 	<!--logo end-->
 	<div class="nav notify-row" id="top_menu">
 		<!--  notification start -->
@@ -44,7 +44,7 @@
 		<c:choose>
 			<c:when test="${id != null}">
 				<ul class="nav pull-right top-menu">
-				<li><p><h3><%=id%> 님 안녕하세요.&nbsp;&nbsp;&nbsp;</h3></p></li>
+				<li><p><h5><br><%=id%> 님 안녕하세요.&nbsp;&nbsp;&nbsp;</h5></p></li>
 				<li><a class="logout" href="<%=request.getContextPath()%>/Login/Logout.jsp">Logout</a></li>
 				</ul>
 			</c:when>
@@ -93,7 +93,7 @@
 					class="fa fa-cogs"></i> <span>데이트</span>
 			</a>
 				<ul class="sub">
-					<li><a href="#">데이트 하기</a></li>
+					<li><a href="<%=request.getContextPath()%>/Date/How_Date.jsp">데이트 하기</a></li>
 					<li><a href="<%=request.getContextPath()%>/Date/Search_Date.jsp">이상형 찾기</a></li>
 					<li><a href="<%=request.getContextPath()%>/Partylist.party">파티 참석</a></li>
 				</ul></li>

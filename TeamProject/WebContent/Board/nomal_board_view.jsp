@@ -231,16 +231,18 @@
 							<button type="button" class="btn btn-primary btn-xs">댓글등록</button>
 						</a>
 						<script type="text/javascript">
-						function addreply(){	
-							
-							if (!reply.re_content.value) {
-								alert("내용을 입력하세요");
-								reply.re_content.focus();
-								return false;
-							}
-							
-							reply.submit();
-						}
+ 
+						function addreply(){   
+		                     
+		                     if (!reply.re_content.value) {
+		                        alert("내용을 입력하세요");
+		                        reply.re_content.focus();
+		                        return false;
+		                     }
+		                     
+		                     reply.submit();
+		                  }
+ 
 						</script>
 					</td>
 				</tr>

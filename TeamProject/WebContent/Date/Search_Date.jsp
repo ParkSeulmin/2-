@@ -78,16 +78,16 @@
    					
 					output+= "<tr><td>"+imgoutput+"</td>"
 							+"<td><span class='label label-info label-mini'>"+items.id +"</span></td><td>"
-							+"<span class='label label-info label-mini'>"+items.admin+"</span></td>"
-							+"<td><span class='label label-info label-mini'>"+items.jumin+"</span></td>"
-							+"<td><span class='label label-info label-mini'>"+items.phone+"</span></td>"
+							+"<span class='label label-info label-mini'>"+items.name+"</span></td>"
+							+"<td><span class='label label-info label-mini'>"+items.age+"</span></td>"
+							+"<td><span class='label label-info label-mini'>"+items.address+"</span></td>"
 							+"<td><button type='button' class='btn btn-theme04' name='"+items.id+"' id='"+items.id
 							+"'onclick=dataSend('"+items.id+"')><i class='fa fa-heart'></i>화살쏘기</button></td></tr>"
 			
 				});
    			
    			
-                $("#searlist").append(output);
+                $("#searlist").html(output);
                 
               },
               error :function(Data){alert("error발생");}
@@ -187,8 +187,9 @@
 <c:import url="/Include/Header.jsp"/>
  <section id="main-content">
           <section class="wrapper">
-<center>
-	<div>
+
+<br><br><br>
+	<div align="center">
 		<form name="search" action="Search.sear" method="post" >
 			<div class="styled-select">
 				 <select name="search_area" id="search_area">
@@ -392,25 +393,26 @@
 				</select>&nbsp;&nbsp;&nbsp;&nbsp;
 			
 			
-			<input type="button" name='submit' id='submit' value="비동기">
+			<input type="button" name='submit' id='submit' value="검색" class="btn btn-theme04">
 			</div>
 		</form>
 	</div>
-	</center>
-<table class="table table-striped table-advance table-hover" id="searlist" name="searlist">
+	
+<table class="table table-striped table-advance table-hover">
 	                  	  	  
 	                  	  	  
                               <thead>
                               <tr>
                               	  <th><i class="fa fa-bullhorn"></i> PROFILE PIC</th>
                                   <th><i class="fa fa-bullhorn"></i> ID</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> ADMIN</th>
-                                  <th><i class="fa fa-bookmark"></i> JUMIN</th>
-                                  <th><i class=" fa fa-edit"></i> PHONE</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> NAME</th>
+                                  <th><i class="fa fa-bookmark"></i> AGE</th>
+                                  <th><i class=" fa fa-edit"></i> AREA</th>
                                   <th></th>
                               </tr>
                               </thead>
-                              <tbody>
+                              <br><br>
+                              <tbody id="searlist" name="searlist">
                               
                               </tbody>
                           </table>

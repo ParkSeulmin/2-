@@ -68,6 +68,7 @@ public class JoinAction implements Action {
 	 
 		  int num = joindao.writeok(dto);// db들어갔는지 확인
 		  int num2 = joindao.writeplus(dto_plus);//추가정보 객체 넘겨줌
+		  int num3 = joindao.insertarrow(multi.getParameter("mb_id"));
 		  	
 	
 		  if(num>0){
@@ -75,12 +76,14 @@ public class JoinAction implements Action {
 			  }
 			  if(num2>0){
 				 System.out.println("db 추가 정보 입력완료");
+			  }if(num3>0){
+				  System.out.println("화살 등록 완료");
 			  }
 			  
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath(req.getContextPath()+"/Main.jsp");
+		forward.setPath(req.getContextPath()+"/intro.html");
 		return forward;
 	}
 }
