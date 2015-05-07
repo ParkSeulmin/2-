@@ -30,7 +30,7 @@ import Login.DTO.Member;
 			ssomelist = null;
 			request.setAttribute("ssomelist", ssomelist);
 			forward.setRedirect(false);
-	   		forward.setPath("/Mainpage.main");
+	   		forward.setPath("/Main.jsp");
 	   		return forward;
 		} 
 		
