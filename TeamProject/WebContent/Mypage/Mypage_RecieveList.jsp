@@ -79,8 +79,6 @@
 </style>
 
 <%
-	
-
 	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
 	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
 
@@ -163,121 +161,121 @@
 </script>
 </head>
 <%
-		String totalpagecount=(String)request.getAttribute("total");
+	String totalpagecount=(String)request.getAttribute("total");
 		int pagesize=2;
 		int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 		if((Integer.parseInt(totalpagecount))%pagesize!=0){
-			totalpagenum++;
+	totalpagenum++;
 		}//친구 페이징
 		
 		 String r_totalpagecount=(String)request.getAttribute("totalrecieve");
 		int r_pagesize=2;
 		int r_totalpagenum=(Integer.parseInt(r_totalpagecount))/r_pagesize;
 		if((Integer.parseInt(r_totalpagecount))%r_pagesize!=0){
-			r_totalpagenum++;
-		}//받은거 페이징 
+	r_totalpagenum++;
+		}//받은거 페이징
 %>
 <body>
 	<c:import url="/Include/Header.jsp" />
-	<section id="main-content"> 
-	<section class="wrapper">
+	<section id="main-content"> <section class="wrapper">
+	<div class="row">
 		<h3>
 			<i class="fa fa-angle-right">친구 신청 리스트</i>
 		</h3>
-		<hr>
-		
-		<div class="row">
-
-		<div class="col-lg-9 main-chart">	
-			<h3>현재 친구</h3>
-			<div id=mydata>
-			<c:set var="fcount" value="<%=totalpagecount%>"/>
-				<c:choose>
-					<c:when test="${fcount>0}">
-						<table align="center" border="1">
+		<input type="button" id="tog_btn" value="내가 신청한 친구 보기"
+			onclick="toggle()">
+		<div class="col-lg-9 main-chart" align="center">
+			<div class="col-lg-3 ds">
+				<h3 align="center">현재 친구</h3>
+				<div id=mydata>
+					<c:set var="fcount" value="<%=totalpagecount%>" />
+					<c:choose>
+						<c:when test="${fcount>0}">
 							<c:set var="friendlist" value="<%=friends%>" />
 							<c:forEach var="friendlist2" items="${friendlist}">
-								<tr>
-									<td><a name="${friendlist2.id}" onclick="sendmessage(this.name)">${friendlist2.id}</a></td>
-									<td>${friendlist2.name}</td>
-									<td><input type="button" name="${friendlist2.id}" value="친구삭제" onclick="deletefriend(this.name)" ></td>
-								</tr>
+								<div class="desc">
+									<div class="thumb">
+										<img class="img-circle" src="assets/img/ui-divya.jpg"
+											width="35px" height="35px" align="">
+									</div>
+									<div class="details">
+										<p>
+											<a name="${friendlist2.id}" onclick="sendmessage(this.name)">${friendlist2.id}</a>
+										</p>
+										<p>${friendlist2.name}</p>
+										<p>
+											<input type="button" name="${friendlist2.id}" value="친구삭제"
+												onclick="deletefriend(this.name)">
+										</p>
 							</c:forEach>
-						</table>
+							</c:when>
+				</div>
+			</div>
+		</div>
 
-						<br>
-						<c:set var="total" value="<%=totalpagenum%>" />
-						<br>
-						<c:choose>
-							<c:when test="${param.rp>1 }">
-								<a
-									href="CheckArrow.daa?rp=<%=Integer.parseInt(request
+		<br>
+		<c:set var="total" value="<%=totalpagenum%>" />
+		<br>
+		<c:choose>
+			<c:when test="${param.rp>1 }">
+				<a
+					href="CheckArrow.daa?rp=<%=Integer.parseInt(request
 									.getParameter("rp")) - 1%>">이전</a>
-							</c:when>
-						</c:choose>
-						<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
-							<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
-						</c:forEach>
-						<c:choose>
-							<c:when test="${ empty param.rp && total!=1}">
-								<a href="CheckArrow.daa?rp=2">다음</a>
-							</c:when>
-							<c:when test="${total>param.rp}">
-								<a
-									href="CheckArrow.daa?rp=<%=Integer.parseInt(request
+			</c:when>
+		</c:choose>
+		<c:forEach var="i" begin="1" end="<%=totalpagenum%>">
+			<a href="CheckArrow.daa?rp=${i}">[${i}]</a>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${ empty param.rp && total!=1}">
+				<a href="CheckArrow.daa?rp=2">다음</a>
+			</c:when>
+			<c:when test="${total>param.rp}">
+				<a
+					href="CheckArrow.daa?rp=<%=Integer.parseInt(request
 									.getParameter("rp")) + 1%>">다음</a>
-							</c:when>
-						</c:choose>
-					</c:when>
-					<c:otherwise>
-					<br>친구가 없네요 ^^ 
+			</c:when>
+		</c:choose>
+		<c:otherwise>
+			<br>친구가 없네요 ^^ 
 				</c:otherwise>
-				</c:choose>
+		</c:choose>
 
-				<c:set var="rcount" value="<%=r_totalpagecount%>"/>
-			<c:choose>
-				<c:when test="${rcount>0}">
+		<c:set var="rcount" value="<%=r_totalpagecount%>" />
+		<c:choose>
+			<c:when test="${rcount>0}">
 
 				<h3 align="center">친구등록 요청 리스트</h3>
-				<table class="table table-striped table-advance table-hover" id="recieve_table" align="center">
-				<c:set var="recievelist" value="<%=mylist%>"/>
-				
-                              <thead>
-                              <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i>날짜</th>
-                                  <th><i class=" fa fa-edit"></i>상태</th>
-                                  <th>수락</th>
-                                  <th>거절</th>
-                                  <th>상세보기</th>
-                              </tr>
-                              </thead>
-                              <c:forEach var="recievelist" items="${recievelist}">
-                              <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">${recievelist.a_sendid }</a></td>
-                                  <td class="hidden-phone">${recievelist.a_date }</td>
-                                  <td><span class="label label-info label-mini">대기중</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs" id="${recievelist.a_sendid}" name="${recievelist.a_sendid}" onclick="agree(this.name)"><i class="fa fa-check"></i></button>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-danger btn-xs" name="${recievelist.a_sendid}" onclick="disagree(this.name)"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                                  <td>                
-                                  	  <button class="btn btn-primary btn-xs" name="${recievelist.a_sendid}" onclick="checkinfo(this.name)"><i class="fa fa-pencil"></i></button>
-                                  </td>
-                              </tr>
-                              </tbody>
-		
-				</c:forEach>
+				<table id="recieve_table" align="center" border="1">
+					<c:set var="recievelist" value="<%=mylist%>" />
+					<c:forEach var="recievelist" items="${recievelist}">
+						<tr>
+							<td>${recievelist.a_sendid }</td>
+							<td>${recievelist.a_date }</td>
+							<td>대기중</td>
+							<td><input type="button" value="info"
+								name="${recievelist.a_sendid}" onclick="checkinfo(this.name)" /></td>
+							<!-- 상세보기 -->
+							<td><input type="button" value="agree"
+								id="${recievelist.a_sendid}" name="${recievelist.a_sendid}"
+								onclick="agree(this.name)" /></td>
+							<!-- 친구수락 -->
+							<td><input type="button" value="disagree"
+								name="${recievelist.a_sendid}" onclick="disagree(this.name)" /></td>
+							<!-- 거절 -->
+						</tr>
+
+					</c:forEach>
 				</table>
-				
-				<div align="center">
+
+				<br>
 				<c:set var="rtotal" value="<%=r_totalpagenum%>" />
+
+				<br>
 				<c:choose>
 					<c:when test="${param.ap>1 }">
-						<a href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap")) - 1%>">이전</a>
+						<a
+							href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap")) - 1%>">이전</a>
 					</c:when>
 				</c:choose>
 				<c:forEach var="i" begin="1" end="<%=r_totalpagenum%>">
@@ -288,133 +286,21 @@
 						<a href="CheckArrow.daa?ap=2">다음</a>
 					</c:when>
 					<c:when test="${rtotal>param.ap}">
-						<a href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap"))+1%>">다음</a>
+						<a
+							href="CheckArrow.daa?ap=<%=Integer.parseInt(request.getParameter("ap"))+1%>">다음</a>
 					</c:when>
 				</c:choose>
-				</c:when>
-				<c:otherwise>
+			</c:when>
+			<c:otherwise>
 				<br>
 				<h3 align="center">친구등록 요청 리스트</h3>
 				<br>
 				요청들어온게 없네요 ^^
 				</c:otherwise>
-			</c:choose>
-			</div>
-			<div align="right">
-			<button type="button" class="btn btn-primary btn-xs" id="tog_btn" onclick="toggle()" >내가 신청한 친구 보기</button>
-		</div>
-		</div>
-     </div>
-<!-- 친구 리스트  -->
-<%-- 		<div class="col-lg-3 ds">
-                     
-
-                       <!-- USERS ONLINE SECTION -->
-                  <h3>MY FRIENDS LIST</h3>
-                      <!-- First Member -->
-                      <div>
-                       
-                      
-                      <% if(ssomelist != null && ssomelist.size()>0){ 
-                         for(int i=0; i<ssomelist.size(); i++){
-                            Member ssome = ssomelist.get(i);
-                      %>
-            <c:set var="pimg" value="<%=ssome.getU_mypicture()%>" />
-            <c:set var="gender" value="<%=ssome.getGender() %>"/>
-            <%
-               String originimg = request.getContextPath()+ "/boardupload/" + ssome.getU_mypicture();
-               String default_male = request.getContextPath()+"/Images/defaultimg/default_male.png";
-               String default_female = request.getContextPath()+"/Images/defaultimg/default_female.PNG";
-            %>
-            <c:choose>
-               <c:when test="${pimg != null}">
-                  <c:set var="imgsrc" value="<%=originimg%>"/>
-               </c:when>
-               <c:otherwise>
-                  <c:choose>
-                     <c:when test="${gender == 1}">
-                        <c:set var="imgsrc" value="<%=default_male%>"/>   
-                     </c:when>
-                     <c:when test="${gender == 2}">
-                        <c:set var="imgsrc" value="<%=default_female%>"/>   
-                     </c:when>
-                  </c:choose>
-               </c:otherwise>
-            </c:choose>
-
-            <div class="desc">
-                               <div class="thumb">
-                                  <img class="img-circle" src="${imgsrc}" width="35px" height="35px" align="">
-                               </div>
-                               <div class="details">
-                                  <p><a href="#"><%=ssome.getId()%></a><br>
-                                     <muted><%=ssome.getName() %></muted>
-                                  </p>
-                               </div>
-                            </div>
-                      
-                      <%
-                         }
-                       } else{
-                      %>
-                          <div class="desc">
-                         <div class="thumb">
-                            <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                         </div>
-                         <div class="details">
-                            <p> 
-                               <muted>친구가 없습니다.</muted>
-                            </p>
-                         </div>
-                      </div>
-                      <%
-                      }%>
-            <c:set var="fcount" value="<%=ssomelist.size()%>"/>
-         <c:choose>
-            <c:when test="${fcount!=0}">
-               <c:set var="friendlist" value="<%=ssomelist%>" />
-               <c:forEach var="friendlist" items="${friendlist}">
-                    <div class="desc">
-                            <div class="thumb">
-                               <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                               <p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
-                                  <muted>${friendlist.name}</muted>
-                               </p>
-                            </div>
-                         </div>
-               </c:forEach>
-             
-            
-             
-            </c:when>
-            <c:otherwise>
-            <br>
-            친구가 없네요 ^^ 
-            </c:otherwise>
-         </c:choose>
-                      
-            </div>          
-                      
-                      
-                   <!-- CALENDAR-->
-                        <div id="calendar" class="mb">
-                            <div class="panel green-panel no-margin">
-                                <div class="panel-body">
-                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                        <div class="arrow"></div>
-                                        <h3 class="popover-title" style="disadding: none;"></h3>
-                                        <div id="date-popover-content" class="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div> 
-                      
-                  </div><!-- /col-lg-3 --> --%>
-
-		</div>
+		</c:choose>
+	</div>
+	</div>
+	</div>
 	</section> </section>
 	<!--script for this page-->
 	<!--common script for all pages-->
@@ -442,7 +328,8 @@
 	<script rc="<%=request.getContextPath()%>/assets/js/sparkline-chart.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/assets/js/zabuto_calendar.js"></script>
-	<script type="application/javascript">//header부분 관련 스크립트
+	<script type="application/javascript">
+		//header부분 관련 스크립트
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -474,6 +361,7 @@
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
+	
 	</script>
 </body>
 </html>
