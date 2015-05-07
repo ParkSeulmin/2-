@@ -218,15 +218,19 @@ public class AdminDAO {
 							System.out.println("end : "+end);
 							System.out.println("r_id : "+r_id);
 							System.out.println("cpage2 : "+cpage2);
-							String sql ="    select r,u_id,u_name,U_MYPICTURE,U_GENDER from "
+							/*String sql ="    select r,u_id,u_name,U_MYPICTURE,U_GENDER from "
 									+ "(select rownum r,m.u_id, m.u_name, m.U_MYPICTURE, m.U_GENDER from "
 									+ "(select u_id, u_ssome from ssomelist order by U_ID) s "
 									+ "join member m on s.u_id=m.u_id  where s.u_ssome=?) "
-									+ "where r between ? and ?";
+									+ "where r between ? and ?";*/
+							String sql = "select r,u_id,u_name,U_MYPICTURE,U_GENDER from"
+										 +" (select rownum r,m.u_id, m.u_name, m.U_MYPICTURE, m.U_GENDER from"
+										 +" (select u_id, u_ssome from ssomelist order by U_ID) s"
+										 + " join member m on s.u_id=m.u_id  where s.u_ssome=?)";	
 							pstmt = con.prepareStatement(sql);
 							pstmt.setString(1, r_id);
-							pstmt.setInt(2, start);
-							pstmt.setInt(3, end);
+							/*pstmt.setInt(2, start);
+							pstmt.setInt(3, end);*/
 							rs=pstmt.executeQuery();
 							while(rs.next()){
 								Member member= new Member();

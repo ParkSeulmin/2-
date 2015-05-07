@@ -137,14 +137,13 @@
 		<form action="BoardModifyAction.bo" method="post" name="modifyform">
 		<input type="hidden" name="BOARD_NUM" value="<%=board.getBo_no() %>">
 		<input type="hidden" name="BOARD_ID" value="<%=user.getId()%>">
-		
+		<div class="content-panel">
+		<div class="alert alert-info"><b>BOARD MODIFIY</b></div>
 		<table cellpadding="0" cellspacing="0" width="100%">
-			<tr align="center" valign="middle">
-				<td colspan="5"><div class="alert alert-info"><b>BOARD MODIFIY</b> </div></td>
-			</tr>
+			 
 			<tr>
 				<td height="16" style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-info">&nbsp;제 목&nbsp;</span></div>
+					<div align="center"><b>&nbsp;제 목&nbsp;</b></div>
 				</td>
 				<td>
 					 
@@ -153,7 +152,7 @@
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-info">&nbsp;내 용&nbsp;</span></div>
+					<div align="center"><b>&nbsp;내 용&nbsp;</b></div>
 				</td>
 				<td>
 					<textarea name="BOARD_CONTENT" cols="80" rows="15"><%=board.getBo_content() %></textarea>
@@ -168,7 +167,7 @@
 			<%if(!(board.getBo_file()==null)){ %>
 			<tr>
 				<td style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-info">파일첨부</span></div>
+					<div align="center"><b>파일첨부</b></div>
 				</td>
 				<td>
 					&nbsp;&nbsp;<%=board.getBo_file() %>
@@ -185,12 +184,15 @@
 			<tr align="center" valign="middle">
 				<td colspan="5">
 					<font size=2>
-					<a href="javascript:modifyboard()"><span class="label label-success">&nbsp;수 정&nbsp;</span></a>&nbsp;&nbsp;
-					<a href="./BoardList.bo?boardtype=<%=board.getBo_id() %>"><span class="label label-danger">&nbsp;뒤로&nbsp;</span></a>&nbsp;&nbsp;
+					<a href="javascript:modifyboard()">
+						<button type="button" class="btn btn-success">&nbsp;수 정&nbsp;</button>  </a>&nbsp;&nbsp;
+					<a href="./BoardList.bo?boardtype=<%=board.getBo_id() %>">
+					<button type="button" class="btn btn-danger">&nbsp;뒤로&nbsp;</button></a>&nbsp;&nbsp;
 					</font>
 				</td>
 			</tr>
 		</table>
+		</div>
 		</form>
 		</div>
 		

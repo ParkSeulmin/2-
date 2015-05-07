@@ -164,7 +164,7 @@ public class Join {
 		String del_reply_sql = "delete from reply where RE_WRITER=?";
 
 		String boardreply_delete_sql = "delete from reply where bo_no in (select bo_no from board where bo_writer=?)";
-		
+
 		String board_delete_sql = "delete from board where BO_WRITER=?";
 		String del_ssomelist_sql = "delete from ssomelist where U_ID=? or U_SSOME=?";
 		String del_message_sql = "delete from message where M_RECIEVEID=? or M_SENDID=?";
@@ -266,17 +266,16 @@ public class Join {
 				System.out.println("화살삭제실패");
 			}
 
-			
 			// 8 화살 삭제
-						pstmt = conn.prepareStatement(arrow_delete_sql);
-						pstmt.setString(1, userid);
-						result = pstmt.executeUpdate();
+			pstmt = conn.prepareStatement(arrow_delete_sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, userid);
+			result = pstmt.executeUpdate();
 
-						if (result < 1) {
-							System.out.println("화살삭제실패");
-						}
-			
-			
+			if (result < 1) {
+				System.out.println("화살삭제실패");
+			}
+
 			// 9 회원 삭제
 			pstmt = conn.prepareStatement(del_member_sql);
 			pstmt.setString(1, userid);
@@ -314,7 +313,7 @@ public class Join {
 	public int insertarrow(String userid) throws SQLException {
 
 		System.out.println("받아온 id " + userid);
-		int row=0;
+		int row = 0;
 
 		try {
 			conn = ds.getConnection();
@@ -322,7 +321,7 @@ public class Join {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
 
-			 row = pstmt.executeUpdate();
+			row = pstmt.executeUpdate();
 
 			if (row > 0) {
 				System.out.println("화살등록완룐");
