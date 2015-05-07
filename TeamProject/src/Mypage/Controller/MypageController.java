@@ -14,7 +14,6 @@ import Mypage.Action.ActionForward;
 import Mypage.Action.MyPartyAction;
 
 
-//@WebServlet("/MypageController")
 public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

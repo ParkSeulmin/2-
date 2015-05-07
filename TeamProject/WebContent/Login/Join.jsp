@@ -162,7 +162,7 @@
 									 maxlength="100"> @ <input
 									type="text" name="mb_email2" id="reg_mb_email2" value=""
 								    maxlength="100"> <select
-									name="mb_email3"
+									name="mb_email3" id="mb_email3"
 									onchange="document.fregisterform.mb_email2.value = this.value;document.fregisterform.mb_email2.focus()">
 										<option value="">-선택-</option>
 										<option value="daum.net">daum.net</option>
@@ -566,7 +566,7 @@
 				return false;
 			}else{
 				//수정완료 호출
-				alert('수정 완료');
+				alert('회원가입 완료');
 				return true;
 			}
 		}

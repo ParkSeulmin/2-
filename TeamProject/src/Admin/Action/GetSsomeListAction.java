@@ -20,14 +20,19 @@ import Login.DTO.Member;
 		
 	  	int page=1;
 		int limit=10;
-		
+		List memberlist=new ArrayList(); //회원 리스트 담을 액션
+		memberlist = admindao.getMemberList(page, limit);
+		System.out.println("memberlist 뽑을거다");
+
 		 
-		
+
 		// session user admin
 		Member user = null;
 		user=(Member)session.getAttribute("user");
+		
 		if(user == null){	
 			ssomelist = null;
+			request.setAttribute("memberlist", memberlist);
 			request.setAttribute("ssomelist", ssomelist);
 			forward.setRedirect(false);
 	   		forward.setPath("/Main.jsp");
@@ -41,7 +46,6 @@ import Login.DTO.Member;
 			page=Integer.parseInt(request.getParameter("page"));
 			System.out.println("getmemberlist page"+page);
 		}
-		
 		
 		int membercount= admindao.getMemberListCount(); //총 리스트 수를 받아 옴
 		ssomelist = admindao.getSsomeList(user.getId(), page); //리스트를 받아 옴
@@ -62,8 +66,10 @@ import Login.DTO.Member;
    		request.setAttribute("mstartpage", startpage);  //현재 페이지에 표시할 첫 페이지 수
    		request.setAttribute("mendpage", endpage);  //현재 페이지에 표시할 끝 페이지 수
 		request.setAttribute("membercount",membercount);  // 회원 수 
+ 
 			
 			request.setAttribute("ssomelist", ssomelist);
+ 
  
 		
 	   	forward.setRedirect(false);

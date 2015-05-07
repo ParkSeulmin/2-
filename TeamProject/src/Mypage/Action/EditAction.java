@@ -43,9 +43,9 @@ public class EditAction implements Action {
 		dto.setU_mypicture(multi.getFilesystemName((String) multi
 				.getFileNames().nextElement()));// 프로필사진
 		dto.setPhone(multi.getParameter("mb_hp1")
-				+ multi.getParameter("mb_hp2") + request.getParameter("mb_hp3"));// 번호
+				+ multi.getParameter("mb_hp2") + multi.getParameter("mb_hp3"));// 번호
 		dto.setEmail(multi.getParameter("mb_email1") + "@"
-				+ request.getParameter("mb_email2"));//이메일
+				+ multi.getParameter("mb_email2"));//이메일
 		
 		
 		int personal = dao.editinsereok(dto);//개인정보수정에 보냄
