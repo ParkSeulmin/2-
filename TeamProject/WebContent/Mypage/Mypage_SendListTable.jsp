@@ -27,12 +27,14 @@
 %>
 </head>
 <body>
+
 <div id="mydiv">
 	<div class="col-lg-9 main-chart">
 			<h3>
 				<i class="fa fa-angle-right">내가 요청한 친구 리스트</i>
 			</h3>
 			<hr>
+
 				<c:set var="mysendlist" value="<%=mylist%>" />
 				<c:choose>
 
@@ -82,11 +84,18 @@
 					<c:otherwise>
 						<br>
 						
+
+						<div align="right">
+							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
+								onclick="toggle()">받은 화살 보기</button>
+						</div>
+
 							신청하신게 없네요^^
 							
 						</c:otherwise>
 
 				</c:choose>
+
 				<div align="right">
 							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
 								onclick="toggle()">받은 화살 보기</button>
@@ -205,5 +214,6 @@
          </div>
 		</div>
       </div>
+
 </body>
 </html>

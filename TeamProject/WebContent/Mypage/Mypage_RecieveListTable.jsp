@@ -4,26 +4,29 @@
 <%@page import="Mypage.DTO.Arrow_DTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%
-
-	String totalpagecount=(String)request.getAttribute("total");
-	int pagesize=2;
-	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
-	if((Integer.parseInt(totalpagecount))%pagesize!=0){
+	String totalpagecount = (String) request.getAttribute("total");
+	int pagesize = 2;
+	int totalpagenum = (Integer.parseInt(totalpagecount)) / pagesize;
+	if ((Integer.parseInt(totalpagecount)) % pagesize != 0) {
 		totalpagenum++;
 	}
-	
-	String r_totalpagecount=(String)request.getAttribute("totalrecieve");
-	int r_pagesize=2;
-	int r_totalpagenum=(Integer.parseInt(r_totalpagecount))/r_pagesize;
-	if((Integer.parseInt(r_totalpagecount))%r_pagesize!=0){
+
+	String r_totalpagecount = (String) request
+			.getAttribute("totalrecieve");
+	int r_pagesize = 2;
+	int r_totalpagenum = (Integer.parseInt(r_totalpagecount))
+			/ r_pagesize;
+	if ((Integer.parseInt(r_totalpagecount)) % r_pagesize != 0) {
 		r_totalpagenum++;
 	}//받은거 페이징 
-	
+
 	List<Arrow_DTO> mylist = new ArrayList<Arrow_DTO>();
 	mylist = (ArrayList<Arrow_DTO>) request.getAttribute("result");
 
@@ -32,7 +35,6 @@
 
 	Member member = (Member) session.getAttribute("user");
 	String me = member.getId();
-
 %>
 </head>
 <body>
