@@ -41,10 +41,8 @@ public class ActionCheckSend implements Action {
 		request.setAttribute("friends", memberlist);
 		request.setAttribute("arrowlist", arlist);
 		
-		System.out.println(arlist);
 		forward.setPath("/Mypage/Mypage_SendList.jsp");
 		forward.setRedirect(false);
-		System.out.println("안녕 여긴 잘 되가니>?");
 		return forward;
 	}
 

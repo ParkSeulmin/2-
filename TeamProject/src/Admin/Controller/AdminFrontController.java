@@ -14,6 +14,8 @@ import Admin.Action.AdminPwdCheckAction;
 import Admin.Action.AdminPwdCheckMemberAction;
 import Admin.Action.BoardListAdminAction;
 import Admin.Action.GetMemberListAction;
+import Admin.Action.GetPartyListAction;
+import Admin.Action.PartyAddAction;
 
 
  public class AdminFrontController 
@@ -42,6 +44,42 @@ import Admin.Action.GetMemberListAction;
 			   }catch(Exception e){
 				   e.printStackTrace();
 			   }
+ 
+		   }else if(command.equals("/PartyListadmin.admin")){		//   게시판
+			   action = new GetPartyListAction();
+			   try{
+				   forward=action.execute(request, response);
+			   }catch(Exception e){
+				   e.printStackTrace();
+			   }
+ 
+		   }else if(command.equals("/PartyWrite.admin")){
+			   if(request.getSession().getAttribute("user") == null){
+				   response.setContentType("text/html;charset=utf-8");
+			   		PrintWriter out=response.getWriter();
+			   		out.println("<script>");
+			   		out.println("alert('관리자만 파티만들기가 가능합니다.');");
+			   		out.println("history.back();");
+			   		out.println("</script>");
+			   		out.close();
+			   		
+			   		forward=new ActionForward();
+					forward.setRedirect(true);
+					forward.setPath("/PartyListadmin.admin");
+			   }
+				   forward=new ActionForward();
+				   forward.setRedirect(true);
+				   forward.setPath(request.getContextPath()+"/Adminpage/party_write_admin.jsp");
+		   }else if(command.equals("/PartyAddAction.admin")){	
+			   System.out.println("partyaddaction 들어왔");//   게시판
+			   action = new PartyAddAction();
+			   
+			   try{
+				   forward=action.execute(request, response);
+			   }catch(Exception e){
+				   e.printStackTrace();
+			   }
+ 
 		   }else if(command.equals("/AdminPwdCheckPage.admin")){		//   관리자 비밀번호확인
 			   forward=new ActionForward();
 			   forward.setRedirect(false);

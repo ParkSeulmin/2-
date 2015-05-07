@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import Date.Action.ActionCheckSend;
 import Date.Action.ActionDate;
 import Date.Action.ActionDelete;
+import Date.Action.ActionDeleteFriend;
+import Date.Action.ActionDeleteFriend2;
 import Date.Action.ActionDetailInfo;
 import Date.Action.ActionDisagree;
 import Date.Action.ActionMessage;
@@ -84,7 +86,7 @@ public class DateController extends HttpServlet {
 
 		else if(cmd.equals("/CheckArrow.daa")){//자신에게 날아온 화살 확인하는 메서드
 			try {
-				forward = new ActionForward();
+				/*forward = new ActionForward();*/
 				action = new ActionRecievedDate();
 				forward = action.execute(request, response);
 				
@@ -104,7 +106,6 @@ public class DateController extends HttpServlet {
 			}
 		}
 		else if(cmd.equals("/CheckArrow_query.daa")){//자신에게 날아온 화살 확인하는 메서드
-			request.setAttribute("id", request.getParameter("user"));
 			try {
 				forward = new ActionForward();
 				action = new ActionRecievedDate_query();
@@ -187,16 +188,11 @@ public class DateController extends HttpServlet {
 			
 		}else if(cmd.equals("/register.daa")){
 			//친구추가
-			System.out.println("명령실행확인");
-			System.out.println(request.getParameter("s_id"));
-			System.out.println(request.getParameter("r_id")+" :본인계정");
 			request.setAttribute("s_id", request.getParameter("s_id"));
 			request.setAttribute("r_id", request.getParameter("r_id"));
 
 			try {
-				//sforward = new ActionForward(); 페이지 넘기는 부분이 필요없어서 막아놈
 				action = new ActionRegister();
-				//forward = action.execute(request, response);
 				action.execute(request, response);
 				
 				String str = (String) request.getAttribute("result");
@@ -224,10 +220,57 @@ public class DateController extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}finally{
-				
+			}finally{}}
+		
+			else if(cmd.equals("/delete_friend.daa")){
+				//친구 삭제 
+				request.setAttribute("friend", request.getParameter("s_id"));
+				request.setAttribute("me", request.getParameter("r_id"));
+				try {
+					forward=new ActionForward();
+					action = new ActionDeleteFriend();
+					forward=action.execute(request, response);
+					if(forward != null){
+						if(forward.isRedirect()){ //view 단 바로....
+							response.sendRedirect(forward.getPath());
+						}else{
+							RequestDispatcher dispatcher =
+							request.getRequestDispatcher(forward.getPath());
+							dispatcher.forward(request, response);
+						}
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally{
+					
+				}
 			}
-		}else if(cmd.equals("/delete_arrow.daa")){
+			else if(cmd.equals("/delete_friend2.daa")){
+				//친구 삭제 
+				request.setAttribute("friend", request.getParameter("s_id"));
+				request.setAttribute("me", request.getParameter("r_id"));
+				try {
+					forward=new ActionForward();
+					action = new ActionDeleteFriend2();
+					forward=action.execute(request, response);
+					if(forward != null){
+						if(forward.isRedirect()){ //view 단 바로....
+							response.sendRedirect(forward.getPath());
+						}else{
+							RequestDispatcher dispatcher =
+							request.getRequestDispatcher(forward.getPath());
+							dispatcher.forward(request, response);
+						}
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally{
+					
+				}
+			}
+		else if(cmd.equals("/delete_arrow.daa")){
 			//보낸 사람쪽에서 사용하는 명령체계
 			//화살삭제 /
 			request.setAttribute("s_id", request.getParameter("s_id"));
@@ -260,15 +303,11 @@ public class DateController extends HttpServlet {
 				forward=new ActionForward();
 				action = new ActionCheckSend();
 				forward=action.execute(request, response);
-				
 				if(forward != null){
-					
 					if(forward.isRedirect()){ //view 단 바로....
 						response.sendRedirect(forward.getPath());
 					}else{
 						
-						System.out.println("여기 타는거 맞지?");
-						System.out.println(request.getAttribute("arrowlist"));
 						RequestDispatcher dispatcher =
 						request.getRequestDispatcher(forward.getPath());
 						dispatcher.forward(request, response);
@@ -280,6 +319,5 @@ public class DateController extends HttpServlet {
 				
 			}
 		}
-		
 	}		
 }

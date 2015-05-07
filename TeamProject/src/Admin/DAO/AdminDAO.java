@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import Board.DTO.Board;
 import Board.DTO.Reply;
 import Login.DTO.Member;
+import Meeting.DTO.Party_DTO;
 
 public class AdminDAO {
 	
@@ -200,5 +201,99 @@ public class AdminDAO {
 						}
 						return realadminpwd;
 					}
+					
+					
+					// 친구목록불러오기
+					public List<Member> getSsomeList(String r_id,int cpage) throws SQLException {
+ 
+						List<Member> friends = new ArrayList<Member>();
+ 
+						try {
+							con = ds.getConnection();
+							int cpage2= cpage;
+							int pagesize=2; 
+							int start = cpage2 * pagesize - (pagesize - 1);
+							int end = cpage2 * pagesize;
+							System.out.println("start : "+start);
+							System.out.println("end : "+end);
+							System.out.println("r_id : "+r_id);
+							System.out.println("cpage2 : "+cpage2);
+							String sql ="    select r,u_id,u_name,U_MYPICTURE,U_GENDER from "
+									+ "(select rownum r,m.u_id, m.u_name, m.U_MYPICTURE, m.U_GENDER from "
+									+ "(select u_id, u_ssome from ssomelist order by U_ID) s "
+									+ "join member m on s.u_id=m.u_id  where s.u_ssome=?) "
+									+ "where r between ? and ?";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setString(1, r_id);
+							pstmt.setInt(2, start);
+							pstmt.setInt(3, end);
+							rs=pstmt.executeQuery();
+							while(rs.next()){
+								Member member= new Member();
+								member.setId(rs.getString(2));
+								member.setName(rs.getString(3));
+								member.setU_mypicture(rs.getString("U_MYPICTURE"));
+								member.setGender(rs.getInt("U_GENDER"));
+								friends.add(member);
+								System.out.println("요청된 친구 ID : "+rs.getString(2));
+								System.out.println("요청된 친구 이름 :"+rs.getString(3));
+							}
+
+						} catch (SQLException e) {
+							e.printStackTrace();
+						} 
+						finally {
+							pstmt.close();
+							con.close();
+						}
+						return friends ;
+					}
+					
+		// 파티 등록
+					 
+					public boolean PartyAdd(Party_DTO party){
+						int num =0;
+						String sql="";
+						
+						int result=0;
+						
+						try{
+							con = ds.getConnection();
+							pstmt=con.prepareStatement(
+									"select max(p_id) from party");
+							rs = pstmt.executeQuery();
+							
+							if(rs.next())
+								num =rs.getInt(1)+1;
+							else
+								num=1;
+							
+							sql="insert into party(p_id, p_title, p_area, p_maxpeople, p_img, p_date) ";
+							sql+= " values(?, ?, ?, ?, ?, sysdate)";
+							
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, num);
+							pstmt.setString(2, party.getP_TITLE());
+							pstmt.setString(3, party.getP_AREA());
+							pstmt.setInt(4, party.getP_MAXPEOPLE());
+							pstmt.setString(5, party.getP_IMG());
+							
+							
+							
+							result=pstmt.executeUpdate();
+							System.out.println("DAO party add RESULT: "+result);
+							if(result==0)return false;
+							
+							return true;
+						}catch(Exception ex){
+							System.out.println("partyadd 에러 : "+ex);
+						}finally{
+							if(rs!=null) try{rs.close();}catch(SQLException ex){}
+							if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+							if(con!=null) try{con.close();}catch(SQLException ex){}
+						}
+						return false;
+					}			
+					
 }
 	

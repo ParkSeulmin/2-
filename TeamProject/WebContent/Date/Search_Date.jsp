@@ -81,10 +81,9 @@
 							+"<span class='label label-info label-mini'>"+items.admin+"</span></td>"
 							+"<td><span class='label label-info label-mini'>"+items.jumin+"</span></td>"
 							+"<td><span class='label label-info label-mini'>"+items.phone+"</span></td>"
-							+"<td><input type='button' name='"+items.id+"' id='"+items.id+"' value='화살쏘기'"
-							+"onclick=dataSend('"+items.id+"')></td></tr>"
-					
-				
+							+"<td><button type='button' class='btn btn-theme04' name='"+items.id+"' id='"+items.id
+							+"'onclick=dataSend('"+items.id+"')><i class='fa fa-heart'></i>화살쏘기</button></td></tr>"
+			
 				});
    			
    			

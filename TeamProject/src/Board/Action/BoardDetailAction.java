@@ -1,5 +1,6 @@
 package Board.Action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +21,41 @@ import Login.DTO.Member;
 	   	Board boarddata = new Board();
 	   	List replylist = new ArrayList();
 	   	
+	   	int boardtype = 0;
+		//System.out.println("boarddetailaction boardtype: "+request.getParameter("boardtype"));
+		if(request.getParameter("boardtype") != null){
+			boardtype = Integer.parseInt(request.getParameter("boardtype"));
+		}
+	   	
 		int num=Integer.parseInt(request.getParameter("num"));
 		String sessionid = "";
+		
+		if(boardtype == 50){
+			if(request.getSession().getAttribute("user") != null){
+				Member user = null;
+				user = (Member)request.getSession().getAttribute("user");
+				if(!(boarddao.isBoardWriter(num, user.getId())) && (user.getAdmin()!=1)){
+					response.setContentType("text/html;charset=utf-8");
+			   		PrintWriter out=response.getWriter();
+			   		out.println("<script>");
+			   		out.println("alert('이 게시물은 작성자와 관리자만 열람이 가능합니다.');");
+			   		out.println("history.back();");
+			   		out.println("</script>");
+			   		out.close();
+			   		return null;
+				}
+			}else{
+				response.setContentType("text/html;charset=utf-8");
+		   		PrintWriter out=response.getWriter();
+		   		out.println("<script>");
+		   		out.println("alert('이 게시물은 회원만 열람이 가능합니다.');");
+		   		out.println("history.back();");
+		   		out.println("</script>");
+		   		out.close();
+		   		return null;
+			}
+		}
+		
 		if(request.getSession().getAttribute("user") != null){
 			Member user = null;
 			user = (Member)request.getSession().getAttribute("user");
@@ -30,6 +64,7 @@ import Login.DTO.Member;
 				sessionid=user.getId();
 			}		
 		}
+		
 		
 		// userid(session id)와 글쓴이가 같으면 조회수가 올라가지 않는다.
 	   	// 즉 자신의 글은 조회수가 올라가지 않음

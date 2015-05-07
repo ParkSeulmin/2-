@@ -43,7 +43,7 @@
 
 <script
 	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
-	
+
 
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -85,20 +85,15 @@
 	<section id="main-content"> <section class="wrapper">
 	<div class="row mt">
 		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px;">
+<div class="showback" style="width: 500px; height: 300px;  background-image: url('<%=request.getContextPath()%>/Images/b.jpg');">
+		<!-- <div class="showback" style="width: 500px; height: 300px;"> -->
 				<h4>
 					<i class="fa fa-angle-right"></i>비밀번호변경
 				</h4>
-				<div class="photo-wrapper">
-					<div class="photo">
-						<img class="img-responsive"
-							src="<%=request.getContextPath()%>/assets/img/portfolio/port04.jpg"
-							alt="">
-					</div>
-					<div class="overlay"></div>
-				</div>
 				<div align="right">
-					<button type="button" class="btn btn-round btn-success">Success</button>
+					<a href="Mypage_PwdEdit.jsp">
+						<button type="button" class="btn btn-round btn-success">Go</button>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -106,11 +101,20 @@
 
 		<!-- 개인정보변경 -->
 		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px;">
+			<div class="showback" style="width: 500px; height: 300px; background-image: url('<%=request.getContextPath()%>/Images/aa.jpg');">
 				<h4>
 					<i class="fa fa-angle-right"></i>개인정보변경
 				</h4>
-				<div align="right">
+			<div class="project-wrapper"  style="width: 350px; height: 50px;">
+				<div class="project">
+					<div class="photo-wrapper">
+						<div class="photo">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+				<div align="right" align="">
 					<a href="Mypage_PersonalEdit.jsp">
 						<button type="button" class="btn btn-round btn-primary">Go</button>
 					</a>
@@ -122,25 +126,27 @@
 
 		<!-- 추가정보수정 -->
 		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px;">
+			<div class="showback" style="width: 500px; height: 300px; background-image: url('<%=request.getContextPath()%>/Images/hhhhh.jpg');">
 				<h4>
 					<i class="fa fa-angle-right"></i>추가정보수정
 				</h4>
 				<div align="right">
-					<button type="button" class="btn btn-round btn-warning">Warning</button>
+					<a href="Mypage_PersonaladdInfo.jsp">
+						<button type="button" class="btn btn-round btn-warning">GO</button>
+					</a>
 				</div>
 			</div>
 		</div>
 		<!-- /col-lg-6 -->
 
 		<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="showback" style="width: 500px; height: 300px;">
+			<div class="showback" style="width: 500px; height: 300px;  background-image: url('<%=request.getContextPath()%>/Images/ggggggg.jpg');">
 				<h4>
 					<i class="fa fa-angle-right"></i>회원탈퇴
 				</h4>
 				<div align="right">
 					<a href="Mypage_PersonalDelete.jsp">
-					<button type="button" class="btn btn-round btn-danger">GO</button>
+						<button type="button" class="btn btn-round btn-danger">GO</button>
 					</a>
 				</div>
 			</div>
@@ -230,9 +236,6 @@
 			$('select.styled').customSelect();
 		});
 	</script>
-	
-
-
 
 </body>
 </html>

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import Login.Action.Action;
 import Login.Action.ActionForward;
 import Login.Action.Action_Login_Check;
-
+import Login.Action.Main_Action;
 
 //@WebServlet("*.Login")
 public class Login_Controller extends HttpServlet {
@@ -65,10 +64,16 @@ public class Login_Controller extends HttpServlet {
 	     		   e.printStackTrace();
 	     	   }
 			
-		} else if(command.equals("Main")){
-			RequestDispatcher dis = req
-					.getRequestDispatcher("/Main.html");
-			dis.forward(req, res);
+		}else if (command.equals("/Main.login")) {
+		
+			action = new  Main_Action(); 
+			
+			System.out.println(action);
+	    	   try{
+	     		   forward = action.execute(req, res);
+	     	   }catch(Exception e){
+	     		   e.printStackTrace();
+	     	   }
 			
 		}
 		
