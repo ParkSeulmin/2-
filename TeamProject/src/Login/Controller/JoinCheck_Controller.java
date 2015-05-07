@@ -41,8 +41,11 @@ public class JoinCheck_Controller extends HttpServlet {
 		}
 	}
 
-	private void doProcess(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException, Exception {
+	private void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, Exception {
+		req.setCharacterEncoding("UTF-8");
+		res.setContentType("text/html;charset=utf-8");
+		res.setCharacterEncoding("utf-8");
+		
 		PrintWriter out = res.getWriter();
 		
 		String id = req.getParameter("id");//아이디 받아오기

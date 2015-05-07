@@ -66,8 +66,8 @@ import Login.DTO.Member;
    		request.setAttribute("mstartpage", startpage);  //현재 페이지에 표시할 첫 페이지 수
    		request.setAttribute("mendpage", endpage);  //현재 페이지에 표시할 끝 페이지 수
 		request.setAttribute("membercount",membercount);  // 회원 수 
- 
 			
+		request.setAttribute("memberlist", memberlist);
 			request.setAttribute("ssomelist", ssomelist);
  
  

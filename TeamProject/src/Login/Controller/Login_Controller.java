@@ -33,8 +33,10 @@ public class Login_Controller extends HttpServlet {
 		doProcess(request,response);
 	}
 	
-	private void doProcess(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException {
+	private void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		res.setContentType("text/html;charset=utf-8");
+		res.setCharacterEncoding("utf-8");
 		
 		String RequestURI = req.getRequestURI();
 		String ContextPath = req.getContextPath();

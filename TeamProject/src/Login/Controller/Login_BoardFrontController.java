@@ -34,8 +34,11 @@ public class Login_BoardFrontController extends HttpServlet {
 		Process(request, response);
 	}
 
-	private void Process(HttpServletRequest request,
-			HttpServletResponse response) throws IOException, ServletException {
+	private void Process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+		
 		ActionForward forward = null;
 		Action action = null;
 
