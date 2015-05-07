@@ -130,6 +130,7 @@
            	 <form action="./BoardAddAction.bo?boardtype=<%=boardtype %>" method="post" 
 			enctype="multipart/form-data" name="boardform">
 		<input type="hidden" name="bo_writer" value="<%=user.getId() %>">
+		<div class="content-panel">
 		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr align="center" valign="middle">
 				<td colspan="5"><div class="alert alert-success"><b>BOARD WRITE</b></div>
@@ -137,7 +138,7 @@
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center"><span class="badge bg-success">글쓴이</span></div>
+					<div align="center"><b>글쓴이</b></div>
 				</td>
 				<td>
 					<%-- <input id="bo_writer" name="bo_writer" type="text" size="50" maxlength="100" 
@@ -149,7 +150,7 @@
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12" height="16">
-					<div align="center"><span class="badge bg-success">&nbsp;제 목&nbsp;</span></div>
+					<div align="center"><b>&nbsp;제 목&nbsp;</b></div>
 				</td>
 				<td>
 					<!-- <input id="bo_title" name="bo_title" type="text" size="50" maxlength="100" 
@@ -159,7 +160,7 @@
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-success">&nbsp;내 용&nbsp;</span></div>
+					<div align="center"><b>&nbsp;내 용&nbsp;</b></div>
 				</td>
 				<td>
 					<textarea id="bo_content" name="bo_content" cols="80" rows="15"></textarea>
@@ -175,7 +176,7 @@
 			</tr>
 			<tr>
 				<td style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-success">파일첨부</span></div>
+					<div align="center"><b>파일첨부</b></div>
 				</td>
 				<td>
 					<input id="bo_file" name="bo_file" type="file"/>
@@ -188,11 +189,12 @@
 			<tr><td colspan="2">&nbsp;</td></tr>
 			<tr align="center" valign="middle">
 				<td colspan="5">
-					<a href="javascript:addboard()"><span class="label label-primary">등록</span></a>&nbsp;&nbsp;
-					<a href="javascript:history.back()"><span class="label label-danger">뒤로</span></a>
+					<a href="javascript:addboard()"><button type="button" class="btn btn-primary">등록</button></a>&nbsp;&nbsp;
+					<a href="javascript:history.back()"><button type="button" class="btn btn-danger">뒤로</button></a>
 				</td>
 			</tr>
 		</table>
+		</div>
 		</form>
            	 </div>
            	 

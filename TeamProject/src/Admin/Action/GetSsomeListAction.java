@@ -69,6 +69,7 @@ import Login.DTO.Member;
  
 			
 			request.setAttribute("ssomelist", ssomelist);
+			request.setAttribute("memberlist", memberlist);
  
  
 		

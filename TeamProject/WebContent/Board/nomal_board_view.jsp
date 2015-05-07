@@ -81,6 +81,7 @@
 	text-align: left;
 }
 </style>
+
 </head>
 <body style>
   
@@ -102,17 +103,15 @@
 	                <hr>
            	 <div  class="col-lg-9 main-chart" align="center">
            	 		
-           	 		
-           	 		<table cellpadding="0" cellspacing="0">
-				<tr align="center" valign="middle">
-					<td colspan="5">
-						<div class="alert alert-danger"><b>BOARD VIEW</b></div>
-					 </td>
-				</tr>
+       	<div class="content-panel">
+       	 <div class="alert alert-warning"><b>BOARD VIEW</b></div>
+	         	 		
+        <table class="table" >
+			 
 				
 				<tr>
 					<th style="font-family:돋음; font-size:12" height="20">
-						<div align="center"><span class="badge bg-important">&nbsp;제 목&nbsp;</span>&nbsp;&nbsp;</div>
+						<div align="center"><b>&nbsp;제 목&nbsp;</b>&nbsp;&nbsp;</div>
 					</th>
 					
 					<td style="font-family:돋음; font-size:12">
@@ -122,7 +121,7 @@
 				</tr>
 				<tr>
 					<th style="font-family:돋음; font-size:12" height="20">
-						<div align="center"><span class="badge bg-important">작성자</span>&nbsp;&nbsp;</div>
+						<div align="center"><b>작성자</b>&nbsp;&nbsp;</div>
 					</th>
 					
 					<td style="font-family:돋음; font-size:12">
@@ -132,7 +131,7 @@
 				</tr>
 				<tr>
 					<th style="font-family:돋음; font-size:12" height="20">
-						<div align="center"><span class="badge bg-important">&nbsp;조 회&nbsp;</span>&nbsp;&nbsp;</div>
+						<div align="center"><b>&nbsp;조 회&nbsp;</b>&nbsp;&nbsp;</div>
 					</th>
 					
 					<td style="font-family:돋음; font-size:12">
@@ -142,7 +141,7 @@
 				</tr>
 				<tr>
 					<th style="font-family:돋음; font-size:12" height="20">
-						<div align="center"><span class="badge bg-important">작성일</span>&nbsp;&nbsp;</div>
+						<div align="center"><b>작성일</b>&nbsp;&nbsp;</div>
 					</th>
 					
 					<td style="font-family:돋음; font-size:12">
@@ -150,14 +149,14 @@
 					</td>
 	
 				</tr>
-				<tr bgcolor="cccccc">
+				<tr >
 					<td colspan="2" style="height:1px;">
 					</td>
 				</tr>
 				
 				<tr>
 				<th style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-important">&nbsp;내 용&nbsp;</span></div>
+					<div align="center"><b>&nbsp;내 용&nbsp;</b></div>
 				</th>
 				<td style="font-family:돋음; font-size:12">
 					<table border=0 width=490 height=250 style="table-layout:fixed">
@@ -171,7 +170,7 @@
 			</tr>
 			<tr>
 				<th style="font-family:돋음; font-size:12">
-					<div align="center"><span class="badge bg-important">첨부파일</span></div>
+					<div align="center"><b>첨부파일</b></div>
 				</th>
 				<td style="font-family:돋음; font-size:12">
 				<%if(!(board.getBo_file()==null)){ %>
@@ -182,96 +181,92 @@
 				<%} %>
 				</td>
 			</tr>
-			<tr bgcolor="cccccc">
-				<td colspan="2" style="height:1px;"></td>
-			</tr>
-			<tr><td colspan="2">&nbsp;</td></tr>
+			 
 			<tr align="center" valign="middle">
 				<td colspan="5" align="right">
 					<font size=2>
-					 
+					
 					<a href="./BoardModify.bo?num=<%=board.getBo_no()%>">
-						<span class="label label-success">수정</span>
+						 <button type="button" class="btn btn-success">
+					 	수정</button>
 					</a>&nbsp;&nbsp;
 					<a href="./BoardDeleteAction.bo?num=<%=board.getBo_no()%>&boardtype=<%=board.getBo_id()%>"
 								id="deletemenu">
-						<span class="label label-danger">삭제</span>
+						<button type="button" class="btn btn-danger">삭제</button>
 					</a>&nbsp;&nbsp;
 					<a href="./BoardList.bo?boardtype=<%=board.getBo_id() %>"> 
-						<span class="label label-warning">목록</span>
+						<button type="button" class="btn btn-warning">목록</button>
 					</a>&nbsp;&nbsp;
 					</font>
 				</td>
 			</tr>
 		                      </table>
 		                      
-		                      
+		                   </div>   
 		                    	<p>
 		
 		</p>
 
 <!-- 게시판 수정 -->
 		<!--  꼬리글 달기 테이블 -->
+		<div class="content-panel">
 		<form name="reply" action="ReplyWrite.bo" method="POST">
 			<input type="hidden" name="bo_no" name="bo_id" value="<%=board.getBo_no()%>">
 			<input type="hidden" name="re_writer" id="re_writer" value="<%=id%>"> <!-- 임의 아이디 -->
 			<!-- hidden data -->
-			<table>
-				<tr bgcolor="cccccc" >
-					<td  colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
+			<table class="table">
+				 
 				<tr>
 					<th colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
-						<span class="badge bg-important">댓글 달기</span>
+						<b>댓글 달기</b>
 					</th>
 				</tr>
-				<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
+				 
 				<tr>
 					<td align="left" style="font-family:돋음; font-size:12; font-align: center;">
-						<span class="label label-primary">내&nbsp;&nbsp;용</span> : <textarea name="re_content" rows="1" cols="50"></textarea>
+						<b>내&nbsp;&nbsp;용</b> : <textarea name="re_content" rows="1" cols="100" style="resize: none;"></textarea>
 					</td>
 					<td>
 						<a href="javascript:addreply()">
-							<span class="label label-primary">등록</span>
+							<button type="button" class="btn btn-primary btn-xs">댓글등록</button>
 						</a>
 						<script type="text/javascript">
-						function addreply(){							
+						function addreply(){	
+							
+							if (!reply.re_content.value) {
+								alert("내용을 입력하세요");
+								reply.re_content.focus();
+								return false;
+							}
+							
 							reply.submit();
 						}
 						</script>
 					</td>
 				</tr>
-				<tr bgcolor="cccccc" >
+				<tr   >
 					<td   colspan="2" style="height:1px;" width=500>
 					</td>
 				</tr>
 			</table>
 		</form>
+		</div>
 		 <br>
  		<!-- 꼬리글 목록 테이블 -->
- 		<table>
-				<tr bgcolor="cccccc" >
-					<td  colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
+ 		<div class="content-panel">
+ 		<table class="table">
+				 
 				<tr>
 					<th align="center" colspan="2" style="font-family:돋음; font-size:12; font-align: center;" height="20"  width=500>
-						<span class="badge bg-important">댓 글</span>
+						<b>댓 글</b>
 					</th>
 				</tr>
-				<tr bgcolor="cccccc" >
-					<td   colspan="2" style="height:1px;" width=500>
-					</td>
-				</tr>
+				 
 				<%if(replyList.size() > 0){	
 						for(int i=0; i<replyList.size(); i++){
 							Reply reply=(Reply)replyList.get(i); 
 				%>
-				<tr align="left" style="font-family:돋음; font-size:12; font-weight: bold;">
+				<tr align="left" style="border:0; font-family:돋음; font-size:12; font-weight: bold;">
 					<td><%= reply.getRe_writer() %>:</td>
 					<td align="right">
 						<a href="./ReplyDeleteAction.bo?replynum=<%=reply.getR_no()%>&bo_no=<%=board.getBo_no()%>">[삭제]</a>
@@ -286,7 +281,7 @@
 				<%		}
 				   }else{ 
 				%>	
-					<tr bgcolor="cccccc" >
+					<tr  >
 					<td   colspan="2" style="height:1px;" width=500>
 					</td>
 					</tr>
@@ -298,12 +293,12 @@
 				<%
 					}
 				%>
-				<tr bgcolor="cccccc" >
+				<tr   >
 					<td   colspan="2" style="height:1px;" width=500>
 					</td>
 				</tr>
 			</table>  
-           	 		
+           	 </div>		
            	 </div>
            	
            	
