@@ -81,7 +81,7 @@
 	String me=member.getId(); 
 	
 	String totalpagecount=(String)request.getAttribute("total");
-	int pagesize=2;
+	int pagesize=10;
 	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 	if((Integer.parseInt(totalpagecount))%pagesize!=0){
 		totalpagenum++;
@@ -188,8 +188,9 @@
 					<c:otherwise>
 						<br>
 
+							<h4 align="center" style="color: blue;">신청하신게 없네요^^</h4>
 						
-							신청하신게 없네요^^
+							
 
 						</c:otherwise>
 

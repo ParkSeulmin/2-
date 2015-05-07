@@ -19,7 +19,7 @@
 	friends=(ArrayList<Member>)request.getAttribute("friends");
 
 	String totalpagecount=(String)request.getAttribute("total");
-	int pagesize=2;
+	int pagesize=10;
 	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 	if((Integer.parseInt(totalpagecount))%pagesize!=0){
 		pagesize++;
@@ -83,23 +83,16 @@
 
 					<c:otherwise>
 						<br>
+						<h4 align="center" style="color: blue;">신청하신게 없네요^^</h4>
 						
-
-						<div align="right">
-							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-								onclick="toggle()">받은 화살 보기</button>
-						</div>
-
-							신청하신게 없네요^^
-							
-						</c:otherwise>
+					</c:otherwise>
 
 				</c:choose>
 
 				<div align="right">
 							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
 								onclick="toggle()">받은 화살 보기</button>
-						</div>
+				</div>
 			</div>
 			
 			<br>
@@ -169,32 +162,7 @@
             </div>
             <%
                       }%>
-            <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
-         <c:choose>
-            <c:when test="${fcount!=0}">
-               <c:set var="friendlist" value="<%=ssomelist%>" />
-               <c:forEach var="friendlist" items="${friendlist}">
-                    <div class="desc">
-                            <div class="thumb">
-                               <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                               <p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
-                                  <muted>${friendlist.name}</muted>
-                               </p>
-                            </div>
-                         </div>
-               </c:forEach>
-             
-            
-             
-            </c:when>
-            <c:otherwise>
-            <br>
-            친구가 없네요 ^^ 
-            </c:otherwise>
-         </c:choose> --%>
-
+         
          </div>
 
 

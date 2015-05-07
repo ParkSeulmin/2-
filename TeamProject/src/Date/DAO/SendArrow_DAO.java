@@ -103,15 +103,15 @@ public class SendArrow_DAO {
             System.out.println("2");
 
             if(row>0){
-               result= "success!";
+               result= "화살이 날아갔습니다!";
             }
             else{
-               result= "you failed.";
+               result= "화살 보내기!";
             }
          
          }
          else{
-            result= "you failed.";
+            result= "화살 보내기 실패!";
          }
          System.out.println("여기   "+result);
       } catch (SQLException e) {
@@ -131,7 +131,7 @@ public class SendArrow_DAO {
       Arrow_DTO myar=null; 
       
       int cpage=Integer.parseInt(arrowpage);
-      int pagesize=2; 
+      int pagesize=10; 
       int start = cpage * pagesize - (pagesize - 1);
       int end = cpage * pagesize;
       System.out.println("start : "+start);
@@ -350,7 +350,7 @@ public class SendArrow_DAO {
       try {
          conn = ds.getConnection();
          int cpage2=Integer.parseInt(cpage);
-         int pagesize=2; 
+         int pagesize=10; 
          int start = cpage2 * pagesize - (pagesize - 1);
          int end = cpage2 * pagesize;
          System.out.println("start : "+start);

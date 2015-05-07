@@ -12,7 +12,7 @@
 <head>
 <%
 	String totalpagecount = (String) request.getAttribute("total");
-	int pagesize = 2;
+	int pagesize = 10;
 	int totalpagenum = (Integer.parseInt(totalpagecount)) / pagesize;
 	if ((Integer.parseInt(totalpagecount)) % pagesize != 0) {
 		totalpagenum++;
@@ -20,7 +20,7 @@
 
 	String r_totalpagecount = (String) request
 			.getAttribute("totalrecieve");
-	int r_pagesize = 2;
+	int r_pagesize = 10;
 	int r_totalpagenum = (Integer.parseInt(r_totalpagecount))
 			/ r_pagesize;
 	if ((Integer.parseInt(r_totalpagecount)) % r_pagesize != 0) {
@@ -38,7 +38,7 @@
 %>
 </head>
 <body>
-
+		<div class="row">
 			<div class="col-lg-9 main-chart">
 			<h3>
 				<i class="fa fa-angle-right">친구등록 요청 리스트</i>
@@ -118,10 +118,7 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						
-						
 						<h4 align="center" style="color: blue;">현재 친구 요청이 없습니다.</h4>
-						
 					</c:otherwise>
 				</c:choose>
 				<div align="right">
@@ -241,6 +238,7 @@
                   <div id="my-calendar"></div>
                </div>
             </div>
+         </div>
          </div>
 
       </div>

@@ -108,17 +108,17 @@ String Test = request.getContextPath();
 		$.ajax({
 			url:"register.daa",
 			data:sdid,
-			success : function(data){
-				alert(data);
+			success : function(data1){
+				$.ajax({		//친구목록 다시 불러오는 코드
+				url:"CheckArrow_query.daa",
+				data:sdid,
+				success : function(data){
+					$("#mydata").html(data);
+				}
+			});
 			}
 		});
-		$.ajax({		//친구목록 다시 불러오는 코드
-			url:"CheckArrow_query.daa",
-			data:sdid,
-			success : function(data){
-				$("#mydata").html(data);
-			}
-		});
+		
 	}
 	
 	
@@ -130,31 +130,32 @@ String Test = request.getContextPath();
 		$.ajax({
 			url : "disagree_arrow.daa",
 			data : sdid,
-			success : function(data) {
-				alert(data);
+			success : function(data1) {
+				$.ajax({
+					url : "CheckArrow_query.daa",
+					data : sdid,
+					success : function(data) {
+						$("#mydata").html(data);
+					}
+				});
 			}
 		});
-		$.ajax({ 
-			url : "CheckArrow_query.daa",
-			data : sdid,
-			success : function(data) {
-				$("#mydata").html(data);
-			}
-		});
+
 	}
 
-	function toggle() {	//친구등록 신청한 페이지 보기 
+	function toggle() { //친구등록 신청한 페이지 보기 
 		location.href = "CheckSendArrow.daa";
 	}
-	
-	function sendmessage(data){
+
+	function sendmessage(data) {
 		console.log(data);
-		window.open("Mypage_messagesend.daa?id="+data, "Popup", "width=380, height=300,scrollbars=1, menubar=1, resizable=1"); 
+		window.open("Mypage_messagesend.daa?id=" + data, "Popup",
+				"width=380, height=300,scrollbars=1, menubar=1, resizable=1");
 	}
-	function deletefriend(sender){
-		var sdid={
-				s_id:sender,
-			    r_id:'<%=me%>'
+	function deletefriend(sender) {
+		var sdid = {
+			s_id : sender,
+			r_id : '<%=me%>'
 		}
 		$.ajax({
 			url : "delete_friend2.daa",
@@ -168,14 +169,14 @@ String Test = request.getContextPath();
 </head>
 <%
 	String totalpagecount=(String)request.getAttribute("total");
-		int pagesize=2;
+		int pagesize=10;
 		int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 		if((Integer.parseInt(totalpagecount))%pagesize!=0){
 	totalpagenum++;
 		}//친구 페이징
 		
 		 String r_totalpagecount=(String)request.getAttribute("totalrecieve");
-		int r_pagesize=2;
+		int r_pagesize=10;
 		int r_totalpagenum=(Integer.parseInt(r_totalpagecount))/r_pagesize;
 		if((Integer.parseInt(r_totalpagecount))%r_pagesize!=0){
 	r_totalpagenum++;
@@ -188,9 +189,10 @@ String Test = request.getContextPath();
 	<section class="wrapper">
 
 	
-	<div class="row">
+	
 	
 		<div id=mydata>
+		<div class="row">
 			<div class="col-lg-9 main-chart">
 			<h3>
 				<i class="fa fa-angle-right">친구등록 요청 리스트</i>
@@ -270,10 +272,7 @@ String Test = request.getContextPath();
 						</div>
 					</c:when>
 					<c:otherwise>
-						
-						
 						<h4 align="center" style="color: blue;">현재 친구 요청이 없습니다.</h4>
-						
 					</c:otherwise>
 				</c:choose>
 				<div align="right">
