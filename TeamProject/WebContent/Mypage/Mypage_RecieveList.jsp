@@ -246,26 +246,40 @@
 			<c:when test="${rcount>0}">
 
 				<h3 align="center">친구등록 요청 리스트</h3>
-				<table id="recieve_table" align="center" border="1">
-					<c:set var="recievelist" value="<%=mylist%>" />
-					<c:forEach var="recievelist" items="${recievelist}">
-						<tr>
-							<td>${recievelist.a_sendid }</td>
-							<td>${recievelist.a_date }</td>
-							<td>대기중</td>
-							<td><input type="button" value="info"
-								name="${recievelist.a_sendid}" onclick="checkinfo(this.name)" /></td>
-							<!-- 상세보기 -->
-							<td><input type="button" value="agree"
-								id="${recievelist.a_sendid}" name="${recievelist.a_sendid}"
-								onclick="agree(this.name)" /></td>
-							<!-- 친구수락 -->
-							<td><input type="button" value="disagree"
-								name="${recievelist.a_sendid}" onclick="disagree(this.name)" /></td>
-							<!-- 거절 -->
-						</tr>
-
-					</c:forEach>
+				<table class="table table-striped table-advance table-hover" id="recieve_table" align="center">
+				<c:set var="recievelist" value="<%=mylist%>"/>
+				
+                              <thead>
+                              <tr>
+                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i>날짜</th>
+                                  <th><i class=" fa fa-edit"></i>상태</th>
+                                  <th>수락</th>
+                                  <th>거절</th>
+                                  <th>상세보기</th>
+                              </tr>
+                              </thead>
+                              
+                              <c:forEach var="recievelist" items="${recievelist}">
+                              <tbody>
+                              <tr>
+                                  <td><a href="basic_table.html#">${recievelist.a_sendid }</a></td>
+                                  <td class="hidden-phone">${recievelist.a_date }</td>
+                                  <td><span class="label label-info label-mini">대기중</span></td>
+                                  <td>
+                                      <button class="btn btn-success btn-xs" id="${recievelist.a_sendid}" name="${recievelist.a_sendid}" onclick="agree(this.name)"><i class="fa fa-check"></i></button>
+                                  </td>
+                                  <td>
+                                      <button class="btn btn-danger btn-xs" name="${recievelist.a_sendid}" onclick="disagree(this.name)"><i class="fa fa-trash-o "></i></button>
+                                  </td>
+                                  <td>                
+                                  	  <button class="btn btn-primary btn-xs" name="${recievelist.a_sendid}" onclick="checkinfo(this.name)"><i class="fa fa-pencil"></i></button>
+                                  </td>
+                              </tr>
+                              </tbody>
+		
+				</c:forEach>
+>>>>>>> branch 'master' of https://github.com/ParkSeulmin/2Team_Project.git
 				</table>
 
 				<br>
