@@ -205,7 +205,9 @@ public class AdminDAO {
 					
 					// 친구목록불러오기
 					public List<Member> getSsomeList(String r_id,int cpage) throws SQLException {
-						List<Member> friends = new ArrayList<Member>();;
+ 
+						List<Member> friends = new ArrayList<Member>();
+ 
 						try {
 							con = ds.getConnection();
 							int cpage2= cpage;
@@ -266,8 +268,8 @@ public class AdminDAO {
 							else
 								num=1;
 							
-							sql="insert into party(p_id, p_title, p_area, p_maxpeople, p_img) ";
-							sql+= " values(?, ?, ?, ?, ?)";
+							sql="insert into party(p_id, p_title, p_area, p_maxpeople, p_img, p_date) ";
+							sql+= " values(?, ?, ?, ?, ?, sysdate)";
 							
 							pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, num);

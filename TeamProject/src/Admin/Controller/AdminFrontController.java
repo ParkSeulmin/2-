@@ -70,8 +70,10 @@ import Admin.Action.PartyAddAction;
 				   forward=new ActionForward();
 				   forward.setRedirect(true);
 				   forward.setPath(request.getContextPath()+"/Adminpage/party_write_admin.jsp");
-		   }else if(command.equals("/PartyAddAction.admin")){		//   게시판
+		   }else if(command.equals("/PartyAddAction.admin")){	
+			   System.out.println("partyaddaction 들어왔");//   게시판
 			   action = new PartyAddAction();
+			   
 			   try{
 				   forward=action.execute(request, response);
 			   }catch(Exception e){
