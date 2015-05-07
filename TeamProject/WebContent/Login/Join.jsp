@@ -97,6 +97,7 @@
                               <label class="col-sm-2 col-sm-2 control-label">주민번호</label>
                                   <input type="text"id="mb_birth" name="mb_birth" width="160px" height="34px"> -
                                   <input type="password" maxlength="7" name="mb_birth2" id="mb_birth2" width="160px" height="34px">
+                          			<span id="jumin"></span>
                           </div>
                          
                           </div>
@@ -358,15 +359,54 @@
         }
     
 	</script>
+
+<!-- 유효성 검사-->
  <script type="text/javascript">
-	$('#mb_birth')
-	.keyup(
+	$('#mb_birth').keyup(
 			function() {
-				console.log('주민 앞에 두자리' +$('#mb_birth').val().substring(0,2));
+				var birth = $('#mb_birth').val().substring(0,2);
+				console.log(birth);
+				if(parseInt(birth) < 50){
+					$("#jumin").html(
+							"<font color='red'> ※잘못된 형식의 주민번호를 입력하셨습니다.</font>");
+				}else{
+					$("#jumin").html('');					
+				}
+			});
+	$('#cm').keyup(
+			function() {
+				if($('#cm').val().length>3 || $('#cm').val().substring(0,1) != '1' &&  $('#cm').val().substring(0,1) != '2'){
+					alert('잘못된 키를 입력하셨습니다.');
+					$('#cm').html('');
+					$('#cm').focus();
+					return false;
+				}
+			});
+	$('#weight2').keyup(
+			function() {
+				if($('#weight2').val().length>3){
+					alert('잘못된 몸무게를 입력하셨습니다.');
+					$('#cm').html('');
+					$('#weight2').focus();
+					return false;
+				}
+			});
+	
+	$('#mb_birth2').keyup(
+			function() {
+				if($('#mb_birth2').val().substring(0,1) != '1' && 
+						$('#mb_birth2').val().substring(0,1) != '2'){
+					$("#jumin").html(
+					"<font color='red'> ※잘못된 형식의 주민번호를 입력하셨습니다.</font>");
+					
+				}else{
+					$("#jumin").html('');
+				}
 			});
                           
   
-                          	</script>
+     </script>
+
 	<script type="text/javascript">
 			$(function() {
 				//아이디 중복 확인
@@ -375,6 +415,7 @@
 						tag : "1",
 						id : $('#reg_mb_id').val()
 					};
+					if($("#reg_mb_id").val() != ''){
 					$.ajax({
 						type : "POST",
 						url : "CheckController.ch",//보낼 주소
@@ -385,8 +426,10 @@
 							//alert('result 값' + result);
 							if (result == 1) {
 								alert("ID 중복입니다.");
-							} else {
+							}else if(result==0){
 								alert("사용가능한 ID 입니다.");
+							}else{
+								alert("ID를 입력하세요");
 							}
 
 						},
@@ -394,14 +437,20 @@
 							alert("에러발생");
 						}
 					});
+					}else{
+						alert('ID를 입력하세요');
+					}
 				});
 
 				//닉네임 중복 확인
+		
 				$("#nickcheck").click(function() {
 					var nick_data = {
 						tag : "2",
 						nick : $('#mb_nick').val()
 					};
+					/* console.log($("#mb_nick").val()); */
+					if($("#mb_nick").val() != ''){
 					$.ajax({
 						type : "POST",
 						url : "CheckController.ch",//보낼 주소
@@ -411,8 +460,10 @@
 							var result = JSON.parse(responseData);
 							if (result == 1) {
 								alert("닉네임 중복입니다.");
-							} else {
+							} else if(result==0){
 								alert("사용가능한 닉네임 입니다.");
+							}else{
+								alert("닉네임을 입력하세요");
 							}
 
 						},
@@ -420,8 +471,13 @@
 							alert("에러발생");
 						}
 					});
+				}else{
+					alert('닉네임을 입력하세요');
+				}	
+					
+					
 				});
-
+				
 				//비밀번호 중복 체크
 				$('#reg_mb_password_re')
 						.keyup(
@@ -573,9 +629,6 @@
 			}else if($('#reg_mb_id').val()==''){
 				alert('ID를 입력하세요.');
 				return false;
-			}else if($('#mb_birth').text().substring(0,2)){
-				
-			
 			}
 			else{
 				//수정완료 호출
