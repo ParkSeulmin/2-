@@ -98,6 +98,7 @@
                                   <input type="text"id="mb_birth" name="mb_birth" width="160px" height="34px"> -
                                   <input type="password" maxlength="7" name="mb_birth2" id="mb_birth2" width="160px" height="34px">
                           </div>
+                         
                           </div>
                           <div class="form-group">
                         <div class="col-sm-10">
@@ -357,7 +358,15 @@
         }
     
 	</script>
-
+ <script type="text/javascript">
+	$('#mb_birth')
+	.keyup(
+			function() {
+				console.log('주민 앞에 두자리' +$('#mb_birth').val().substring(0,2));
+			});
+                          
+  
+                          	</script>
 	<script type="text/javascript">
 			$(function() {
 				//아이디 중복 확인
@@ -564,7 +573,11 @@
 			}else if($('#reg_mb_id').val()==''){
 				alert('ID를 입력하세요.');
 				return false;
-			}else{
+			}else if($('#mb_birth').text().substring(0,2)){
+				
+			
+			}
+			else{
 				//수정완료 호출
 				alert('회원가입 완료');
 				return true;

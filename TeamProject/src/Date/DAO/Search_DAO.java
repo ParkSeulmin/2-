@@ -103,6 +103,7 @@ public class Search_DAO {
                 
                 for(int i=0; i<seararr.size(); i++){
              	   System.out.println("DAO : "+seararr.get(i).getPhone());
+             	  System.out.println("area : "+seararr.get(i).getAddress());
                 }
                 
                 return seararr;
