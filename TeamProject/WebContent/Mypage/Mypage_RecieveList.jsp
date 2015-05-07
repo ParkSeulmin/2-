@@ -235,6 +235,7 @@
 				</c:otherwise>
 				</c:choose>
 
+
 				<c:set var="rcount" value="<%=r_totalpagecount%>"/>
 			<c:choose>
 				<c:when test="${rcount>0}">
@@ -253,6 +254,7 @@
                                   <th>상세보기</th>
                               </tr>
                               </thead>
+                              
                               <c:forEach var="recievelist" items="${recievelist}">
                               <tbody>
                               <tr>
