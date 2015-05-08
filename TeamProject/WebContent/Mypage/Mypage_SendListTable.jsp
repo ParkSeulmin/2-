@@ -19,7 +19,7 @@
 	friends=(ArrayList<Member>)request.getAttribute("friends");
 
 	String totalpagecount=(String)request.getAttribute("total");
-	int pagesize=2;
+	int pagesize=10;
 	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 	if((Integer.parseInt(totalpagecount))%pagesize!=0){
 		pagesize++;
@@ -27,12 +27,19 @@
 %>
 </head>
 <body>
+
+<div id="mydiv">
 	<div class="col-lg-9 main-chart">
+			<h3>
+				<i class="fa fa-angle-right">내가 요청한 친구 리스트</i>
+			</h3>
+			<hr>
+
 				<c:set var="mysendlist" value="<%=mylist%>" />
 				<c:choose>
 
 					<c:when test="${not empty mysendlist }">
-						<h3 align="center">내가 요청한 친구 리스트</h3>
+
 						<table class="table table-striped table-advance table-hover"
 							align="center">
 
@@ -71,25 +78,26 @@
 								</tr> --%>
 							</c:forEach>
 						</table>
-						<div align="right">
-							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-								onclick="toggle()">받은 화살 보기</button>
-						</div>
+						
 					</c:when>
 
 					<c:otherwise>
 						<br>
-						<h3 align="center">친구등록 요청 리스트</h3>
-						<br>
-							신청하신게 없네요^^
-						</c:otherwise>
+						<h4 align="center" style="color: blue;">신청하신게 없네요^^</h4>
+						
+					</c:otherwise>
 
 				</c:choose>
+
+				<div align="right">
+							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
+								onclick="toggle()">받은 화살 보기</button>
+				</div>
 			</div>
 			
-			
+			<br>
 			<div class="col-lg-3 ds">
-
+			
 
          <!-- USERS ONLINE SECTION -->
          <h3>MY FRIENDS LIST</h3>
@@ -154,32 +162,7 @@
             </div>
             <%
                       }%>
-            <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
-         <c:choose>
-            <c:when test="${fcount!=0}">
-               <c:set var="friendlist" value="<%=ssomelist%>" />
-               <c:forEach var="friendlist" items="${friendlist}">
-                    <div class="desc">
-                            <div class="thumb">
-                               <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                               <p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
-                                  <muted>${friendlist.name}</muted>
-                               </p>
-                            </div>
-                         </div>
-               </c:forEach>
-             
-            
-             
-            </c:when>
-            <c:otherwise>
-            <br>
-            친구가 없네요 ^^ 
-            </c:otherwise>
-         </c:choose> --%>
-
+         
          </div>
 
 
@@ -197,12 +180,8 @@
                </div>
             </div>
          </div>
-
+		</div>
       </div>
-
-
-
-			<div></div>
 
 </body>
 </html>

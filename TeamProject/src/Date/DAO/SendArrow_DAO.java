@@ -66,20 +66,21 @@ public class SendArrow_DAO {
       
    //화살감소 
    public String ArrowSearch_DAO(String sender) throws SQLException{
-	 //본인아이디를 세션값으로 받아야 한다.. 현재는 받는 사람의 id값만 매개변수로 이용중이다.
-	 		String result = "";
-	 			String arrow_dec_sql="UPDATE arrowinfo SET arrows = arrows-1 WHERE u_id=? and arrows>0";
-	 			pstmt=conn.prepareStatement(arrow_dec_sql);
-	 			pstmt.setString(1, sender);
-	 			int row=pstmt.executeUpdate();//화살 수 감소 쿼리 
-	 			System.out.println(sender);
-	 			if(row<1){
-	 				result= "잔여 화살 수가 부족합니다.";
-	 			}
-	 			else{
-	 				result= "화살 감소OK";
-	 			}
-	 			return result ; 
+
+    //본인아이디를 세션값으로 받아야 한다.. 현재는 받는 사람의 id값만 매개변수로 이용중이다.
+          String result = "";
+             String arrow_dec_sql="UPDATE arrowinfo SET arrows = arrows-1 WHERE u_id=? and arrows>0";
+             pstmt=conn.prepareStatement(arrow_dec_sql);
+             pstmt.setString(1, sender);
+             int row=pstmt.executeUpdate();//화살 수 감소 쿼리 
+             System.out.println(sender);
+             if(row<1){
+                result= "잔여 화살 수가 부족합니다.";
+             }
+             else{
+                result= "화살 감소OK";
+             }
+             return result ; 
    }
    
    public String ArrowRegister_DAO(String sender, String reciever) throws SQLException{
@@ -103,15 +104,16 @@ public class SendArrow_DAO {
             System.out.println("2");
 
             if(row>0){
-               result= "success!";
+
+               result= "화살이 날아갔습니다!";
             }
             else{
-               result= "you failed.";
+               result= "화살 보내기!";
             }
          
          }
          else{
-            result= "you failed.";
+            result= "화살 보내기 실패!";
          }
          System.out.println("여기   "+result);
       } catch (SQLException e) {
@@ -131,7 +133,7 @@ public class SendArrow_DAO {
       Arrow_DTO myar=null; 
       
       int cpage=Integer.parseInt(arrowpage);
-      int pagesize=2; 
+      int pagesize=10; 
       int start = cpage * pagesize - (pagesize - 1);
       int end = cpage * pagesize;
       System.out.println("start : "+start);
@@ -350,7 +352,7 @@ public class SendArrow_DAO {
       try {
          conn = ds.getConnection();
          int cpage2=Integer.parseInt(cpage);
-         int pagesize=2; 
+         int pagesize=10; 
          int start = cpage2 * pagesize - (pagesize - 1);
          int end = cpage2 * pagesize;
          System.out.println("start : "+start);
