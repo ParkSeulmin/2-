@@ -272,12 +272,26 @@ String Test = request.getContextPath();
 						</div>
 					</c:when>
 					<c:otherwise>
-						<h4 align="center" style="color: blue;">현재 친구 요청이 없습니다.</h4>
+					<br>
+						<div align="center"><h4><b><font color="#6F6F6F">현재 친구 요청이 없습니다.</font></b></h4></div>
+						<table border="0" cellspacing="0" width="100%" >
+					<br><br>
+					<tbody>			
+						<tr>
+							<td align="center">
+								<img src="/TeamProject/Images/34.jpg" width="60%" height="250px">
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+				
 					</c:otherwise>
 				</c:choose>
+				<br>
 				<div align="right">
 					<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-						onclick="toggle()">내가 신청한 친구 보기</button>
+						onclick="toggle()">내가 요청한 친구 보기</button>
 				</div>
 			</div>
 
@@ -377,25 +391,7 @@ String Test = request.getContextPath();
          </c:choose> --%>
 
          </div>
-
-
-         <!-- CALENDAR-->
-         <div id="calendar" class="mb">
-            <div class="panel green-panel no-margin">
-               <div class="panel-body">
-                  <div id="date-popover" class="popover top"
-                     style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                     <div class="arrow"></div>
-                     <h3 class="popover-title" style="disadding: none;"></h3>
-                     <div id="date-popover-content" class="popover-content"></div>
-                  </div>
-                  <div id="my-calendar"></div>
-               </div>
-            </div>
-         </div>
-
       </div>
-
 		</div>
 	</div>
        
