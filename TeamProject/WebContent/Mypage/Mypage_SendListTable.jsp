@@ -83,12 +83,6 @@
 
 					<c:otherwise>
 						<br>
-						
-
-						<div align="right">
-							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-								onclick="toggle()">받은 화살 보기</button>
-						</div>
 
 							신청하신게 없네요^^
 							
@@ -214,6 +208,5 @@
          </div>
 		</div>
       </div>
-
 </body>
 </html>
