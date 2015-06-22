@@ -160,7 +160,7 @@
 						<div align="center">
 						
 						<input type="button" value="상세보기" width="10" height="10" class="btn btn-primary btn-xs btn-round btn-danger"
-						onclick="window.open('<%=request.getContextPath()%>/Detailsendmsg.msg?m_id=<%=rl.getM_ID()%>','zip','width=500','height=300')">
+						onclick="window.open('<%=request.getContextPath()%>/Detailsendmsg.msg?m_id=<%=rl.getM_ID()%>','zip','width=500','height=200')">
 						
 						</div>
 					</td>
@@ -179,44 +179,7 @@
 						href="./Sendmsg.msg?page=<%=nowpage+1 %>">[다음]</a> <%} %>
 					</td>
 				</tr>
-				<tr align="right">
-					<td colspan="5">
-						<%-- <%if(id!=null && id.equals("admin")){%>
-						<a href="./MemberListAction.me">[회원관리]</a>
-					<%}%> --%> 
-					
-
-						<div id="dialog-message" title="글쓰기">
-							<!--  <p>
-					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-					    	회원만 게시물 등록이 가능합니다^ ^
-
-`					  </p> -->
-							<!-- 		  <p>
-					     <b>로그인 해주세요^ ^</b>.
-					  </p> -->
-						</div> <script>
-					  	$(function(){
-							
-							$("#dialog-message").dialog({
-									 autoOpen: false,
-									 modal: true,
-									 buttons: {
-										Ok: function() {
-											//$('#writeboard').attr("href", "#");
-											$( this ).dialog( "close" );
-										
-										}
-								     }
-								});
-							
-						   	$('#writeboarderror').click(function(){
-						   			$("#dialog-message").dialog( "open" );
-					 		});
-						});
-					 </script>
-					</td>
-				</tr>
+				
 			</table>
 
 

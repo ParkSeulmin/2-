@@ -111,12 +111,14 @@
 				<div class="col-sm-10">
 					<label class="col-sm-2 col-sm-2 control-label">키</label> <input
 						type="text" name="cm" id="cm" size="20" maxlength="20">
+					<span id="cm3"></span>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
 					<label class="col-sm-2 col-sm-2 control-label">몸무게</label> <input
 						type="text" name="weight2" id="weight2" size="20" maxlength="20">
+					<span id="weight3"></span>
 				</div>
 			</div>
 			<div class="form-group">
@@ -394,5 +396,61 @@
 			}
 		}
 	</script>
+	
+	<script type="text/javascript">
+	$('#mb_birth').keyup(
+			function() {
+				var birth = $('#mb_birth').val().substring(0,2);
+				console.log(birth);
+				if(parseInt(birth) < 50){
+					$("#jumin").html(
+							"<font color='red'> ※잘못된 형식의 주민번호를 입력하셨습니다.</font>");
+				}else{
+					$("#jumin").html('');					
+				}
+			});
+	
+	$('#cm').keyup(
+			function() {
+				if($('#cm').val().length>3 || $('#cm').val().substring(0,1) != '1' &&  $('#cm').val().substring(0,1) != '2'){
+					$("#cm3").html(
+							"<font color='red'> ※잘못된 키를 입력하셨습니다.</font>");
+						}else{
+							$("#cm3")
+							.html('');
+						}
+					$('#cm').focus();
+					return false;
+				}
+			);
+	$('#weight2').keyup(
+			function() {
+				if($('#weight2').val().length>3){
+					$("#weight3")
+					.html(
+							"<font color='red'> ※잘못된 몸무게를 입력하셨습니다.</font>");
+						}else{
+							$("#weight3").html('');							
+						}
+					$('#weight2').focus();
+					return false;
+				}
+			);
+	
+	$('#mb_birth2').keyup(
+			function() {
+				if($('#mb_birth2').val().substring(0,1) != '1' && 
+						$('#mb_birth2').val().substring(0,1) != '2'){
+					$("#jumin").html(
+					"<font color='red'> ※잘못된 형식의 주민번호를 입력하셨습니다.</font>");
+					
+				}else{
+					$("#jumin").html('');
+				}
+			});
+                          
+     </script>
+
+	
 </body>
 </html>

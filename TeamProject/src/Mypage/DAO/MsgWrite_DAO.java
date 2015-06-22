@@ -25,26 +25,34 @@ public class MsgWrite_DAO {
 	static DataSource ds;
 	
 	static {
-		InitialContext ctx;
-		try {
-			ctx = new InitialContext();
-			Context envCtx = (Context) ctx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("/jdbc/oracle");
-		} catch (NamingException e) {
-		}
-	}
+        InitialContext ctx;
+        try {
+           ctx = new InitialContext();
+           Context envCtx = (Context) ctx.lookup("java:comp/env");
+           ds = (DataSource) envCtx.lookup("/jdbc/oracle");
+           System.out.println("DataSource 객체 생성 성공 !");
+        } catch (NamingException e) {
+           System.out.println("lookup Fail : " + e.getMessage());
+        }
+     }
 	
 	public void getMsgWrite(Message_DTO msgdto) throws Exception{
 		String sql = "";
 		try{
+			System.out.println("content : "+msgdto.getM_CONTENT());
+			System.out.println("title : "+msgdto.getM_TITLE());
+			System.out.println("receiveid : "+msgdto.getM_RECIEVEID());
+			System.out.println("sendid : "+msgdto.getM_SENDID());
+			
 			con = ds.getConnection();
-			sql = "insert into  MESSAGE(M_ID,M_TITLE,M_CONTENT,M_RECIEVEID,M_SENDID) "
-					+ "values(msg.nextval,?,?,?,?)";
+			sql = "insert into MESSAGE(M_ID,M_TITLE,M_CONTENT,M_RECIEVEID,M_SENDID) "
+					+ "values(MSG.nextval,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,msgdto.getM_TITLE());
 			pstmt.setString(2,msgdto.getM_CONTENT());
 			pstmt.setString(3,msgdto.getM_RECIEVEID());
 			pstmt.setString(4,msgdto.getM_SENDID());
+			
 			
 			row = pstmt.executeUpdate();
 			System.out.println("글쓰기 반영된 로우수 : "+row);

@@ -58,7 +58,7 @@ public class Party_DAO {
 					return count;	
 				}finally{
 					if(pstmt != null)pstmt.close();
-					if(conn != null)pstmt.close();
+					if(conn != null)conn.close();
 				}
 			}
 			
@@ -89,7 +89,7 @@ public class Party_DAO {
 					return partylist;	
 				}finally{
 					if(pstmt != null)pstmt.close();
-					if(conn != null)pstmt.close();
+					if(conn != null)conn.close();
 				}
 			}
 				

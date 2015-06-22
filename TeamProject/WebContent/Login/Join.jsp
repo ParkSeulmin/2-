@@ -67,6 +67,10 @@
 	z-index: 10000;
 }
 
+#address{
+	width: 300px;
+}
+
 .jqsfield {
 	color: white;
 	padding: 5px 5px 8px 5px;
@@ -148,7 +152,7 @@
                           <div class="form-group">
                               <div class="col-sm-10">
                               <label class="col-sm-2 col-sm-2 control-label">주소</label>
-                              <input type="text" name="address" value="" id="address">
+                              <input type="text" name="address" value="" id="address" width="100%">
                               </div>
                           </div>
                          <div class="form-group">
@@ -220,12 +224,14 @@
                               <div class="col-sm-10">
                               <label class="col-sm-2 col-sm-2 control-label">키</label>
 							  <input type="text" name="cm" id="cm" size="20" maxlength="20">
+							  <span id="cm3"></span>
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-sm-10">
                               <label class="col-sm-2 col-sm-2 control-label">몸무게</label>
 							  <input type="text" name="weight2" id="weight2" size="20" maxlength="20">
+                              <span id="weight3"></span>
                               </div>
                           </div>
                           <div class="form-group">
@@ -373,24 +379,33 @@
 					$("#jumin").html('');					
 				}
 			});
+	
 	$('#cm').keyup(
 			function() {
 				if($('#cm').val().length>3 || $('#cm').val().substring(0,1) != '1' &&  $('#cm').val().substring(0,1) != '2'){
-					alert('잘못된 키를 입력하셨습니다.');
-					$('#cm').html('');
+					$("#cm3").html(
+							"<font color='red'> ※잘못된 키를 입력하셨습니다.</font>");
+						}else{
+							$("#cm3")
+							.html('');
+						}
 					$('#cm').focus();
 					return false;
 				}
-			});
+			);
 	$('#weight2').keyup(
 			function() {
 				if($('#weight2').val().length>3){
-					alert('잘못된 몸무게를 입력하셨습니다.');
-					$('#cm').html('');
+					$("#weight3")
+					.html(
+							"<font color='red'> ※잘못된 몸무게를 입력하셨습니다.</font>");
+						}else{
+							$("#weight3").html('');							
+						}
 					$('#weight2').focus();
 					return false;
 				}
-			});
+			);
 	
 	$('#mb_birth2').keyup(
 			function() {

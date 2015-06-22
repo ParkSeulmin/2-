@@ -32,7 +32,8 @@
 <meta name="author" content="Dashboard">
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <title>DASHGUM - FREE Bootstrap Admin Template</title>
 
 <!-- Bootstrap core CSS -->
@@ -92,8 +93,58 @@
 	text-align: left;
 }
 </style>
+
+
+<!--GALLERY INSERT MODAL END -->
+<script type="text/javascript">
+	$(function(){
+		var seardata = {
+				sendid : $('#userid').val()
+		};
+		$.ajax({
+            type: "POST", 
+            url: "friendlist.sear",
+            data : seardata,
+            dataType: "html", //서버가 보내는 데이터 타입 : dataType 명시 (xml, json, script, or html )
+		   
+ 			success: function(responseData) { //response (서버에서 보낸 데이터 )
+ 			//System.out.println("성공해서 일로 넘어왔다");
+ 			var output = "";
+ 			var seardata = JSON.parse(responseData);
+ 			var sendid = "";
+ 			//System.out.println(seardata);
+ 				$.each(seardata,function(index,items){
+ 					
+ 					if(index == 0){
+ 						console.log(items.id);
+ 						sendid = items.id;
+ 					}else{
+ 						console.log(items.id);
+ 	 					
+ 						output += "<option>"+items.id+"</option>";
+ 					}
+ 					
+			
+				}) 
+ 			
+ 			
+              $('#selectmodal').append(output);
+              $('#sendid').val(sendid);
+            },
+            error :function(data){alert("error발생");}
+      });
+   return false; 
+	  
+	});
+
+</script>
+	
+
+
+
 </head>
 <body style>
+<input type="hidden" id="userid" name="userid" value="<%=userid%>">
 	<c:import url="/Include/Header.jsp" />
 	<section id="main-content">
 		<section class="wrapper">
@@ -120,19 +171,19 @@
 							<input type="checkbox" id="check" name="check">
 						</div>
 					</td>
-					<td style="font-family: Tahoma; font-size: 8pt;" width="14%">
+					<td style="font-family: Tahoma; font-size: 12pt;" width="14%">
 						<div align="center">보낸 사람</div>
 					</td>
-					<td style="font-family: Tahoma; font-size: 8pt;" width="14%">
+					<td style="font-family: Tahoma; font-size: 12pt;" width="14%">
 						<div align="center">제목</div>
 					</td>
-					<td style="font-family: Tahoma; font-size: 8pt;" width="18%">
+					<td style="font-family: Tahoma; font-size: 12pt;" width="18%">
 						<div align="center">내용</div>
 					</td>
-					<td style="font-family: Tahoma; font-size: 8pt;" width="11%">
+					<td style="font-family: Tahoma; font-size: 12pt;" width="11%">
 						<div align="center">날짜</div>
 					</td>
-					<td style="font-family: Tahoma; font-size: 8pt;" width="11%">
+					<td style="font-family: Tahoma; font-size: 12pt;" width="11%">
 						<div align="center">내용보기</div>
 					</td>
 				</tr>
@@ -168,15 +219,15 @@
 					<td style="font-family: Tahoma; font-size: 10pt;">
 						<div align="center">
 						<input type="button" value="상세보기" width="10" height="10" class="btn btn-primary btn-xs btn-round btn-danger"
-						onclick="window.open('<%=request.getContextPath()%>/Detailreceivemsg.msg?m_id=<%=rl.getM_ID()%>','zip','width=500','height=300')">
+						onclick="window.open('<%=request.getContextPath()%>/Detailreceivemsg.msg?m_id=<%=rl.getM_ID()%>','zip','width=100','height=100')">
 						</div>
 					</td>
 				</tr>
 				<%		} 
 				
 			%>
-				<tr align=center height=20>
-					<td colspan=7 style="font-family: Tahoma; font-size: 10pt;">
+				<tr align=center height=10>
+					<td colspan=5 style="font-family: Tahoma; font-size: 14pt; padding-top: 15px;">
 						<%if(nowpage<=1){ %> [이전]&nbsp; <%}else{ %> <a
 						href="./Receivemsg.msg?page=<%=nowpage-1 %>">[이전]</a>&nbsp; <%} %> 
 						<%for(int a=startpage;a<=endpage;a++){
@@ -185,44 +236,15 @@
 					</a> &nbsp; <%} %> <%} %> <%if(nowpage>=maxpage){ %> [다음] <%}else{ %> <a
 						href="./Receivemsg.msg?page=<%=nowpage+1 %>">[다음]</a> <%} %>
 					</td>
-				</tr>
-				<tr align="right">
-					<td colspan="5">
-						<%-- <%if(id!=null && id.equals("admin")){%>
-						<a href="./MemberListAction.me">[회원관리]</a>
-					<%}%> --%> 
-					
-						<div id="dialog-message" title="글쓰기" >
-							<!--  <p>
-					    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-					    	회원만 게시물 등록이 가능합니다^ ^
-
-`					  </p> -->
-							<!-- 		  <p>
-					     <b>로그인 해주세요^ ^</b>.
-					  </p> -->
-						</div> <script>
-					  	$(function(){
-							
-							$("#dialog-message").dialog({
-									 autoOpen: false,
-									 modal: true,
-									 buttons: {
-										Ok: function() {
-											//$('#writeboard').attr("href", "#");
-											$( this ).dialog( "close" );
-										
-										}
-								     }
-								});
-							
-						   	$('#writeboarderror').click(function(){
-						   			$("#dialog-message").dialog( "open" );
-					 		});
-						});
-					 </script>
+					<td colspan=1>
+						<div align="right"><img src="Images/Date/send.png" width="50px" height="50px" 
+					  alt="" data-toggle="modal" data-target="#exampleModal" data-whatever="Content">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;&nbsp;&nbsp;</div>
 					</td>
+					
+					
+					
 				</tr>
+				
 			</table>
 
 
@@ -299,6 +321,46 @@
         }
     </script>
 
+
+	<!--GALLERY INSERT MODAL START -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">#메시지 보내기</h4>
+      </div>
+      <form action="<%=request.getContextPath() %>/Writemsg.msg" method="get" enctype="multipart/form-data" name="msgform">
+      <label style="font-style: inherit;"><p align="center" style="font-size: 20pt; padding-left: 30px; padding-top: 20px;">쪽지 보내기</p></label>
+	<div style="padding-left: 30px">
+		받는 사람 : 
+		
+	<select id="selectmodal" name="selectmodal">
+		<option>친구 목록</option>
+	</select>&nbsp;&nbsp;
+		 보내는 사람 :
+	 <input type="text" readonly="readonly" id="sendid" value="" size="15" name="sendid">
+	</div>
+	<br>
+	<div style="padding-left: 30px">
+	제목  : <input type="text" value="" name="title">
+	</div>
+	<br>
+	<div style="padding-left: 30px">
+	<textarea cols="60" rows="10" name="content">내용을 입력해주세요.</textarea>
+	</div>
+	
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" onclick="javascript:msgform.submit();">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!-- ----------------------------------------------------------------------------------------------------- -->
 
 
 </body>

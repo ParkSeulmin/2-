@@ -36,7 +36,7 @@ public class DeleteAction implements Action{
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath(request.getContextPath()+"/Main.jsp");
+		forward.setPath(request.getContextPath()+"/intro.html");
 		return forward;
 	}
 

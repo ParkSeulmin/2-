@@ -24,7 +24,7 @@ import Login.DTO.Member;
 
 
 public class Search_DAO {
-	
+   
       //DB연결
       //CRUD 작업
       // method 공통 사용 ....
@@ -52,25 +52,25 @@ public class Search_DAO {
       
          public ArrayList<Search_DTO> getSearch(Search_Column_DTO searcoldto) throws SQLException{
              try {
-            	 
-            	 
+                
+                
                 conn = ds.getConnection();
                 String sql = "select * from (select * from MEMBER where U_ADDR like ?) where "
-                		+ "U_ID in (select U_ID from (select * from MEMBER where U_AGE between ? and ?)"
-                		+" where U_ID in (select U_ID from PERSONALINFO where HEIGHT between ? and ? and "
-                		+"SAL >= ? and JOB like ?))";
+                      + "U_ID in (select U_ID from (select * from MEMBER where U_AGE between ? and ?)"
+                      +" where U_ID in (select U_ID from PERSONALINFO where HEIGHT between ? and ? and "
+                      +"SAL >= ? and JOB like ?))";
               
                 
-                		System.out.println(searcoldto.getValArea());
-                		System.out.println(searcoldto.getValAge1());
-                		System.out.println(searcoldto.getValAge2());
-                		System.out.println(searcoldto.getValHeight1());
-                		System.out.println(searcoldto.getValHeight2());
-                		System.out.println(searcoldto.getValSal());
-                		System.out.println(searcoldto.getValJob());
-                		
-                		System.out.println(sql);
-                 	    pstmt = conn.prepareStatement(sql);
+                      System.out.println(searcoldto.getValArea());
+                      System.out.println(searcoldto.getValAge1());
+                      System.out.println(searcoldto.getValAge2());
+                      System.out.println(searcoldto.getValHeight1());
+                      System.out.println(searcoldto.getValHeight2());
+                      System.out.println(searcoldto.getValSal());
+                      System.out.println(searcoldto.getValJob());
+                      
+                      System.out.println(sql);
+                        pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1,"%"+searcoldto.getValArea()+"%");
                         pstmt.setInt(2,searcoldto.getValAge1());
                         pstmt.setInt(3,searcoldto.getValAge2());
@@ -83,28 +83,69 @@ public class Search_DAO {
                         
                   
                 while(rs.next()){
-                	search_dto = new Search_DTO();
-             	   search_dto.setId(rs.getString(1));
-             	   search_dto.setPw(rs.getString(2));
-             	   search_dto.setName(rs.getString(3));
-             	   search_dto.setJumin(rs.getString(4));
-             	   search_dto.setPhone(rs.getString(5));
-             	   search_dto.setNick(rs.getString(6));
-             	   search_dto.setGender(rs.getInt(7));
-             	   search_dto.setEmail(rs.getString(8));
-             	   search_dto.setAge(rs.getInt(9));
-             	   search_dto.setAddress(rs.getString(10));
-             	  search_dto.setAdmin(rs.getInt(11));
-             	  search_dto.setU_mypicture(rs.getString("u_mypicture"));
-             	  
-             	   System.out.println("search _ set id : "+rs.getString(1));
-             	   seararr.add(search_dto);
+                   search_dto = new Search_DTO();
+                   search_dto.setId(rs.getString(1));
+                   search_dto.setPw(rs.getString(2));
+                   search_dto.setName(rs.getString(3));
+                   search_dto.setJumin(rs.getString(4));
+                   search_dto.setPhone(rs.getString(5));
+                   search_dto.setNick(rs.getString(6));
+                   search_dto.setGender(rs.getInt(7));
+                   search_dto.setEmail(rs.getString(8));
+                   search_dto.setAge(rs.getInt(9));
+                   search_dto.setAddress(rs.getString(10));
+                  search_dto.setAdmin(rs.getInt(11));
+                  search_dto.setU_mypicture(rs.getString("u_mypicture"));
+                  
+                   System.out.println("search _ set id : "+rs.getString(1));
+                   seararr.add(search_dto);
                 }
                 
                 for(int i=0; i<seararr.size(); i++){
-             	   System.out.println("DAO : "+seararr.get(i).getPhone());
-             	  System.out.println("area : "+seararr.get(i).getAddress());
+                   System.out.println("DAO : "+seararr.get(i).getPhone());
+                  System.out.println("area : "+seararr.get(i).getAddress());
                 }
+                
+                return seararr;
+                
+             }finally{
+                if(rs != null)rs.close();
+                if(pstmt != null)pstmt.close();
+                if(conn != null)conn.close();
+             }
+          }
+         
+         public ArrayList<Search_DTO> getFriendList(String u_id) throws SQLException{
+             try {
+                
+                System.out.println("DAO : "+u_id);
+                conn = ds.getConnection();
+                String sql = "select U_SSOME from SSOMELIST where U_ID=?";
+              
+                
+                      
+                      
+                      System.out.println(sql);
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1,u_id);
+                        
+                        
+                        rs = pstmt.executeQuery();
+                        
+                        System.out.println("DAO2 : "+u_id);
+                        search_dto = new Search_DTO();
+                        search_dto.setId(u_id);
+                        seararr.add(search_dto);
+                while(rs.next()){
+                   search_dto = new Search_DTO();
+                   search_dto.setId(rs.getString(1));
+                   
+                  
+                   System.out.println("Friendlist _ set id : "+rs.getString(1));
+                   seararr.add(search_dto);
+                }
+                
+                
                 
                 return seararr;
                 

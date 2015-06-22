@@ -52,9 +52,9 @@ import Login.DTO.Member;
 		
 		 
 
-		if(request.getParameter("page")!=null){
+		if(request.getParameter("mpage")!=null){
 			
-			page=Integer.parseInt(request.getParameter("page"));
+			page=Integer.parseInt(request.getParameter("mpage"));
 			System.out.println("getmemberlist page"+page);
 		}
 		

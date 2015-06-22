@@ -88,7 +88,8 @@
 	<!-- 회원정보 입력/수정 시작 { -->
 	<div class="form-panel">
 		<form class="form-horizontal style-form" id="fregisterform"
-			name="fregisterform" method="post" action="<%=request.getContextPath()%>/EditProfile.edit"
+			name="fregisterform" method="post"
+			action="<%=request.getContextPath()%>/EditProfile.edit"
 			enctype="multipart/form-data">
 			<!--  -->
 			<h4 class="mb">
@@ -171,8 +172,8 @@
 				<div class="col-sm-10" align="center">
 					<input type="submit" class="btn btn-theme04" value="수정완료"
 						id="btn_submit" accesskey="s" onclick="return check();"> <a
-						href="Mypage_Edit.jsp" class="btn_cancel"> <input type="button"
-						class="btn btn-theme03" value="취소  ">
+						href="Mypage_Edit.jsp" class="btn_cancel"> <input
+						type="button" class="btn btn-theme03" value="취소  ">
 					</a>
 				</div>
 			</div>
@@ -222,6 +223,8 @@
 	<script type="application/javascript">
 		
 		
+		
+		
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
@@ -255,6 +258,8 @@
         }
     
 	
+	
+	
 	</script>
 
 	<script type="text/javascript">
@@ -265,51 +270,66 @@
 					tag : "1",
 					id : $('#reg_mb_id').val()
 				};
-				$.ajax({
-					type : "POST",
-					url : "CheckController.ch",//보낼 주소
-					data : id_data,
-					dataType : "html",
-					success : function(responseData) {//서버에서 보낸 데이터
-						var result = JSON.parse(responseData);
-						//alert('result 값' + result);
-						if (result == 1) {
-							alert("ID 중복입니다.");
-						}else {
-							alert("사용가능한 ID 입니다.");
-						}
+				if ($("#reg_mb_id").val() != '') {
+					$.ajax({
+						type : "POST",
+						url : "CheckController.ch",//보낼 주소
+						data : id_data,
+						dataType : "html",
+						success : function(responseData) {//서버에서 보낸 데이터
+							var result = JSON.parse(responseData);
+							//alert('result 값' + result);
+							if (result == 1) {
+								alert("ID 중복입니다.");
+							} else if (result == 0) {
+								alert("사용가능한 ID 입니다.");
+							} else {
+								alert("ID를 입력하세요");
+							}
 
-					},
-					error : function(e) {
-						alert("에러발생");
-					}
-				});
+						},
+						error : function(e) {
+							alert("에러발생");
+						}
+					});
+				} else {
+					alert('ID를 입력하세요');
+				}
 			});
 
 			//닉네임 중복 확인
+
 			$("#nickcheck").click(function() {
 				var nick_data = {
 					tag : "2",
 					nick : $('#mb_nick').val()
 				};
-				$.ajax({
-					type : "POST",
-					url : "CheckController.ch",//보낼 주소
-					data : nick_data,
-					dataType : "html",
-					success : function(responseData) {//서버에서 보낸 데이터
-						var result = JSON.parse(responseData);
-						if (result == 1) {
-							alert("닉네임 중복입니다.");
-						} else {
-							alert("사용가능한 닉네임 입니다.");
-						}
+				/* console.log($("#mb_nick").val()); */
+				if ($("#mb_nick").val() != '') {
+					$.ajax({
+						type : "POST",
+						url : "CheckController.ch",//보낼 주소
+						data : nick_data,
+						dataType : "html",
+						success : function(responseData) {//서버에서 보낸 데이터
+							var result = JSON.parse(responseData);
+							if (result == 1) {
+								alert("닉네임 중복입니다.");
+							} else if (result == 0) {
+								alert("사용가능한 닉네임 입니다.");
+							} else {
+								alert("닉네임을 입력하세요");
+							}
 
-					},
-					error : function(e) {
-						alert("에러발생");
-					}
-				});
+						},
+						error : function(e) {
+							alert("에러발생");
+						}
+					});
+				} else {
+					alert('닉네임을 입력하세요');
+				}
+
 			});
 
 			//비밀번호 중복 체크
@@ -342,51 +362,131 @@
 									$("#message1").html("");
 								}
 							});
+
+			$('.email1').keyup(function() {
+				$("#msg_mb_email").html("");
+			});
+			$('.email1').focusout(
+					function() {
+						$('#reg_mb_email').val(
+								$('#reg_mb_email1').val() + '@'
+										+ $('#reg_mb_email2').val());
+						if ($('#reg_mb_email1').val()
+								&& $('#reg_mb_email2').val()) {
+							msg = reg_mb_email_check();
+							if (!msg) {
+								$("#msg_mb_email").css('color', 'blue');
+								$("#msg_mb_email").html("사용가능한 이메일입니다.");
+							} else {
+								$("#msg_mb_email").css('color', 'red');
+								$("#msg_mb_email").html(msg);
+							}
+						}
+					});
 		});
 	</script>
 	<script>
 		//유효성 체크 함수
-		function check(){
-			if($('#post1').val()=='' ||$('#post2').val()==''
-					||$('#address').val()=='' ||$('#address2').val()=='') {
+		function check() {
+			if ($('#post1').val() == '' || $('#post2').val() == ''
+					|| $('#address').val() == '' || $('#address2').val() == '') {
 				alert('주소를 입력하세요.');
 				return false;
-			}else if($('#nickcheck').val()==''){
+			} else if ($('#nickcheck').val() == '') {
 				alert('닉네임을 입력하세요.');
 				return false;
-			}else if($('#u_mypicture').val()==''){
+			} else if ($('#u_mypicture').val() == '') {
 				alert('사진을 첨부하세요.');
 				return false;
-			}else if($('#reg_mb_email1').val()=='' || $('#reg_mb_email2').val()==''
-					|| $('#mb_email3').val()==''){
+			} else if ($('#reg_mb_email1').val() == ''
+					|| $('#reg_mb_email2').val() == ''
+					|| $('#mb_email3').val() == '') {
 				alert('이메일을 입력하세요.');
 				return false;
-			}else if($('#mb_hp1').val()=='' || $('#mb_hp2').val()==''
-					|| $('#mb_hp3').val()==''){
+			} else if ($('#mb_hp1').val() == '' || $('#mb_hp2').val() == ''
+					|| $('#mb_hp3').val() == '') {
 				alert('번호를 입력하세요.');
 				return false;
-			}else{
+			} else {
 				//수정완료 호출
 				alert('수정 완료');
 				return true;
 			}
 		}
 	</script>
-	
+
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
-	//우편번호 api 사용
-	function openDaumPostcode() {
-		new daum.Postcode({
-			oncomplete : function(data) {
-				document.getElementById('post1').value = data.postcode1;
-				document.getElementById('post2').value = data.postcode2;
-				document.getElementById('address').value = data.roadAddress;//도로명주소
-				document.getElementById('address2').focus();
-			}
-		}).open();
-	}
+		//우편번호 api 사용
+		function openDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							document.getElementById('post1').value = data.postcode1;
+							document.getElementById('post2').value = data.postcode2;
+							document.getElementById('address').value = data.roadAddress;//도로명주소
+							document.getElementById('address2').focus();
+						}
+					}).open();
+		}
 	</script>
-	
+	<!-- 유효성 검사-->
+	<script type="text/javascript">
+		$('#mb_birth')
+				.keyup(
+						function() {
+							var birth = $('#mb_birth').val().substring(0, 2);
+							console.log(birth);
+							if (parseInt(birth) < 50) {
+								$("#jumin")
+										.html(
+												"<font color='red'> ※잘못된 형식의 주민번호를 입력하셨습니다.</font>");
+							} else {
+								$("#jumin").html('');
+							}
+						});
+
+		$('#cm').keyup(
+				function() {
+					if ($('#cm').val().length > 3
+							|| $('#cm').val().substring(0, 1) != '1'
+							&& $('#cm').val().substring(0, 1) != '2') {
+						$("#cm3").html(
+								"<font color='red'> ※잘못된 키를 입력하셨습니다.</font>");
+					} else {
+						$("#cm3").html('');
+					}
+					$('#cm').focus();
+					return false;
+				});
+		$('#weight2')
+				.keyup(
+						function() {
+							if ($('#weight2').val().length > 3) {
+								$("#weight3")
+										.html(
+												"<font color='red'> ※잘못된 몸무게를 입력하셨습니다.</font>");
+							} else {
+								$("#weight3").html('');
+							}
+							$('#weight2').focus();
+							return false;
+						});
+
+		$('#mb_birth2')
+				.keyup(
+						function() {
+							if ($('#mb_birth2').val().substring(0, 1) != '1'
+									&& $('#mb_birth2').val().substring(0, 1) != '2') {
+								$("#jumin")
+										.html(
+												"<font color='red'> ※잘못된 형식의 주민번호를 입력하셨습니다.</font>");
+
+							} else {
+								$("#jumin").html('');
+							}
+						});
+	</script>
+
 </body>
 </html>

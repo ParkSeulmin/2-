@@ -55,7 +55,7 @@ public class Edit_DAO {
 				return row;
 			}finally{
 				if(pstmt != null)pstmt.close();
-				if(conn != null)pstmt.close();
+				if(conn != null)conn.close();
 			}
 		}
 		
@@ -74,7 +74,7 @@ public class Edit_DAO {
 				return row;
 			}finally{
 				if(pstmt != null)pstmt.close();
-				if(conn != null)pstmt.close();
+				if(conn != null)conn.close();
 			}
 		}
 		
@@ -100,7 +100,7 @@ public class Edit_DAO {
 				
 			}finally{
 				if(pstmt != null)pstmt.close();
-				if(conn != null)pstmt.close();
+				if(conn != null)conn.close();
 			}
 		}
 		
@@ -121,7 +121,7 @@ public class Edit_DAO {
 				
 			}finally{
 				if(pstmt != null)pstmt.close();
-				if(conn != null)pstmt.close();
+				if(conn != null)conn.close();
 			}
 			
 		}

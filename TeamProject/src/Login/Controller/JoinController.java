@@ -47,6 +47,10 @@ public class JoinController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException, Exception {
+		req.setCharacterEncoding("UTF-8");
+		res.setContentType("text/html;charset=utf-8");
+		res.setCharacterEncoding("utf-8");
+		
 		String RequestURI = req.getRequestURI();
 		String ContextPath = req.getContextPath();
 

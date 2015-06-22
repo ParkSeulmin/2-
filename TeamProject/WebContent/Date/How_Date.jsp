@@ -1,9 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
 <%@page import="Login.DTO.Member"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
       Member user = null;
       String id = null;
@@ -20,39 +17,50 @@
       System.out.println("session admin check:"+admin);
 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no">
-<meta http-equiv="imagetoolbar" content="no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>♡품격이 다른 소개팅 위대한 만남 입니다♡</title>
-<link rel="stylesheet" href="http://www.wedaehan.com/css/default.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Dashboard">
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
+<title>DASHGUM - FREE Bootstrap Admin Template</title>
 
-<link rel="stylesheet" type="text/css" href="http://www.wedaehan.com/css/sub.css">
-
-
-<script src="http://www.wedaehan.com/js/jquery-1.8.3.min.js"></script>
-
-<script src="http://www.wedaehan.com/js/jquery.easing.min.js"></script><!-- 하트 좌우 이동 -->
-
-
-
-
-
-<link href="<%=request.getContextPath()%>/assets/css/bootstrap.css" rel="stylesheet">
-
-
+<!-- Bootstrap core CSS -->
+<link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
+	rel="stylesheet">
+<!--external css-->
+<link
+	href="<%=request.getContextPath()%>/assets/font-awesome/css/font-awesome.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/css/zabuto_calendar.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/js/gritter/css/jquery.gritter.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/lineicons/style.css">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/assets/css/style.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/assets/css/style-responsive.css"
+	rel="stylesheet">
 
+<script
+	src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
-
-
-
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 <style type="text/css">
 .jqstooltip {
 	position: absolute;
@@ -81,22 +89,8 @@
 	text-align: left;
 }
 </style>
- 
- <style type="text/css">
-
-	div.start {
-	  float: left;
-	  width: 320px;
-	  height: 320px;
-	  margin: 0;
-	  overflow: hidden;
-	  background: url('http://www.wedaehan.com/image/main/box01_img.png') center no-repeat;
-	}
-	
-</style>
-
 </head>
-<body>
+<body  style>
 	<c:import url="/Include/Header.jsp" />
 	 <section id="main-content">
           <section class="wrapper">
@@ -498,7 +492,41 @@ $(document).ready(function() {
 	<!--common script for all pages-->
 	<script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
 
-
+	<script type="application/javascript">
+		
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+        
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+        
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    
+	</script>
 
 
 </body>

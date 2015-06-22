@@ -123,7 +123,9 @@ public class Join {
 			if (pstmt != null)
 				pstmt.close();
 			if (conn != null)
-				pstmt.close();
+				conn.close();
+			if(rs!=null)
+				rs.close();
 		}
 		return check;
 	}
@@ -153,7 +155,9 @@ public class Join {
 			if (pstmt != null)
 				pstmt.close();
 			if (conn != null)
-				pstmt.close();
+				conn.close();
+			if(rs !=null)
+				rs.close();
 		}
 		return check;
 	}
@@ -161,6 +165,7 @@ public class Join {
 	// 회원 삭제
 	public boolean memberdelete(String userid) {
 		System.out.println("memberdelete userid: " + userid);
+		
 		String del_reply_sql = "delete from reply where RE_WRITER=?";
 
 		String boardreply_delete_sql = "delete from reply where bo_no in (select bo_no from board where bo_writer=?)";
@@ -269,7 +274,6 @@ public class Join {
 			// 8 화살 삭제
 			pstmt = conn.prepareStatement(arrow_delete_sql);
 			pstmt.setString(1, userid);
-			pstmt.setString(2, userid);
 			result = pstmt.executeUpdate();
 
 			if (result < 1) {
@@ -334,7 +338,7 @@ public class Join {
 			if (pstmt != null)
 				pstmt.close();
 			if (conn != null)
-				pstmt.close();
+				conn.close();
 		}
 		return row;
 	}

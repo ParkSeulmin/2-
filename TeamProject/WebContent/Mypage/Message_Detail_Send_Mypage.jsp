@@ -79,7 +79,57 @@ Message_DTO msgdto = (Message_DTO)request.getAttribute("msgdto");
 
 </head>
 <body style>
-메시지 번호 : <%=msgdto.getM_ID() %>
 
+
+<div class="popup" style="width: 100; height: 100;">
+	<!-- title -->
+	<div class="pop_tit_bg"><div class="pop_tit_l"><div class="pop_tit_r">
+		<h3 class="pop_tit">&nbsp;보낸 쪽지 읽기</h3>
+	</div></div></div>
+	<!-- title -->
+<table class="table table-striped table-advance table-hover">
+	<div class="memoread" style="position:relative">
+	<tr>
+		<div>
+		&nbsp;&nbsp;메시지 번호 : <%=msgdto.getM_ID() %>
+		</div>
+	</tr>
+	<tr>
+		<div>
+		<td colspan="1"><dl class="">
+		<dt>보낸 사람</dt>
+		<dd><%=msgdto.getM_SENDID()%></dd>
+		</dl></td>
+		<td colspan="1" align="left">
+		<dl class="">
+		<dt>보낸 시각</dt>
+		<dd><%=msgdto.getM_DATE()%></dd>
+		</dl>
+		</td>
+		</div></tr>
+		<tr>
+		<div>
+		<td colspan="1">
+		제목 : <%=msgdto.getM_TITLE() %>
+		</td><td colspan="2"></td>
+		</div>
+		</tr>
+		<tr>
+		<td colspan="2" rowspan="10">
+		내용 : <div id="" class=""><%=msgdto.getM_CONTENT()%></div>
+		</td><td colspan="2"  rowspan="10"></td>
+		</tr>
+
+	</div>
+
+
+</table>
+		
+		<ul id="manageBtn" class="">
+		<a href="Deletemsg.msg?m_id=<%=msgdto.getM_ID()%>" onclick="deletebtn()">
+		<img src="http://www.afreeca.com/images/popup/button/btn_del.gif" alt="삭제"></a>
+		</li></ul>
+		
+</div>
 </body>
 </html>

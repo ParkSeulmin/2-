@@ -25,7 +25,14 @@
    if(ssomelist==null){
       System.out.println("친구가 없어");
    }
-
+   
+   
+     int nowpage=((Integer)request.getAttribute("page")).intValue(); 
+    int maxpage=((Integer)request.getAttribute("maxpage")).intValue();
+   int startpage=((Integer)request.getAttribute("startpage")).intValue();
+   int endpage=((Integer)request.getAttribute("sendpage")).intValue(); 
+   
+    System.out.println("nowpage: "+((Integer)request.getAttribute("page")).intValue());  
    /* String totalpagecount=(String)request.getAttribute("total");
    int pagesize=2;
    int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
@@ -316,6 +323,28 @@ div.start {
             </div>
             <%
                       }%>
+                <div class="desc" align="center">
+                    <%if(nowpage<=1){ %>
+               <span class="badge">이전</span>&nbsp;
+               <%}else{ %>
+               <a href="./Mainpage.main?page=<%=nowpage-1 %>" ><span class="badge bg-warning">이전</span></a>&nbsp;
+               <%} %>
+               
+               <%for(int a=startpage;a<=endpage;a++){
+                  if(a==nowpage){%>
+                  <span class="badge bg-important"><%=a %></span>
+                  <%}else{ %>
+                  <a href="./Mainpage.main?page=<%=a %>"><span class="badge bg-inverse"><%=a %></span></a>
+                  
+                  <%} %>
+               <%} %>
+               
+               <%if(nowpage>=maxpage){ %>
+               <span class="badge">다음</span>
+               <%}else{ %>
+               <a href="./Mainpage.main?page=<%=nowpage+1 %>"><span class="badge bg-warning">다음</span></a>
+               <%} %>
+              </div>           
             <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
          <c:choose>
             <c:when test="${fcount!=0}">

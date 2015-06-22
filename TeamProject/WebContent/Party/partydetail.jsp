@@ -119,8 +119,21 @@
 						<td class="hidden-phone"><%=list.getP_DATE() %></td>
 						<td><%=list.getP_AREA() %></td>
 						<td><%=count %>/<%=list.getP_MAXPEOPLE() %></td>
-						<td><%=list.getP_STATUS() %></td>
-						<td><input type="submit" class="btn btn-danger" value="파티신청"></td>
+						
+					<%
+						if(count<list.getP_MAXPEOPLE()){
+					%>	
+						<td id="status"><%=list.getP_STATUS() %></td>
+							<td><input type="submit" class="btn btn-danger" value="파티신청"></td>
+					<%
+						}else{
+					%>
+						<td id="status">마감</td>
+						<td><label class="btn btn-danger">신청마감</label></td>
+					<%
+						}
+					%>
+					
 					</tr>
 					<%
 								}
