@@ -12,7 +12,8 @@
 <head>
 <%
 	String totalpagecount = (String) request.getAttribute("total");
-	int pagesize = 2;
+
+	int pagesize = 10;
 	int totalpagenum = (Integer.parseInt(totalpagecount)) / pagesize;
 	if ((Integer.parseInt(totalpagecount)) % pagesize != 0) {
 		totalpagenum++;
@@ -20,7 +21,7 @@
 
 	String r_totalpagecount = (String) request
 			.getAttribute("totalrecieve");
-	int r_pagesize = 2;
+	int r_pagesize = 10;
 	int r_totalpagenum = (Integer.parseInt(r_totalpagecount))
 			/ r_pagesize;
 	if ((Integer.parseInt(r_totalpagecount)) % r_pagesize != 0) {
@@ -38,7 +39,7 @@
 %>
 </head>
 <body>
-
+		<div class="row">
 			<div class="col-lg-9 main-chart">
 			<h3>
 				<i class="fa fa-angle-right">친구등록 요청 리스트</i>
@@ -118,19 +119,30 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						
-						
-						<h4 align="center" style="color: blue;">현재 친구 요청이 없습니다.</h4>
-						
+
+						<br>
+						<div align="center"><h4><b><font color="#6F6F6F">현재 친구 요청이 없습니다.</font></b></h4></div>
+						<table border="0" cellspacing="0" width="100%" >
+					<br><br>
+					<tbody>			
+						<tr>
+							<td align="center">
+								<img src="/TeamProject/Images/34.jpg" width="60%" height="250px">
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+				
 					</c:otherwise>
 				</c:choose>
+				<br>
 				<div align="right">
 					<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-						onclick="toggle()">내가 신청한 친구 보기</button>
+						onclick="toggle()">내가 요청한 친구 보기</button>
 				</div>
 			</div>
 
-			
 			<!-- 친구 리스트  -->
 			<br>
 			<div class="col-lg-3 ds">
@@ -197,53 +209,9 @@
                   </p>
                </div>
             </div>
-            <%
-                      }%>
-            <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
-         <c:choose>
-            <c:when test="${fcount!=0}">
-               <c:set var="friendlist" value="<%=ssomelist%>" />
-               <c:forEach var="friendlist" items="${friendlist}">
-                    <div class="desc">
-                            <div class="thumb">
-                               <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                               <p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
-                                  <muted>${friendlist.name}</muted>
-                               </p>
-                            </div>
-                         </div>
-               </c:forEach>
-             
-            
-             
-            </c:when>
-            <c:otherwise>
-            <br>
-            친구가 없네요 ^^ 
-            </c:otherwise>
-         </c:choose> --%>
-
+            <%}%>
          </div>
-
-
-         <!-- CALENDAR-->
-         <div id="calendar" class="mb">
-            <div class="panel green-panel no-margin">
-               <div class="panel-body">
-                  <div id="date-popover" class="popover top"
-                     style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                     <div class="arrow"></div>
-                     <h3 class="popover-title" style="disadding: none;"></h3>
-                     <div id="date-popover-content" class="popover-content"></div>
-                  </div>
-                  <div id="my-calendar"></div>
-               </div>
-            </div>
          </div>
-
       </div>
-
 </body>
 </html>

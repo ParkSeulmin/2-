@@ -108,17 +108,17 @@ String Test = request.getContextPath();
 		$.ajax({
 			url:"register.daa",
 			data:sdid,
-			success : function(data){
-				alert(data);
+			success : function(data1){
+				$.ajax({		//친구목록 다시 불러오는 코드
+				url:"CheckArrow_query.daa",
+				data:sdid,
+				success : function(data){
+					$("#mydata").html(data);
+				}
+			});
 			}
 		});
-		$.ajax({		//친구목록 다시 불러오는 코드
-			url:"CheckArrow_query.daa",
-			data:sdid,
-			success : function(data){
-				$("#mydata").html(data);
-			}
-		});
+		
 	}
 	
 	
@@ -130,31 +130,32 @@ String Test = request.getContextPath();
 		$.ajax({
 			url : "disagree_arrow.daa",
 			data : sdid,
-			success : function(data) {
-				alert(data);
+			success : function(data1) {
+				$.ajax({
+					url : "CheckArrow_query.daa",
+					data : sdid,
+					success : function(data) {
+						$("#mydata").html(data);
+					}
+				});
 			}
 		});
-		$.ajax({ 
-			url : "CheckArrow_query.daa",
-			data : sdid,
-			success : function(data) {
-				$("#mydata").html(data);
-			}
-		});
+
 	}
 
-	function toggle() {	//친구등록 신청한 페이지 보기 
+	function toggle() { //친구등록 신청한 페이지 보기 
 		location.href = "CheckSendArrow.daa";
 	}
-	
-	function sendmessage(data){
+
+	function sendmessage(data) {
 		console.log(data);
-		window.open("Mypage_messagesend.daa?id="+data, "Popup", "width=380, height=300,scrollbars=1, menubar=1, resizable=1"); 
+		window.open("Mypage_messagesend.daa?id=" + data, "Popup",
+				"width=380, height=300,scrollbars=1, menubar=1, resizable=1");
 	}
-	function deletefriend(sender){
-		var sdid={
-				s_id:sender,
-			    r_id:'<%=me%>'
+	function deletefriend(sender) {
+		var sdid = {
+			s_id : sender,
+			r_id : '<%=me%>'
 		}
 		$.ajax({
 			url : "delete_friend2.daa",
@@ -168,14 +169,14 @@ String Test = request.getContextPath();
 </head>
 <%
 	String totalpagecount=(String)request.getAttribute("total");
-		int pagesize=2;
+		int pagesize=10;
 		int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 		if((Integer.parseInt(totalpagecount))%pagesize!=0){
 	totalpagenum++;
 		}//친구 페이징
 		
 		 String r_totalpagecount=(String)request.getAttribute("totalrecieve");
-		int r_pagesize=2;
+		int r_pagesize=10;
 		int r_totalpagenum=(Integer.parseInt(r_totalpagecount))/r_pagesize;
 		if((Integer.parseInt(r_totalpagecount))%r_pagesize!=0){
 	r_totalpagenum++;
@@ -188,9 +189,9 @@ String Test = request.getContextPath();
 	<section class="wrapper">
 
 	
-	<div class="row">
-	
+
 		<div id=mydata>
+		<div class="row">
 			<div class="col-lg-9 main-chart">
 			<h3>
 				<i class="fa fa-angle-right">친구등록 요청 리스트</i>
@@ -270,15 +271,26 @@ String Test = request.getContextPath();
 						</div>
 					</c:when>
 					<c:otherwise>
-						
-						
-						<h4 align="center" style="color: blue;">현재 친구 요청이 없습니다.</h4>
-						
+					<br>
+						<div align="center"><h4><b><font color="#6F6F6F">현재 친구 요청이 없습니다.</font></b></h4></div>
+						<table border="0" cellspacing="0" width="100%" >
+					<br><br>
+					<tbody>			
+						<tr>
+							<td align="center">
+								<img src="/TeamProject/Images/34.jpg" width="60%" height="250px">
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+				
 					</c:otherwise>
 				</c:choose>
+				<br>
 				<div align="right">
 					<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-						onclick="toggle()">내가 신청한 친구 보기</button>
+						onclick="toggle()">내가 요청한 친구 보기</button>
 				</div>
 			</div>
 
@@ -378,25 +390,7 @@ String Test = request.getContextPath();
          </c:choose> --%>
 
          </div>
-
-
-         <!-- CALENDAR-->
-         <div id="calendar" class="mb">
-            <div class="panel green-panel no-margin">
-               <div class="panel-body">
-                  <div id="date-popover" class="popover top"
-                     style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                     <div class="arrow"></div>
-                     <h3 class="popover-title" style="disadding: none;"></h3>
-                     <div id="date-popover-content" class="popover-content"></div>
-                  </div>
-                  <div id="my-calendar"></div>
-               </div>
-            </div>
-         </div>
-
       </div>
-
 		</div>
 	</div>
        

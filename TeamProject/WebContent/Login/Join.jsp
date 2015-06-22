@@ -67,10 +67,6 @@
 	z-index: 10000;
 }
 
-#address{
-	width: 300px;
-}
-
 .jqsfield {
 	color: white;
 	padding: 5px 5px 8px 5px;
@@ -152,7 +148,7 @@
                           <div class="form-group">
                               <div class="col-sm-10">
                               <label class="col-sm-2 col-sm-2 control-label">주소</label>
-                              <input type="text" name="address" value="" id="address" width="100%">
+                              <input type="text" name="address" value="" id="address">
                               </div>
                           </div>
                          <div class="form-group">
@@ -654,3 +650,4 @@
 	</script>
 
 </body>
+</html>

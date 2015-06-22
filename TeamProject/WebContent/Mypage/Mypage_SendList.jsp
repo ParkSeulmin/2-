@@ -81,7 +81,7 @@
 	String me=member.getId(); 
 	
 	String totalpagecount=(String)request.getAttribute("total");
-	int pagesize=2;
+	int pagesize=10;
 	int totalpagenum=(Integer.parseInt(totalpagecount))/pagesize;
 	if((Integer.parseInt(totalpagecount))%pagesize!=0){
 		totalpagenum++;
@@ -186,19 +186,29 @@
 					</c:when>
 
 					<c:otherwise>
-						<br>
 
-						
-							신청하신게 없네요^^
-							
+					<br>
+						<div align="center"><h4><b><font color="#6F6F6F">내가 요청한 친구가 없습니다.</font></b></h4></div>
+						<table border="0" cellspacing="0" width="100%" >
+					<br><br>
+					<tbody>						
+						<tr>
+							<td align="center">
+								<img src="/TeamProject/Images/34.jpg" width="60%" height="250px">
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
 
 						</c:otherwise>
 
 				</c:choose>
+				<br>
 				<div align="right">
 
 							<button type="button" class="btn btn-primary btn-xs" id="tog_btn"
-								onclick="toggle()">받은 화살 보기</button>
+								onclick="toggle()">요청받은 친구 보기</button>
 						</div>
 
 			</div>
@@ -268,58 +278,11 @@
                   </p>
                </div>
             </div>
-            <%
-                      }%>
-            <%--  <c:set var="fcount" value="<%=ssomelist.size()%>"/>
-         <c:choose>
-            <c:when test="${fcount!=0}">
-               <c:set var="friendlist" value="<%=ssomelist%>" />
-               <c:forEach var="friendlist" items="${friendlist}">
-                    <div class="desc">
-                            <div class="thumb">
-                               <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                               <p><a name="${friendlist.id}">DIVYA MANIAN</a><br>
-                                  <muted>${friendlist.name}</muted>
-                               </p>
-                            </div>
-                         </div>
-               </c:forEach>
-             
-            
-             
-            </c:when>
-            <c:otherwise>
-            <br>
-            친구가 없네요 ^^ 
-            </c:otherwise>
-         </c:choose> --%>
-
+            <%}%>
          </div>
-
-
-         <!-- CALENDAR-->
-         <div id="calendar" class="mb">
-            <div class="panel green-panel no-margin">
-               <div class="panel-body">
-                  <div id="date-popover" class="popover top"
-                     style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                     <div class="arrow"></div>
-                     <h3 class="popover-title" style="disadding: none;"></h3>
-                     <div id="date-popover-content" class="popover-content"></div>
-                  </div>
-                  <div id="my-calendar"></div>
-               </div>
-            </div>
-         </div>
-
       </div>
-
-
-
-			<div></div>
-
+	<div>
+	</div>
 		</div>
 	</div>
 

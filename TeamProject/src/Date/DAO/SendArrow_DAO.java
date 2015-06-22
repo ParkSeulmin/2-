@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -18,24 +17,21 @@ import Login.DTO.Member;
 import Mypage.DTO.Arrow_DTO;
 
 public class SendArrow_DAO {
-	
    static DataSource ds;
    Connection conn;
    PreparedStatement pstmt;
    ResultSet rs;
    
    static {
-       InitialContext ctx;
-       try {
-          ctx = new InitialContext();
-          Context envCtx = (Context) ctx.lookup("java:comp/env");
-          ds = (DataSource) envCtx.lookup("/jdbc/oracle");
-          System.out.println("DataSource 객체 생성 성공 !");
-       } catch (NamingException e) {
-          System.out.println("lookup Fail : " + e.getMessage());
-       }
-    }
-    
+        InitialContext ctx;
+        try {
+           ctx = new InitialContext();
+           Context envCtx = (Context) ctx.lookup("java:comp/env");
+           ds = (DataSource) envCtx.lookup("/jdbc/oracle");
+           
+        }catch(Exception e){
+        }
+   }
    public Member Memberinfo_DAO(String id) throws SQLException{
       Member member = null;
       //id값갖고 사람 정보 빼내오는 메섣
@@ -58,40 +54,42 @@ public class SendArrow_DAO {
             System.out.println("rs돌지");
          }
          
+      } catch (SQLException e) {
+         e.printStackTrace();
       }finally{
-         rs.close();
-         pstmt.close();
-         conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return member;
    }
       
    //화살감소 
    public String ArrowSearch_DAO(String sender) throws SQLException{
-      //본인아이디를 세션값으로 받아야 한다.. 현재는 받는 사람의 id값만 매개변수로 이용중이다.
-	   conn = ds.getConnection();
-	   String result = "";
-      
-         String arrow_dec_sql="UPDATE arrowinfo SET arrows = arrows-1 WHERE u_id=? and arrows>0";
-         pstmt=conn.prepareStatement(arrow_dec_sql);
-         pstmt.setString(1, sender);
-         int row=pstmt.executeUpdate();//화살 수 감소 쿼리 
-         System.out.println(sender);
-         if(row<1){
-            result= "잔여 화살 수가 부족합니다.";
-         }
-         else{
-            result= "화살 감소OK";
-         }
-         
-      return result ; 
+
+    //본인아이디를 세션값으로 받아야 한다.. 현재는 받는 사람의 id값만 매개변수로 이용중이다.
+          String result = "";
+             String arrow_dec_sql="UPDATE arrowinfo SET arrows = arrows-1 WHERE u_id=? and arrows>0";
+             pstmt=conn.prepareStatement(arrow_dec_sql);
+             pstmt.setString(1, sender);
+             int row=pstmt.executeUpdate();//화살 수 감소 쿼리 
+             System.out.println(sender);
+             if(row<1){
+                result= "잔여 화살 수가 부족합니다.";
+             }
+             else{
+                result= "화살 감소OK";
+             }
+             return result ; 
    }
    
    public String ArrowRegister_DAO(String sender, String reciever) throws SQLException{
       String result="";
-      conn = ds.getConnection();
       try {
-           //화살감소 요청
+         
+         conn = ds.getConnection();
+         
+         //화살감소 요청
          result =ArrowSearch_DAO(sender);
          System.out.println(result);
          
@@ -106,23 +104,24 @@ public class SendArrow_DAO {
             System.out.println("2");
 
             if(row>0){
-               result= "success!";
+
+               result= "화살이 날아갔습니다!";
             }
             else{
-               result= "you failed.";
+               result= "화살 보내기!";
             }
          
          }
          else{
-            result= "you failed.";
+            result= "화살 보내기 실패!";
          }
          System.out.println("여기   "+result);
       } catch (SQLException e) {
          e.printStackTrace();
       }finally{
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return result;
       
@@ -134,16 +133,16 @@ public class SendArrow_DAO {
       Arrow_DTO myar=null; 
       
       int cpage=Integer.parseInt(arrowpage);
-      int pagesize=2; 
+      int pagesize=10; 
       int start = cpage * pagesize - (pagesize - 1);
       int end = cpage * pagesize;
       System.out.println("start : "+start);
       System.out.println("end : "+end);
       System.out.println("r_id : "+me);
       System.out.println("cpage2 : "+cpage);
-      conn = ds.getConnection();
+      
       try {
-        
+         conn = ds.getConnection();
          
             String arrow_reg_sql="select a_date,a_status,a_recieveid,a_sendid from "
                   + "(select rownum r, a_date,a_status,a_recieveid,a_sendid from arrow where a_recieveid=? and a_status='대기중') "
@@ -164,9 +163,9 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       }finally{
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return arlist;
    }
@@ -175,9 +174,8 @@ public class SendArrow_DAO {
       String result="";//친추기능
       int rs1=0;
       int rs2=0;
-      conn = ds.getConnection();
       try {
-        
+         conn = ds.getConnection();
          
          String regsql1 = "insert into ssomelist values(?,?)"; 
          System.out.println("Dao 단 접근");
@@ -210,21 +208,20 @@ public class SendArrow_DAO {
             result="친구 등록되었습니다.";
          }else{
             result="친구등록에 실패했습니다.";
+               if(pstmt!= null){pstmt.close();}
+               if(rs!= null){rs.close();}
+               if(conn!= null){conn.close();}
          }
-         if(rs != null)rs.close();
-         if(pstmt != null)pstmt.close();
-         if(conn != null)conn.close();
       }
-
       return result;
+      
    }
 
    public String deleteArrow(String s_id, String r_id) throws SQLException {
       int result=0;//arrow 삭제 
       String rst="";
-      conn = ds.getConnection();
       try {
-      
+         conn = ds.getConnection();
          System.out.println("여기는 r_id" +r_id);
          System.out.println("여기는 s_id" +s_id);
          String delsql = "delete from arrow where a_recieveid=?"
@@ -244,10 +241,10 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       } 
-      finally {
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+      finally{
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
 
       return rst;
@@ -256,9 +253,8 @@ public class SendArrow_DAO {
    public String deleteFriend(String me, String friend) throws SQLException {
       int result=0;//등록 된 친구 삭제
       String rst="";
-      conn = ds.getConnection();
       try {
-        
+         conn = ds.getConnection();
          System.out.println("여기는 me" +me);
          System.out.println("여기는 friend" +friend);
          String delsql = "delete from ssomelist where u_id=? and u_ssome=?";
@@ -278,10 +274,10 @@ public class SendArrow_DAO {
 
       } catch (SQLException e) {
       } 
-      finally {
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+      finally{
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
 
       return rst;
@@ -290,9 +286,8 @@ public class SendArrow_DAO {
    public String ChangeArrow(String s_id, String r_id) throws SQLException {
       int result=0;//arrow 삭제 
       String rst="";
-      conn = ds.getConnection();
       try {
-        
+         conn = ds.getConnection();
          
          String chsql = "update arrow set a_status='수락' where a_recieveid=? and a_sendid=?";
 
@@ -311,10 +306,11 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       } 
-      finally {
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();      }
+      finally{
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
+      }
 
       return rst;
       
@@ -341,10 +337,10 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       } 
-      finally {
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+      finally{
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
 
       return rst;
@@ -356,7 +352,7 @@ public class SendArrow_DAO {
       try {
          conn = ds.getConnection();
          int cpage2=Integer.parseInt(cpage);
-         int pagesize=2; 
+         int pagesize=10; 
          int start = cpage2 * pagesize - (pagesize - 1);
          int end = cpage2 * pagesize;
          System.out.println("start : "+start);
@@ -385,10 +381,10 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       } 
-      finally {
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+      finally{
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return friends ;
    }
@@ -418,9 +414,9 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       }finally{
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return arlist;
    }
@@ -440,9 +436,9 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       }finally{
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return count; 
    }
@@ -471,9 +467,9 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       }finally{
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       return result; 
    }
@@ -492,9 +488,9 @@ public class SendArrow_DAO {
       } catch (SQLException e) {
          e.printStackTrace();
       }finally{
-    	  if(rs != null)rs.close();
-          if(pstmt != null)pstmt.close();
-          if(conn != null)conn.close();
+         if(pstmt!= null){pstmt.close();}
+         if(rs!= null){rs.close();}
+         if(conn!= null){conn.close();}
       }
       result=String.valueOf(result1);
       return result; 
